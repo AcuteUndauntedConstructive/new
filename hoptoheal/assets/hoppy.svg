@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 300" role="img" aria-label="Hoppy, the Hop to Heal sun">
+  <!-- Drawn to sit exactly over the gap in logo_wordmark_no_sun.png:
+       left 31.43%, top 1.07%, width 38.57%, height 45.80% of that image. -->
+  <g fill="none" stroke="#FBA826" stroke-width="20" stroke-linecap="round">
+    <line x1="12" y1="68" x2="32" y2="86"/>
+    <line x1="123" y1="12" x2="123" y2="45"/>
+    <line x1="257" y1="56" x2="240" y2="77"/>
+  </g>
+  <path d="M132 86 C177 86 215 118 215 163 C215 215 178 297 132 297 C86 297 49 215 49 163 C49 118 87 86 132 86 Z" fill="#FBA826"/>
+  <ellipse cx="87" cy="188" rx="12" ry="7" fill="#F46A39"/>
+  <ellipse cx="176" cy="187" rx="12" ry="7" fill="#F46A39"/>
+  <g fill="none" stroke="#352724" stroke-width="4.5" stroke-linecap="round">
+    <path d="M90 170 Q101 182 112 170"/>
+    <path d="M150 168 Q161 180 172 168"/>
+    <path d="M121 189 Q126 199 132 191 Q138 199 143 189" stroke-width="4"/>
+  </g>
+</svg>
