@@ -86,11 +86,10 @@ Mission (Hub-2) "Every child in East Delhi gets the right therapy, early and
                 close to home." [R]
 
 ---------------------------------------------------------------------
-4. TEAM  (photos: hoptoheal/assets/team.png)
+4. TEAM  (photos: hoptoheal/assets/team-*.jpg)
 ---------------------------------------------------------------------
 Dr. Heena Gupta ..... Founder; BOT, MOT (Neuroscience). Clinical lead. [R][W]
 Jiya Gupta .......... Occupational Therapist; BOT [R]
-Altaf Ansari ........ Special Educator (IDD) [R]
 Vishal Gupta ........ Managing Director [R]
 Subodh K. Gupta ..... Manager & Tech Lead [R]
 
@@ -272,7 +271,7 @@ By 2030: 4 to 5 centres across East Delhi and Noida; seed funding possible
 15. FILES EXTRACTED
 ---------------------------------------------------------------------
 hoptoheal/assets/hoptoheal_logo.png   logo, 1024x1024, mint background
-hoptoheal/assets/team.png             5 team members, orange circle frames
+hoptoheal/assets/team-*.jpg           4 team portraits (Heena, Jiya, Vishal, Subodh)
 hoptoheal/assets/centre_photos.png    founder at desk, felt activity, festive centre
 
 ---------------------------------------------------------------------
