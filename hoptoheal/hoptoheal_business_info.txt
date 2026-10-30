@@ -1,0 +1,290 @@
+=====================================================================
+HOP TO HEAL: COMPLETE BUSINESS INFORMATION (CATEGORISED)
+Compiled: 30 Oct 2026
+=====================================================================
+
+SOURCES USED
+  [R] HopToHeal_Hub2_Project_Report.docx  (Group 19, BMS 2A, SSCBS, Oct 2026)
+  [X] HopToHeal_Hub2_Model.xlsx           (financial model behind the report)
+  [P] HopToHeal_Innovation.pptx           (HopCheck innovation deck, Subodh Kumar Gupta)
+  [W] hoptoheal.com, read via search-engine index (homepage + /team page)
+      NOTE: The live site, Instagram and LinkedIn could NOT be opened
+      directly because this cloud session's network policy blocks them.
+      Search engines also did not show the Instagram/LinkedIn URLs.
+      The site has Instagram and LinkedIn icons in its header and footer,
+      but their link targets were not visible. See section 16, "STILL TO COLLECT".
+
+---------------------------------------------------------------------
+1. BRAND IDENTITY
+---------------------------------------------------------------------
+Business name ........ Hop to Heal (written on site as "HOP TO HEAL")
+Digital platform ..... HopCheck (early screening + home co-therapy) [P]
+Expansion project .... Hop to Heal Hub-2 (second centre, East Delhi) [R]
+Tagline .............. "Spot early. Heal early. One hop at a time." [R][P]
+Name meaning ......... "Hop" = a child's playful first step; every small
+                       hop of progress, caught early, adds up to healing. [P]
+Website line ......... "Every child deserves a nurturing environment where
+                       they can take confident steps toward success, one
+                       hop at a time!" [W]
+
+LOGO  (file: hoptoheal/assets/hoptoheal_logo.png, 1024x1024)
+  - Hand-lettered, rounded, friendly script: "Hop" / "to" / "heal"
+  - The "o" in "Hop" is a SMILING SUN character: an orange egg-shaped
+    face with closed happy eyes, a small "w" smile, pink-coral blush cheeks
+    and three yellow rays above. (This is the character to animate.)
+  - A thin dark-brown smile-shaped arc cradles "to heal" underneath.
+  - The deck calls it the "smiling-sun logo" (planned trademark). [P]
+
+BRAND COLOURS (sampled from the logo file)
+  Mint background ...... #F2F8EE
+  Sun orange/amber ..... #FBA826  (rays #F8A92A)
+  Blush coral .......... #F46A39
+  Ink dark brown ....... #352724  (text and arc)
+  The report and deck also use orange circle frames for team photos.
+
+BRAND PERSONALITY: warm, playful, gentle, hopeful, child-first, trustworthy
+  clinical expertise. Parents' reviews praise a "child friendly environment". [R]
+
+---------------------------------------------------------------------
+2. CONTACT & LOCATION
+---------------------------------------------------------------------
+Address ....... 403 B, Pocket 2, Mayur Vihar Phase 1,
+                near Mother Dairy & Safal outlet, Delhi 110091 [W][P]
+Phone/WhatsApp  +91 95994 33591  (as shown on the homepage per search index;
+                verify before printing) [W]
+Email ......... hoptoheal@gmail.com [W]
+Website ....... https://www.hoptoheal.com  (pages seen: / and /team) [W]
+Hours ......... 7 days a week, 10 am to 7 pm [R]
+                (the only competitor with published hours that opens all 7 days) [R]
+Google rating . 5.0 stars on 38 Google reviews [R]
+Social ........ Instagram: link exists on site (handle not retrieved)
+                LinkedIn: link exists on site (URL not retrieved)
+Instagram is used for marketing (pre-launch plan: "school camps,
+                Instagram, referrals"). [R]
+
+Planned Hub-2 location: eastern belt of Mayur Vihar Phase 3, Kondli and
+  Vasundhara Enclave. No therapy centre there today; the nearest is about
+  4.4 km away. Hub-1 is 2.1 km away, close enough for shared supervision. [R]
+Hub-2 opening target: 1 April 2027 (set-up starts 2 Nov 2026, 17 weeks). [R]
+
+---------------------------------------------------------------------
+3. ABOUT THE COMPANY
+---------------------------------------------------------------------
+Type .......... Private company: occupational therapy (OT) and child
+                development centre [R]
+Established ... 2024 [R]
+Impact ........ 400+ children impacted (website claim) [R]
+Mission (site)  "At Hop to Heal, we are dedicated to helping children achieve
+                their fullest potential by fostering growth, independence, and
+                confidence in their daily lives." [W]
+Clinic (site) . "Our clinic specializes in addressing a wide range of
+                developmental and sensory needs for children of all ages. Our
+                team of experienced occupational therapists is committed to
+                creating individualized therapy plans tailored to each child's
+                unique challenges and strengths." [W]
+Mission (Hub-2) "Every child in East Delhi gets the right therapy, early and
+                close to home." [R]
+
+---------------------------------------------------------------------
+4. TEAM  (photos: hoptoheal/assets/team.png)
+---------------------------------------------------------------------
+Dr. Heena Gupta ..... Founder; BOT, MOT (Neuroscience). Clinical lead. [R][W]
+Jiya Gupta .......... Occupational Therapist; BOT [R]
+Altaf Ansari ........ Special Educator (IDD) [R]
+Vishal Gupta ........ Managing Director [R]
+Subodh K. Gupta ..... Manager & Tech Lead [R]
+
+Hub-2 hiring plan: Senior OT (centre lead), OT, Speech-Language Therapist,
+  Centre Coordinator. Hired via Unstop with a 3-member panel. [R]
+
+---------------------------------------------------------------------
+5. SERVICES
+---------------------------------------------------------------------
+From the website [W]:
+  - Occupational Therapy
+  - Sensory Integration Therapy: "helping children process and respond to
+    sensory input effectively"
+  - Fine & Gross Motor Skills Development: "enhancing coordination, balance,
+    and dexterity for daily activities"
+  - Parent & Caregiver Education: "equipping families with knowledge and
+    strategies to support their child's growth"
+  - Early Intervention
+  - Speech Therapy
+  - Special Education
+  - Behaviour Modification
+  - ABA (Applied Behaviour Analysis) Therapy
+  - Counselling
+  - Group Therapy
+From the report [R]: also School-Readiness support.
+
+Conditions addressed (from report/deck context): autism, ADHD, intellectual
+  disability, speech-language delay, cerebral palsy, sensory processing
+  difficulties, developmental delays. [R][P]
+
+Session format: 45-minute sessions, typically 2 per week (8 a month);
+  typical enrolment 15 to 18 months. [X]
+
+Centre photos show fine-motor activities (felt "apple tree"), festive
+  decorations and a colourful, child-friendly space.
+  (hoptoheal/assets/centre_photos.png)
+
+---------------------------------------------------------------------
+6. PRICING
+---------------------------------------------------------------------
+Hub-2 planned price: Rs 800 per session in Year 1, +5% a year
+  (840, 882, 926, 972, 1021, 1072). [R]
+Basis: average of 17 competitor prices = Rs 797.06 [X]
+East Delhi competitor average: Rs 575; CGHS govt rate Rs 340 to 400 [R]
+Break-even price: Rs 703 [R]
+Planned price defences: monthly packages, visible progress reports,
+  7-day access. [R]
+Affordability: reserved SPONSORED SLOTS through CSR partners for
+  low-income families. [R]
+Free first step: HopCheck screening is free and acts as the lead funnel. [P]
+
+---------------------------------------------------------------------
+7. TARGET CUSTOMERS
+---------------------------------------------------------------------
+Primary ...... Parents of children aged 0 to 12 (core therapy age 2 to 9) [P][R]
+Referrers .... Schools and pre-schools (screening camps for ages 5 to 12),
+               paediatricians, teachers [P]
+Internal ..... Hop to Heal therapists (dashboard) [P]
+Geography .... Delhi-NCR first (East Delhi), then Noida/Ghaziabad, then
+               tier-2 cities via new centres and partner clinics [P]
+Parent pain points [P]:
+  - Diagnosed too late; told "the child will catch up"
+  - Therapists scarce, far, long waits, costly travel
+  - Therapy stops at the clinic door (2 to 3 hrs/week vs 160+ hrs at home)
+  - Stigma; no easy private way to check
+Value parents get [P]: earlier help, less travel/cost/waiting, a private
+  stigma-free first step, visible progress that builds trust.
+
+---------------------------------------------------------------------
+8. HOPCHECK: THE INNOVATION  [P]
+---------------------------------------------------------------------
+"A phygital (physical + digital) early-care ecosystem"
+Four parts:
+  1. HopCheck Screener: a 10-minute online check. Parent questionnaire +
+     phone microphone (speech sample) + camera tasks (eye contact, tracing,
+     movement). Flags risk in 5 areas. Hindi or English.
+  2. School Screening Camps: free camps for ages 5 to 12; parents opt in
+     with consent and get a private report.
+  3. Hop Home Kit + App: a therapeutic play kit + weekly video activities;
+     parents become "co-therapists" and log progress daily.
+  4. AI-powered CRM: every lead and child tracked; WhatsApp reminders,
+     progress reports and follow-ups sent automatically.
+Rule: "Screening, not diagnosis". Every flag is reviewed by a qualified OT.
+
+Child journey (6 steps):
+  1 Discover (school camp, Google, Instagram, paediatrician)
+  2 Screen (questionnaire + voice + camera, any phone, Hindi/English)
+  3 Review (OT reviews flags; TRAFFIC-LIGHT report sent to parent)
+  4 Assess & treat (full assessment + personalised plan, centre or home)
+  5 Practise at home (Home Kit + app)
+  6 Track (CRM shares progress; re-screen every 3 months)
+
+Revenue streams: assessments, therapy packages, home-kit sales + app
+  subscription, paid school screening / CSR, licensing HopCheck to clinics.
+IP plan: trademark (Hop to Heal, HopCheck, smiling-sun logo, tagline);
+  copyright (code, videos, worksheets); design (kit); patent (screening
+  method); trade secret (scoring algorithm, data).
+
+---------------------------------------------------------------------
+9. "DIGITAL FRONT DOOR" (WHAT THE NEW WEBSITE MUST DELIVER)  [R][X]
+---------------------------------------------------------------------
+Budget: Rs 3,00,000 (website, booking, UPI payments, CRM, HopCheck MVP)
+Build time: 8.33 weeks expected (activity I in PERT), slack 1.5 weeks
+Must be live at launch: online booking, UPI payments, CRM, HopCheck
+Shared backbone for every future Hop to Heal centre
+Payment gateway assumed: Cashfree (1.95% + GST per transaction)
+Digital operations cost: 2% of revenue (CRM, gateway, hosting)
+Compliance: verifiable parental consent under the DPDP Act 2023;
+  child-protection policy; CCTV at centre
+Planned features named in docs: online booking, UPI payments, CRM,
+  WhatsApp reminders, progress tracking/reports, home kits, HopCheck
+  screener, traffic-light report, therapist dashboard
+
+---------------------------------------------------------------------
+10. MARKET  [R][X]
+---------------------------------------------------------------------
+~1 in 8 Indian children aged 2 to 9 has a neurodevelopmental disorder
+  (INCLEN: 9.2% aged 2-5, 13.6% aged 6-9; Arora et al. 2018)
+East Delhi: 17.09 lakh people; ~2.22 lakh children aged 2-9;
+  ~25,300 with a developmental disorder; serviceable market ~3,800 children
+Hub-2 needs 56 children a month (1.5% of that market) at full capacity
+Early childhood intervention returns ~13% a year (Garcia, Heckman et al. 2016)
+
+---------------------------------------------------------------------
+11. COMPETITORS  [R][X]
+---------------------------------------------------------------------
+Rising Stars (Pandav Nagar, 2.3 km): EI, OT, speech, SpEd, ABA, group;
+  free first consultation; claims 4.9 stars (114+), 15+ therapists; Mon-Sat 10-7
+Inclusive Neuro Development Centre (Shahdara, Karkardooma, Krishna Nagar):
+  speech, OT, ABA, psychology, SpEd, hearing aids; autism school
+Continua Kids (34 locations, incl. Nirman Vihar, Noida, Indirapuram); Mon-Sat 10-6
+Mom's Belief (130+ centres claimed; centre + online); free assessment;
+  2,000+ home kits
+Butterfly Learnings (52 centres, MH & RJ); Rs 15,000 / 12 sessions
+Pinnacle Blooms (franchise, 100+ claimed); live-streamed therapy, cloud records
+Independent OTs (Practo): Rs 200 to 1,500 a session
+Where Hop to Heal stands out: the only 7-day centre; 5.0 rating; no local player
+  combines neighbourhood depth with digital/family tools (home kits, online
+  booking, progress tracking). That gap is Hop to Heal's opening.
+Website features competitors use: free first consultation, free developmental
+  assessment, home kits, live-streamed therapy, cloud records.
+
+---------------------------------------------------------------------
+12. HUB-2 BUSINESS PLAN SNAPSHOT  [R][X]
+---------------------------------------------------------------------
+Lean Hub: 800 sq ft, 3 therapy rooms + sensory corner, 3 therapists + coordinator
+Project cost Rs 25.23 lakh | NPV Rs 16.16 lakh @13% | IRR 27.9% | MIRR 21.3%
+Payback 3.2 yrs (discounted 4.3) | PI 1.64 | DSCR avg 2.79x
+Capacity 6,300 sessions/yr; 85% utilisation (5,355 sessions) from Year 2
+Children per month: 39 (Y1), 56 (Y2+)
+Revenue Rs 30.24 lakh (Y1) to Rs 57.41 lakh (Y7)
+Financing 60:40: SBI term loan under CGTMSE Rs 15.10 lakh + promoter equity
+  Rs 10.13 lakh
+Social NPV Rs 89.12 lakh: saves families ~30 min + Rs 50 travel per visit
+Expansion trigger: waitlist > 15 children for 2 quarters, utilisation > 80%,
+  DSCR > 1.5x. Goal: an East Delhi-Noida network of 4 to 5 centres by 2030.
+Lean Hub equipment: platform & bolster swings, ball pool (500 balls),
+  fine-motor boards, crash mats, trampoline, therapy balls, speech/oral-motor
+  kits, learning toys, standardised assessment tools.
+
+---------------------------------------------------------------------
+13. KEY RISKS THE WEBSITE CAN HELP WITH  [R]
+---------------------------------------------------------------------
+Slow demand ramp-up: online booking, HopCheck funnel, Google reviews, Instagram
+Price pressure (avg Rs 575 locally): show progress, packages, 7-day access
+Founder dependence: present the whole team, written protocols
+Children's data & safety: DPDP consent flows, privacy policy, secure storage
+
+---------------------------------------------------------------------
+14. GROWTH ROADMAP  [R]
+---------------------------------------------------------------------
+2024 Hub-1 opens, Mayur Vihar Ph-1
+Nov 2026 to Mar 2027 Hub-2 set-up (17 weeks)
+Apr 2027 Hub-2 opens + digital front door live
+Later: school screening camps; trigger-based 3rd centre
+By 2030: 4 to 5 centres across East Delhi and Noida; seed funding possible
+
+---------------------------------------------------------------------
+15. FILES EXTRACTED
+---------------------------------------------------------------------
+hoptoheal/assets/hoptoheal_logo.png   logo, 1024x1024, mint background
+hoptoheal/assets/team.png             5 team members, orange circle frames
+hoptoheal/assets/centre_photos.png    founder at desk, felt activity, festive centre
+
+---------------------------------------------------------------------
+16. STILL TO COLLECT (needed for the new website)
+---------------------------------------------------------------------
+[ ] Instagram handle + recent posts/reels style (needs instagram.com access or screenshots)
+[ ] LinkedIn page URL + posts (needs linkedin.com access or screenshots)
+[ ] Full live-site text (needs hoptoheal.com allowed in session network settings)
+[ ] Logo as vector (SVG/AI) or transparent PNG; the current file has a mint background
+[ ] Real prices: assessment fee, monthly package, home kit
+[ ] Cancellation/refund policy
+[ ] Therapist registration numbers (RCI/AIOTA) for trust badges
+[ ] Google review text (best 5 to 10 parent quotes, with permission)
+[ ] Real centre photos (rooms, sensory gym, entrance, landmark)
+[ ] Google Maps link / coordinates for Hub-1
