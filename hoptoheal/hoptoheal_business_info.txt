@@ -120,8 +120,10 @@ Conditions addressed (from report/deck context): autism, ADHD, intellectual
   disability, speech-language delay, cerebral palsy, sensory processing
   difficulties, developmental delays. [R][P]
 
-Session format: 45-minute sessions, typically 2 per week (8 a month);
-  typical enrolment 15 to 18 months. [X]
+Session format (confirmed by Hop to Heal, Nov 2026): 1-hour sessions, per child.
+  The financial model assumed 45-minute sessions, 2 a week; typical
+  enrolment 15 to 18 months. [X]
+Ages served on the new website and in HopCheck: 2 to 16 years.
 
 Centre photos show fine-motor activities (felt "apple tree"), festive
   decorations and a colourful, child-friendly space.
@@ -130,6 +132,10 @@ Centre photos show fine-motor activities (felt "apple tree"), festive
 ---------------------------------------------------------------------
 6. PRICING
 ---------------------------------------------------------------------
+Confirmed by Hop to Heal (Nov 2026):
+  Single session: Rs 800 per 1-hour session, per child
+  15-day pack: 15 one-hour sessions (one a day) for Rs 9,600
+    = 20% off Rs 12,000; Rs 640 a session; saves Rs 2,400
 Hub-2 planned price: Rs 800 per session in Year 1, +5% a year
   (840, 882, 926, 972, 1021, 1072). [R]
 Basis: average of 17 competitor prices = Rs 797.06 [X]

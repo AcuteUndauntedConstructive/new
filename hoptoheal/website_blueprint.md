@@ -52,9 +52,8 @@ Optional later: **For Schools** (book a screening camp, CSR partnerships), **Car
 
 ### Layout (single screen on mobile)
 1. **What are you paying for?** Big tappable cards:
-   - First assessment (₹ to be set by the clinic)
-   - Single session: **₹800**
-   - Monthly package: 8 sessions (show the saving against single sessions)
+   - Single 1-hour session: **₹800**
+   - 15-day pack: 15 one-hour sessions, one a day, **₹9,600** (20% off, saves ₹2,400)
    - Pay a pending invoice (enter the phone number and outstanding dues appear)
    - Hop Home Kit (phase 2)
 2. **Child & parent:** child's first name, parent's WhatsApp number. These fields are pre-filled when the parent arrives from a booking or WhatsApp link.
