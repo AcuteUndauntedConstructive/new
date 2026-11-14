@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Home (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.05;margin:0;text-wrap:balance}
+.eyebrow{margin:0;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#B4471C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:13px 24px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}.ink{background:#352724;color:#FFFFFF}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.navlink{color:#352724;text-decoration:none;font-weight:700;font-size:16px}.navlink:hover{color:#B4471C}
+.prog{position:fixed;left:0;top:0;height:5px;width:100%;background:#FBA826;transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.hopin{display:block;animation:hopin .9s cubic-bezier(.34,1.56,.64,1) both}
+.d2{animation-delay:.18s}.d3{animation-delay:.36s}
+@keyframes hopin{from{opacity:0;transform:translateY(40px) scale(.96)}}
+.marq{display:flex;gap:48px;width:max-content;animation:marq 34s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.float{animation:float 6s ease-in-out infinite}.f2{animation-delay:-2s}.f3{animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-14px)}}
+.hop{transform-box:fill-box;transform-origin:50% 100%;animation:hhop 5s ease-in-out infinite}
+.breathe{transform-box:fill-box;transform-origin:50% 100%;animation:hbreathe 3.2s ease-in-out infinite}
+.ray{transform-box:fill-box;transform-origin:center;animation:htwinkle 2.4s ease-in-out infinite}.r2{animation-delay:.4s}.r3{animation-delay:.8s}
+.eyes-open{opacity:0;animation:hopen 7s infinite}.eyes-closed{animation:hclosed 7s infinite}
+@keyframes hhop{0%,62%,100%{transform:translateY(0) scale(1,1)}68%{transform:translateY(0) scale(1.06,.94)}78%{transform:translateY(-10%) scale(.97,1.04)}88%{transform:translateY(0) scale(1.05,.95)}94%{transform:translateY(0)}}
+@keyframes hbreathe{50%{transform:scale(1.02,.985)}}
+@keyframes htwinkle{50%{opacity:.55;transform:scale(.88)}}
+@keyframes hopen{0%,40%{opacity:0}43%,80%{opacity:1}83%,100%{opacity:0}}
+@keyframes hclosed{0%,40%{opacity:1}43%,80%{opacity:0}83%,100%{opacity:1}}
+@property --n{syntax:'<integer>';inherits:false;initial-value:0}
+.count{counter-reset:n var(--n)}.count::after{content:counter(n) "+"}
+.howtl{view-timeline-name:--how}
+.draw{stroke-dasharray:1;stroke-dashoffset:0}
+.svcard{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}.svcard:hover{transform:translateY(-8px) rotate(-1deg)}
+@supports (animation-timeline: view()){
+.prog{animation:grow linear both;animation-timeline:scroll(root)}
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 85%}
+.rv-pop{animation:pop linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+.count{animation:countup linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+.drift{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+.draw{animation:draw linear both;animation-timeline:--how;animation-range:entry 0% entry 100%}
+.fillbar{transform-origin:0 50%;animation:fill linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+.tilt3d{animation:tilt linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+.para{animation:para linear both;animation-timeline:scroll(root)}
+}
+@keyframes grow{to{transform:scaleX(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(48px)}}
+@keyframes pop{from{opacity:0;transform:scale(.82)}}
+@keyframes countup{from{--n:0}}
+@keyframes drift{from{transform:translateX(6%)}to{transform:translateX(-34%)}}
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes fill{from{transform:scaleX(0)}}
+@keyframes tilt{from{transform:perspective(1200px) rotateX(32deg) translateY(80px) scale(.92);opacity:.2}}
+@keyframes para{to{transform:translateY(-220px)}}
+.calm *{animation:none !important;transition:none !important}.calm .eyes-open{opacity:0 !important}.calm .prog{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}.eyes-open{opacity:0 !important}}
+/* Hoppy chat widget */
+.mb-root{--mb-mango:#FBA826;--mb-mango-deep:#E58E00;--mb-ink:#352724;--mb-mint:#F2F8EE;position:fixed;right:20px;bottom:20px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:'Baloo 2','Nunito',sans-serif;color:var(--mb-ink)}
+.mb-root *{box-sizing:border-box}
+.mb-launcher{position:relative;width:92px;height:92px;padding:0;border:0;background:none;cursor:pointer}
+.mb-launcher svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 8px rgba(53,39,36,.18))}
+.mb-tilt,.mb-sway,.mb-bob{display:block;width:100%;height:100%;transform-origin:50% 92%}
+.mb-tilt{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.mb-sway{animation:mbsway 3.4s ease-in-out infinite}.mb-bob{animation:mbbob 1.7s ease-in-out infinite}
+.mb-launcher:hover .mb-tilt{transform:rotate(-9deg) translateY(-4px) scale(1.05)}
+@keyframes mbsway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes mbbob{50%{transform:translateY(-3px) scale(.985,1.02)}}
+.mb-ray{transform-box:fill-box;transform-origin:50% 100%;animation:mbray 2.4s ease-in-out infinite}.mb-ray2{animation-delay:.25s}.mb-ray3{animation-delay:.5s}
+@keyframes mbray{0%,60%,100%{transform:scaleY(1)}30%{transform:scaleY(.55);opacity:.7}}
+.mb-open-eyes{opacity:0}.mb-root[data-state="open"] .mb-open-eyes{opacity:1}.mb-root[data-state="open"] .mb-closed-eyes{opacity:0}
+.mb-teaser{position:absolute;right:98px;bottom:30px;padding:9px 14px;white-space:nowrap;background:#FFFFFF;font-size:15px;font-weight:500;border-radius:18px 18px 4px 18px;box-shadow:0 4px 14px rgba(53,39,36,.14)}
+.mb-panel{display:flex;flex-direction:column;overflow:hidden;width:340px;max-width:calc(100vw - 24px);height:440px;max-height:calc(100dvh - 150px);background:#FFFFFF;border-radius:26px 26px 8px 26px;box-shadow:0 18px 40px rgba(53,39,36,.22)}
+.mb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--mb-mint)}
+.mb-log{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px;overflow-y:auto}
+.mb-msg{max-width:84%;padding:9px 13px;font-size:15.5px;line-height:1.4;white-space:pre-line}
+.mb-msg--bot{align-self:flex-start;background:var(--mb-mint);border-radius:18px 18px 18px 5px}
+.mb-msg--user{align-self:flex-end;background:var(--mb-mango);border-radius:18px 18px 5px 18px}
+.mb-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px}
+.mb-chip{padding:8px 12px;border:1.5px solid var(--mb-mango);border-radius:999px;background:#FFFFFF;color:var(--mb-ink);font-family:inherit;font-size:14px;font-weight:500;line-height:1;cursor:pointer}
+.mb-chip:hover{background:#FFF1D6}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<div class="prog" aria-hidden="true"></div>
+
+<div style="background: #352724; color: #F2F8EE; font-size: 14px">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 20px; padding-top: 7px; padding-bottom: 7px">
+<span>Open all 7 days · 10 am – 7 pm · 403 B, Pocket 2, Mayur Vihar Phase 1</span>
+<div style="display: flex; gap: 14px; align-items: center">
+<a href="#top" style="color: #F2F8EE; font-weight: 700">हिंदी में देखें</a>
+<button type="button" onClick="{{toggleCalm}}" aria-pressed="{{calmPressed}}" style="font: inherit; font-size: 13px; font-weight: 700; border: 1px solid rgba(242,248,238,.45); background: transparent; color: #F2F8EE; border-radius: 999px; padding: 3px 12px; cursor: pointer">{{calmLabel}}</button>
+</div>
+</div>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(242,248,238,.94); backdrop-filter: blur(8px); border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 62px; width: auto"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 24px">
+<a class="navlink" href="A-Home.dc.html" aria-current="page" style="color: #B4471C">Home</a>
+<a class="navlink" href="A-Services.dc.html">Services &amp; pricing</a>
+<a class="navlink" href="A-HopCheck.dc.html">HopCheck</a>
+<a class="navlink" href="A-About.dc.html">About us</a>
+</nav>
+<div style="display: flex; gap: 10px; align-items: center">
+<a class="btn white" href="A-Login.dc.html" style="padding: 9px 18px; font-size: 15px">Sign in</a>
+<a class="btn sun" href="A-Book.dc.html" style="padding: 9px 18px; font-size: 15px">Book a session</a>
+</div>
+</div>
+</header>
+
+<main id="top">
+<section style="position: relative">
+<div aria-hidden="true" class="para" style="position: absolute; inset: 0; pointer-events: none">
+<div class="float" style="position: absolute; left: 4%; top: 70px; width: 26px; height: 26px; border-radius: 50%; background: #F46A39; opacity: .75"></div>
+<div class="float f2" style="position: absolute; left: 46%; top: 40px; width: 16px; height: 16px; border-radius: 50%; background: #FBA826"></div>
+<div class="float f3" style="position: absolute; right: 6%; bottom: 60px; width: 38px; height: 38px; border-radius: 12px; background: #E2F0DA; transform: rotate(18deg)"></div>
+<div class="float f2" style="position: absolute; left: 40%; bottom: 30px; width: 20px; height: 20px; border-radius: 6px; background: #FFE9C2; transform: rotate(-12deg)"></div>
+</div>
+<div class="wrap" style="position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; padding-top: 64px; padding-bottom: 48px">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p class="eyebrow hopin">Child development centre · East Delhi · Ages 2–16</p>
+<h1 class="disp" style="font-size: 76px; line-height: .98"><span class="hopin">Spot early.</span><span class="hopin d2" style="color: #B4471C">Heal early.</span><span class="hopin d3">One hop at a time.</span></h1>
+<p style="margin: 0; font-size: 21px; color: #6B5A53; max-width: 560px">Occupational, speech and behaviour therapy for children, in a playful space where your child feels safe and you can follow every step of their progress online.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn sun" href="A-Book.dc.html">Book a session · ₹800/hour</a>
+<a class="btn white" href="A-HopCheck.dc.html">Free HopCheck</a>
+</div>
+<p style="margin: 0; font-size: 15px; color: #6B5A53">Already a family with us? <a href="A-Login.dc.html" style="font-weight: 800">Sign in with Google</a> to see your child's progress.</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; justify-content: center">
+<div class="rv-pop" style="position: relative; width: 100%; max-width: 500px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center">
+<div aria-hidden="true" style="position: absolute; inset: 4%; border-radius: 50%; background: #FFE9C2"></div>
+<div aria-hidden="true" style="position: absolute; inset: 14%; border-radius: 50%; border: 3px dashed #FBA826; opacity: .5"></div>
+<div style="position: relative; width: 82%">
+<img src="/_blob/dfe1d0e4bdda1758df5efb7820d3a3c5" alt="Hop to Heal" style="display: block; width: 100%; height: auto">
+<svg viewBox="0 0 270 300" role="img" aria-label="Hoppy, the smiling sun in our logo" style="position: absolute; left: 31.4286%; top: 1.0687%; width: 38.5714%; height: 45.8015%; overflow: visible">
+<g class="hop"><g fill="none" stroke="#FBA826" stroke-width="18" stroke-linecap="round"><g class="ray"><line x1="12" y1="68" x2="32" y2="86"></line></g><g class="ray r2"><line x1="123" y1="12" x2="123" y2="45"></line></g><g class="ray r3"><line x1="257" y1="56" x2="240" y2="77"></line></g></g>
+<g class="breathe"><path d="M132 86 C177 86 215 118 215 163 C215 215 178 297 132 297 C86 297 49 215 49 163 C49 118 87 86 132 86 Z" fill="#FBA826"></path><ellipse cx="87" cy="188" rx="12" ry="7" fill="#F46A39"></ellipse><ellipse cx="176" cy="187" rx="12" ry="7" fill="#F46A39"></ellipse>
+<g class="eyes-closed" fill="none" stroke="#352724" stroke-width="4.5" stroke-linecap="round"><path d="M90 170 Q101 182 112 170"></path><path d="M150 168 Q161 180 172 168"></path></g>
+<g class="eyes-open"><ellipse cx="101" cy="172" rx="7" ry="9" fill="#352724"></ellipse><ellipse cx="161" cy="171" rx="7" ry="9" fill="#352724"></ellipse><circle cx="103" cy="168" r="2.4" fill="#FFFFFF"></circle><circle cx="163" cy="167" r="2.4" fill="#FFFFFF"></circle></g>
+<path d="M121 189 Q126 199 132 191 Q138 199 143 189" fill="none" stroke="#352724" stroke-width="4" stroke-linecap="round"></path></g></g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="background: #352724; color: #FBA826; overflow: hidden; padding: 16px 0; transform: rotate(-1.2deg); margin: 8px -20px">
+<div class="marq" style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; white-space: nowrap">
+<span>Occupational therapy ✦ Speech therapy ✦ Sensory integration ✦ Early intervention ✦ Special education ✦ Behaviour support ✦ Group therapy ✦ School readiness ✦</span>
+<span>Occupational therapy ✦ Speech therapy ✦ Sensory integration ✦ Early intervention ✦ Special education ✦ Behaviour support ✦ Group therapy ✦ School readiness ✦</span>
+</div>
+</div>
+
+<section aria-label="Why families choose us" class="wrap" style="padding-top: 64px; padding-bottom: 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+<div class="card rv" style="padding: 22px 24px"><div class="disp count" aria-label="More than 400" style="--n: 400; font-size: 50px; color: #B4471C"></div><div style="font-weight: 700">children helped since 2024</div></div>
+<div class="card rv" style="padding: 22px 24px"><div class="disp" style="font-size: 50px; color: #B4471C">5.0 ★</div><div style="font-weight: 700">Google rating, 38 reviews</div></div>
+<div class="card rv" style="padding: 22px 24px"><div class="disp" style="font-size: 50px; color: #B4471C">7 days</div><div style="font-weight: 700">open, weekends too</div></div>
+<div class="card rv" style="padding: 22px 24px"><div class="disp" style="font-size: 50px; color: #B4471C">2–16</div><div style="font-weight: 700">years: toddlers to teens</div></div>
+</div>
+</section>
+
+<section aria-labelledby="noticed-h" class="wrap" style="padding-top: 56px; padding-bottom: 56px; text-align: center; display: flex; flex-direction: column; gap: 18px; align-items: center">
+<h2 id="noticed-h" class="disp rv" style="font-size: 48px">What have you noticed?</h2>
+<p class="rv" style="margin: 0; color: #6B5A53; max-width: 640px">Many children need a little extra help. Spotting it early makes the biggest difference. Tap what sounds familiar and HopCheck will guide you.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 920px">
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Not talking much yet</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Doesn't respond to name</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Clumsy or falls often</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Upset by noise or touch</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Hard to sit still</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Big tantrums</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Handwriting or school trouble</a>
+<a href="A-HopCheck.dc.html" class="btn white rv-pop" style="border-color: #E5DDD2; font-weight: 700; font-size: 16px; padding: 10px 18px">Struggles with friends</a>
+</div>
+</section>
+
+<section aria-labelledby="svc-h" style="background: #FFFFFF; border-top: 1px solid #E5DDD2; border-bottom: 1px solid #E5DDD2; padding: 72px 0; overflow: hidden">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 32px">
+<div><p class="eyebrow rv">8 ways we help</p><h2 id="svc-h" class="disp rv" style="font-size: 48px">Therapy that feels like play</h2></div>
+<a class="btn white rv" href="A-Services.dc.html">All services &amp; prices</a>
+</div>
+<div style="overflow-x: auto; padding: 8px 24px 16px">
+<div class="drift" style="display: flex; gap: 20px; width: max-content">
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #FFE9C2; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #B4471C">01</span><span class="disp" style="font-size: 28px">Occupational therapy</span><span style="font-size: 16px">Everyday skills: dressing, eating, holding a pencil, playing.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #E2F0DA; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #2E7D4F">02</span><span class="disp" style="font-size: 28px">Speech therapy</span><span style="font-size: 16px">Helps your child talk, understand and be understood.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #352724; color: #F2F8EE; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #FBA826">03</span><span class="disp" style="font-size: 28px">Sensory integration</span><span style="font-size: 16px">For children who find noise, touch or movement too much, or not enough.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #FFE9C2; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #B4471C">04</span><span class="disp" style="font-size: 28px">Early intervention</span><span style="font-size: 16px">Support from the first signs, in the years it helps most.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #E2F0DA; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #2E7D4F">05</span><span class="disp" style="font-size: 28px">Special education</span><span style="font-size: 16px">One-to-one learning support at your child's own pace.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #FBA826; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #352724">06</span><span class="disp" style="font-size: 28px">Behaviour support &amp; ABA</span><span style="font-size: 16px">Calmer days through positive, structured routines.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #FFE9C2; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #B4471C">07</span><span class="disp" style="font-size: 28px">Counselling &amp; parent training</span><span style="font-size: 16px">Simple strategies so progress continues at home.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+<a href="A-Services.dc.html" class="svcard" style="text-decoration: none; color: #352724; width: 290px; height: 340px; border-radius: 28px; background: #E2F0DA; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px"><span class="disp" style="font-size: 64px; color: #2E7D4F">08</span><span class="disp" style="font-size: 28px">Group therapy &amp; school readiness</span><span style="font-size: 16px">Friends, turn-taking and getting ready for school.</span><span style="margin-top: auto; font-weight: 800; font-size: 15px">₹800 / hour</span></a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="how-h" class="howtl wrap" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 28px">
+<div style="text-align: center; display: flex; flex-direction: column; gap: 8px; align-items: center">
+<p class="eyebrow rv">Five small hops</p>
+<h2 id="how-h" class="disp rv" style="font-size: 48px">From first worry to steady progress</h2>
+</div>
+<div style="position: relative">
+<svg aria-hidden="true" viewBox="0 0 1200 260" preserveAspectRatio="none" style="position: absolute; inset: 40px 0 auto 0; width: 100%; height: 260px; overflow: visible">
+<path class="draw" pathLength="1" d="M60 170 C 170 40, 250 40, 300 150 S 450 260, 540 150 S 700 40, 780 150 S 950 260, 1020 150 S 1120 70, 1150 110" fill="none" stroke="#FBA826" stroke-width="6" stroke-linecap="round"></path>
+</svg>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px">
+<li class="card rv" style="padding: 22px; display: flex; flex-direction: column; gap: 8px; margin-top: 90px"><span class="disp" style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-size: 26px">1</span><strong class="disp" style="font-size: 22px">Take HopCheck</strong><span style="font-size: 16px; color: #6B5A53">Free, 10 minutes, Hindi or English, from your phone.</span></li>
+<li class="card rv" style="padding: 22px; display: flex; flex-direction: column; gap: 8px; margin-top: 0"><span class="disp" style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-size: 26px">2</span><strong class="disp" style="font-size: 22px">A therapist reviews it</strong><span style="font-size: 16px; color: #6B5A53">A master's-qualified therapist checks every answer within 2 working days.</span></li>
+<li class="card rv" style="padding: 22px; display: flex; flex-direction: column; gap: 8px; margin-top: 90px"><span class="disp" style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-size: 26px">3</span><strong class="disp" style="font-size: 22px">First assessment</strong><span style="font-size: 16px; color: #6B5A53">One hour of play-based assessment. You stay with your child.</span></li>
+<li class="card rv" style="padding: 22px; display: flex; flex-direction: column; gap: 8px; margin-top: 0"><span class="disp" style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-size: 26px">4</span><strong class="disp" style="font-size: 22px">Sessions &amp; home play</strong><span style="font-size: 16px; color: #6B5A53">₹800 a session, or 15 sessions for ₹9,600 with the 15-day pack.</span></li>
+<li class="card rv" style="padding: 22px; display: flex; flex-direction: column; gap: 8px; margin-top: 90px; border: 2px solid #352724"><span class="disp" style="width: 52px; height: 52px; border-radius: 50%; background: #352724; color: #FBA826; display: flex; align-items: center; justify-content: center; font-size: 26px">5</span><strong class="disp" style="font-size: 22px">See the progress</strong><span style="font-size: 16px; color: #6B5A53">Goals, notes and reports in your parent portal.</span></li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="hc-h" style="background: #E2F0DA">
+<div class="wrap" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p class="eyebrow rv">HopCheck · free</p>
+<h2 id="hc-h" class="disp rv" style="font-size: 48px">A gentle first check, reviewed by a real therapist</h2>
+<p class="rv" style="margin: 0; color: #6B5A53">Questions change with your child's age, from 2 to 16. You get a simple, private report with a clear next step. It's a screening, not a diagnosis.</p>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn sun" href="A-HopCheck.dc.html">Start HopCheck</a><a class="btn white" href="A-Report.dc.html">See a sample report</a></div>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; display: flex; justify-content: center">
+<div class="card rv-pop" style="width: 100%; max-width: 440px; padding: 26px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 50px rgba(53,39,36,.12)">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px"><strong class="disp" style="font-size: 22px">HopCheck report</strong><span style="font-size: 13px; font-weight: 800; background: #E2F0DA; color: #2E7D4F; padding: 3px 10px; border-radius: 999px">Reviewed</span></div>
+<div style="font-size: 14px; color: #6B5A53">Example · Age 4 · reviewed by Dr. Heena Gupta, MOT</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div><div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 700"><span>Talking &amp; understanding</span><span style="color: #8A3412">Keep an eye</span></div><div style="height: 12px; border-radius: 6px; background: #F2F8EE; overflow: hidden"><div class="fillbar" style="height: 100%; width: 55%; background: #FBA826; border-radius: 6px"></div></div></div>
+<div><div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 700"><span>Moving &amp; balance</span><span style="color: #2E7D4F">On track</span></div><div style="height: 12px; border-radius: 6px; background: #F2F8EE; overflow: hidden"><div class="fillbar" style="height: 100%; width: 88%; background: #2E7D4F; border-radius: 6px"></div></div></div>
+<div><div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 700"><span>Senses</span><span style="color: #2E7D4F">On track</span></div><div style="height: 12px; border-radius: 6px; background: #F2F8EE; overflow: hidden"><div class="fillbar" style="height: 100%; width: 80%; background: #2E7D4F; border-radius: 6px"></div></div></div>
+<div><div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 700"><span>Play &amp; friends</span><span style="color: #2E7D4F">On track</span></div><div style="height: 12px; border-radius: 6px; background: #F2F8EE; overflow: hidden"><div class="fillbar" style="height: 100%; width: 84%; background: #2E7D4F; border-radius: 6px"></div></div></div>
+</div>
+<p style="margin: 0; font-size: 15px">Next step: a 1-hour speech &amp; language assessment.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="price-h" class="wrap" style="padding-top: 80px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 28px">
+<div style="text-align: center"><p class="eyebrow rv">Simple pricing</p><h2 id="price-h" class="disp rv" style="font-size: 48px">One price, one hour, every service</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; width: 100%">
+<div class="card rv-pop" style="padding: 30px; display: flex; flex-direction: column; gap: 10px">
+<p class="eyebrow" style="color: #6B5A53">Single session</p>
+<div class="disp" style="font-size: 64px">₹800</div>
+<div style="font-weight: 700">per 1-hour session</div>
+<p style="margin: 0; color: #6B5A53; font-size: 16px">Any therapy, any day of the week. Pay online by UPI, or at the centre for your first visit.</p>
+<a class="btn white" href="A-Book.dc.html" style="margin-top: 8px">Book one session</a>
+</div>
+<div class="rv-pop" style="padding: 30px; display: flex; flex-direction: column; gap: 10px; border-radius: 24px; background: #352724; color: #F2F8EE; position: relative">
+<span style="position: absolute; top: -14px; right: 22px; background: #FBA826; color: #352724; font-weight: 800; font-size: 14px; padding: 4px 14px; border-radius: 999px">Save ₹2,400</span>
+<p class="eyebrow" style="color: #FBA826">15-day pack · 20% off</p>
+<div class="disp" style="font-size: 64px">₹9,600</div>
+<div style="font-weight: 700">15 one-hour sessions, one a day</div>
+<p style="margin: 0; color: #D9CFC6; font-size: 16px">That's ₹640 a session instead of ₹800. Best for a focused stretch of daily therapy.</p>
+<a class="btn sun" href="A-Book.dc.html" style="margin-top: 8px">Book the 15-day pack</a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="portal-h" style="padding: 80px 0">
+<div class="wrap" style="display: flex; flex-wrap: wrap-reverse; gap: 48px; align-items: center">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
+<div class="tilt3d" style="width: 320px; max-width: 100%; border-radius: 40px; background: #352724; padding: 12px; box-shadow: 0 30px 60px rgba(53,39,36,.25)">
+<div style="border-radius: 30px; background: #F2F8EE; padding: 18px; display: flex; flex-direction: column; gap: 12px; min-height: 520px">
+<div style="display: flex; align-items: center; gap: 10px"><div style="width: 44px; height: 44px; border-radius: 50%; background: #FFE9C2; border: 2px solid #FBA826; display: flex; align-items: center; justify-content: center; font-weight: 800">PS</div><div style="line-height: 1.2"><div style="font-weight: 800">Hi, Priya</div><div style="font-size: 12px; color: #6B5A53">Example parent account</div></div></div>
+<div class="card" style="padding: 14px; border-radius: 18px"><div style="font-size: 12px; font-weight: 800; color: #B4471C">NEXT SESSION</div><div style="font-weight: 800">Aarav · Sat 11:00</div><div style="font-size: 13px; color: #6B5A53">Speech therapy · Pack session 6 of 15</div></div>
+<div class="card" style="padding: 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 12px; font-weight: 800; color: #B4471C">PROGRESS</div><div style="font-size: 14px; font-weight: 700">Says 2-word phrases</div><div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px"><span style="height: 10px; border-radius: 4px; background: #B4471C"></span><span style="height: 10px; border-radius: 4px; background: #B4471C"></span><span style="height: 10px; border-radius: 4px; background: #B4471C"></span><span style="height: 10px; border-radius: 4px; background: #E5DDD2"></span><span style="height: 10px; border-radius: 4px; background: #E5DDD2"></span></div><div style="font-size: 12px; color: #6B5A53">Goal reached · up 2 levels since June</div></div>
+<div class="card" style="padding: 14px; border-radius: 18px"><div style="font-size: 12px; font-weight: 800; color: #B4471C">TIP FROM JIYA</div><div style="font-size: 14px">Name things during bath time and wait 5 seconds for Aarav to try the word.</div></div>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p class="eyebrow rv">Your parent portal</p>
+<h2 id="portal-h" class="disp rv" style="font-size: 48px">See every hop of progress</h2>
+<ul class="rv" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px"><span class="disp" style="color: #B4471C">✓</span>Sign in with Google: no new password to remember</li>
+<li style="display: flex; gap: 12px"><span class="disp" style="color: #B4471C">✓</span>A section for you and one for each child, with photos</li>
+<li style="display: flex; gap: 12px"><span class="disp" style="color: #B4471C">✓</span>Goals and improvement levels updated after every session</li>
+<li style="display: flex; gap: 12px"><span class="disp" style="color: #B4471C">✓</span>Care tips written for your child by their therapist</li>
+<li style="display: flex; gap: 12px"><span class="disp" style="color: #B4471C">✓</span>Book slots, pay by UPI and download invoices</li>
+</ul>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn sun" href="A-Login.dc.html">Sign in with Google</a><a class="btn white" href="A-Parent.dc.html">Preview the portal</a></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="team-h" style="background: #FFFFFF; border-top: 1px solid #E5DDD2; border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px"><h2 id="team-h" class="disp rv" style="font-size: 48px">People who'll know your child by name</h2><a class="btn white rv" href="A-About.dc.html">About us</a></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px">
+<div class="rv-pop" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px"><img src="/_blob/659265c8376d6a453eefb51f94c2f26a" alt="Dr. Heena Gupta" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 6px solid #FBA826"><strong class="disp" style="font-size: 22px; margin-top: 6px">Dr. Heena Gupta</strong><span style="font-size: 15px; color: #6B5A53">Founder · BOT, MOT (Neuro)</span></div>
+<div class="rv-pop" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px"><img src="/_blob/7df67db79ecb8aa714a2b17ae1ea6600" alt="Jiya Gupta" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 6px solid #FBA826"><strong class="disp" style="font-size: 22px; margin-top: 6px">Jiya Gupta</strong><span style="font-size: 15px; color: #6B5A53">Occupational therapist · BOT</span></div>
+<div class="rv-pop" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px"><img src="/_blob/79eb1497b6e0bcb2b8eb497a135014c0" alt="Vishal Gupta" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 6px solid #E2F0DA"><strong class="disp" style="font-size: 22px; margin-top: 6px">Vishal Gupta</strong><span style="font-size: 15px; color: #6B5A53">Managing director</span></div>
+<div class="rv-pop" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px"><img src="/_blob/62930d4253ea9ccbbdc871987a8bcc19" alt="Subodh K. Gupta" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 6px solid #E2F0DA"><strong class="disp" style="font-size: 22px; margin-top: 6px">Subodh K. Gupta</strong><span style="font-size: 15px; color: #6B5A53">Manager &amp; tech lead</span></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="rev-h" class="wrap" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 24px">
+<h2 id="rev-h" class="disp rv" style="font-size: 48px">5.0 ★ from 38 parents on Google</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px">
+<blockquote class="card rv" style="margin: 0; padding: 26px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 19px">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="font-size: 15px; font-weight: 700; color: #6B5A53">[Parent's first name] · Google review</footer></blockquote>
+<blockquote class="card rv" style="margin: 0; padding: 26px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 19px">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="font-size: 15px; font-weight: 700; color: #6B5A53">[Parent's first name] · Google review</footer></blockquote>
+<blockquote class="card rv" style="margin: 0; padding: 26px; display: flex; flex-direction: column; gap: 12px"><p style="margin: 0; font-size: 19px">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="font-size: 15px; font-weight: 700; color: #6B5A53">[Parent's first name] · Google review</footer></blockquote>
+</div>
+</section>
+
+<section aria-labelledby="cta-h" style="padding: 0 24px 80px">
+<div class="rv-pop" style="max-width: 1152px; margin: 0 auto; background: #FBA826; border-radius: 40px; padding: 56px 44px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 420px; min-width: 0"><h2 id="cta-h" class="disp" style="font-size: 52px">Ready when you are</h2><p style="margin: 6px 0 0; font-size: 19px">Book in 2 minutes, or message us on WhatsApp: +91 95994 33591.</p></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn ink" href="A-Book.dc.html">Book a session</a><a class="btn white" href="A-HopCheck.dc.html">Free HopCheck</a></div>
+</div>
+</section>
+</main>
+
+<footer style="background: #352724; color: #E9E1DA">
+<div class="wrap" style="padding-top: 48px; padding-bottom: 28px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; gap: 28px 48px; justify-content: space-between">
+<div style="flex: 1 1 260px"><p class="disp" style="font-size: 30px; color: #FBA826">Hop to Heal</p><p style="margin: 6px 0 0; font-size: 16px">Spot early. Heal early. One hop at a time.</p></div>
+<nav aria-label="Footer" style="display: flex; flex-direction: column; gap: 6px; font-size: 16px"><a href="A-Services.dc.html" style="color: #E9E1DA">Services &amp; pricing</a><a href="A-HopCheck.dc.html" style="color: #E9E1DA">HopCheck</a><a href="A-About.dc.html" style="color: #E9E1DA">About us</a><a href="A-Login.dc.html" style="color: #E9E1DA">Parent &amp; therapist sign-in</a></nav>
+<div style="flex: 1 1 260px; font-size: 16px; display: flex; flex-direction: column; gap: 6px"><span>403 B, Pocket 2, Mayur Vihar Phase 1, near Mother Dairy &amp; Safal outlet, Delhi 110091</span><span style="font-weight: 700">+91 95994 33591 · hoptoheal@gmail.com</span></div>
+</div>
+<div style="border-top: 1px solid rgba(233,225,218,.25); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 14px"><span>© 2026 Hop to Heal</span><span>Privacy · Terms · Refund &amp; cancellation · Child safety &amp; consent</span></div>
+</div>
+</footer>
+
+<div class="mb-root" data-state="{{chatState}}">
+<sc-if value="{{chatOpen}}" hint-placeholder-val="{{ false }}">
+<section class="mb-panel" role="dialog" aria-label="Chat with Hoppy">
+<header class="mb-head"><div style="flex: 1"><p style="margin: 0; font-weight: 700; font-size: 18px; line-height: 1.1">Hoppy</p><p style="margin: 2px 0 0; font-size: 13.5px; color: #5A4A44">Ask about therapy, fees and booking</p></div><button type="button" onClick="{{toggleChat}}" aria-label="Close chat" style="width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; font-size: 22px; cursor: pointer; color: #352724">×</button></header>
+<div class="mb-log" aria-live="polite">
+<sc-for list="{{messages}}" as="m" hint-placeholder-count="1"><div class="{{m.cls}}">{{m.text}}</div></sc-for>
+</div>
+<div class="mb-chips"><sc-for list="{{chips}}" as="c" hint-placeholder-count="4"><button class="mb-chip" type="button" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
+</section>
+</sc-if>
+<button class="mb-launcher" type="button" onClick="{{toggleChat}}" aria-label="{{launcherLabel}}" aria-expanded="{{chatExpanded}}">
+<sc-if value="{{teaser}}" hint-placeholder-val="{{ true }}"><span class="mb-teaser" aria-hidden="true">Hi! Need a hand?</span></sc-if>
+<span class="mb-tilt"><span class="mb-sway"><span class="mb-bob">
+<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(41 50) rotate(-52)"><rect class="mb-ray" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="mb-ray mb-ray2" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray3" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="mb-closed-eyes" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g><g class="mb-open-eyes"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span></span></span>
+</button>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"calm":{"editor":"boolean","default":false,"section":"Accessibility"},"chatOpen":{"editor":"boolean","default":false,"section":"Hoppy chat"},"$preview":{"width":1440,"height":6600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { calm: null, chat: null, msgs: [] };
+  }
+  hoppy() {
+    return [
+      { label: 'Our services', answer: 'Occupational therapy, speech therapy, sensory integration, early intervention, special education, behaviour support and ABA, counselling and parent training, and group therapy and school readiness. Ages 2 to 16.' },
+      { label: 'Fees', answer: 'Every session is 1 hour and costs ₹800.\nThe 15-day pack gives 15 sessions, one a day, for ₹9,600: that is 20% off, ₹640 a session.' },
+      { label: 'Timings', answer: 'We are open every day, weekends too, from 10 am to 7 pm.' },
+      { label: 'Talk to a person', answer: 'WhatsApp or call us on +91 95994 33591, or email hoptoheal@gmail.com. A real person will reply.' }
+    ];
+  }
+  renderVals() {
+    const st = this.state;
+    const calm = st.calm ?? (this.props.calm ?? false);
+    const open = st.chat ?? (this.props.chatOpen ?? false);
+    const greeting = { role: 'bot', text: 'Hi, I’m Hoppy! Tap a topic below. I’m a helper, not a doctor: a therapist reviews anything about your child’s health.' };
+    return {
+      rootClass: calm ? 'calm' : '',
+      calmLabel: calm ? 'Calm mode on' : 'Calm mode',
+      calmPressed: calm ? 'true' : 'false',
+      toggleCalm: () => this.setState({ calm: !calm }),
+      chatOpen: open,
+      chatState: open ? 'open' : 'closed',
+      chatExpanded: open ? 'true' : 'false',
+      launcherLabel: open ? 'Close chat' : 'Open chat',
+      teaser: !open,
+      toggleChat: () => this.setState({ chat: !open }),
+      messages: [greeting].concat(st.msgs).map((m) => ({ text: m.text, cls: 'mb-msg mb-msg--' + m.role })),
+      chips: this.hoppy().map((t) => ({ label: t.label, pick: () => this.setState({ msgs: st.msgs.concat({ role: 'user', text: t.label }, { role: 'bot', text: t.answer }) }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

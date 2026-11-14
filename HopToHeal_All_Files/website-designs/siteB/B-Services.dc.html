@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Services and pricing (Site B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.04;margin:0;text-wrap:balance}
+.eyebrow{margin:0;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#B4471C}
+.b3{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:18px;border:2.5px solid #352724;padding:12px 22px;cursor:pointer;box-shadow:0 6px 0 #352724;transition:transform .12s,box-shadow .12s;box-sizing:border-box}
+.b3:hover{transform:translateY(-2px);box-shadow:0 8px 0 #352724}.b3:active{transform:translateY(6px);box-shadow:0 0 0 #352724}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}.ink{background:#352724;color:#FFFFFF}
+.clay{background:#FFFFFF;border:2.5px solid #352724;border-radius:26px;box-shadow:0 8px 0 #352724}
+.nav a{color:#352724;text-decoration:none;font-weight:800;font-size:16px}.nav a:hover{color:#B4471C}
+.scene{perspective:1100px}
+.tilt{transition:transform .4s cubic-bezier(.34,1.56,.64,1);transform-style:preserve-3d}.tilt:hover{transform:rotateX(7deg) rotateY(-9deg) translateY(-6px)}
+.iso{position:relative;border:2.5px solid #352724;border-radius:6px;box-sizing:border-box}
+.iso::before{content:"";position:absolute;left:-2.5px;right:-2.5px;top:-16px;height:14px;background:#FFE9C2;border:2.5px solid #352724;transform:skewX(-45deg);transform-origin:bottom left;box-sizing:border-box}
+.iso::after{content:"";position:absolute;top:-16px;right:-18.5px;width:16px;bottom:-2.5px;background:#C9790A;border:2.5px solid #352724;transform:skewY(-45deg);transform-origin:top left;box-sizing:border-box}
+.flip{perspective:1200px}
+.flip-in{position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.34,1.3,.64,1);min-height:320px}
+.flip:hover .flip-in,.flip:focus-within .flip-in{transform:rotateY(180deg)}
+.side{position:absolute;inset:0;backface-visibility:hidden;border-radius:26px;border:2.5px solid #352724;box-shadow:0 8px 0 #352724;padding:28px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+.back{transform:rotateY(180deg)}
+.coin{width:70px;height:16px;border-radius:50%;background:#FBA826;border:2.5px solid #352724;margin-top:-8px;transition:all .3s}
+@supports (animation-timeline: view()){.flipin{animation:flipin linear both;animation-timeline:view();animation-range:entry 0% entry 90%}}
+@keyframes flipin{from{opacity:0;transform:perspective(900px) rotateX(-70deg) translateY(40px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<header style="position: sticky; top: 0; z-index: 40; background: #FFFFFF; border-bottom: 2.5px solid #352724">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="B-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 60px; width: auto"></a>
+<nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 24px"><a href="B-Home.dc.html">Home</a><a href="B-Services.dc.html" aria-current="page" style="color: #B4471C">Services &amp; pricing</a><a href="B-HopCheck.dc.html">HopCheck</a><a href="B-About.dc.html">About us</a></nav>
+<div style="display: flex; gap: 12px"><a class="b3 white" href="B-Login.dc.html" style="padding: 8px 16px; font-size: 15px">Sign in</a><a class="b3 sun" href="B-Book.dc.html" style="padding: 8px 16px; font-size: 15px">Book a session</a></div>
+</div>
+</header>
+
+<main>
+<section style="background: #FBA826; border-bottom: 2.5px solid #352724">
+<div class="wrap" style="padding-top: 64px; padding-bottom: 64px; display: flex; flex-direction: column; gap: 16px">
+<p class="eyebrow" style="color: #352724">Services &amp; pricing</p>
+<h1 class="disp" style="font-size: 76px; max-width: 900px">Every therapy. One hour. ₹800.</h1>
+<p style="margin: 0; font-size: 21px; max-width: 700px">Pick any of our 8 therapies, or take the 15-day pack: 15 daily sessions for ₹9,600, 20% off.</p>
+</div>
+</section>
+
+<section aria-label="Services" class="wrap scene" style="padding-top: 72px; padding-bottom: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px">
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #FBA826; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">01</div><h2 class="disp" style="font-size: 26px">Occupational therapy</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Dressing, eating, holding a pencil, joining in at school.</p><span style="font-size: 14px; font-weight: 800">Ages 2–16 · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #E2F0DA; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">02</div><h2 class="disp" style="font-size: 26px">Speech therapy</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Talking, understanding others and being understood.</p><span style="font-size: 14px; font-weight: 800">Ages 2–16 · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #F46A39; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">03</div><h2 class="disp" style="font-size: 26px">Sensory integration</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Swings and textures that help the body make sense of the world.</p><span style="font-size: 14px; font-weight: 800">Ages 2–14 · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #FFFFFF; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">04</div><h2 class="disp" style="font-size: 26px">Early intervention</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Play-based help from the first signs of delay.</p><span style="font-size: 14px; font-weight: 800">Ages 2–6 · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #FBA826; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">05</div><h2 class="disp" style="font-size: 26px">Special education</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Reading, writing and numbers, one to one.</p><span style="font-size: 14px; font-weight: 800">Ages 4–16 · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #E2F0DA; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">06</div><h2 class="disp" style="font-size: 26px">Behaviour support &amp; ABA</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Positive routines for calmer days at home.</p><span style="font-size: 14px; font-weight: 800">Ages 2–16 · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #F46A39; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">07</div><h2 class="disp" style="font-size: 26px">Counselling &amp; parent training</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Strategies for home, routines and school.</p><span style="font-size: 14px; font-weight: 800">Parents · ₹800 / hour</span></article>
+<article class="clay tilt flipin" style="padding: 24px; display: flex; flex-direction: column; gap: 10px"><div class="iso" style="width: 64px; height: 50px; background: #FFFFFF; margin: 16px 0 6px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 24px">08</div><h2 class="disp" style="font-size: 26px">Group therapy &amp; school readiness</h2><p style="margin: 0; font-size: 16px; color: #6B5A53">Friendship, turn-taking, classroom skills.</p><span style="font-size: 14px; font-weight: 800">Ages 3–10 · ₹800 / hour</span></article>
+</section>
+
+<section id="pricing" aria-labelledby="pr-h" style="background: #2A1F1C; color: #F2F8EE; border-top: 2.5px solid #352724; border-bottom: 2.5px solid #352724">
+<div class="wrap" style="padding-top: 72px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 36px">
+<div style="text-align: center"><p class="eyebrow" style="color: #FBA826">Hover or tap to flip</p><h2 id="pr-h" class="disp" style="font-size: 56px; color: #FFFFFF">Pricing</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; max-width: 900px; margin: 0 auto; width: 100%; color: #352724">
+<div class="flip" tabindex="0"><div class="flip-in">
+<div class="side" style="background: #FFFFFF; justify-content: center; box-shadow: 0 8px 0 #000000"><p class="eyebrow" style="color: #6B5A53">Single session</p><div class="disp" style="font-size: 76px">₹800</div><strong>1 hour · any therapy</strong></div>
+<div class="side back" style="background: #E2F0DA; box-shadow: 0 8px 0 #000000"><strong class="disp" style="font-size: 26px">Single session</strong><ul style="margin: 0; padding-left: 20px; font-size: 16px"><li>Any open slot, any day</li><li>UPI, card or at the centre</li><li>Notes in your portal</li></ul><a class="b3 white" href="B-Book.dc.html" style="margin-top: auto">Book</a></div>
+</div></div>
+<div class="flip" tabindex="0"><div class="flip-in">
+<div class="side" style="background: #FBA826; justify-content: center; box-shadow: 0 8px 0 #000000"><p class="eyebrow" style="color: #352724">15-day pack · 20% off</p><div class="disp" style="font-size: 76px">₹9,600</div><strong>15 sessions · ₹640 each · save ₹2,400</strong></div>
+<div class="side back" style="background: #FFFFFF; box-shadow: 0 8px 0 #000000"><strong class="disp" style="font-size: 26px">15-day pack</strong><ul style="margin: 0; padding-left: 20px; font-size: 16px"><li>One session a day for 15 days</li><li>Pick a daily time; we flag full days</li><li>Paid upfront</li></ul><a class="b3 sun" href="B-Book.dc.html" style="margin-top: auto">Book the pack</a></div>
+</div></div>
+</div>
+
+<div style="background: #FFFFFF; color: #352724; border: 2.5px solid #352724; border-radius: 26px; box-shadow: 0 8px 0 #000000; padding: 28px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+<h3 class="disp" style="font-size: 30px">Which is cheaper for you?</h3>
+<p style="margin: 0; font-size: 16px">Sessions you expect in the next 15 days:</p>
+<div style="display: flex; align-items: center; gap: 16px"><button type="button" class="b3 white" onClick="{{less}}" aria-label="Fewer sessions" style="width: 54px; height: 54px; padding: 0; font-size: 26px">−</button><div class="disp" aria-live="polite" style="font-size: 54px; min-width: 70px; text-align: center">{{count}}</div><button type="button" class="b3 white" onClick="{{more}}" aria-label="More sessions" style="width: 54px; height: 54px; padding: 0; font-size: 26px">+</button></div>
+</div>
+<div aria-hidden="true" style="flex: 0 0 auto; display: flex; flex-direction: column-reverse; align-items: center; height: 200px; justify-content: flex-start; padding-top: 10px">
+<sc-for list="{{coins}}" as="c" hint-placeholder-count="10"><div class="coin" style="background: {{c.color}}"></div></sc-for>
+</div>
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-size: 18px"><span>Per session</span><strong>{{singleTotal}}</strong></div>
+<div style="display: flex; justify-content: space-between; font-size: 18px"><span>15-day pack</span><strong>₹9,600</strong></div>
+<div style="border-top: 2.5px dashed #352724; padding-top: 10px; font-weight: 800; font-size: 19px">{{advice}}</div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="faq-h" class="wrap" style="padding-top: 72px; padding-bottom: 88px; display: flex; flex-direction: column; gap: 22px; max-width: 900px">
+<h2 id="faq-h" class="disp flipin" style="font-size: 52px">Questions parents ask</h2>
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="6">
+<div class="clay" style="border-radius: 20px; overflow: hidden; box-shadow: 0 5px 0 #352724">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.expanded}}" style="font: inherit; width: 100%; text-align: left; background: {{f.bg}}; border: 0; padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #352724"><span class="disp" style="font-size: 21px">{{f.q}}</span><span class="disp" aria-hidden="true" style="font-size: 26px">{{f.sign}}</span></button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 4px 20px 18px; font-size: 17px">{{f.a}}</p></sc-if>
+</div>
+</sc-for>
+</section>
+</main>
+<footer style="background: #2A1F1C; color: #E9E1DA"><div class="wrap" style="padding-top: 28px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 15px"><span>© 2026 Hop to Heal</span><span>+91 95994 33591 · hoptoheal@gmail.com</span></div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { count: 10, open: 0 };
+  }
+  renderVals() {
+    const n = this.state.count;
+    const fmt = (v) => '₹' + v.toLocaleString('en-IN');
+    const single = n * 800;
+    const faqList = [
+      ['What happens in the first session?', 'One hour of play while your therapist watches how your child moves, talks and plays. You stay, and you leave with a plan.'],
+      ['Can I stay with my child?', 'Yes, always. We often show you activities to repeat at home.'],
+      ['Do you work with autism, ADHD and speech delay?', 'Yes, from age 2 to 16, along with sensory, learning and developmental difficulties.'],
+      ['Can I pay by UPI?', 'Yes: Google Pay, PhonePe, Paytm or any UPI app, plus cards and net banking.'],
+      ['Do you give reports for school?', 'Yes. Reports are in your parent portal and download as PDFs.'],
+      ['What if my child misses a pack day?', '[Your policy, e.g. reschedule free up to 24 hours before.]']
+    ];
+    return {
+      count: n,
+      less: () => this.setState({ count: Math.max(1, n - 1) }),
+      more: () => this.setState({ count: Math.min(20, n + 1) }),
+      coins: Array.from({ length: n }, (_, i) => ({ color: i >= 12 ? '#F46A39' : '#FBA826' })),
+      singleTotal: fmt(single),
+      advice: n > 12 ? 'The pack is cheaper: you save ' + fmt(single - 9600) + '.' : n === 12 ? 'Same price; the pack adds 3 more sessions.' : 'Pay per session: ' + fmt(9600 - single) + ' less than the pack.',
+      faqs: faqList.map(([q, a], i) => { const o = this.state.open === i; return { q, a, open: o, expanded: o ? 'true' : 'false', sign: o ? '−' : '+', bg: o ? '#FFE9C2' : '#FFFFFF', toggle: () => this.setState({ open: o ? -1 : i }) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

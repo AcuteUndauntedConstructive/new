@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Book a session (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.08;margin:0;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:13px 24px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.pick{font:inherit;color:#352724;cursor:pointer;border-radius:18px;transition:transform .15s cubic-bezier(.34,1.56,.64,1)}
+.pick:hover{transform:translateY(-3px)}
+.pick:disabled{cursor:not-allowed;transform:none}
+.step-n{width:36px;height:36px;border-radius:50%;background:#352724;color:#FBA826;display:inline-flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:18px;flex:none}
+.pop{animation:pop .35s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.92)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 17px; line-height: 1.55; min-height: 1800px">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<div style="display: flex; align-items: center; gap: 16px"><a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 54px; width: auto"></a><span style="font-weight: 800; font-size: 14px; background: #FFE9C2; padding: 4px 12px; border-radius: 999px">Parent portal</span></div>
+<nav aria-label="Portal" style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 700"><a href="A-Parent.dc.html" style="color: #352724; text-decoration: none">Dashboard</a><a href="A-Book.dc.html" aria-current="page" style="color: #B4471C; text-decoration: none">Book</a><a href="A-Pay.dc.html" style="color: #352724; text-decoration: none">Payments</a></nav>
+<a href="A-Parent.dc.html" style="display: flex; align-items: center; gap: 8px; color: #352724; text-decoration: none; font-weight: 800"><span style="width: 40px; height: 40px; border-radius: 50%; background: #FFE9C2; border: 2px solid #FBA826; display: inline-flex; align-items: center; justify-content: center; font-size: 14px">PS</span>Priya</a>
+</div>
+</header>
+
+<main class="wrap" style="padding-top: 36px; padding-bottom: 80px; display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div><h1 class="disp" style="font-size: 52px">Book a session</h1><p style="margin: 6px 0 0; color: #6B5A53">Every session is 1 hour. Places left update live. Example data.</p></div>
+
+<section class="card" aria-labelledby="who-h" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="who-h" class="disp" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="step-n">1</span>Who is the session for?</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<sc-for list="{{kids}}" as="k" hint-placeholder-count="2">
+<button type="button" class="pick" onClick="{{k.pick}}" aria-pressed="{{k.pressed}}" style="display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border: 2px solid {{k.border}}; background: {{k.bg}}; text-align: left"><span style="width: 52px; height: 52px; border-radius: 50%; background: {{k.avatar}}; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #352724">{{k.initial}}</span><span style="line-height: 1.3"><strong style="display: block">{{k.name}}</strong><span style="font-size: 14px; color: #6B5A53">{{k.meta}}</span></span></button>
+</sc-for>
+<a href="A-Parent.dc.html" class="pick" style="display: flex; align-items: center; gap: 10px; padding: 10px 18px; border: 2px dashed #D9CFC2; text-decoration: none; font-weight: 800">+ Add a child</a>
+</div>
+</section>
+
+<section class="card" aria-labelledby="what-h" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="what-h" class="disp" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="step-n">2</span>Therapy and therapist</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="8"><button type="button" class="pick" onClick="{{s.pick}}" aria-pressed="{{s.pressed}}" style="padding: 9px 16px; border: 2px solid {{s.border}}; background: {{s.bg}}; font-weight: 700; font-size: 15px; border-radius: 999px">{{s.label}}</button></sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><span style="font-weight: 800; font-size: 15px; margin-right: 6px">Therapist:</span>
+<sc-for list="{{therapists}}" as="t" hint-placeholder-count="3"><button type="button" class="pick" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="padding: 8px 14px; border: 2px solid {{t.border}}; background: {{t.bg}}; font-weight: 700; font-size: 15px; border-radius: 999px">{{t.label}}</button></sc-for>
+</div>
+</section>
+
+<section class="card" aria-labelledby="plan-h" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="plan-h" class="disp" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="step-n">3</span>One session or the 15-day pack?</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<button type="button" class="pick" onClick="{{chooseSingle}}" aria-pressed="{{singlePressed}}" style="text-align: left; padding: 18px; border: 2px solid {{singleBorder}}; background: {{singleBg}}; display: flex; flex-direction: column; gap: 4px"><span class="disp" style="font-size: 34px">₹800</span><strong>Single session</strong><span style="font-size: 15px; color: #6B5A53">One hour, on the day you choose</span></button>
+<button type="button" class="pick" onClick="{{choosePack}}" aria-pressed="{{packPressed}}" style="text-align: left; padding: 18px; border: 2px solid {{packBorder}}; background: {{packBg}}; display: flex; flex-direction: column; gap: 4px; position: relative"><span style="position: absolute; right: 14px; top: 14px; background: #2E7D4F; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 2px 10px; border-radius: 999px">Save ₹2,400</span><span class="disp" style="font-size: 34px">₹9,600</span><strong>15-day pack · 20% off</strong><span style="font-size: 15px; color: #6B5A53">15 sessions, one a day, ₹640 each</span></button>
+</div>
+</section>
+
+<section class="card" aria-labelledby="when-h" style="padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="when-h" class="disp" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="step-n">4</span>{{whenTitle}}</h2>
+<div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+<button type="button" class="pick" onClick="{{d.pick}}" aria-pressed="{{d.pressed}}" style="flex: none; width: 92px; padding: 10px 6px; border: 2px solid {{d.border}}; background: {{d.bg}}; display: flex; flex-direction: column; align-items: center; gap: 2px"><span style="font-size: 13px; font-weight: 700">{{d.dow}}</span><span class="disp" style="font-size: 26px">{{d.num}}</span><span style="font-size: 12px; font-weight: 800; color: {{d.leftColor}}">{{d.leftText}}</span></button>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 14px; color: #6B5A53"><span><b style="color: #2E7D4F">●</b> places free</span><span><b style="color: #B4471C">●</b> last place</span><span><b style="color: #8C7D76">●</b> full</span><span>{{timeHint}}</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px">
+<sc-for list="{{times}}" as="t" hint-placeholder-count="9">
+<button type="button" class="pick" onClick="{{t.pick}}" disabled="{{t.full}}" aria-pressed="{{t.pressed}}" aria-label="{{t.aria}}" style="padding: 10px 8px; border: 2px solid {{t.border}}; background: {{t.bg}}; display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: {{t.opacity}}"><span style="font-weight: 800; font-size: 17px">{{t.label}}</span><span style="font-size: 13px; font-weight: 800; color: {{t.leftColor}}">{{t.leftText}}</span></button>
+</sc-for>
+</div>
+<sc-if value="{{isPack}}" hint-placeholder-val="{{ false }}">
+<div class="pop" style="border-top: 1px dashed #D9CFC2; padding-top: 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: baseline"><h3 class="disp" style="font-size: 22px">Your 15 days</h3><span style="font-weight: 800; color: {{conflictColor}}">{{conflictText}}</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px">
+<sc-for list="{{packDays}}" as="p" hint-placeholder-count="15">
+<div style="border-radius: 14px; padding: 8px 10px; border: 2px solid {{p.border}}; background: {{p.bg}}; font-size: 14px; line-height: 1.35"><strong style="display: block">{{p.date}}</strong><span>{{p.status}}</span>
+<sc-if value="{{p.needsSwap}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{p.swap}}" style="font: inherit; font-size: 13px; font-weight: 800; margin-top: 4px; border: 2px solid #352724; background: #FFFFFF; border-radius: 999px; padding: 2px 10px; cursor: pointer; color: #352724">Take {{p.alt}}</button></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</section>
+</div>
+
+<aside style="flex: 1 1 320px; min-width: 0; position: sticky; top: 20px">
+<div class="card" style="padding: 24px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 44px rgba(53,39,36,.1)">
+<h2 class="disp" style="font-size: 26px">Summary</h2>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Child</span><strong style="text-align: right">{{sumChild}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Therapy</span><strong style="text-align: right">{{sumService}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Therapist</span><strong style="text-align: right">{{sumTherapist}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">When</span><strong style="text-align: right">{{sumWhen}}</strong></div>
+<div style="border-top: 2px dashed #E5DDD2; padding-top: 12px; display: flex; justify-content: space-between; align-items: baseline"><span style="font-weight: 800">{{sumPlan}}</span><span class="disp" style="font-size: 34px">{{sumPrice}}</span></div>
+<sc-if value="{{isPack}}" hint-placeholder-val="{{ false }}"><div style="font-size: 14px; font-weight: 800; color: #2E7D4F">You save ₹2,400 (₹640 a session)</div></sc-if>
+<a class="btn sun" href="{{payHref}}" aria-disabled="{{notReady}}" style="width: 100%; opacity: {{ctaOpacity}}">Continue to payment</a>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">We hold your place for 10 minutes while you pay. Free to reschedule up to [24 hours] before.</p>
+</div>
+</aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"plan":{"editor":"enum","options":["Single","Pack"],"default":"Single","section":"Preview"},"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { kid: 0, service: 1, therapist: 0, plan: null, day: 0, hour: 1, swaps: {} };
+  }
+  renderVals() {
+    const st = this.state;
+    const plan = st.plan ?? (this.props.plan ?? 'Single');
+    const pack = plan === 'Pack';
+    const on = { border: '#352724', bg: '#FFE9C2' };
+    const off = { border: '#E5DDD2', bg: '#FFFFFF' };
+    const base = new Date(2026, 10, 3);
+    const dayDate = (i) => { const d = new Date(base); d.setDate(d.getDate() + i); return d; };
+    const dow = (d) => d.toLocaleDateString('en-IN', { weekday: 'short' });
+    const hours = [10, 11, 12, 13, 14, 15, 16, 17, 18];
+    const hourLabel = (h) => (h > 12 ? h - 12 : h) + ':00 ' + (h >= 12 ? 'pm' : 'am');
+    const left = (d, hi) => [3, 2, 0, 1, 2, 3, 1, 0, 2, 3, 2, 1][(d * 5 + hi * 3 + 1) % 12];
+    const kids = [{ name: 'Aarav', meta: 'Age 4 · speech', initial: 'A', avatar: '#FFE9C2' }, { name: 'Meera', meta: 'Age 9 · OT', initial: 'M', avatar: '#E2F0DA' }];
+    const services = ['Occupational therapy', 'Speech therapy', 'Sensory integration', 'Early intervention', 'Special education', 'Behaviour support', 'Parent counselling', 'Group therapy'];
+    const therapists = ['Any available', 'Jiya Gupta', 'Dr. Heena Gupta'];
+    const days = Array.from({ length: 7 }, (_, i) => {
+      const total = hours.reduce((sum, _, hi) => sum + left(i, hi), 0);
+      const sel = st.day === i; const s = sel ? on : off;
+      return { dow: dow(dayDate(i)), num: String(dayDate(i).getDate()), pressed: sel ? 'true' : 'false', border: s.border, bg: s.bg, leftText: total + ' places', leftColor: total < 8 ? '#B4471C' : '#2E7D4F', pick: () => this.setState({ day: i, hour: null, swaps: {} }) };
+    });
+    const times = hours.map((h, hi) => {
+      const l = left(st.day, hi); const full = l === 0; const sel = st.hour === hi; const s = sel ? on : off;
+      return { label: hourLabel(h), full, pressed: sel ? 'true' : 'false', border: full ? '#E5DDD2' : s.border, bg: full ? '#EFEAE4' : s.bg, opacity: full ? '0.6' : '1', leftText: full ? 'Full' : l === 1 ? 'Last place' : l + ' left', leftColor: full ? '#8C7D76' : l === 1 ? '#B4471C' : '#2E7D4F', aria: hourLabel(h) + ', ' + (full ? 'full' : l + ' places left'), pick: () => { if (!full) this.setState({ hour: hi, swaps: {} }); } };
+    });
+    let conflicts = 0;
+    const packDays = st.hour === null ? [] : Array.from({ length: 15 }, (_, k) => {
+      const d = st.day + k; const date = dayDate(d); const label = dow(date) + ' ' + date.getDate() + ' ' + date.toLocaleDateString('en-IN', { month: 'short' });
+      const ok = left(d, st.hour) > 0; const swapped = st.swaps[k];
+      if (ok) return { date: label, status: hourLabel(hours[st.hour]) + ' ✓', border: '#E5DDD2', bg: '#FFFFFF', needsSwap: false };
+      if (swapped !== undefined) return { date: label, status: hourLabel(hours[swapped]) + ' ✓ (changed)', border: '#2E7D4F', bg: '#E2F0DA', needsSwap: false };
+      conflicts += 1;
+      const altIdx = hours.findIndex((_, hi) => left(d, hi) > 0 && hi !== st.hour);
+      return { date: label, status: hourLabel(hours[st.hour]) + ' is full', border: '#B4471C', bg: '#FFF1E8', needsSwap: altIdx >= 0, alt: altIdx >= 0 ? hourLabel(hours[altIdx]) : '', swap: () => this.setState({ swaps: { ...st.swaps, [k]: altIdx } }) };
+    });
+    const ready = st.hour !== null && (!pack || conflicts === 0);
+    const startDate = dayDate(st.day);
+    const whenSingle = st.hour === null ? 'Pick a time' : dow(startDate) + ' ' + startDate.getDate() + ' Nov, ' + hourLabel(hours[st.hour]);
+    const whenPack = st.hour === null ? 'Pick a daily time' : 'From ' + dow(startDate) + ' ' + startDate.getDate() + ' Nov, daily ' + hourLabel(hours[st.hour]);
+    return {
+      kids: kids.map((k, i) => { const s = st.kid === i ? on : off; return { ...k, pressed: st.kid === i ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ kid: i }) }; }),
+      services: services.map((label, i) => { const s = st.service === i ? on : off; return { label, pressed: st.service === i ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ service: i }) }; }),
+      therapists: therapists.map((label, i) => { const s = st.therapist === i ? on : off; return { label, pressed: st.therapist === i ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ therapist: i }) }; }),
+      chooseSingle: () => this.setState({ plan: 'Single', swaps: {} }), choosePack: () => this.setState({ plan: 'Pack', swaps: {} }),
+      singlePressed: pack ? 'false' : 'true', packPressed: pack ? 'true' : 'false',
+      singleBorder: pack ? '#E5DDD2' : '#352724', singleBg: pack ? '#FFFFFF' : '#FFE9C2',
+      packBorder: pack ? '#352724' : '#E5DDD2', packBg: pack ? '#FFE9C2' : '#FFFFFF',
+      isPack: pack,
+      whenTitle: pack ? 'Start day and daily time' : 'Day and time',
+      timeHint: pack ? 'Your daily time for all 15 days' : '',
+      days, times, packDays,
+      conflictText: st.hour === null ? '' : conflicts === 0 ? 'All 15 days booked' : conflicts + (conflicts === 1 ? ' day needs' : ' days need') + ' another time',
+      conflictColor: conflicts === 0 ? '#2E7D4F' : '#B4471C',
+      sumChild: kids[st.kid].name, sumService: services[st.service], sumTherapist: therapists[st.therapist],
+      sumWhen: pack ? whenPack : whenSingle,
+      sumPlan: pack ? '15-day pack' : 'Single session',
+      sumPrice: pack ? '₹9,600' : '₹800',
+      payHref: ready ? 'A-Pay.dc.html' : '#when-h',
+      notReady: ready ? 'false' : 'true',
+      ctaOpacity: ready ? '1' : '0.5'
+    };
+  }
+}
+</script>
+</body>
+</html>

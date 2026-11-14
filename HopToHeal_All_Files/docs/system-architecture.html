@@ -1,0 +1,527 @@
+<title>Hop to Heal System Architecture</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column with a sticky section index; the system map is a layered stack, tables carry the detail. */
+:root {
+  --bg: #F2F8EE;
+  --surface: #FFFFFF;
+  --band: #E2F0DA;
+  --ink: #352724;
+  --muted: #6B5A53;
+  --line: #DDD3C7;
+  --sun: #FBA826;
+  --sun-soft: #FFE9C2;
+  --ember: #B4471C;
+  --leaf: #2E7D4F;
+  --alert: #B83232;
+  --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1715; --surface: #26201D; --band: #212B1E; --ink: #F3ECE6; --muted: #BDAFA7; --line: #3E3530;
+    --sun: #FBA826; --sun-soft: #3A2E18; --ember: #F2905E; --leaf: #6CC18F; --alert: #F08A8A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1715; --surface: #26201D; --band: #212B1E; --ink: #F3ECE6; --muted: #BDAFA7; --line: #3E3530;
+  --sun: #FBA826; --sun-soft: #3A2E18; --ember: #F2905E; --leaf: #6CC18F; --alert: #F08A8A; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; margin: 0; }
+a { color: var(--ember); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; }
+h2 { font-size: clamp(28px, 4vw, 38px); font-weight: 800; }
+h3 { font-size: 21px; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ember); }
+.muted { color: var(--muted); }
+code, .mono { font-family: var(--font-mono); font-size: .86em; }
+
+header.hero { padding-block: 48px 32px; }
+header.hero .wrap { display: grid; gap: 16px; }
+.lede { font-size: 20px; color: var(--muted); max-width: 760px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.fact { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 15px; }
+.fact b { color: var(--ember); }
+
+nav.index { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+nav.index .wrap { display: flex; gap: 6px 18px; overflow-x: auto; padding-block: 10px; font-weight: 700; font-size: 15px; white-space: nowrap; }
+nav.index a { color: var(--ink); text-decoration: none; }
+nav.index a:hover { color: var(--ember); }
+
+section { padding-block: 48px; border-bottom: 1px solid var(--line); }
+section .wrap { display: grid; gap: 22px; }
+.intro { max-width: 760px; color: var(--muted); }
+
+/* Roles */
+.roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.role { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: grid; gap: 8px; align-content: start; }
+.role ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--muted); display: grid; gap: 4px; }
+.tag { justify-self: start; font-size: 12px; font-weight: 800; padding: 2px 10px; border-radius: 999px; background: var(--sun-soft); color: var(--ink); }
+
+/* System map */
+.map { display: grid; gap: 10px; }
+.layer { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 14px; align-items: stretch; }
+.layer-name { font-family: var(--font-display); font-weight: 800; font-size: 18px; line-height: 1.15; padding-top: 12px; }
+.layer-name small { display: block; font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--muted); }
+.boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.box { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 12px; font-size: 14.5px; line-height: 1.4; }
+.box strong { display: block; font-size: 15.5px; }
+.box.key { border-color: var(--sun); background: var(--sun-soft); }
+.box.ext { border-style: dashed; }
+.arrow { text-align: center; color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+.arrow::before { content: "\2193  "; color: var(--ember); font-size: 16px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 14px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 18px; height: 12px; border-radius: 4px; border: 1.5px solid var(--line); background: var(--surface); display: inline-block; }
+.sw.key { border-color: var(--sun); background: var(--sun-soft); }
+.sw.ext { border-style: dashed; }
+
+/* Tables */
+.table-box { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 640px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+thead th { background: var(--band); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+tbody tr:last-child td { border-bottom: 0; }
+td.c { text-align: center; font-weight: 800; }
+.yes { color: var(--leaf); }
+.no { color: var(--muted); }
+.part { color: var(--ember); }
+
+/* Flows */
+.flows { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.flow ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 15.5px; }
+.flow ol li::marker { font-weight: 800; color: var(--ember); }
+.diagram { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 16px; }
+pre.mermaid { margin: 0; background: transparent; font-family: var(--font-body); }
+
+/* Price + slots */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.price { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: grid; gap: 6px; }
+.price .amt { font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.price.best { border: 2px solid var(--sun); }
+.formula { font-family: var(--font-mono); font-size: 14.5px; background: var(--band); border-radius: 12px; padding: 12px 14px; overflow-x: auto; white-space: pre; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+.slot { border: 1.5px solid var(--line); border-radius: 12px; padding: 8px 10px; background: var(--surface); font-size: 14px; }
+.slot b { display: block; font-size: 16px; font-variant-numeric: tabular-nums; }
+.slot.low { border-color: var(--sun); }
+.slot.full { opacity: .55; text-decoration: line-through; }
+
+.phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.phase { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: grid; gap: 8px; align-content: start; }
+.phase ul { margin: 0; padding-left: 18px; font-size: 15px; display: grid; gap: 4px; color: var(--muted); }
+.note { background: var(--sun-soft); border-radius: 16px; padding: 14px 16px; font-size: 15.5px; }
+footer { padding-block: 32px 48px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 640px) {
+  .layer { grid-template-columns: 1fr; gap: 6px; }
+  .layer-name { padding-top: 0; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Hop to Heal · how the website works</p>
+    <h1>System architecture</h1>
+    <p class="lede">One platform behind both website designs: a public site, a parent portal with a section for each child, a therapist portal, booking with live slots, payments, HopCheck screening and shared progress reports. Parents and therapists sign in with Google.</p>
+    <div class="facts">
+      <span class="fact">Session <b>₹800</b> · 1 hour</span>
+      <span class="fact">15-day pack <b>₹9,600</b> · 20% off</span>
+      <span class="fact">Ages <b>2–16</b></span>
+      <span class="fact">Open <b>7 days</b>, 10 am – 7 pm</span>
+    </div>
+  </div>
+</header>
+
+<nav class="index" aria-label="Sections">
+  <div class="wrap">
+    <a href="#people">People</a>
+    <a href="#map">System map</a>
+    <a href="#stack">Tech stack</a>
+    <a href="#access">Who sees what</a>
+    <a href="#data">Data model</a>
+    <a href="#flows">Key journeys</a>
+    <a href="#slots">Slots &amp; pricing</a>
+    <a href="#screening">Screening</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#plan">Build plan</a>
+  </div>
+</nav>
+
+<main>
+<section id="people">
+  <div class="wrap">
+    <h2>Who uses it</h2>
+    <p class="intro">Four kinds of account. A child does not log in; each child is a profile inside a parent's account, and the same child can be linked to two parents.</p>
+    <div class="roles">
+      <div class="role">
+        <span class="tag">Parent</span>
+        <h3>Parent or guardian</h3>
+        <ul>
+          <li>Signs in with Google (phone OTP as backup)</li>
+          <li>Own profile with photo, contact, language</li>
+          <li>Adds children, each with a photo and details</li>
+          <li>Books sessions, buys the 15-day pack, pays by UPI</li>
+          <li>Sees reports, progress and home activities</li>
+          <li>Gets care suggestions written by the therapist</li>
+        </ul>
+      </div>
+      <div class="role">
+        <span class="tag">Child profile</span>
+        <h3>Child</h3>
+        <ul>
+          <li>Name, photo, date of birth, school, languages</li>
+          <li>Concerns, HopCheck results, assessments</li>
+          <li>Goals with improvement levels over time</li>
+          <li>Session history, notes for parents, reports</li>
+        </ul>
+      </div>
+      <div class="role">
+        <span class="tag">Therapist</span>
+        <h3>Therapist</h3>
+        <ul>
+          <li>Signs in with Google; joins by invite from the centre</li>
+          <li>Sees only the children assigned to them</li>
+          <li>Reviews HopCheck results and signs reports</li>
+          <li>Writes session notes, updates goal levels and care tips</li>
+          <li>Sets weekly availability and leave</li>
+        </ul>
+      </div>
+      <div class="role">
+        <span class="tag">Centre team</span>
+        <h3>Coordinator and admin</h3>
+        <ul>
+          <li>Manages bookings, rooms, therapists and centres</li>
+          <li>Handles refunds, invoices and pack credits</li>
+          <li>Assigns children to therapists</li>
+          <li>Admin only: audit log and data requests</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="wrap">
+    <h2>System map</h2>
+    <p class="intro">Requests flow top to bottom. Both website designs (Site A: scrolling and animation, Site B: 3D) are skins over the same app and back end.</p>
+    <div class="map" role="img" aria-label="Layered system map from people at the top to external services at the bottom">
+      <div class="layer"><div class="layer-name">People<small>phone first</small></div>
+        <div class="boxes">
+          <div class="box"><strong>Parents</strong>phone browser, laptop</div>
+          <div class="box"><strong>Therapists</strong>tablet or laptop at the centre</div>
+          <div class="box"><strong>Coordinator / admin</strong>front desk</div>
+        </div></div>
+      <div class="arrow">HTTPS</div>
+      <div class="layer"><div class="layer-name">Web app<small>Next.js</small></div>
+        <div class="boxes">
+          <div class="box key"><strong>Public website</strong>Site A or Site B design; services, pricing, HopCheck</div>
+          <div class="box key"><strong>Parent portal</strong>parent section + one section per child</div>
+          <div class="box key"><strong>Therapist portal</strong>caseload, reviews, notes, goals, slots</div>
+          <div class="box"><strong>Admin console</strong>bookings, refunds, rooms, users</div>
+          <div class="box"><strong>Hoppy chat</strong>widget on every page</div>
+        </div></div>
+      <div class="arrow">sign-in token on every request</div>
+      <div class="layer"><div class="layer-name">Identity<small>who you are, what you may do</small></div>
+        <div class="boxes">
+          <div class="box key"><strong>Google sign-in</strong>OpenID Connect; email + photo from Google</div>
+          <div class="box"><strong>Phone OTP</strong>backup for parents without Google</div>
+          <div class="box"><strong>Roles</strong>parent, therapist, coordinator, admin; therapists by invite</div>
+        </div></div>
+      <div class="arrow">API calls</div>
+      <div class="layer"><div class="layer-name">Services<small>back end</small></div>
+        <div class="boxes">
+          <div class="box"><strong>Accounts &amp; children</strong>profiles, photos, guardians</div>
+          <div class="box key"><strong>Scheduling</strong>availability, slots left, holds</div>
+          <div class="box key"><strong>Booking &amp; packs</strong>single sessions, 15-session credits</div>
+          <div class="box key"><strong>Payments</strong>orders, webhooks, invoices, refunds</div>
+          <div class="box key"><strong>HopCheck</strong>questionnaires, scoring, review queue</div>
+          <div class="box key"><strong>Progress &amp; reports</strong>goals, GAS levels, notes, PDFs</div>
+          <div class="box"><strong>Care tips</strong>therapist-written, per child</div>
+          <div class="box"><strong>Notifications</strong>WhatsApp, email, in-app</div>
+          <div class="box"><strong>Chat</strong>Hoppy answers from approved FAQs</div>
+        </div></div>
+      <div class="arrow">read / write</div>
+      <div class="layer"><div class="layer-name">Data<small>hosted in Mumbai</small></div>
+        <div class="boxes">
+          <div class="box"><strong>PostgreSQL</strong>row-level security per role</div>
+          <div class="box"><strong>Private file storage</strong>photos, reports; signed links</div>
+          <div class="box"><strong>Audit log</strong>every view and change of child records</div>
+          <div class="box"><strong>Backups</strong>daily, encrypted</div>
+        </div></div>
+      <div class="arrow">outside services</div>
+      <div class="layer"><div class="layer-name">External<small>third parties</small></div>
+        <div class="boxes">
+          <div class="box ext"><strong>Google Identity</strong>sign-in</div>
+          <div class="box ext"><strong>Razorpay / Cashfree</strong>UPI, cards, net banking</div>
+          <div class="box ext"><strong>WhatsApp Business API</strong>reminders, receipts</div>
+          <div class="box ext"><strong>Email</strong>receipts, reports</div>
+          <div class="box ext"><strong>LLM API</strong>Hoppy chat answers</div>
+        </div></div>
+    </div>
+    <div class="legend"><span><i class="sw key"></i>core to this project</span><span><i class="sw"></i>supporting</span><span><i class="sw ext"></i>third-party service</span></div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <h2>Recommended tech stack</h2>
+    <p class="intro">Choices favour fast building by a small team, low running cost, and data kept in India.</p>
+    <div class="table-box"><table>
+      <thead><tr><th>Part</th><th>Recommendation</th><th>Why</th><th>Alternative</th></tr></thead>
+      <tbody>
+        <tr><td>Website and portals</td><td>Next.js + Tailwind CSS</td><td>One codebase for public pages and logged-in portals; good SEO; easy Hindi and English routes</td><td>Remix, Astro + React</td></tr>
+        <tr><td>Animation (Site A)</td><td>GSAP ScrollTrigger or Framer Motion; CSS scroll-driven animations</td><td>Smooth scroll storytelling; falls back to static on "reduce motion"</td><td>Lenis + CSS only</td></tr>
+        <tr><td>3D (Site B)</td><td>Three.js via React Three Fiber; CSS 3D for cards</td><td>3D Hoppy and scenes; lazy-loaded so phones stay fast</td><td>Spline embeds</td></tr>
+        <tr><td>Sign-in</td><td>Supabase Auth with Google provider + phone OTP</td><td>Google sign-in in a few lines; roles stored with the user</td><td>Firebase Auth, Auth.js</td></tr>
+        <tr><td>Database</td><td>Supabase Postgres, Mumbai region, row-level security</td><td>Each query is limited to rows the user may see, enforced in the database</td><td>AWS RDS + own API</td></tr>
+        <tr><td>Files</td><td>Supabase Storage, private buckets</td><td>Child photos and reports only reachable through short-lived signed links</td><td>Amazon S3 (Mumbai)</td></tr>
+        <tr><td>Payments</td><td>Cashfree or Razorpay</td><td>UPI first, payment links, webhooks, refunds; the project report assumed Cashfree at 1.95% + GST</td><td>PhonePe PG</td></tr>
+        <tr><td>WhatsApp</td><td>WhatsApp Business Platform via a provider (Interakt, WATI or Meta Cloud API)</td><td>Confirmations, reminders, receipts, report-ready alerts</td><td>SMS fallback</td></tr>
+        <tr><td>Reports</td><td>Server-side PDF (React-PDF)</td><td>Same report in the portal and as a download</td><td>Headless Chrome</td></tr>
+        <tr><td>Hoppy chat</td><td>LLM API with retrieval over approved FAQs</td><td>Answers only from Hop to Heal content; hands over to WhatsApp</td><td>Rule-based answers only</td></tr>
+        <tr><td>Hosting and monitoring</td><td>Vercel (Mumbai edge) + Sentry</td><td>Simple deploys; error alerts</td><td>AWS Amplify</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <h2>Who can see and change what</h2>
+    <p class="intro">Enforced in the database, not just hidden in the screens. A therapist only sees children assigned to them.</p>
+    <div class="table-box"><table>
+      <thead><tr><th>Information or action</th><th>Parent</th><th>Therapist</th><th>Coordinator</th><th>Admin</th></tr></thead>
+      <tbody>
+        <tr><td>Parent profile and photo</td><td class="c yes">Edit own</td><td class="c part">Name, phone</td><td class="c part">View</td><td class="c part">View</td></tr>
+        <tr><td>Child basic details and photo</td><td class="c yes">Edit</td><td class="c part">View</td><td class="c part">View</td><td class="c part">View</td></tr>
+        <tr><td>Child clinical details (diagnoses noted by doctors, goals)</td><td class="c part">View</td><td class="c yes">Edit (assigned)</td><td class="c no">No</td><td class="c part">View</td></tr>
+        <tr><td>HopCheck answers and scores</td><td class="c part">Own answers</td><td class="c yes">Review (assigned or queue)</td><td class="c no">No</td><td class="c part">View</td></tr>
+        <tr><td>HopCheck report</td><td class="c part">View once released</td><td class="c yes">Write and sign</td><td class="c no">No</td><td class="c part">View</td></tr>
+        <tr><td>Session notes and goal levels</td><td class="c part">View parent notes</td><td class="c yes">Write</td><td class="c no">No</td><td class="c part">View</td></tr>
+        <tr><td>Care suggestions for parents</td><td class="c part">View</td><td class="c yes">Write</td><td class="c no">No</td><td class="c part">View</td></tr>
+        <tr><td>Book, reschedule, cancel</td><td class="c yes">Own children</td><td class="c no">No</td><td class="c yes">All</td><td class="c yes">All</td></tr>
+        <tr><td>Availability and leave</td><td class="c no">No</td><td class="c yes">Own</td><td class="c yes">All</td><td class="c yes">All</td></tr>
+        <tr><td>Payments and invoices</td><td class="c part">Own</td><td class="c no">No</td><td class="c part">View</td><td class="c yes">Refund</td></tr>
+        <tr><td>Consent records</td><td class="c yes">Give and withdraw</td><td class="c no">No</td><td class="c part">View</td><td class="c part">View</td></tr>
+        <tr><td>Audit log</td><td class="c no">No</td><td class="c no">No</td><td class="c no">No</td><td class="c part">View</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <h2>Data model</h2>
+    <p class="intro">The main tables and how they connect. Money, clinical records and identity live in separate tables so each can have its own access rules.</p>
+    <div class="diagram">
+<pre class="mermaid">
+erDiagram
+  USER ||--o| PARENT : "is a"
+  USER ||--o| THERAPIST : "is a"
+  PARENT }o--o{ CHILD : "guardian of"
+  PARENT ||--o{ CONSENT : gives
+  THERAPIST ||--o{ AVAILABILITY : sets
+  THERAPIST }o--o{ CHILD : "assigned to"
+  SLOT ||--o{ BOOKING : fills
+  CHILD ||--o{ BOOKING : attends
+  PACK ||--o{ BOOKING : "uses a credit"
+  PAYMENT ||--o| PACK : buys
+  PAYMENT ||--o| BOOKING : "pays for"
+  CHILD ||--o{ SCREENING : takes
+  SCREENING ||--o| REVIEW : "signed by therapist"
+  CHILD ||--o{ GOAL : has
+  GOAL ||--o{ GOAL_LEVEL : "scored over time"
+  BOOKING ||--o| SESSION_NOTE : records
+  CHILD ||--o{ REPORT : receives
+  CHILD ||--o{ CARE_TIP : gets
+</pre>
+    </div>
+    <div class="table-box"><table>
+      <thead><tr><th>Table</th><th>Key fields</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">users</td><td>id, google_sub, email, phone, name, photo_url, role, language</td></tr>
+        <tr><td class="mono">children</td><td>id, first_name, last_name, date_of_birth, photo_path, school, languages, centre_id</td></tr>
+        <tr><td class="mono">guardianships</td><td>parent_id, child_id, relation (mother, father, guardian), is_primary</td></tr>
+        <tr><td class="mono">availability</td><td>therapist_id, weekday, start, end, centre_id, valid_from, valid_to; leave entries</td></tr>
+        <tr><td class="mono">slots</td><td>centre_id, service_id, starts_at (1 hour), capacity, booked, held</td></tr>
+        <tr><td class="mono">bookings</td><td>id, child_id, therapist_id, slot_id, status (held, confirmed, attended, cancelled), pack_id, payment_id</td></tr>
+        <tr><td class="mono">packs</td><td>id, child_id, sessions_total (15), sessions_used, price (₹9,600), valid_until</td></tr>
+        <tr><td class="mono">payments</td><td>id, gateway_order_id, amount, method (UPI, card), status, invoice_no, paid_at</td></tr>
+        <tr><td class="mono">screenings</td><td>id, child_id, instrument, instrument_version, age_band, answers (encrypted), scores, triage</td></tr>
+        <tr><td class="mono">reviews</td><td>screening_id, therapist_id, decision, recommendation, signed_at, second_reviewer_id</td></tr>
+        <tr><td class="mono">goals / goal_levels</td><td>goal text, domain, GAS level −2 to +2, COPM performance and satisfaction 1–10, recorded_at</td></tr>
+        <tr><td class="mono">session_notes</td><td>booking_id, activities, goals_targeted, note_for_parent, private_note</td></tr>
+        <tr><td class="mono">care_tips</td><td>child_id, therapist_id, title, body, category, published_at</td></tr>
+        <tr><td class="mono">consents / audit_log</td><td>who, what, version, timestamp; every read and write of child records</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="flows">
+  <div class="wrap">
+    <h2>Key journeys</h2>
+    <div class="flows">
+      <div class="flow">
+        <h3>1. First sign-in with Google</h3>
+        <ol>
+          <li>Parent taps "Continue with Google".</li>
+          <li>Google returns name, email and photo; the account is created as a parent.</li>
+          <li>Short setup: phone number for WhatsApp, language, consent.</li>
+          <li>Add a child: name, date of birth, photo, concerns.</li>
+          <li>Lands on the parent dashboard with "Book a session" and "Take HopCheck".</li>
+        </ol>
+        <p class="muted">Therapists sign in the same way but must use an invite link from the centre, which gives them the therapist role.</p>
+      </div>
+      <div class="flow">
+        <h3>2. Therapist updates a child</h3>
+        <ol>
+          <li>Opens today's schedule and taps the child.</li>
+          <li>Marks attendance, writes the session note and a short note for parents.</li>
+          <li>Moves goal levels (−2 to +2) where progress was seen.</li>
+          <li>Adds or edits a care tip for the parent.</li>
+          <li>Parent's dashboard and progress chart update straight away; WhatsApp tells them a note is ready.</li>
+        </ol>
+      </div>
+    </div>
+    <h3>3. Booking with live slots and payment</h3>
+    <div class="diagram">
+<pre class="mermaid">
+sequenceDiagram
+  participant P as Parent
+  participant W as Hop to Heal app
+  participant D as Database
+  participant G as Payment gateway
+  participant A as WhatsApp
+  P->>W: Choose child, service, day
+  W->>D: Count free places per hour
+  D-->>W: 10:00 (2 left), 11:00 (1 left), 12:00 (full)
+  P->>W: Pick 11:00, single session or 15-day pack
+  W->>D: Hold the place for 10 minutes
+  W->>G: Create order (₹800 or ₹9,600)
+  P->>G: Pay with UPI
+  G-->>W: Signed webhook: paid
+  W->>D: Confirm booking, add 15 credits for a pack
+  W->>A: Send confirmation and receipt
+  A-->>P: "See you Saturday at 11:00"
+</pre>
+    </div>
+  </div>
+</section>
+
+<section id="slots">
+  <div class="wrap">
+    <h2>Slots and pricing</h2>
+    <p class="intro">Every slot is one hour. A slot can hold as many children as there are free therapists for that service and free rooms. The app shows how many places are left, and holds a place while the parent pays.</p>
+    <div class="formula">places left = min(free therapists for the service, free rooms)
+             − confirmed bookings − active holds (10-minute expiry)</div>
+    <div class="slots" aria-label="Example of how slots appear to parents">
+      <div class="slot"><b>10:00</b>2 left</div>
+      <div class="slot low"><b>11:00</b>Last place</div>
+      <div class="slot full"><b>12:00</b>Full</div>
+      <div class="slot"><b>14:00</b>3 left</div>
+      <div class="slot"><b>15:00</b>2 left</div>
+      <div class="slot low"><b>16:00</b>1 left</div>
+      <div class="slot"><b>17:00</b>3 left</div>
+      <div class="slot"><b>18:00</b>2 left</div>
+    </div>
+    <p class="muted">Example display. Double booking is prevented by confirming inside a database transaction that locks the slot row.</p>
+    <div class="cards">
+      <div class="price">
+        <span class="eyebrow">Single session</span>
+        <span class="amt">₹800</span>
+        <p>One hour with a therapist. Pay when booking, or at the centre for a first visit.</p>
+      </div>
+      <div class="price best">
+        <span class="eyebrow">15-day pack · save ₹2,400</span>
+        <span class="amt">₹9,600</span>
+        <p>15 one-hour sessions, one a day for 15 days, paid upfront. ₹640 per session instead of ₹800 (20% off).</p>
+      </div>
+    </div>
+    <div class="note"><strong>Pack booking rule:</strong> the parent picks a start date and a daily time. The app checks all 15 days; any day where that time is full is shown so the parent can pick another time for that day. Each attended session uses one credit. Still to decide: what happens to unused credits after a missed day, and the cancellation window.</div>
+  </div>
+</section>
+
+<section id="screening">
+  <div class="wrap">
+    <h2>HopCheck screening engine</h2>
+    <p class="intro">The full method is in the research paper (HopCheck_Research_Paper.docx). In software terms:</p>
+    <div class="diagram">
+<pre class="mermaid">
+sequenceDiagram
+  participant P as Parent
+  participant H as HopCheck
+  participant T as Therapist (master's level)
+  P->>H: Consent, child's age, concerns
+  H->>H: Choose the questionnaire for the age band
+  P->>H: Answer (10–15 minutes)
+  H->>H: Score with versioned rules
+  alt Urgent red flag
+    H-->>P: Advice to see a doctor today
+    H->>T: Same-day call alert
+  else Everything else
+    H->>T: Add to review queue
+  end
+  T->>H: Review, call parent if needed, sign
+  H-->>P: Report released with next step
+</pre>
+    </div>
+    <div class="table-box"><table>
+      <thead><tr><th>Part</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>Instrument library</td><td>Each questionnaire stored as a versioned definition: items, answers, Hindi and English text, age band, licence reference.</td></tr>
+        <tr><td>Scoring rules</td><td>Exactly as each manual says; tested against hand-scored examples; a change makes a new version.</td></tr>
+        <tr><td>Review queue</td><td>Sorted by urgency; target review within 2 working days; red results need a second reviewer.</td></tr>
+        <tr><td>Report</td><td>Traffic light per area, plain words, next step, home activities, reviewer's name and registration.</td></tr>
+        <tr><td>Progress link</td><td>Results become the child's baseline; HopCheck repeats every 3 months for comparison.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <h2>Privacy and safety</h2>
+    <div class="table-box"><table>
+      <thead><tr><th>Rule</th><th>How the system meets it</th></tr></thead>
+      <tbody>
+        <tr><td>Parental consent before any child data (DPDP Act 2023 and Rules 2025)</td><td>Consent screen at sign-up and before HopCheck; version and time stored; withdraw anytime in settings.</td></tr>
+        <tr><td>No tracking or targeted ads aimed at children</td><td>No ad pixels or third-party trackers on portal and HopCheck pages; analytics without personal data.</td></tr>
+        <tr><td>Only the right people see a child's record</td><td>Row-level security; therapists see assigned children only; every access written to the audit log.</td></tr>
+        <tr><td>Photos and reports kept private</td><td>Private storage; links that expire in minutes; photos never public.</td></tr>
+        <tr><td>Data stays in India</td><td>Database and storage in the Mumbai region; encrypted at rest and in transit; daily backups.</td></tr>
+        <tr><td>Parents control their data</td><td>Download all data; delete account; correction requests handled by admin.</td></tr>
+        <tr><td>Screening, not diagnosis</td><td>No automated diagnosis; every recommendation signed by a qualified therapist.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <h2>Build plan</h2>
+    <div class="phases">
+      <div class="phase"><span class="tag">Phase 1 · weeks 1–4</span><h3>Website and sign-in</h3><ul><li>Chosen website design (Site A or B)</li><li>Google sign-in, parent and child profiles with photos</li><li>Hoppy chat with FAQs</li></ul></div>
+      <div class="phase"><span class="tag">Phase 2 · weeks 5–8</span><h3>Booking and payments</h3><ul><li>Availability, slots left, holds</li><li>Single session and 15-day pack</li><li>UPI payments, invoices, WhatsApp confirmations</li></ul></div>
+      <div class="phase"><span class="tag">Phase 3 · weeks 9–12</span><h3>Therapist portal and progress</h3><ul><li>Session notes, goals, improvement levels</li><li>Care tips, reports, parent progress charts</li></ul></div>
+      <div class="phase"><span class="tag">Phase 4 · weeks 13–16</span><h3>HopCheck</h3><ul><li>Concern check and review queue</li><li>Licensed questionnaires added as licences arrive</li><li>Pilot accuracy study begins</li></ul></div>
+    </div>
+    <p class="muted">The project report budgets ₹3 lakh and about 8 weeks for the "digital front door". Phases 1 and 2 fit that; phases 3 and 4 extend it.</p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Hop to Heal · 403 B, Pocket 2, Mayur Vihar Phase 1, Delhi 110091 · Spot early. Heal early. One hop at a time.</div></footer>

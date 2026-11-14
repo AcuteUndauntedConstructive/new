@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Pay online</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.pop{transform-box:fill-box;transform-origin:center;animation:ppop 1.8s ease-in-out infinite}
+.fall{animation:pfall 2.4s ease-in infinite}
+.f2{animation-delay:.6s}.f3{animation-delay:1.2s}
+@keyframes ppop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes pfall{0%{transform:translateY(-20px);opacity:0}15%{opacity:1}100%{transform:translateY(60px);opacity:0}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #F2F8EE; color: #352724; font-family: 'Nunito', system-ui, sans-serif; font-size: 16px; line-height: 1.5">
+
+<div style="padding: 14px 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #E5DDD2">
+<img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 48px; width: auto">
+<div style="flex: 1; min-width: 0">
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">Pay online</div>
+<div style="font-size: 13px; color: #6B5A53; display: flex; align-items: center; gap: 4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Secure payment</div>
+</div>
+<a href="Main.dc.html" aria-label="Close and go home" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #E5DDD2; background: #FFFFFF; color: #352724; display: flex; align-items: center; justify-content: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+</div>
+
+<sc-if value="{{notPaid}}" hint-placeholder-val="{{ true }}">
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 16px 18px; display: flex; flex-direction: column; gap: 18px">
+<div style="background: #FFE9C2; border-radius: 18px; padding: 12px 14px; display: flex; align-items: center; gap: 10px">
+<div style="width: 40px; height: 40px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#352724" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></div>
+<div style="flex: 1; min-width: 0; font-size: 15px"><div style="font-weight: 800">Paying for [Child's name]</div><div style="color: #6B5A53; font-size: 13px">[Parent's name] · Mayur Vihar Phase 1</div></div>
+<a href="Book.dc.html" style="font-size: 13px; font-weight: 800">Not you?</a>
+</div>
+
+<div role="radiogroup" aria-labelledby="what-label" style="display: flex; flex-direction: column; gap: 8px">
+<div id="what-label" style="font-weight: 800; font-size: 15px">What are you paying for?</div>
+<sc-for list="{{items}}" as="it" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{it.checked}}" onClick="{{it.pick}}" style="font: inherit; text-align: left; padding: 12px 14px; border-radius: 18px; cursor: pointer; border: 2px solid {{it.border}}; background: {{it.bg}}; color: #352724; display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; box-sizing: border-box; border: 2px solid #352724; display: flex; align-items: center; justify-content: center; flex: none"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{it.dot}}"></span></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 800; display: flex; align-items: center; gap: 6px; flex-wrap: wrap">{{it.title}}<sc-if value="{{it.hasBadge}}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 800; background: #2E7D4F; color: #FFFFFF; padding: 1px 8px; border-radius: 999px">{{it.badge}}</span></sc-if></span><span style="font-size: 13px; color: #6B5A53">{{it.sub}}</span></span>
+<span style="font-weight: 800">{{it.price}}</span>
+</button>
+</sc-for>
+</div>
+
+<div role="radiogroup" aria-labelledby="how-label" style="display: flex; flex-direction: column; gap: 8px">
+<div id="how-label" style="font-weight: 800; font-size: 15px">Pay with</div>
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{m.checked}}" onClick="{{m.pick}}" style="font: inherit; text-align: left; padding: 12px 14px; border-radius: 18px; cursor: pointer; border: 2px solid {{m.border}}; background: {{m.bg}}; color: #352724; display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; box-sizing: border-box; border: 2px solid #352724; display: flex; align-items: center; justify-content: center; flex: none"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{m.dot}}"></span></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 800">{{m.title}}</span><span style="font-size: 13px; color: #6B5A53">{{m.sub}}</span></span>
+</button>
+</sc-for>
+<sc-if value="{{isUPI}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{apps}}" as="a" hint-placeholder-count="4">
+<button type="button" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="font: inherit; font-weight: 800; font-size: 14px; height: 48px; border-radius: 14px; cursor: pointer; border: 2px solid {{a.border}}; background: {{a.bg}}; color: #352724">{{a.label}}</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="code" style="font-weight: 800; font-size: 15px">Sponsored slot or coupon code <span style="font-weight: 600; color: #6B5A53">(optional)</span></label>
+<input id="code" type="text" value="{{code}}" onInput="{{onCode}}" autocomplete="off" style="font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724; text-transform: uppercase">
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: #6B5A53">
+<span style="display: inline-flex; align-items: center; gap: 4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Instant WhatsApp receipt</span>
+<span style="display: inline-flex; align-items: center; gap: 4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>No hidden charges</span>
+<a href="Main.dc.html">Refund &amp; cancellation policy</a>
+</div>
+</div>
+
+<div style="padding: 12px 18px 22px; background: #FFFFFF; border-top: 1px solid #E5DDD2; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-weight: 700; color: #6B5A53">Total</span><span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px; line-height: 1">{{total}}</span></div>
+<button type="button" onClick="{{payNow}}" style="font: inherit; width: 100%; height: 56px; border-radius: 999px; font-weight: 800; font-size: 18px; cursor: pointer; border: 2px solid #352724; background: #FBA826; color: #352724; display: flex; align-items: center; justify-content: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>{{payLabel}}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{paid}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px">
+<svg width="140" height="140" viewBox="-40 -30 350 360" role="img" aria-label="Hoppy celebrating" style="overflow: visible">
+<g class="fall"><rect x="-20" y="20" width="12" height="12" rx="3" fill="#F46A39"></rect></g>
+<g class="fall f2"><circle cx="290" cy="40" r="7" fill="#2E7D4F"></circle></g>
+<g class="fall f3"><rect x="40" y="-10" width="10" height="10" rx="2" fill="#FBA826"></rect></g>
+<g class="pop">
+<g fill="none" stroke="#FBA826" stroke-width="20" stroke-linecap="round"><line x1="2" y1="58" x2="30" y2="84"></line><line x1="123" y1="0" x2="123" y2="44"></line><line x1="266" y1="46" x2="242" y2="76"></line></g>
+<path d="M132 86 C177 86 215 118 215 163 C215 215 178 297 132 297 C86 297 49 215 49 163 C49 118 87 86 132 86 Z" fill="#FBA826"></path>
+<ellipse cx="84" cy="196" rx="13" ry="8" fill="#F46A39"></ellipse><ellipse cx="179" cy="195" rx="13" ry="8" fill="#F46A39"></ellipse>
+<g fill="none" stroke="#352724" stroke-width="5" stroke-linecap="round"><path d="M89 176 Q101 162 113 176"></path><path d="M149 175 Q161 161 173 175"></path></g>
+<path d="M110 196 Q132 238 154 196 Z" fill="#352724" stroke="#352724" stroke-width="4" stroke-linejoin="round"></path>
+<path d="M121 214 Q132 222 143 214 Q138 228 132 228 Q126 228 121 214 Z" fill="#F46A39"></path>
+</g>
+</svg>
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">Payment received</h1>
+<p style="margin: 0; color: #6B5A53">Thank you! Your receipt is on its way to WhatsApp.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 22px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Paid for</span><span style="font-weight: 800; text-align: right">{{itemTitle}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Amount</span><span style="font-weight: 800">{{total}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Method</span><span style="font-weight: 800">{{methodTitle}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Receipt no.</span><span style="font-weight: 800">[RECEIPT NO.]</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<a href="Pay.dc.html" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 2px solid #352724; border-radius: 16px; padding: 12px; font-weight: 800; font-size: 15px; text-align: center">Download invoice (PDF)</a>
+<a href="Book.dc.html" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 2px solid #352724; border-radius: 16px; padding: 12px; font-weight: 800; font-size: 15px; text-align: center">Book the next session</a>
+</div>
+</div>
+<div style="padding: 12px 18px 22px; border-top: 1px solid #E5DDD2">
+<a href="Main.dc.html" style="display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: 56px; border-radius: 999px; font-weight: 800; font-size: 18px; text-decoration: none; border: 2px solid #352724; background: #FBA826; color: #352724">Back to home</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"showSuccess":{"editor":"boolean","default":false,"section":"Preview"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { item: 'session', method: 'upi', app: 'gpay', code: '', paid: null };
+  }
+  renderVals() {
+    const st = this.state;
+    const paid = st.paid ?? (this.props.showSuccess ?? false);
+    const on = { border: '#352724', bg: '#FFE9C2', dot: '#352724' };
+    const off = { border: '#E5DDD2', bg: '#FFFFFF', dot: 'transparent' };
+    const itemList = [
+      { id: 'assess', title: 'First session', sub: '1 hour · play-based assessment', price: '₹800', badge: '' },
+      { id: 'session', title: 'Therapy session', sub: '1 hour · single session', price: '₹800', badge: '' },
+      { id: 'package', title: '15-day pack', sub: '15 sessions, one a day · 20% off', price: '₹9,600', badge: 'Save ₹2,400' },
+      { id: 'invoice', title: 'Pending invoice', sub: '#[INVOICE NO.] · due [date]', price: '[₹ AMOUNT]', badge: '' }
+    ];
+    const items = itemList.map((x) => {
+      const s = st.item === x.id ? on : off;
+      return { ...x, hasBadge: !!x.badge, checked: st.item === x.id ? 'true' : 'false', border: s.border, bg: s.bg, dot: s.dot, pick: () => this.setState({ item: x.id }) };
+    });
+    const methodList = [
+      { id: 'upi', title: 'UPI', sub: 'Fastest. Opens your UPI app directly.' },
+      { id: 'card', title: 'Debit or credit card', sub: 'Visa, Mastercard, RuPay' },
+      { id: 'net', title: 'Net banking', sub: 'All major Indian banks' }
+    ];
+    const methods = methodList.map((x) => {
+      const s = st.method === x.id ? on : off;
+      return { ...x, checked: st.method === x.id ? 'true' : 'false', border: s.border, bg: s.bg, dot: s.dot, pick: () => this.setState({ method: x.id }) };
+    });
+    const appList = [['gpay', 'Google Pay'], ['phonepe', 'PhonePe'], ['paytm', 'Paytm'], ['other', 'Other UPI app']];
+    const apps = appList.map(([id, label]) => {
+      const sel = st.app === id;
+      return { label, pressed: sel ? 'true' : 'false', border: sel ? '#352724' : '#E5DDD2', bg: sel ? '#FBA826' : '#FFFFFF', pick: () => this.setState({ app: id }) };
+    });
+    const item = itemList.find((x) => x.id === st.item);
+    const method = methodList.find((x) => x.id === st.method);
+    const known = item.price.indexOf('[') === -1;
+    return {
+      paid, notPaid: !paid,
+      items, methods, apps, isUPI: st.method === 'upi',
+      code: st.code, onCode: (e) => this.setState({ code: e.target.value }),
+      total: item.price,
+      payLabel: known ? 'Pay ' + item.price : 'Pay now',
+      payNow: () => this.setState({ paid: true }),
+      itemTitle: item.title,
+      methodTitle: st.method === 'upi' ? 'UPI · ' + appList.find((a) => a[0] === st.app)[1] : method.title
+    };
+  }
+}
+</script>
+</body>
+</html>

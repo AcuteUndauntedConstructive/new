@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Parent dashboard (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.08;margin:0;text-wrap:balance}
+.lbl{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B4471C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:16px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:10px 18px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.lift{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}.lift:hover{transform:translateY(-6px)}
+.in{animation:in .5s cubic-bezier(.34,1.4,.64,1) both}.i2{animation-delay:.08s}.i3{animation-delay:.16s}.i4{animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(24px)}}
+.ring{transform:rotate(-90deg);transform-origin:50% 50%}
+.ringfill{animation:ring 1.2s cubic-bezier(.34,1.2,.64,1) both}
+@keyframes ring{from{stroke-dashoffset:100}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 17px; line-height: 1.55; min-height: 2400px">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<div style="display: flex; align-items: center; gap: 16px"><a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 54px; width: auto"></a><span style="font-weight: 800; font-size: 14px; background: #FFE9C2; padding: 4px 12px; border-radius: 999px">Parent portal</span></div>
+<nav aria-label="Portal" style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 700"><a href="A-Parent.dc.html" aria-current="page" style="color: #B4471C; text-decoration: none">Dashboard</a><a href="A-Book.dc.html" style="color: #352724; text-decoration: none">Book</a><a href="A-Pay.dc.html" style="color: #352724; text-decoration: none">Payments</a></nav>
+<div style="display: flex; align-items: center; gap: 8px; font-weight: 800"><span style="width: 40px; height: 40px; border-radius: 50%; background: #FFE9C2; border: 2px solid #FBA826; display: inline-flex; align-items: center; justify-content: center; font-size: 14px">PS</span>Priya</div>
+</div>
+</header>
+
+<main class="wrap" style="padding-top: 32px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div><p class="lbl" style="margin: 0">Example account</p><h1 class="disp" style="font-size: 52px">Good evening, Priya</h1><p style="margin: 4px 0 0; color: #6B5A53">Aarav has a session tomorrow at 11:00 am. Meera's new progress note is ready.</p></div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><a class="btn sun" href="A-Book.dc.html">Book a session</a><a class="btn white" href="A-HopCheck.dc.html">Take HopCheck</a></div>
+</div>
+
+<div role="tablist" aria-label="Sections" style="display: inline-flex; align-self: flex-start; background: #FFFFFF; border: 2px solid #352724; border-radius: 999px; padding: 5px; gap: 4px">
+<button type="button" role="tab" aria-selected="{{parentSel}}" onClick="{{showParent}}" style="font: inherit; font-weight: 800; font-size: 17px; border: 0; border-radius: 999px; padding: 10px 26px; cursor: pointer; background: {{parentBg}}; color: #352724">Parent</button>
+<button type="button" role="tab" aria-selected="{{kidsSel}}" onClick="{{showKids}}" style="font: inherit; font-weight: 800; font-size: 17px; border: 0; border-radius: 999px; padding: 10px 26px; cursor: pointer; background: {{kidsBg}}; color: #352724">Children (2)</button>
+</div>
+
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; align-items: start">
+
+<section class="card in" aria-labelledby="me-h" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="me-h" class="disp" style="font-size: 26px">My profile</h2>
+<div style="display: flex; align-items: center; gap: 18px">
+<div style="position: relative; flex: none">
+<div role="img" aria-label="Profile photo placeholder" style="width: 104px; height: 104px; border-radius: 50%; background: #FFE9C2; border: 5px solid #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 34px">PS</div>
+<button type="button" aria-label="Change photo" style="position: absolute; right: -4px; bottom: -4px; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #352724; background: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#352724" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></button>
+</div>
+<div style="line-height: 1.45"><strong class="disp" style="font-size: 24px">Priya Sharma</strong><div style="font-size: 15px; color: #6B5A53">priya.sharma@gmail.com · via Google</div><div style="font-size: 15px; color: #6B5A53">WhatsApp +91 98XXX XXX21 · English</div></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="btn white" style="font-size: 15px">Edit profile</button><button type="button" class="btn white" style="font-size: 15px">Add second parent</button></div>
+</section>
+
+<section class="card in i2" aria-labelledby="pack-h" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="pack-h" class="disp" style="font-size: 26px">15-day pack</h2>
+<div style="display: flex; align-items: center; gap: 20px">
+<svg width="120" height="120" viewBox="0 0 42 42" role="img" aria-label="6 of 15 sessions used"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#F2F8EE" stroke-width="5"></circle><circle class="ring ringfill" cx="21" cy="21" r="15.9155" fill="none" stroke="#B4471C" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="40 100" stroke-dashoffset="0"></circle><text x="21" y="20" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="10" fill="#352724">9</text><text x="21" y="27" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="3.6" fill="#6B5A53">sessions left</text></svg>
+<div style="line-height: 1.5"><strong>Aarav · Speech therapy</strong><div style="font-size: 15px; color: #6B5A53">6 of 15 sessions done · daily 11:00 am</div><div style="font-size: 15px; color: #6B5A53">Last session Tue 17 Nov</div><div style="font-size: 15px; font-weight: 800; color: #2E7D4F">You saved ₹2,400</div></div>
+</div>
+<a class="btn white" href="A-Book.dc.html" style="align-self: flex-start; font-size: 15px">Manage pack days</a>
+</section>
+
+<section class="card in i3" aria-labelledby="next-h" style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="next-h" class="disp" style="font-size: 26px">Upcoming sessions</h2>
+<div style="display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #E5DDD2"><div><strong>Aarav · Speech</strong><div style="font-size: 14px; color: #6B5A53">with Jiya Gupta · pack 7/15</div></div><div style="text-align: right"><strong>Wed 4 Nov</strong><div style="font-size: 14px">11:00 am</div></div></div>
+<div style="display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #E5DDD2"><div><strong>Meera · Occupational therapy</strong><div style="font-size: 14px; color: #6B5A53">with Dr. Heena Gupta · single</div></div><div style="text-align: right"><strong>Sat 7 Nov</strong><div style="font-size: 14px">4:00 pm</div></div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px"><a class="btn white" href="A-Book.dc.html" style="font-size: 15px">Reschedule</a><a class="btn white" href="A-Book.dc.html" style="font-size: 15px">Add to calendar</a></div>
+</section>
+
+<section class="card in i2" aria-labelledby="tips-h" style="padding: 24px; display: flex; flex-direction: column; gap: 12px; grid-column: 1 / -1">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="tips-h" class="disp" style="font-size: 26px">Care suggestions for you</h2><span style="font-size: 14px; color: #6B5A53">Written by your children's therapists</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px">
+<article class="lift" style="background: #FFE9C2; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span class="lbl">For Aarav · speech</span><strong class="disp" style="font-size: 20px">Wait five seconds</strong><span style="font-size: 15px">When Aarav points, name the thing, then pause for 5 seconds so he can try the word himself.</span><span style="font-size: 13px; color: #6B5A53">Jiya Gupta · 2 days ago</span></article>
+<article class="lift" style="background: #E2F0DA; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span class="lbl" style="color: #2E7D4F">For Meera · handwriting</span><strong class="disp" style="font-size: 20px">Play-dough before homework</strong><span style="font-size: 15px">Five minutes of squeezing and rolling warms up hand muscles before writing.</span><span style="font-size: 13px; color: #6B5A53">Dr. Heena Gupta · last week</span></article>
+<article class="lift" style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span class="lbl">Daily routine</span><strong class="disp" style="font-size: 20px">A picture timetable</strong><span style="font-size: 15px">Pictures for wake up, bath, breakfast and school help both children know what's next.</span><span style="font-size: 13px; color: #6B5A53">Dr. Heena Gupta · last week</span></article>
+<article class="lift" style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span class="lbl">For you</span><strong class="disp" style="font-size: 20px">Rest counts too</strong><span style="font-size: 15px">Small breaks for yourself help you stay patient. Ask us about our monthly parent group.</span><span style="font-size: 13px; color: #6B5A53">Hop to Heal team</span></article>
+</div>
+</section>
+
+<section class="card in i3" aria-labelledby="payh" style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="payh" class="disp" style="font-size: 26px">Payments</h2>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #E5DDD2"><div><strong>15-day pack · Aarav</strong><div style="font-size: 14px; color: #6B5A53">29 Oct · UPI · Google Pay</div></div><div style="text-align: right"><strong>₹9,600</strong><div><a href="A-Pay.dc.html" style="font-size: 14px">Invoice</a></div></div></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #E5DDD2"><div><strong>Session · Meera</strong><div style="font-size: 14px; color: #6B5A53">24 Oct · UPI · PhonePe</div></div><div style="text-align: right"><strong>₹800</strong><div><a href="A-Pay.dc.html" style="font-size: 14px">Invoice</a></div></div></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0"><div><strong>Session · Meera</strong><div style="font-size: 14px; color: #6B5A53">17 Oct · Card</div></div><div style="text-align: right"><strong>₹800</strong><div><a href="A-Pay.dc.html" style="font-size: 14px">Invoice</a></div></div></div>
+</section>
+
+<section class="card in i4" aria-labelledby="privacy-h" style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="privacy-h" class="disp" style="font-size: 26px">Privacy &amp; settings</h2>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span>Consent for therapy records</span><strong style="color: #2E7D4F">Given · 12 Oct</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span>WhatsApp reminders</span><strong style="color: #2E7D4F">On</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span>Language</span><strong>English</strong></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px"><button type="button" class="btn white" style="font-size: 14px">Download my data</button><button type="button" class="btn white" style="font-size: 14px">Withdraw consent</button></div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isKids}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; align-items: start">
+<article class="card in lift" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 16px"><div role="img" aria-label="Aarav's photo placeholder" style="width: 96px; height: 96px; border-radius: 28px; background: #FFE9C2; border: 4px solid #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 38px">A</div><div><h2 class="disp" style="font-size: 30px">Aarav</h2><div style="font-size: 15px; color: #6B5A53">4 years · Speech therapy · 15-day pack</div><div style="font-size: 15px; color: #6B5A53">Therapist: Jiya Gupta</div></div></div>
+<div style="background: #F2F8EE; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-weight: 800"><span>Overall progress</span><span style="color: #B4471C">Making progress</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px" aria-hidden="true"><span style="height: 12px; border-radius: 4px; background: #B4471C"></span><span style="height: 12px; border-radius: 4px; background: #B4471C"></span><span style="height: 12px; border-radius: 4px; background: #E5DDD2"></span><span style="height: 12px; border-radius: 4px; background: #E5DDD2"></span><span style="height: 12px; border-radius: 4px; background: #E5DDD2"></span></div>
+<div style="font-size: 14px; color: #6B5A53">2 of 3 goals improving · next review 30 Nov</div>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 15px"><span>Next session</span><strong>Wed 4 Nov, 11:00 am</strong></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><a class="btn sun" href="A-Child.dc.html">View progress</a><a class="btn white" href="A-Report.dc.html">Reports</a><a class="btn white" href="A-Book.dc.html">Book</a></div>
+</article>
+<article class="card in i2 lift" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 16px"><div role="img" aria-label="Meera's photo placeholder" style="width: 96px; height: 96px; border-radius: 28px; background: #E2F0DA; border: 4px solid #2E7D4F; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 38px">M</div><div><h2 class="disp" style="font-size: 30px">Meera</h2><div style="font-size: 15px; color: #6B5A53">9 years · Occupational therapy</div><div style="font-size: 15px; color: #6B5A53">Therapist: Dr. Heena Gupta</div></div></div>
+<div style="background: #F2F8EE; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-weight: 800"><span>Overall progress</span><span style="color: #2E7D4F">Goal reached</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px" aria-hidden="true"><span style="height: 12px; border-radius: 4px; background: #B4471C"></span><span style="height: 12px; border-radius: 4px; background: #B4471C"></span><span style="height: 12px; border-radius: 4px; background: #B4471C"></span><span style="height: 12px; border-radius: 4px; background: #E5DDD2"></span><span style="height: 12px; border-radius: 4px; background: #E5DDD2"></span></div>
+<div style="font-size: 14px; color: #6B5A53">New note from Dr. Heena · 1 new care tip</div>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 15px"><span>Next session</span><strong>Sat 7 Nov, 4:00 pm</strong></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><a class="btn sun" href="A-Child.dc.html">View progress</a><a class="btn white" href="A-Report.dc.html">Reports</a><a class="btn white" href="A-Book.dc.html">Book</a></div>
+</article>
+<section class="card in i3" aria-labelledby="add-h" style="padding: 24px; display: flex; flex-direction: column; gap: 12px; border: 2px dashed #D9CFC2; background: transparent">
+<h2 id="add-h" class="disp" style="font-size: 26px">Add a child</h2>
+<div style="display: flex; gap: 14px; align-items: center"><div role="img" aria-label="Photo upload area" style="width: 88px; height: 88px; border-radius: 26px; border: 2px dashed #B4471C; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; font-weight: 800; color: #B4471C; flex: none">Add photo</div><span style="font-size: 14px; color: #6B5A53">A photo helps therapists greet your child by name. Only you and their therapist can see it.</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="kn" style="font-weight: 800; font-size: 14px">First name</label><input id="kn" type="text" style="font: inherit; padding: 10px 12px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724"></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="kd" style="font-weight: 800; font-size: 14px">Date of birth</label><input id="kd" type="date" style="font: inherit; padding: 10px 12px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724"></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="ks" style="font-weight: 800; font-size: 14px">School (optional)</label><input id="ks" type="text" style="font: inherit; padding: 10px 12px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724"></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="kl" style="font-weight: 800; font-size: 14px">Languages at home</label><input id="kl" type="text" placeholder="Hindi, English" style="font: inherit; padding: 10px 12px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724"></div>
+</div>
+<button type="button" class="btn sun" style="align-self: flex-start">Save child</button>
+</section>
+</div>
+</sc-if>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"section":{"editor":"enum","options":["Parent","Children"],"default":"Parent","section":"Preview"},"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: null };
+  }
+  renderVals() {
+    const tab = this.state.tab ?? (this.props.section ?? 'Parent');
+    const p = tab === 'Parent';
+    return {
+      isParent: p, isKids: !p,
+      parentSel: p ? 'true' : 'false', kidsSel: p ? 'false' : 'true',
+      parentBg: p ? '#FBA826' : 'transparent', kidsBg: p ? 'transparent' : '#FBA826',
+      showParent: () => this.setState({ tab: 'Parent' }),
+      showKids: () => this.setState({ tab: 'Children' })
+    };
+  }
+}
+</script>
+</body>
+</html>

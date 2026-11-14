@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Services and pricing (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.05;margin:0;text-wrap:balance}
+.eyebrow{margin:0;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#B4471C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:13px 24px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}.ink{background:#352724;color:#FFFFFF}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.navlink{color:#352724;text-decoration:none;font-weight:700;font-size:16px}.navlink:hover{color:#B4471C}
+.prog{position:fixed;left:0;top:0;height:5px;width:100%;background:#FBA826;transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.svc{display:grid;grid-template-columns:110px minmax(0,1fr) minmax(0,1fr);gap:20px 32px;padding:32px 0;border-top:1px solid #E5DDD2}
+.qa summary{list-style:none}
+@supports (animation-timeline: view()){
+.prog{animation:grow linear both;animation-timeline:scroll(root)}
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 85%}
+.rv-pop{animation:pop linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+.slide{animation:slide linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+}
+@keyframes grow{to{transform:scaleX(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(48px)}}
+@keyframes pop{from{opacity:0;transform:scale(.82)}}
+@keyframes slide{from{opacity:0;transform:translateX(-80px)}}
+@media (max-width:760px){.svc{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<div class="prog" aria-hidden="true"></div>
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(242,248,238,.94); backdrop-filter: blur(8px); border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 62px; width: auto"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 24px">
+<a class="navlink" href="A-Home.dc.html">Home</a>
+<a class="navlink" href="A-Services.dc.html" aria-current="page" style="color: #B4471C">Services &amp; pricing</a>
+<a class="navlink" href="A-HopCheck.dc.html">HopCheck</a>
+<a class="navlink" href="A-About.dc.html">About us</a>
+</nav>
+<div style="display: flex; gap: 10px; align-items: center">
+<a class="btn white" href="A-Login.dc.html" style="padding: 9px 18px; font-size: 15px">Sign in</a>
+<a class="btn sun" href="A-Book.dc.html" style="padding: 9px 18px; font-size: 15px">Book a session</a>
+</div>
+</div>
+</header>
+
+<main>
+<section class="wrap" style="padding-top: 64px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 18px">
+<p class="eyebrow">Services &amp; pricing</p>
+<h1 class="disp" style="font-size: 72px; max-width: 900px">Every therapy, one honest price</h1>
+<p style="margin: 0; font-size: 21px; color: #6B5A53; max-width: 720px">Each session is one hour with a qualified therapist and costs ₹800, whatever the therapy. Need daily sessions? The 15-day pack saves 20%.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<span class="card" style="padding: 8px 16px; border-radius: 999px; font-weight: 800">₹800 · 1 hour</span>
+<span class="card" style="padding: 8px 16px; border-radius: 999px; font-weight: 800">15-day pack · ₹9,600</span>
+<span class="card" style="padding: 8px 16px; border-radius: 999px; font-weight: 800">Ages 2–16</span>
+<span class="card" style="padding: 8px 16px; border-radius: 999px; font-weight: 800">Open 7 days</span>
+</div>
+</section>
+
+<section aria-label="Our services" class="wrap" style="padding-bottom: 48px">
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">01</div><div><h2 class="disp" style="font-size: 34px">Occupational therapy</h2><p style="margin: 8px 0 0; color: #6B5A53">Builds the skills for everyday life: dressing, eating, holding a pencil, playing and joining in at school.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> finds buttons, cutting or handwriting hard; tires quickly; avoids messy play. <br><strong>Ages:</strong> 2–16</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">02</div><div><h2 class="disp" style="font-size: 34px">Speech therapy</h2><p style="margin: 8px 0 0; color: #6B5A53">Helps your child talk, understand others and be understood, through games, songs and everyday words.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> uses few words for their age; is hard to understand; struggles to follow instructions. <br><strong>Ages:</strong> 2–16</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">03</div><div><h2 class="disp" style="font-size: 34px">Sensory integration</h2><p style="margin: 8px 0 0; color: #6B5A53">Swings, textures and movement games that help the body make sense of sound, touch and motion.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> is very upset by noise, clothes or food textures; constantly seeks spinning or crashing. <br><strong>Ages:</strong> 2–14</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">04</div><div><h2 class="disp" style="font-size: 34px">Early intervention</h2><p style="margin: 8px 0 0; color: #6B5A53">Play-based support from the first signs of delay, in the years when the brain changes fastest.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> is behind on milestones like walking, talking or playing with others. <br><strong>Ages:</strong> 2–6</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">05</div><div><h2 class="disp" style="font-size: 34px">Special education</h2><p style="margin: 8px 0 0; color: #6B5A53">One-to-one teaching in reading, writing, numbers and learning skills, at your child's pace.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> struggles with reading, spelling or maths despite real effort. <br><strong>Ages:</strong> 4–16</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">06</div><div><h2 class="disp" style="font-size: 34px">Behaviour support &amp; ABA</h2><p style="margin: 8px 0 0; color: #6B5A53">Positive, structured routines that make daily life calmer for the whole family.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> has frequent big tantrums; finds transitions hard; struggles to wait or share. <br><strong>Ages:</strong> 2–16</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">07</div><div><h2 class="disp" style="font-size: 34px">Counselling &amp; parent training</h2><p style="margin: 8px 0 0; color: #6B5A53">Time for you: practical strategies, so therapy keeps working at home between sessions.</p></div><div style="font-size: 16px"><strong>Good for:</strong> any parent who wants a plan for home, routines and school conversations. <br><strong>Ages:</strong> parents of 2–16s</div></article>
+<article class="svc rv"><div class="disp" style="font-size: 72px; color: #FBA826">08</div><div><h2 class="disp" style="font-size: 34px">Group therapy &amp; school readiness</h2><p style="margin: 8px 0 0; color: #6B5A53">Small groups for turn-taking, friendships and the skills a classroom needs.</p></div><div style="font-size: 16px"><strong>May help if your child:</strong> finds it hard to play with others or is starting school soon. <br><strong>Ages:</strong> 3–10</div></article>
+</section>
+
+<section id="pricing" aria-labelledby="pricing-h" style="background: #FFFFFF; border-top: 1px solid #E5DDD2; border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px">
+<div style="text-align: center"><p class="eyebrow rv">Pricing</p><h2 id="pricing-h" class="disp rv" style="font-size: 52px">Pay per session, or save with the pack</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<div class="card slide" style="padding: 30px; display: flex; flex-direction: column; gap: 10px; background: #F2F8EE">
+<p class="eyebrow" style="color: #6B5A53">Single session</p><div class="disp" style="font-size: 68px">₹800</div><div style="font-weight: 800">1 hour · any therapy</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px; color: #6B5A53; display: flex; flex-direction: column; gap: 4px"><li>Book any open slot, any day</li><li>Pay online by UPI or card</li><li>First visit can be paid at the centre</li></ul>
+<a class="btn white" href="A-Book.dc.html" style="margin-top: 6px">Book a session</a>
+</div>
+<div class="slide" style="padding: 30px; display: flex; flex-direction: column; gap: 10px; border-radius: 24px; background: #352724; color: #F2F8EE; position: relative">
+<span style="position: absolute; top: -14px; right: 22px; background: #FBA826; color: #352724; font-weight: 800; font-size: 14px; padding: 4px 14px; border-radius: 999px">20% off</span>
+<p class="eyebrow" style="color: #FBA826">15-day pack</p><div class="disp" style="font-size: 68px">₹9,600</div><div style="font-weight: 800">15 one-hour sessions · one a day</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px; color: #D9CFC6; display: flex; flex-direction: column; gap: 4px"><li>₹640 a session instead of ₹800</li><li>You save ₹2,400</li><li>Pick a daily time; swap a day's time if it's full</li></ul>
+<a class="btn sun" href="A-Book.dc.html" style="margin-top: 6px">Book the pack</a>
+</div>
+</div>
+
+<div class="card rv" style="padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; background: #FFE9C2; border-color: #FBA826">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 8px">
+<h3 class="disp" style="font-size: 28px">Which is cheaper for you?</h3>
+<p style="margin: 0; font-size: 16px">Choose how many sessions you expect in the next 15 days.</p>
+<div style="display: flex; align-items: center; gap: 14px; margin-top: 6px">
+<button type="button" onClick="{{less}}" aria-label="Fewer sessions" class="btn white" style="width: 52px; height: 52px; padding: 0; font-size: 24px">−</button>
+<div style="min-width: 120px; text-align: center"><div class="disp" style="font-size: 48px" aria-live="polite">{{count}}</div><div style="font-size: 14px; font-weight: 700">sessions</div></div>
+<button type="button" onClick="{{more}}" aria-label="More sessions" class="btn white" style="width: 52px; height: 52px; padding: 0; font-size: 24px">+</button>
+</div>
+</div>
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-size: 18px"><span>Paying per session</span><strong>{{singleTotal}}</strong></div>
+<div style="display: flex; justify-content: space-between; font-size: 18px"><span>15-day pack</span><strong>₹9,600</strong></div>
+<div style="border-top: 2px dashed #352724; padding-top: 10px; font-weight: 800; font-size: 19px">{{advice}}</div>
+</div>
+</div>
+
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><strong class="disp" style="font-size: 20px">How the pack works</strong><span style="font-size: 16px; color: #6B5A53">Pick a start date and a daily time. We check all 15 days and show any day where that time is full, so you can choose another time for that day.</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><strong class="disp" style="font-size: 20px">Paying</strong><span style="font-size: 16px; color: #6B5A53">UPI (Google Pay, PhonePe, Paytm), cards or net banking. Instant receipt on WhatsApp and in your portal.</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><strong class="disp" style="font-size: 20px">Missed or moved days</strong><span style="font-size: 16px; color: #6B5A53">[Your policy: e.g. reschedule free up to 24 hours before; what happens to a missed pack day.]</span></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="faq-h" class="wrap" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 20px; max-width: 900px">
+<h2 id="faq-h" class="disp rv" style="font-size: 48px">Questions parents ask</h2>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="6">
+<div class="card rv" style="border-radius: 20px; overflow: hidden">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.expanded}}" style="font: inherit; width: 100%; text-align: left; background: transparent; border: 0; padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #352724"><span class="disp" style="font-size: 21px">{{f.q}}</span><span class="disp" aria-hidden="true" style="font-size: 26px; color: #B4471C">{{f.sign}}</span></button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 22px 20px; color: #6B5A53; font-size: 17px">{{f.a}}</p></sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="padding: 0 24px 80px">
+<div class="rv-pop" style="max-width: 1152px; margin: 0 auto; background: #FBA826; border-radius: 40px; padding: 48px 40px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+<h2 class="disp" style="font-size: 44px; flex: 1 1 380px">Not sure which therapy? Start with HopCheck.</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn ink" href="A-HopCheck.dc.html">Free HopCheck</a><a class="btn white" href="A-Book.dc.html">Book a session</a></div>
+</div>
+</section>
+</main>
+
+<footer style="background: #352724; color: #E9E1DA">
+<div class="wrap" style="padding-top: 36px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 15px">
+<span>© 2026 Hop to Heal · 403 B, Pocket 2, Mayur Vihar Phase 1, Delhi 110091</span><span>+91 95994 33591 · hoptoheal@gmail.com</span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { count: 10, open: 0 };
+  }
+  renderVals() {
+    const n = this.state.count;
+    const single = n * 800;
+    const fmt = (v) => '₹' + v.toLocaleString('en-IN');
+    const faqList = [
+      ['What happens in the first session?', 'Your therapist plays with your child for an hour while watching how they move, talk and play. You stay in the room, and you leave with a clear plan and what to try at home.'],
+      ['Can I stay with my child?', 'Yes. Parents are welcome in every session, and we often show you activities to repeat at home.'],
+      ['Do you work with autism, ADHD and speech delay?', 'Yes. We support children with autism, ADHD, speech and language delays, sensory difficulties, learning difficulties and developmental delays, from age 2 to 16.'],
+      ['Can I pay by UPI?', 'Yes: Google Pay, PhonePe, Paytm or any UPI app, plus cards and net banking. You get a receipt on WhatsApp straight away.'],
+      ['Do you give reports for school?', 'Yes. Assessment reports and progress reports are in your parent portal and can be downloaded as PDFs.'],
+      ['Is GST charged?', '[Confirm with your CA. Health care by clinical establishments is often exempt.]']
+    ];
+    return {
+      count: n,
+      less: () => this.setState({ count: Math.max(1, n - 1) }),
+      more: () => this.setState({ count: Math.min(30, n + 1) }),
+      singleTotal: fmt(single),
+      advice: n > 12 ? 'The pack is cheaper: you save ' + fmt(single - 9600) + '.' : n === 12 ? 'Same price either way; the pack adds 3 more sessions.' : 'Pay per session: ' + fmt(9600 - single) + ' less than the pack.',
+      faqs: faqList.map(([q, a], i) => ({ q, a, open: this.state.open === i, expanded: this.state.open === i ? 'true' : 'false', sign: this.state.open === i ? '−' : '+', toggle: () => this.setState({ open: this.state.open === i ? -1 : i }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

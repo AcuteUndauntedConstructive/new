@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.btn{transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(53,39,36,.12)}
+.card{transition:transform .2s ease}
+.card:hover{transform:translateY(-4px)}
+.hop{transform-box:fill-box;transform-origin:50% 100%;animation:hhop 5s ease-in-out infinite}
+.breathe{transform-box:fill-box;transform-origin:50% 100%;animation:hbreathe 3.2s ease-in-out infinite}
+.ray{transform-box:fill-box;transform-origin:center;animation:htwinkle 2.4s ease-in-out infinite}
+.r2{animation-delay:.4s}.r3{animation-delay:.8s}
+.eyes-open{opacity:0;animation:hopen 7s infinite}
+.eyes-closed{animation:hclosed 7s infinite}
+.look{transform-box:fill-box;animation:hlook 7s infinite}
+.launcher:hover .hop{animation-duration:1.2s}
+@keyframes hhop{0%,62%,100%{transform:translateY(0) scale(1,1)}68%{transform:translateY(0) scale(1.06,.94)}78%{transform:translateY(-10%) scale(.97,1.04)}88%{transform:translateY(0) scale(1.05,.95)}94%{transform:translateY(0) scale(1,1)}}
+@keyframes hbreathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.02,.985)}}
+@keyframes htwinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.88)}}
+@keyframes hopen{0%,40%{opacity:0}43%,80%{opacity:1}83%,100%{opacity:0}}
+@keyframes hclosed{0%,40%{opacity:1}43%,80%{opacity:0}83%,100%{opacity:1}}
+@keyframes hlook{0%,48%{transform:translateX(0)}54%,62%{transform:translateX(-6px)}68%,76%{transform:translateX(6px)}80%,100%{transform:translateX(0)}}
+.calm *{animation:none !important;transition:none !important}
+.calm .eyes-open{opacity:0 !important}
+.calm .eyes-closed{opacity:1 !important}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}.eyes-open{opacity:0 !important}}
+/* Hoppy chat widget (mascot-chatbot spec; colours matched to the logo) */
+.mb-root{--mb-mango:#FBA826;--mb-mango-deep:#E58E00;--mb-blush:#F46A39;--mb-ink:#352724;--mb-mint:#F2F8EE;--mb-white:#FFFFFF;--mb-mascot-size:92px;--mb-mascot-size-mobile:76px;--mb-panel-width:340px;--mb-panel-height:460px;--mb-edge-gap:20px;--mb-sway-angle:5deg;--mb-sway-duration:3.4s;--mb-bob-height:3px;--mb-bob-duration:1.7s;--mb-ray-duration:2.4s;--mb-ray-stagger:.25s;--mb-ray-min-scale:.55;--mb-hover-tilt:-9deg;--mb-hover-lift:4px;--mb-hover-scale:1.05;--mb-press-scale:.94;--mb-spring:cubic-bezier(.34,1.56,.64,1);--mb-open-sway-duration:5s;--mb-blink-duration:4.5s;--mb-think-ray-duration:.6s;--mb-think-bob-duration:.5s;position:fixed;right:var(--mb-edge-gap);bottom:var(--mb-edge-gap);z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:"Baloo 2","Nunito","Trebuchet MS",system-ui,sans-serif;color:var(--mb-ink)}
+.mb-root *,.mb-root *::before,.mb-root *::after{box-sizing:border-box}
+.mb-launcher{position:relative;width:var(--mb-mascot-size);height:var(--mb-mascot-size);padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mb-launcher:focus-visible{outline:3px solid var(--mb-ink);outline-offset:4px;border-radius:50%}
+.mb-launcher svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 8px rgba(53,39,36,.18))}
+.mb-tilt,.mb-sway,.mb-bob{display:block;width:100%;height:100%;transform-origin:50% 92%}
+.mb-tilt{transition:transform .35s var(--mb-spring)}
+.mb-sway{animation:mb-sway var(--mb-sway-duration) ease-in-out infinite}
+.mb-bob{animation:mb-bob var(--mb-bob-duration) ease-in-out infinite}
+.mb-launcher:hover .mb-tilt,.mb-launcher:focus-visible .mb-tilt{transform:rotate(var(--mb-hover-tilt)) translateY(calc(var(--mb-hover-lift) * -1)) scale(var(--mb-hover-scale))}
+.mb-launcher:active .mb-tilt{transform:scale(var(--mb-press-scale))}
+@keyframes mb-sway{0%,100%{transform:rotate(calc(var(--mb-sway-angle) * -1))}50%{transform:rotate(var(--mb-sway-angle))}}
+@keyframes mb-bob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(calc(var(--mb-bob-height) * -1)) scale(.985,1.02)}}
+.mb-ray{transform-box:fill-box;transform-origin:50% 100%;animation:mb-ray var(--mb-ray-duration) ease-in-out infinite}
+.mb-ray--middle{animation-delay:var(--mb-ray-stagger)}
+.mb-ray--right{animation-delay:calc(var(--mb-ray-stagger) * 2)}
+@keyframes mb-ray{0%,60%,100%{transform:scaleY(1);opacity:1}30%{transform:scaleY(var(--mb-ray-min-scale));opacity:.7}}
+.mb-eyes-closed,.mb-eyes-open{transition:opacity .2s}
+.mb-eyes-open{opacity:0}
+.mb-eye{transform-box:fill-box;transform-origin:50% 50%}
+@keyframes mb-blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-eyes-open{opacity:1}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-eyes-closed{opacity:0}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-eye{animation:mb-blink var(--mb-blink-duration) infinite}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-sway{animation-duration:var(--mb-open-sway-duration)}
+.mb-root[data-state="thinking"] .mb-ray{animation-duration:var(--mb-think-ray-duration)}
+.mb-root[data-state="thinking"] .mb-bob{animation-duration:var(--mb-think-bob-duration)}
+.mb-teaser{position:absolute;right:calc(var(--mb-mascot-size) + 6px);bottom:30px;padding:9px 14px;white-space:nowrap;background:var(--mb-white);color:var(--mb-ink);font-family:inherit;font-size:15px;font-weight:500;line-height:1.2;border-radius:18px 18px 4px 18px;box-shadow:0 4px 14px rgba(53,39,36,.14);opacity:0;transform:translateX(8px) scale(.9);transform-origin:100% 100%;transition:opacity .3s,transform .3s var(--mb-spring);pointer-events:none}
+.mb-root[data-state="closed"][data-teaser="on"] .mb-teaser{opacity:1;transform:none}
+.mb-panel{display:flex;flex-direction:column;overflow:hidden;width:var(--mb-panel-width);max-width:calc(100vw - 24px);height:var(--mb-panel-height);max-height:calc(100dvh - 150px);background:var(--mb-white);border-radius:26px 26px 8px 26px;box-shadow:0 18px 40px rgba(53,39,36,.22);transform-origin:100% 100%;opacity:0;visibility:hidden;transform:translateY(14px) scale(.94);transition:opacity .22s,transform .28s cubic-bezier(.34,1.4,.64,1),visibility 0s .28s}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-panel{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.mb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--mb-mint)}
+.mb-head svg{flex:none;width:38px;height:38px}
+.mb-head-text{flex:1;min-width:0}
+.mb-name{margin:0;font-size:18px;font-weight:700;line-height:1.1}
+.mb-sub{margin:2px 0 0;font-size:13.5px;line-height:1.2;color:#5A4A44}
+.mb-close{flex:none;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:var(--mb-ink);font-size:22px;line-height:1;cursor:pointer}
+.mb-close:hover{background:rgba(53,39,36,.08)}
+.mb-log{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px;overflow-y:auto}
+.mb-msg{max-width:84%;padding:9px 13px;font-size:15.5px;line-height:1.4;white-space:pre-line;overflow-wrap:anywhere;animation:mb-pop .25s cubic-bezier(.34,1.4,.64,1)}
+.mb-msg--bot{align-self:flex-start;background:var(--mb-mint);border-radius:18px 18px 18px 5px}
+.mb-msg--user{align-self:flex-end;background:var(--mb-mango);border-radius:18px 18px 5px 18px}
+@keyframes mb-pop{from{opacity:0;transform:translateY(6px) scale(.96)}}
+.mb-typing{display:inline-flex;gap:4px;padding:13px 14px}
+.mb-typing i{width:7px;height:7px;border-radius:50%;background:var(--mb-mango-deep);animation:mb-dot 1s ease-in-out infinite}
+.mb-typing i:nth-child(2){animation-delay:.15s}
+.mb-typing i:nth-child(3){animation-delay:.3s}
+@keyframes mb-dot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.mb-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+.mb-chip{padding:8px 12px;border:1.5px solid var(--mb-mango);border-radius:999px;background:var(--mb-white);color:var(--mb-ink);font-family:inherit;font-size:14px;font-weight:500;line-height:1;cursor:pointer;transition:background .15s}
+.mb-chip:hover{background:#FFF1D6}
+.mb-form{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid rgba(53,39,36,.1)}
+.mb-input{flex:1;min-width:0;padding:9px 14px;border:1.5px solid rgba(53,39,36,.2);border-radius:999px;background:var(--mb-white);color:var(--mb-ink);font-family:inherit;font-size:15px;font-weight:500}
+.mb-input:focus{outline:none;border-color:var(--mb-mango-deep);box-shadow:0 0 0 3px rgba(251,168,38,.3)}
+.mb-send{flex:none;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:var(--mb-ink);color:var(--mb-mango);cursor:pointer}
+.mb-send svg{width:18px;height:18px}
+.mb-close:focus-visible,.mb-chip:focus-visible,.mb-send:focus-visible{outline:2px solid var(--mb-ink);outline-offset:2px}
+.mb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:480px){.mb-root{--mb-mascot-size:var(--mb-mascot-size-mobile);--mb-edge-gap:12px}.mb-teaser{bottom:24px}}
+@media (prefers-reduced-motion: reduce){.mb-root *,.mb-root *::before,.mb-root *::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6">
+
+<div style="background: #352724; color: #F2F8EE; font-size: 14px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 8px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px">
+<div style="display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: center">
+<span style="display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open all 7 days · 10 am – 7 pm</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Mayur Vihar Phase 1, Delhi</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="Language" style="display: flex; border: 1px solid rgba(242,248,238,.4); border-radius: 999px; overflow: hidden">
+<button type="button" onClick="{{setEN}}" aria-pressed="{{enPressed}}" style="font: inherit; font-size: 13px; font-weight: 700; border: 0; padding: 4px 12px; cursor: pointer; background: {{enBg}}; color: {{enFg}}">English</button>
+<button type="button" onClick="{{setHI}}" aria-pressed="{{hiPressed}}" style="font: inherit; font-size: 13px; font-weight: 700; border: 0; padding: 4px 12px; cursor: pointer; background: {{hiBg}}; color: {{hiFg}}">हिंदी</button>
+</div>
+<button type="button" onClick="{{toggleCalm}}" aria-pressed="{{calmPressed}}" style="font: inherit; font-size: 13px; font-weight: 700; border: 1px solid rgba(242,248,238,.4); background: transparent; color: #F2F8EE; border-radius: 999px; padding: 4px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>{{calmLabel}}</button>
+</div>
+</div>
+</div>
+
+<header style="background: #F2F8EE; border-bottom: 1px solid #E5DDD2">
+<div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<a href="#top" aria-label="Hop to Heal home" style="display: block; line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 72px; width: auto"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px 22px; font-weight: 700; font-size: 16px">
+<a href="#services" style="color: #352724; text-decoration: none">Services</a>
+<a href="#hopcheck" style="color: #352724; text-decoration: none">HopCheck</a>
+<a href="#team" style="color: #352724; text-decoration: none">Our team</a>
+<a href="#centres" style="color: #352724; text-decoration: none">Centres</a>
+<a href="#parents" style="color: #352724; text-decoration: none">Parent corner</a>
+<a href="Pay.dc.html" style="color: #352724; text-decoration: none">Pay online</a>
+</nav>
+<div style="display: flex; gap: 10px; align-items: center">
+<a href="#contact" aria-label="WhatsApp us" class="btn" style="width: 48px; height: 48px; border-radius: 999px; background: #FFFFFF; border: 2px solid #352724; color: #352724; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-4.4A8.5 8.5 0 1 1 20 11.5z"></path><path d="M9 9.5c.3 2 1.8 3.8 4 4.5l1.2-1.2 1.8.8-.4 1.6c-3.6.2-6.8-2.8-7-6.4l1.6-.4.8 1.8z"></path></svg></a>
+<a href="Book.dc.html" class="btn" style="background: #FBA826; color: #352724; font-weight: 800; text-decoration: none; padding: 12px 22px; border-radius: 999px; border: 2px solid #352724; font-size: 16px">Book a visit</a>
+</div>
+</div>
+</header>
+
+<main id="top">
+<section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
+<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-weight: 800; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: #B4471C">Child development centre · East Delhi</p>
+<h1 style="margin: 0; font-family: 'Baloo 2', 'Nunito', sans-serif; font-weight: 800; font-size: 60px; line-height: 1.02; letter-spacing: -.01em; white-space: pre-line">{{heroTitle}}</h1>
+<p style="margin: 0; font-size: 20px; color: #6B5A53; max-width: 540px">{{heroSub}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px">
+<a href="Book.dc.html" class="btn" style="background: #FBA826; color: #352724; font-weight: 800; text-decoration: none; padding: 16px 28px; border-radius: 999px; border: 2px solid #352724; font-size: 18px; display: inline-flex; align-items: center; gap: 10px">{{ctaBook}}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="#hopcheck" class="btn" style="background: #FFFFFF; color: #352724; font-weight: 800; text-decoration: none; padding: 16px 28px; border-radius: 999px; border: 2px solid #352724; font-size: 18px">{{ctaCheck}}</a>
+</div>
+<p style="margin: 0; font-size: 15px; color: #6B5A53">{{heroNote}}</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; justify-content: center">
+<div style="position: relative; width: 100%; max-width: 500px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center">
+<div aria-hidden="true" style="position: absolute; inset: 4%; border-radius: 50%; background: #FFE9C2"></div>
+<div aria-hidden="true" style="position: absolute; right: 2%; top: 10%; width: 22px; height: 22px; border-radius: 50%; background: #F46A39; opacity: .8"></div>
+<div aria-hidden="true" style="position: absolute; left: 6%; bottom: 16%; width: 14px; height: 14px; border-radius: 50%; background: #FBA826"></div>
+<div style="position: relative; width: 82%">
+<img src="/_blob/dfe1d0e4bdda1758df5efb7820d3a3c5" alt="Hop to Heal" style="display: block; width: 100%; height: auto">
+<svg viewBox="0 0 270 300" role="img" aria-label="Hoppy, the smiling sun in our logo" style="position: absolute; left: 31.4286%; top: 1.0687%; width: 38.5714%; height: 45.8015%; overflow: visible">
+<g class="hop">
+<g fill="none" stroke="#FBA826" stroke-width="18" stroke-linecap="round">
+<g class="ray"><line x1="12" y1="68" x2="32" y2="86"></line></g>
+<g class="ray r2"><line x1="123" y1="12" x2="123" y2="45"></line></g>
+<g class="ray r3"><line x1="257" y1="56" x2="240" y2="77"></line></g>
+</g>
+<g class="breathe">
+<path d="M132 86 C177 86 215 118 215 163 C215 215 178 297 132 297 C86 297 49 215 49 163 C49 118 87 86 132 86 Z" fill="#FBA826"></path>
+<ellipse cx="87" cy="188" rx="12" ry="7" fill="#F46A39"></ellipse>
+<ellipse cx="176" cy="187" rx="12" ry="7" fill="#F46A39"></ellipse>
+<g class="eyes-closed" fill="none" stroke="#352724" stroke-width="4.5" stroke-linecap="round"><path d="M90 170 Q101 182 112 170"></path><path d="M150 168 Q161 180 172 168"></path></g>
+<g class="eyes-open"><g class="look"><ellipse cx="101" cy="172" rx="7" ry="9" fill="#352724"></ellipse><ellipse cx="161" cy="171" rx="7" ry="9" fill="#352724"></ellipse><circle cx="103" cy="168" r="2.4" fill="#FFFFFF"></circle><circle cx="163" cy="167" r="2.4" fill="#FFFFFF"></circle></g></g>
+<path d="M121 189 Q126 199 132 191 Q138 199 143 189" fill="none" stroke="#352724" stroke-width="4" stroke-linecap="round"></path>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Why parents trust us" style="max-width: 1200px; margin: 0 auto; padding: 8px 24px 56px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 20px 22px; display: flex; gap: 14px; align-items: center">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #FFE9C2; display: flex; align-items: center; justify-content: center; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="#B4471C" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg></div>
+<div><div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">5.0 on Google</div><div style="font-size: 15px; color: #6B5A53">from 38 parent reviews</div></div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 20px 22px; display: flex; gap: 14px; align-items: center">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #FFE9C2; display: flex; align-items: center; justify-content: center; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B4471C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></div>
+<div><div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">400+ children</div><div style="font-size: 15px; color: #6B5A53">helped since 2024</div></div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 20px 22px; display: flex; gap: 14px; align-items: center">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #FFE9C2; display: flex; align-items: center; justify-content: center; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B4471C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></div>
+<div><div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Open 7 days</div><div style="font-size: 15px; color: #6B5A53">weekends too, 10 am – 7 pm</div></div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 20px 22px; display: flex; gap: 14px; align-items: center">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #FFE9C2; display: flex; align-items: center; justify-content: center; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B4471C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg></div>
+<div><div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1">Expert-led</div><div style="font-size: 15px; color: #6B5A53">Dr. Heena Gupta, MOT (Neuro)</div></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="noticed-h" style="background: #FFFFFF; border-top: 1px solid #E5DDD2; border-bottom: 1px solid #E5DDD2">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 20px; align-items: center; text-align: center">
+<h2 id="noticed-h" style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">Not sure if your child needs help?</h2>
+<p style="margin: 0; color: #6B5A53; max-width: 640px">Many children need a little extra support, and spotting it early makes the biggest difference. Tap anything that sounds familiar.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 900px">
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Not talking much yet</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Doesn't respond to name</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Clumsy or falls often</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Upset by noise or touch</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Finds it hard to sit still</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Big tantrums</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Handwriting or school trouble</a>
+<a href="Book.dc.html" class="btn" style="text-decoration: none; color: #352724; background: #F2F8EE; border: 2px solid #E5DDD2; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px">Very picky eating</a>
+</div>
+<p style="margin: 0; font-size: 15px; color: #6B5A53">Not sure? <a href="#hopcheck" style="font-weight: 800">Try the free 10-minute HopCheck</a>. It's a screening, not a diagnosis, and a therapist reviews every result.</p>
+</div>
+</section>
+
+<section id="services" aria-labelledby="services-h" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="max-width: 640px">
+<h2 id="services-h" style="margin: 0 0 8px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">How we help</h2>
+<p style="margin: 0; color: #6B5A53">Every plan is built around your child's own challenges, strengths and pace. Sessions feel like play, and you always know why we're doing what we're doing.</p>
+</div>
+<a href="#services" style="font-weight: 800">See all services</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px">
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v5M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V11M16 11V8a1.5 1.5 0 0 1 3 0v6a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-2.7L3.5 15a1.5 1.5 0 0 1 2.5-1.7L7 15"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Occupational therapy</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Builds everyday skills: dressing, eating, holding a pencil and playing.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Sensory integration</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Helps children who find noise, touch or movement too much, or not enough.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4v-4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"></path><path d="M8 10h8M8 13h5"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Speech therapy</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Helps your child talk, understand and be understood.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9M12 12c0-4-3-6-7-6 0 4 3 6 7 6zM12 10c0-3 2-5 6-5 0 3-2 5-6 5z"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Early intervention</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Support from the very first signs, in the years when it helps most.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"></path><path d="M4 19a2 2 0 0 1 2-2h13"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Special education</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">One-to-one learning support, at your child's own pace.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Behaviour support &amp; ABA</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Calmer days through positive, structured routines.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Counselling &amp; parent training</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Simple strategies for you, so progress continues at home.</p>
+</a>
+<a href="#services" class="card" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="width: 56px; height: 56px; border-radius: 18px; background: #FFE9C2; color: #B4471C; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M17 11a2.5 2.5 0 1 0 0-5M21 20a5 5 0 0 0-4-4.9"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2">Group therapy &amp; school readiness</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Making friends, taking turns and getting ready for school.</p>
+</a>
+</div>
+</section>
+
+<section aria-labelledby="how-h" style="background: #E2F0DA">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="text-align: center; display: flex; flex-direction: column; gap: 8px; align-items: center">
+<h2 id="how-h" style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">Getting started is easy</h2>
+<p style="margin: 0; color: #6B5A53; max-width: 600px">Four small hops from your first question to steady progress.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px">
+<li style="background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px">1</div>
+<h3 style="margin: 6px 0 0; font-family: 'Baloo 2', sans-serif; font-size: 22px; line-height: 1.2">Tell us about your child</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Book online in about 2 minutes, try HopCheck, or just WhatsApp us.</p>
+</li>
+<li style="background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px">2</div>
+<h3 style="margin: 6px 0 0; font-family: 'Baloo 2', sans-serif; font-size: 22px; line-height: 1.2">Meet a therapist</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">A friendly, play-based first assessment. You stay with your child the whole time.</p>
+</li>
+<li style="background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px">3</div>
+<h3 style="margin: 6px 0 0; font-family: 'Baloo 2', sans-serif; font-size: 22px; line-height: 1.2">Get a clear plan</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">A personal therapy plan, explained in simple words, with goals you can see.</p>
+</li>
+<li style="background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="width: 52px; height: 52px; border-radius: 50%; background: #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px">4</div>
+<h3 style="margin: 6px 0 0; font-family: 'Baloo 2', sans-serif; font-size: 22px; line-height: 1.2">Grow, hop by hop</h3>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Sessions at the centre, play ideas for home and progress updates on WhatsApp.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<section id="hopcheck" aria-labelledby="hc-h" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-weight: 800; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: #B4471C">Free · 10 minutes · From your phone</p>
+<h2 id="hc-h" style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">HopCheck: a gentle first check, from home</h2>
+<p style="margin: 0; color: #6B5A53">Answer a few simple questions about how your child talks, moves, plays and reacts to the world. A Hop to Heal therapist looks at every answer and sends you a simple, private report.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>In Hindi or English, on any phone</li>
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>Reviewed by a qualified occupational therapist</li>
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>Private: nothing is shared without your consent</li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+<a href="#hopcheck" class="btn" style="background: #FBA826; color: #352724; font-weight: 800; text-decoration: none; padding: 16px 28px; border-radius: 999px; border: 2px solid #352724; font-size: 18px">Start free HopCheck</a>
+<span style="font-size: 15px; color: #6B5A53">A screening, not a diagnosis.</span>
+</div>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; display: flex; justify-content: center">
+<div style="width: 100%; max-width: 420px; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 18px 40px rgba(53,39,36,.08)">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<div><div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.2">HopCheck report</div><div style="font-size: 14px; color: #6B5A53">[Child's name] · 3 years · reviewed by [Therapist]</div></div>
+<div style="font-size: 13px; font-weight: 800; background: #E2F0DA; color: #2E7D4F; padding: 4px 10px; border-radius: 999px">Reviewed</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F2F8EE"><span style="font-weight: 700; font-size: 16px">Talking &amp; understanding</span><span style="font-size: 13px; font-weight: 800; background: #FBA826; color: #352724; padding: 4px 10px; border-radius: 999px">Keep an eye</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F2F8EE"><span style="font-weight: 700; font-size: 16px">Moving &amp; balance</span><span style="font-size: 13px; font-weight: 800; background: #2E7D4F; color: #FFFFFF; padding: 4px 10px; border-radius: 999px">On track</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F2F8EE"><span style="font-weight: 700; font-size: 16px">Senses</span><span style="font-size: 13px; font-weight: 800; background: #2E7D4F; color: #FFFFFF; padding: 4px 10px; border-radius: 999px">On track</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F2F8EE"><span style="font-weight: 700; font-size: 16px">Attention</span><span style="font-size: 13px; font-weight: 800; background: #2E7D4F; color: #FFFFFF; padding: 4px 10px; border-radius: 999px">On track</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F2F8EE"><span style="font-weight: 700; font-size: 16px">Play &amp; social</span><span style="font-size: 13px; font-weight: 800; background: #2E7D4F; color: #FFFFFF; padding: 4px 10px; border-radius: 999px">On track</span></div>
+</div>
+<p style="margin: 0; font-size: 15px; color: #6B5A53">Suggested next step: a speech &amp; language check with our team.</p>
+</div>
+</div>
+</section>
+
+<section id="team" aria-labelledby="team-h" style="background: #FFFFFF; border-top: 1px solid #E5DDD2; border-bottom: 1px solid #E5DDD2">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
+<img src="/_blob/bb6eff6ec703003f8e81e01641c10f3b" alt="Dr. Heena Gupta at the Mayur Vihar centre" style="flex: 1 1 340px; min-width: 0; max-width: 460px; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 28px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<h2 id="team-h" style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">The people who'll know your child by name</h2>
+<p style="margin: 0; color: #6B5A53">Hop to Heal was founded in 2024 by Dr. Heena Gupta, an occupational therapist with a master's in neuroscience. Parents often tell us what they value most: her expertise, and a centre that feels made for children.</p>
+<a href="#team" style="font-weight: 800">Meet the whole team</a>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px">
+<img src="/_blob/659265c8376d6a453eefb51f94c2f26a" alt="Dr. Heena Gupta" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid #FBA826">
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.2; margin-top: 6px">Dr. Heena Gupta</div>
+<div style="font-size: 15px; color: #6B5A53">Founder · BOT, MOT (Neuro)</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px">
+<img src="/_blob/7df67db79ecb8aa714a2b17ae1ea6600" alt="Jiya Gupta" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid #FBA826">
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.2; margin-top: 6px">Jiya Gupta</div>
+<div style="font-size: 15px; color: #6B5A53">Occupational therapist · BOT</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px">
+<img src="/_blob/79eb1497b6e0bcb2b8eb497a135014c0" alt="Vishal Gupta" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid #E5DDD2">
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.2; margin-top: 6px">Vishal Gupta</div>
+<div style="font-size: 15px; color: #6B5A53">Managing director</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px">
+<img src="/_blob/62930d4253ea9ccbbdc871987a8bcc19" alt="Subodh K. Gupta" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid #E5DDD2">
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.2; margin-top: 6px">Subodh K. Gupta</div>
+<div style="font-size: 15px; color: #6B5A53">Manager &amp; tech lead</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="parents" aria-labelledby="space-h" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
+<div style="max-width: 680px">
+<h2 id="space-h" style="margin: 0 0 8px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">A happy place to grow</h2>
+<p style="margin: 0; color: #6B5A53">Bright rooms, hands-on play and festivals we celebrate together. Children look forward to coming back.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="/_blob/ccf0ffd97f2fe48063253969f9c45e4d" alt="A child's hand on a felt apple-tree board with red dots" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px"><figcaption style="font-size: 15px; color: #6B5A53">Fine-motor play with our felt apple tree</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="/_blob/8cc7b9ea1f287843e8c1b629cb4b7c49" alt="Festive decorations, paper Santa and snowman crafts and fairy lights at the centre" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px"><figcaption style="font-size: 15px; color: #6B5A53">Festivals, crafts and celebrations</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><div role="img" aria-label="Photo placeholder" style="width: 100%; aspect-ratio: 4 / 3; border-radius: 24px; border: 2px dashed #D9CFC2; background: #FFFFFF; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box; font-weight: 700; color: #6B5A53">[Photo: therapy room or sensory corner]</div><figcaption style="font-size: 15px; color: #6B5A53">Our therapy rooms</figcaption></figure>
+</div>
+</section>
+
+<section aria-labelledby="rev-h" style="background: #FFE9C2">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div>
+<h2 id="rev-h" style="margin: 0 0 6px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">What parents say</h2>
+<p style="margin: 0; color: #6B5A53; display: flex; align-items: center; gap: 8px"><span style="display: inline-flex; gap: 2px" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#B4471C"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#B4471C"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#B4471C"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#B4471C"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#B4471C"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"></path></svg></span>5.0 on Google · 38 reviews</p>
+</div>
+<a href="#contact" style="font-weight: 800">Read all reviews on Google</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px">
+<blockquote style="margin: 0; background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><p style="margin: 0; font-size: 18px">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="font-size: 15px; font-weight: 700; color: #6B5A53">[Parent's first name] · Google review</footer></blockquote>
+<blockquote style="margin: 0; background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><p style="margin: 0; font-size: 18px">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="font-size: 15px; font-weight: 700; color: #6B5A53">[Parent's first name] · Google review</footer></blockquote>
+<blockquote style="margin: 0; background: #FFFFFF; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><p style="margin: 0; font-size: 18px">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="font-size: 15px; font-weight: 700; color: #6B5A53">[Parent's first name] · Google review</footer></blockquote>
+</div>
+</div>
+</section>
+
+<section id="centres" aria-labelledby="centres-h" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
+<h2 id="centres-h" style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.1">Visit us</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px">
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div role="img" aria-label="Map placeholder" style="height: 200px; border-radius: 18px; border: 2px dashed #D9CFC2; background: #F2F8EE; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font-weight: 700; color: #6B5A53">[Map: 403 B, Pocket 2, Mayur Vihar Ph-1]</div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap"><h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-size: 26px; line-height: 1.2">Mayur Vihar Phase 1</h3><span style="font-size: 13px; font-weight: 800; background: #E2F0DA; color: #2E7D4F; padding: 4px 10px; border-radius: 999px">Open now</span></div>
+<p style="margin: 0; color: #6B5A53">403 B, Pocket 2, Mayur Vihar Phase 1, near Mother Dairy &amp; Safal outlet, Delhi 110091</p>
+<p style="margin: 0; font-weight: 700">Every day, 10 am – 7 pm</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="#centres" class="btn" style="background: #FBA826; color: #352724; font-weight: 800; text-decoration: none; padding: 12px 20px; border-radius: 999px; border: 2px solid #352724; font-size: 16px">Get directions</a>
+<a href="#contact" class="btn" style="background: #FFFFFF; color: #352724; font-weight: 800; text-decoration: none; padding: 12px 20px; border-radius: 999px; border: 2px solid #352724; font-size: 16px">WhatsApp</a>
+<a href="#contact" class="btn" style="background: #FFFFFF; color: #352724; font-weight: 800; text-decoration: none; padding: 12px 20px; border-radius: 999px; border: 2px solid #352724; font-size: 16px">Call</a>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 2px dashed #FBA826; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 14px; justify-content: center">
+<span style="align-self: flex-start; font-size: 13px; font-weight: 800; background: #FFE9C2; color: #8A3412; padding: 4px 10px; border-radius: 999px">Coming April 2027</span>
+<h3 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-size: 26px; line-height: 1.2">Our second centre</h3>
+<p style="margin: 0; color: #6B5A53">Closer to families in Mayur Vihar Phase 3, Kondli and Vasundhara Enclave. Join the waitlist and we'll message you first when bookings open.</p>
+<a href="Book.dc.html" class="btn" style="align-self: flex-start; background: #FFFFFF; color: #352724; font-weight: 800; text-decoration: none; padding: 12px 20px; border-radius: 999px; border: 2px solid #352724; font-size: 16px">Join the waitlist</a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cta-h" style="padding: 0 24px 80px">
+<div style="max-width: 1152px; margin: 0 auto; background: #FBA826; border-radius: 36px; padding: 56px 40px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 420px; min-width: 0">
+<h2 id="cta-h" style="margin: 0 0 6px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 44px; line-height: 1.05">Ready when you are</h2>
+<p style="margin: 0; font-size: 19px">Book a first visit in 2 minutes, or message us. A real person replies.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="Book.dc.html" class="btn" style="background: #352724; color: #FFFFFF; font-weight: 800; text-decoration: none; padding: 16px 28px; border-radius: 999px; font-size: 18px">Book a first visit</a>
+<a href="#contact" class="btn" style="background: #FFFFFF; color: #352724; font-weight: 800; text-decoration: none; padding: 16px 28px; border-radius: 999px; border: 2px solid #352724; font-size: 18px">WhatsApp +91 95994 33591</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer id="contact" style="background: #E2F0DA; border-top: 1px solid #D3E4C9">
+<div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 28px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 48px; justify-content: space-between">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px">
+<img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="width: 140px; height: auto">
+<p style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3">Spot early. Heal early.<br>One hop at a time.</p>
+<div style="display: flex; gap: 10px">
+<a href="#contact" aria-label="Hop to Heal on Instagram" style="width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; color: #352724; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"></circle></svg></a>
+<a href="#contact" aria-label="Hop to Heal on LinkedIn" style="width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; color: #352724; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"></path></svg></a>
+</div>
+</div>
+<nav aria-label="Explore" style="flex: 0 1 180px; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+<div style="font-weight: 800">Explore</div>
+<a href="#services" style="color: #352724">Services</a>
+<a href="#team" style="color: #352724">Our team</a>
+<a href="#centres" style="color: #352724">Centres</a>
+<a href="#parents" style="color: #352724">Parent corner</a>
+</nav>
+<nav aria-label="For parents" style="flex: 0 1 180px; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+<div style="font-weight: 800">For parents</div>
+<a href="Book.dc.html" style="color: #352724">Book a visit</a>
+<a href="#hopcheck" style="color: #352724">Free HopCheck</a>
+<a href="Pay.dc.html" style="color: #352724">Pay online</a>
+<a href="#contact" style="color: #352724">Parent login</a>
+</nav>
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+<div style="font-weight: 800">Contact</div>
+<div>403 B, Pocket 2, Mayur Vihar Phase 1, near Mother Dairy &amp; Safal outlet, Delhi 110091</div>
+<a href="#contact" style="color: #352724; font-weight: 700">+91 95994 33591</a>
+<a href="#contact" style="color: #352724; font-weight: 700">hoptoheal@gmail.com</a>
+</div>
+</div>
+<div style="border-top: 1px solid #C9DCBE; padding-top: 18px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-size: 14px; color: #5A4A44">
+<span>© 2026 Hop to Heal</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 18px">
+<a href="#contact" style="color: #5A4A44">Privacy policy</a>
+<a href="#contact" style="color: #5A4A44">Terms</a>
+<a href="#contact" style="color: #5A4A44">Refund &amp; cancellation</a>
+<a href="#contact" style="color: #5A4A44">Child safety &amp; consent</a>
+</div>
+</div>
+</div>
+</footer>
+
+<div class="mb-root" data-state="{{chatState}}" data-teaser="{{teaserState}}" onKeyDown="{{onWidgetKey}}">
+<section id="hoppy-panel" class="mb-panel" role="dialog" aria-label="Chat with Hoppy" aria-hidden="{{panelHidden}}">
+<header class="mb-head">
+<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><rect x="94" y="8" width="12" height="32" rx="6" fill="#FBA826"></rect><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" transform="translate(41 50) rotate(-52)"></rect><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" transform="translate(159 50) rotate(52)"></rect><g fill="none" stroke="#352724" stroke-width="3" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path><path d="M93 120q3.5 6 7 0q3.5 6 7 0"></path></g></svg>
+<div class="mb-head-text"><p class="mb-name">Hoppy</p><p class="mb-sub">Ask about therapy, fees and booking</p></div>
+<button class="mb-close" type="button" aria-label="Close chat" onClick="{{closeChat}}">×</button>
+</header>
+<div class="mb-log" aria-live="polite">
+<sc-for list="{{messages}}" as="m" hint-placeholder-count="1">
+<div class="{{m.cls}}">{{m.text}}</div>
+</sc-for>
+<sc-if value="{{typing}}" hint-placeholder-val="{{ false }}">
+<div class="mb-msg mb-msg--bot mb-typing" aria-label="Hoppy is typing"><i></i><i></i><i></i></div>
+</sc-if>
+</div>
+<div class="mb-chips">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="4">
+<button class="mb-chip" type="button" onClick="{{c.pick}}">{{c.label}}</button>
+</sc-for>
+</div>
+<form class="mb-form" autocomplete="off" onSubmit="{{send}}">
+<label for="mb-input" class="mb-sr">Type your question</label>
+<input id="mb-input" class="mb-input" type="text" placeholder="Type your question" value="{{draft}}" onInput="{{onDraft}}">
+<button class="mb-send" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</form>
+</section>
+<button class="mb-launcher" type="button" aria-label="{{launcherLabel}}" aria-expanded="{{chatExpanded}}" aria-controls="hoppy-panel" onClick="{{toggleChat}}">
+<span class="mb-teaser" aria-hidden="true">Hi! Need a hand?</span>
+<span class="mb-tilt"><span class="mb-sway"><span class="mb-bob">
+<svg viewBox="0 0 200 200" aria-hidden="true">
+<g transform="translate(41 50) rotate(-52)"><rect class="mb-ray mb-ray--left" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g>
+<g transform="translate(100 24)"><rect class="mb-ray mb-ray--middle" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g>
+<g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray--right" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g>
+<path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path>
+<ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse>
+<ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse>
+<g class="mb-eyes-closed" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g>
+<g class="mb-eyes-open"><g class="mb-eye"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="83.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g><g class="mb-eye"><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="119.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g></g>
+<path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span></span></span>
+</button>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"calm":{"editor":"boolean","default":false,"section":"Accessibility"},"lang":{"editor":"enum","options":["EN","HI"],"default":"EN","section":"Language"},"chatState":{"editor":"enum","options":["closed","open","thinking"],"default":"closed","section":"Hoppy chat"},"$preview":{"width":1440,"height":5650}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { calm: null, lang: null, chat: null, msgs: [], draft: '', busy: false, teaser: 'off' };
+  }
+  // Hoppy's words. Topics with chip: true show as buttons; the rest answer typed questions only.
+  hoppy() {
+    return {
+      greeting: 'Hi, I’m Hoppy! Ask me about therapy, fees or booking, or tap a topic below.\nI’m a helper, not a doctor: a therapist reviews anything about your child’s health.',
+      fallback: 'I don’t have that answer yet. Try a topic below, or WhatsApp us on +91 95994 33591 and a real person will reply.',
+      topics: [
+        { label: 'Our services', chip: true, keywords: ['service', 'therapy', 'offer', 'help', 'speech', 'occupational', 'autism', 'adhd', 'sensory', 'aba'],
+          answer: 'We help children with:\n• Occupational therapy and sensory integration\n• Speech therapy\n• Early intervention\n• Special education\n• Behaviour support and ABA\n• Counselling and parent training\n• Group therapy and school readiness' },
+        { label: 'Fees & timings', chip: true, keywords: ['price', 'fee', 'cost', 'charge', 'rate', 'timing', 'open', 'hour', 'sunday', 'weekend'],
+          answer: 'We’re open every day, weekends too, from 10 am to 7 pm.\nEvery session is 1 hour and costs ₹800. The 15-day pack gives 15 sessions, one a day, for ₹9,600: 20% off.' },
+        { label: 'Book a visit', chip: true, keywords: ['book', 'appointment', 'visit', 'slot', 'schedule'],
+          answer: 'Booking takes about 2 minutes: tell us your child’s age and what you’ve noticed, then pick a time.\nTap “Book a visit” at the top of the page, or WhatsApp us on +91 95994 33591.' },
+        { label: 'Talk to a person', chip: true, keywords: ['person', 'human', 'call', 'phone', 'whatsapp', 'email', 'contact'],
+          answer: 'Of course! WhatsApp or call us on +91 95994 33591, or email hoptoheal@gmail.com. A real person from our team will reply.' },
+        { label: 'Where are you?', chip: false, keywords: ['where', 'address', 'location', 'direction', 'map', 'reach'],
+          answer: 'We’re at 403 B, Pocket 2, Mayur Vihar Phase 1, near Mother Dairy & Safal outlet, Delhi 110091.' },
+        { label: 'Is my child okay?', chip: false, keywords: ['worried', 'worry', 'delay', 'late', 'not talking', 'normal', 'okay', 'concern'],
+          answer: 'Every child grows at their own pace, and asking early is a great step.\nOur free 10-minute HopCheck asks a few simple questions, and a therapist reviews the answers. It’s a screening, not a diagnosis.' }
+      ]
+    };
+  }
+  componentDidMount() {
+    this.teaserOn = setTimeout(() => { if ((this.state.chat ?? 'closed') === 'closed') this.setState({ teaser: 'on' }); }, 2200);
+    this.teaserOff = setTimeout(() => this.setState({ teaser: 'off' }), 9000);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.teaserOn); clearTimeout(this.teaserOff); clearTimeout(this.replyTimer);
+  }
+  renderVals() {
+    const st = this.state;
+    const calm = st.calm ?? (this.props.calm ?? false);
+    const lang = st.lang ?? (this.props.lang ?? 'EN');
+    const hi = lang === 'HI';
+    const previewMode = this.props.chatState ?? 'closed';
+    const mode = st.chat ?? previewMode;
+    const isOpen = mode !== 'closed';
+    const previewThinking = st.chat === null && previewMode === 'thinking' && st.msgs.length === 0;
+    const typing = st.busy || previewThinking;
+    const chatState = isOpen ? (typing ? 'thinking' : 'open') : 'closed';
+    const openChat = () => this.setState({ chat: 'open', teaser: 'off' });
+    const closeChat = () => this.setState({ chat: 'closed' });
+    const H = this.hoppy();
+    const match = (text) => {
+      const q = text.toLowerCase();
+      return H.topics.find((t) => q.indexOf(t.label.toLowerCase()) !== -1 || t.keywords.some((k) => q.indexOf(k) !== -1)) || null;
+    };
+    // Keeps typed text if Hoppy is still answering (the original widget cleared it).
+    const ask = (text, topic, extra) => {
+      if (st.busy) return;
+      const hit = topic || match(text);
+      const reply = hit ? hit.answer : H.fallback;
+      this.setState({ ...(extra || {}), msgs: st.msgs.concat({ role: 'user', text }), busy: true, chat: 'open', teaser: 'off' });
+      this.replyTimer = setTimeout(() => this.setState({ msgs: this.state.msgs.concat({ role: 'bot', text: reply }), busy: false }), 750);
+    };
+    const shown = [{ role: 'bot', text: H.greeting }].concat(st.msgs);
+    if (previewThinking) shown.push({ role: 'user', text: 'How much is a session?' });
+    return {
+      rootClass: calm ? 'calm' : '',
+      calmLabel: calm ? 'Calm mode on' : 'Calm mode',
+      calmPressed: calm ? 'true' : 'false',
+      toggleCalm: () => this.setState({ calm: !calm }),
+      setEN: () => this.setState({ lang: 'EN' }),
+      setHI: () => this.setState({ lang: 'HI' }),
+      enPressed: hi ? 'false' : 'true',
+      hiPressed: hi ? 'true' : 'false',
+      enBg: hi ? 'transparent' : '#F2F8EE',
+      enFg: hi ? '#F2F8EE' : '#352724',
+      hiBg: hi ? '#F2F8EE' : 'transparent',
+      hiFg: hi ? '#352724' : '#F2F8EE',
+      heroTitle: hi ? 'जल्दी पहचानें।\nजल्दी मदद पाएँ।\nहर कदम साथ-साथ।' : 'Spot early.\nHeal early.\nOne hop at a time.',
+      heroSub: hi
+        ? 'बच्चों के लिए ऑक्यूपेशनल, स्पीच और बिहेवियर थेरेपी, एक ऐसी प्यारी, खेल-भरी जगह में जहाँ आपका बच्चा सुरक्षित महसूस करे और आपको हर कदम की जानकारी रहे।'
+        : 'Occupational, speech and behaviour therapy for children in East Delhi, in a warm, playful space where your child feels safe and you always know how they are doing.',
+      ctaBook: hi ? 'पहली मुलाक़ात बुक करें' : 'Book a first visit',
+      ctaCheck: hi ? 'मुफ़्त 10-मिनट HopCheck' : 'Free 10-min HopCheck',
+      heroNote: hi ? 'हफ़्ते के सातों दिन खुला · मयूर विहार फ़ेज़ 1' : 'Open all 7 days · Mayur Vihar Phase 1 · Pay by UPI',
+      chatState,
+      teaserState: st.teaser,
+      panelHidden: isOpen ? 'false' : 'true',
+      chatExpanded: isOpen ? 'true' : 'false',
+      launcherLabel: isOpen ? 'Close chat' : 'Open chat',
+      toggleChat: () => (isOpen ? closeChat() : openChat()),
+      closeChat,
+      onWidgetKey: (e) => { if (e.key === 'Escape' && isOpen) closeChat(); },
+      messages: shown.map((m) => ({ text: m.text, cls: 'mb-msg mb-msg--' + m.role })),
+      typing,
+      chips: H.topics.filter((t) => t.chip).map((t) => ({ label: t.label, pick: () => ask(t.label, t) })),
+      draft: st.draft,
+      onDraft: (e) => this.setState({ draft: e.target.value }),
+      send: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const text = st.draft.trim();
+        if (!text || st.busy) return;
+        ask(text, null, { draft: '' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

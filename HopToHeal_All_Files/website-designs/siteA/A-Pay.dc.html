@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Payment (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.08;margin:0;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:13px 24px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.pick{font:inherit;color:#352724;cursor:pointer;border-radius:18px;transition:transform .15s cubic-bezier(.34,1.56,.64,1)}
+.pick:hover{transform:translateY(-2px)}
+.pop{animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+.cel{transform-box:fill-box;transform-origin:center;animation:cel 1.6s ease-in-out infinite}
+@keyframes cel{50%{transform:scale(1.07) translateY(-4%)}}
+.fall{animation:fall 2.4s ease-in infinite}.f2{animation-delay:.6s}.f3{animation-delay:1.2s}
+@keyframes fall{0%{transform:translateY(-30px);opacity:0}15%{opacity:1}100%{transform:translateY(90px);opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 17px; line-height: 1.55; min-height: 1400px">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<div style="display: flex; align-items: center; gap: 16px"><a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 54px; width: auto"></a><span style="font-weight: 800; font-size: 14px; display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Secure payment</span></div>
+<a href="A-Book.dc.html" style="font-weight: 800">← Back to booking</a>
+</div>
+</header>
+
+<sc-if value="{{notPaid}}" hint-placeholder-val="{{ true }}">
+<main class="wrap" style="padding-top: 36px; padding-bottom: 80px; display: flex; flex-wrap: wrap-reverse; gap: 28px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<h1 class="disp" style="font-size: 48px">Pay for your booking</h1>
+<div style="display: flex; align-items: center; gap: 10px; background: #FFE9C2; border-radius: 16px; padding: 10px 14px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#352724" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Your place is held for <span style="font-variant-numeric: tabular-nums" aria-live="polite">{{timer}}</span></div>
+
+<div role="radiogroup" aria-label="Payment method" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<div class="card" style="border: 2px solid {{m.border}}; border-radius: 20px; overflow: hidden">
+<button type="button" role="radio" aria-checked="{{m.checked}}" onClick="{{m.pick}}" style="font: inherit; width: 100%; text-align: left; border: 0; background: {{m.bg}}; padding: 16px 18px; cursor: pointer; display: flex; align-items: center; gap: 14px; color: #352724"><span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #352724; display: inline-flex; align-items: center; justify-content: center; flex: none"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{m.dot}}"></span></span><span style="flex: 1"><strong style="display: block; font-size: 18px">{{m.title}}</strong><span style="font-size: 14px; color: #6B5A53">{{m.sub}}</span></span><sc-if value="{{m.fast}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; font-weight: 800; background: #2E7D4F; color: #FFFFFF; padding: 2px 10px; border-radius: 999px">Fastest</span></sc-if></button>
+</div>
+</sc-for>
+</div>
+
+<sc-if value="{{isUPI}}" hint-placeholder-val="{{ true }}">
+<div class="card pop" style="padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px">
+<strong>Pay with your UPI app</strong>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{apps}}" as="a" hint-placeholder-count="4"><button type="button" class="pick" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="padding: 12px; border: 2px solid {{a.border}}; background: {{a.bg}}; font-weight: 800">{{a.label}}</button></sc-for>
+</div>
+<label for="upi-id" style="font-weight: 800; font-size: 15px; margin-top: 4px">Or enter your UPI ID</label>
+<input id="upi-id" type="text" placeholder="name@bank" style="font: inherit; padding: 12px 14px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724">
+</div>
+<div style="flex: 0 1 200px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+<div role="img" aria-label="QR code placeholder" style="width: 170px; height: 170px; border-radius: 18px; border: 2px dashed #D9CFC2; background: repeating-linear-gradient(45deg, #F2F8EE 0 8px, #FFFFFF 8px 16px); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #6B5A53">[UPI QR]</div>
+<span style="font-size: 13px; color: #6B5A53">On a laptop? Scan with your phone.</span>
+</div>
+</div>
+</sc-if>
+
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="code" style="font-weight: 800; font-size: 15px">Coupon or sponsored-slot code <span style="font-weight: 600; color: #6B5A53">(optional)</span></label><input id="code" type="text" style="font: inherit; padding: 12px 14px; border-radius: 14px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724; max-width: 360px; text-transform: uppercase"></div>
+</div>
+
+<aside style="flex: 1 1 340px; min-width: 0">
+<div class="card" style="padding: 24px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 44px rgba(53,39,36,.1)">
+<h2 class="disp" style="font-size: 26px">Order summary</h2>
+<div role="group" aria-label="Plan" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; background: #F2F8EE; border-radius: 999px; padding: 4px">
+<button type="button" onClick="{{single}}" aria-pressed="{{singlePressed}}" style="font: inherit; font-weight: 800; font-size: 14px; border: 0; border-radius: 999px; padding: 8px; cursor: pointer; background: {{singleBg}}; color: #352724">Single</button>
+<button type="button" onClick="{{pack}}" aria-pressed="{{packPressed}}" style="font: inherit; font-weight: 800; font-size: 14px; border: 0; border-radius: 999px; padding: 8px; cursor: pointer; background: {{packBg}}; color: #352724">15-day pack</button>
+</div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 48px; height: 48px; border-radius: 50%; background: #FFE9C2; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">A</span><div style="line-height: 1.3"><strong>Aarav · Speech therapy</strong><div style="font-size: 14px; color: #6B5A53">{{when}}</div></div></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B5A53">{{lineLabel}}</span><span>{{lineAmount}}</span></div>
+<sc-if value="{{isPack}}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between; color: #2E7D4F; font-weight: 800"><span>Pack discount (20%)</span><span>− ₹2,400</span></div></sc-if>
+<div style="border-top: 2px dashed #E5DDD2; padding-top: 12px; display: flex; justify-content: space-between; align-items: baseline"><span style="font-weight: 800">Total</span><span class="disp" style="font-size: 38px">{{total}}</span></div>
+<button type="button" class="btn sun" onClick="{{payNow}}" style="width: 100%; font-size: 19px">Pay {{total}}</button>
+<p style="margin: 0; font-size: 13px; color: #6B5A53">Receipt on WhatsApp and in your portal. GST: [confirm with your CA]. <a href="A-Services.dc.html">Refund &amp; cancellation policy</a></p>
+</div>
+</aside>
+</main>
+</sc-if>
+
+<sc-if value="{{paid}}" hint-placeholder-val="{{ false }}">
+<main class="wrap" style="padding-top: 48px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
+<svg width="190" height="190" viewBox="-40 -40 280 280" role="img" aria-label="Hoppy celebrating" style="overflow: visible">
+<g class="fall"><rect x="-20" y="10" width="14" height="14" rx="3" fill="#F46A39"></rect></g><g class="fall f2"><circle cx="220" cy="20" r="8" fill="#2E7D4F"></circle></g><g class="fall f3"><rect x="170" y="-20" width="12" height="12" rx="2" fill="#FBA826"></rect></g><g class="fall f2"><circle cx="10" cy="-10" r="6" fill="#FBA826"></circle></g>
+<g class="cel"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-18" width="12" height="34" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 22)"><rect x="-6" y="-20" width="12" height="38" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-18" width="12" height="34" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="70" cy="122" rx="9" ry="5.5" fill="#F46A39"></ellipse><ellipse cx="130" cy="122" rx="9" ry="5.5" fill="#F46A39"></ellipse><g fill="none" stroke="#352724" stroke-width="3.5" stroke-linecap="round"><path d="M74 108 Q82 98 90 108"></path><path d="M110 108 Q118 98 126 108"></path></g><path d="M86 122 Q100 146 114 122 Z" fill="#352724"></path></g>
+</svg>
+<h1 class="disp pop" style="font-size: 56px">Payment received!</h1>
+<p style="margin: 0; font-size: 19px; color: #6B5A53; max-width: 560px">Aarav is booked. We've sent the receipt and booking details to your WhatsApp.</p>
+<div class="card" style="padding: 22px; width: 100%; max-width: 480px; text-align: left; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between"><span style="color: #6B5A53">Paid for</span><strong>{{lineLabel}}</strong></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B5A53">When</span><strong style="text-align: right">{{when}}</strong></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B5A53">Amount</span><strong>{{total}}</strong></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B5A53">Method</span><strong>{{methodName}}</strong></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B5A53">Receipt</span><strong>[HTH-2026-000123]</strong></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center"><a class="btn sun" href="A-Parent.dc.html">Go to my dashboard</a><a class="btn white" href="A-Pay.dc.html">Download invoice (PDF)</a><a class="btn white" href="A-Book.dc.html">Add to calendar</a></div>
+</main>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"plan":{"editor":"enum","options":["Single","Pack"],"default":"Single","section":"Preview"},"showSuccess":{"editor":"boolean","default":false,"section":"Preview"},"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { plan: null, method: 'upi', app: 0, paid: null, secs: 600 };
+  }
+  componentDidMount() {
+    this.tick = setInterval(() => this.setState({ secs: Math.max(0, this.state.secs - 1) }), 1000);
+  }
+  componentWillUnmount() { clearInterval(this.tick); }
+  renderVals() {
+    const st = this.state;
+    const pack = (st.plan ?? (this.props.plan ?? 'Single')) === 'Pack';
+    const paid = st.paid ?? (this.props.showSuccess ?? false);
+    const on = { border: '#352724', bg: '#FFE9C2', dot: '#352724' };
+    const off = { border: '#E5DDD2', bg: '#FFFFFF', dot: 'transparent' };
+    const methodList = [
+      { id: 'upi', title: 'UPI', sub: 'Google Pay, PhonePe, Paytm or any UPI app', fast: true },
+      { id: 'card', title: 'Debit or credit card', sub: 'Visa, Mastercard, RuPay', fast: false },
+      { id: 'net', title: 'Net banking', sub: 'All major Indian banks', fast: false }
+    ];
+    const apps = ['Google Pay', 'PhonePe', 'Paytm', 'Other UPI app'];
+    const mm = String(Math.floor(st.secs / 60)).padStart(2, '0');
+    const ss = String(st.secs % 60).padStart(2, '0');
+    const methodName = st.method === 'upi' ? 'UPI · ' + apps[st.app] : methodList.find((m) => m.id === st.method).title;
+    return {
+      notPaid: !paid, paid,
+      timer: mm + ':' + ss,
+      methods: methodList.map((m) => { const s = st.method === m.id ? on : off; return { ...m, checked: st.method === m.id ? 'true' : 'false', border: s.border, bg: s.bg, dot: s.dot, pick: () => this.setState({ method: m.id }) }; }),
+      isUPI: st.method === 'upi',
+      apps: apps.map((label, i) => { const s = st.app === i ? on : off; return { label, pressed: st.app === i ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ app: i }) }; }),
+      single: () => this.setState({ plan: 'Single' }), pack: () => this.setState({ plan: 'Pack' }),
+      singlePressed: pack ? 'false' : 'true', packPressed: pack ? 'true' : 'false',
+      singleBg: pack ? 'transparent' : '#FBA826', packBg: pack ? '#FBA826' : 'transparent',
+      isPack: pack,
+      when: pack ? '15 days from Tue 3 Nov, daily 11:00 am' : 'Tue 3 Nov, 11:00 am · 1 hour',
+      lineLabel: pack ? '15 sessions × ₹800' : '1 session (1 hour)',
+      lineAmount: pack ? '₹12,000' : '₹800',
+      total: pack ? '₹9,600' : '₹800',
+      methodName,
+      payNow: () => this.setState({ paid: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
