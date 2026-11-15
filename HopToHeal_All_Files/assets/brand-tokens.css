@@ -1,0 +1,29 @@
+/* Hop to Heal brand tokens. Colours sampled from the logo; see the Brand kit artboard. */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Hind:wght@400;600&display=swap");
+
+:root {
+  /* Colours */
+  --hth-mint: #F2F8EE;       /* page background */
+  --hth-mint-deep: #E2F0DA;  /* section bands, footer */
+  --hth-sun: #FBA826;        /* primary buttons, Hoppy (text on it is always ink) */
+  --hth-sun-soft: #FFE9C2;   /* highlights, icon tiles */
+  --hth-blush: #F46A39;      /* Hoppy's cheeks, decoration only */
+  --hth-ink: #352724;        /* text, outlines, dark buttons */
+  --hth-ink-muted: #6B5A53;  /* secondary text */
+  --hth-ember: #B4471C;      /* links, small accent text */
+  --hth-leaf: #2E7D4F;       /* success, "On track", WhatsApp */
+  --hth-alert: #B83232;      /* "Let's talk" status */
+  --hth-line: #E5DDD2;       /* borders */
+  --hth-white: #FFFFFF;
+
+  /* Type */
+  --hth-font-display: "Baloo 2", "Nunito", sans-serif;  /* headings, also covers Hindi */
+  --hth-font-body: "Nunito", system-ui, sans-serif;
+  --hth-font-hindi: "Hind", sans-serif;
+
+  /* Shape */
+  --hth-radius-pill: 999px;  /* buttons, chips */
+  --hth-radius-card: 24px;
+  --hth-radius-input: 16px;
+  --hth-tap-min: 48px;
+}

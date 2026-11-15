@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal 2.0: HopCheck</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.eb{margin:0;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#A8421A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:0;padding:14px 26px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.card{background:#FFFFFF;border-radius:28px;box-shadow:0 1px 0 #E3DCD2,0 14px 34px rgba(43,33,30,.07)}
+.nav a{color:#2B211E;text-decoration:none;font-weight:700;font-size:16px}.nav a:hover{color:#A8421A}
+.lift{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}.lift:hover{transform:translateY(-8px)}
+.area{display:flex;flex-direction:column;gap:4px;background:#FFFFFF;border-radius:22px;padding:18px;box-shadow:inset 0 0 0 2px #E3DCD2}
+.area b{font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px}
+.area span{font-size:14.5px;color:#645650}
+.area i{font-style:normal;font-size:13px;font-weight:800;color:#1E5C46;margin-top:4px}
+@supports (animation-timeline: view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 80%}}
+@keyframes rise{from{opacity:0;transform:translateY(50px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(246,250,243,.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 #E3DCD2">
+<div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="Main.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/b35ebc36e430a1ea4cd8d1dc63b7911d" alt="Hop to Heal" style="height: 60px; width: auto"></a>
+<nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 26px"><a href="Main.dc.html">Home</a><a href="Services.dc.html">Services</a><a href="HopCheck.dc.html" aria-current="page" style="color: #A8421A">HopCheck</a><a href="Counselling.dc.html">Counselling</a></nav>
+<div style="display: flex; gap: 10px"><a class="btn s" href="SignIn.dc.html" style="padding: 9px 18px; font-size: 15px">Sign in</a><a class="btn p" href="Book.dc.html" style="padding: 9px 18px; font-size: 15px">Book</a></div>
+</div>
+</header>
+
+<main>
+<section class="w" style="padding-top: 64px; padding-bottom: 40px; text-align: center; display: flex; flex-direction: column; gap: 16px; align-items: center">
+<p class="eb">HopCheck · free · private · reviewed by a therapist</p>
+<h1 class="d" style="font-size: 76px; max-width: 900px">Does my child need help? Do I?</h1>
+<p style="margin: 0; font-size: 21px; color: #645650; max-width: 720px">Two short questionnaires find out. Grown-ups answer about what they see. Children answer about how it feels. A senior therapist reads both and tells you which of our services, if any, will help.</p>
+</section>
+
+<section aria-label="Choose a questionnaire" class="w" style="padding-bottom: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px">
+<a href="ParentCheck.dc.html" class="lift" style="text-decoration: none; color: #2B211E; background: #FFEDC9; border-radius: 36px; padding: 36px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; background: #2B211E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 999px">Questionnaire 1 · parents, grandparents, guardians</span>
+<span class="d" style="font-size: 46px">The grown-up check</span>
+<span>You know your child best. Tell us what you notice at home, at school and at play.</span>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px"><li>Safety questions first</li><li>24 questions across 8 areas of your child's day</li><li>4 questions about how you are coping</li><li>Three answers to choose from: No worry · A little · A lot</li></ul>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><span style="background: #FFFFFF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">Child aged 2–16</span><span style="background: #FFFFFF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">About 8 minutes</span><span style="background: #FFFFFF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">हिंदी / English</span></span>
+<span class="btn p" style="align-self: flex-start">Start the grown-up check</span>
+</a>
+<a href="KidCheck.dc.html" class="lift" style="text-decoration: none; color: #FFFFFF; background: #1E5C46; border-radius: 36px; padding: 36px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; background: #FBA826; color: #2B211E; font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 999px">Questionnaire 2 · children aged 7 to 16</span>
+<span class="d" style="font-size: 46px">My turn!</span>
+<span>Children often know things grown-ups cannot see. Hoppy asks gently, one question at a time.</span>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px"><li>10 questions with three big face buttons</li><li>A speaker button reads each question aloud</li><li>"What I'm good at" and "What I want help with"</li><li>Simpler words for 7–11, grown-up words for 12–16</li></ul>
+<span style="display: flex; flex-wrap: wrap; gap: 8px"><span style="background: rgba(255,255,255,.16); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">No typing</span><span style="background: rgba(255,255,255,.16); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">About 3 minutes</span><span style="background: rgba(255,255,255,.16); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">A grown-up gives consent first</span></span>
+<span class="btn p" style="align-self: flex-start">Start the child's turn</span>
+</a>
+</section>
+
+<section aria-labelledby="who" style="background: #FFFFFF; padding: 72px 0">
+<div class="w" style="display: flex; flex-direction: column; gap: 22px">
+<h2 id="who" class="d rv" style="font-size: 48px">Who answers what</h2>
+<div class="card rv" style="overflow-x: auto; box-shadow: inset 0 0 0 2px #E3DCD2">
+<table style="border-collapse: collapse; width: 100%; min-width: 640px; font-size: 17px">
+<thead><tr style="text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #645650"><th style="padding: 16px 22px">Child's age</th><th style="padding: 16px 22px">Grown-up check</th><th style="padding: 16px 22px">Child's "My turn!"</th><th style="padding: 16px 22px">Questions use</th></tr></thead>
+<tbody>
+<tr style="border-top: 1px solid #E3DCD2"><td style="padding: 14px 22px"><strong>2–6 years</strong></td><td style="padding: 14px 22px">Yes</td><td style="padding: 14px 22px; color: #645650">Not yet: too young to answer for themselves</td><td style="padding: 14px 22px">Milestones and play</td></tr>
+<tr style="border-top: 1px solid #E3DCD2"><td style="padding: 14px 22px"><strong>7–11 years</strong></td><td style="padding: 14px 22px">Yes</td><td style="padding: 14px 22px">Yes, with simple words and read-aloud</td><td style="padding: 14px 22px">School, friends, feelings</td></tr>
+<tr style="border-top: 1px solid #E3DCD2"><td style="padding: 14px 22px"><strong>12–16 years</strong></td><td style="padding: 14px 22px">Yes</td><td style="padding: 14px 22px">Yes, in private if the teen prefers</td><td style="padding: 14px 22px">Study, mood, independence</td></tr>
+<tr style="border-top: 1px solid #E3DCD2; background: #F6FAF3"><td style="padding: 14px 22px"><strong>The grown-up</strong></td><td style="padding: 14px 22px">4 questions about your own stress and support</td><td style="padding: 14px 22px; color: #645650">—</td><td style="padding: 14px 22px">Leads to counselling if helpful</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="ar" class="w" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 24px">
+<div><p class="eb rv">What we look at</p><h2 id="ar" class="d rv" style="font-size: 48px">8 areas of a child's day, each linked to the right help</h2></div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px">
+<div class="area"><b>Talking &amp; understanding</b><span>Words, sentences, following instructions</span><i>→ Speech therapy · Speech and hearing support</i></div>
+<div class="area"><b>Moving &amp; hands</b><span>Balance, climbing, pencils, buttons</span><i>→ Occupational therapy</i></div>
+<div class="area"><b>Senses</b><span>Noise, touch, food textures, movement</span><i>→ Sensory integration (OT)</i></div>
+<div class="area"><b>Attention &amp; activity</b><span>Focus, sitting still, finishing tasks</span><i>→ Behaviour modification · ADHD assessment</i></div>
+<div class="area"><b>Feelings &amp; behaviour</b><span>Tantrums, worries, anger, sadness</span><i>→ Behaviour therapy · ABA · Counselling</i></div>
+<div class="area"><b>Play &amp; friends</b><span>Eye contact, sharing, making friends</span><i>→ Group therapy · ABA · Autism assessment</i></div>
+<div class="area"><b>Learning &amp; school</b><span>Reading, writing, numbers, memory</span><i>→ Special education · Learning disability support · School readiness</i></div>
+<div class="area"><b>Daily living</b><span>Eating, dressing, toilet, sleep</span><i>→ Occupational therapy · Early intervention</i></div>
+</div>
+<div class="rv" style="background: #DDEEDD; border-radius: 24px; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between"><span><strong>And about you:</strong> tiredness, worry, support at home → Parent counselling (₹500 for 30 minutes, online or at the centre)</span><a href="QuestionBank.dc.html" style="font-weight: 800">See every question →</a></div>
+</section>
+
+<section aria-labelledby="rules" style="background: #2B211E; color: #FFFFFF; padding: 80px 0">
+<div class="w" style="display: flex; flex-direction: column; gap: 28px">
+<h2 id="rules" class="d rv" style="font-size: 48px">What happens to your answers</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<li class="rv" style="background: rgba(255,255,255,.08); border-radius: 24px; padding: 22px"><span class="d" style="font-size: 36px; color: #FBA826">1</span><div class="d" style="font-size: 22px">Safety first</div><div style="font-size: 16px; color: #E3DCD2">If an answer shows a red flag, you see "please see a doctor today" straight away, and a therapist calls you the same day.</div></li>
+<li class="rv" style="background: rgba(255,255,255,.08); border-radius: 24px; padding: 22px"><span class="d" style="font-size: 36px; color: #FBA826">2</span><div class="d" style="font-size: 22px">A therapist reads both</div><div style="font-size: 16px; color: #E3DCD2">A master's-level therapist reviews the grown-up's and the child's answers together, within 2 working days.</div></li>
+<li class="rv" style="background: rgba(255,255,255,.08); border-radius: 24px; padding: 22px"><span class="d" style="font-size: 36px; color: #FBA826">3</span><div class="d" style="font-size: 22px">A signed report</div><div style="font-size: 16px; color: #E3DCD2">You see nothing until it is signed. Then: each area in plain words, and the services that fit.</div></li>
+<li class="rv" style="background: rgba(255,255,255,.08); border-radius: 24px; padding: 22px"><span class="d" style="font-size: 36px; color: #FBA826">4</span><div class="d" style="font-size: 22px">Your choice</div><div style="font-size: 16px; color: #E3DCD2">Book from the report, ask for a free 15-minute call, or do nothing. We check in again in 3 months.</div></li>
+</ol>
+<p class="rv" style="margin: 0; font-size: 16px; color: #E3DCD2">HopCheck is a screening, not a diagnosis. It never names a condition. Only a qualified professional can diagnose after meeting your child.</p>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 14px"><a class="btn p" href="ParentCheck.dc.html">Start the grown-up check</a><a class="btn s" href="KidCheck.dc.html">Start the child's turn</a><a class="btn s" href="Result.dc.html">See a sample report</a></div>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

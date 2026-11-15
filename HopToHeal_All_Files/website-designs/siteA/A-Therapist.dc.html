@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Therapist dashboard (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EDF1EA}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.08;margin:0;text-wrap:balance}
+.lbl{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6B5A53}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:15px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:8px 16px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1);box-sizing:border-box}
+.btn:hover{transform:translateY(-2px)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:22px}
+.row{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #EFEAE4}
+.tag{font-size:12px;font-weight:800;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.cell{height:26px;border-radius:7px}
+.in{animation:in .5s cubic-bezier(.34,1.4,.64,1) both}.i2{animation-delay:.08s}.i3{animation-delay:.16s}.i4{animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(20px)}}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(184,50,50,.15)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #EDF1EA; font-size: 16px; line-height: 1.5; min-height: 2100px">
+
+<header style="background: #352724; color: #F2F8EE">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 12px; padding-bottom: 12px">
+<div style="display: flex; align-items: center; gap: 14px"><span class="disp" style="font-size: 26px; color: #FBA826">Hop to Heal</span><span style="font-weight: 800; font-size: 13px; background: rgba(251,168,38,.18); color: #FBA826; padding: 4px 12px; border-radius: 999px">Therapist portal</span></div>
+<nav aria-label="Therapist" style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 700"><a href="A-Therapist.dc.html" aria-current="page" style="color: #FBA826; text-decoration: none">Today</a><a href="A-Update.dc.html" style="color: #F2F8EE; text-decoration: none">Children</a><a href="A-Therapist.dc.html#queue" style="color: #F2F8EE; text-decoration: none">HopCheck reviews</a><a href="A-Therapist.dc.html#avail" style="color: #F2F8EE; text-decoration: none">Availability</a></nav>
+<div style="display: flex; align-items: center; gap: 10px; font-weight: 800"><img src="/_blob/7df67db79ecb8aa714a2b17ae1ea6600" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #FBA826">Jiya Gupta</div>
+</div>
+</header>
+
+<main class="wrap" style="padding-top: 28px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+<div><p class="lbl" style="margin: 0">Wednesday 4 November · example data</p><h1 class="disp" style="font-size: 46px">Good morning, Jiya</h1></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><a class="btn sun" href="A-Update.dc.html">Write a session note</a><button type="button" class="btn white">Add leave</button></div>
+</div>
+
+<section aria-label="At a glance" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px">
+<div class="card in" style="padding: 18px 20px"><div class="lbl">Sessions today</div><div class="disp" style="font-size: 44px">6</div><div style="font-size: 14px; color: #6B5A53">2 done · next at 12:00</div></div>
+<div class="card in i2 pulse" style="padding: 18px 20px; border: 2px solid #B83232"><div class="lbl" style="color: #B83232">HopCheck reviews</div><div class="disp" style="font-size: 44px">3</div><div style="font-size: 14px; font-weight: 800; color: #B83232">1 urgent: call today</div></div>
+<div class="card in i3" style="padding: 18px 20px"><div class="lbl">Notes to write</div><div class="disp" style="font-size: 44px">2</div><div style="font-size: 14px; color: #6B5A53">Parents see them once you publish</div></div>
+<div class="card in i4" style="padding: 18px 20px"><div class="lbl">My caseload</div><div class="disp" style="font-size: 44px">14</div><div style="font-size: 14px; color: #6B5A53">children · 5 on a 15-day pack</div></div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 22px; align-items: start">
+
+<section class="card in" aria-labelledby="today-h" style="padding: 22px">
+<h2 id="today-h" class="disp" style="font-size: 26px; margin-bottom: 6px">Today's sessions</h2>
+<div class="row"><strong>10:00</strong><div style="display: flex; align-items: center; gap: 10px"><span style="width: 38px; height: 38px; border-radius: 12px; background: #FFE9C2; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">R</span><div><strong>Riya, 6</strong><div style="font-size: 14px; color: #6B5A53">OT · single · Room 2</div></div></div><span class="tag" style="background: #E2F0DA; color: #2E7D4F">Note published</span></div>
+<div class="row"><strong>11:00</strong><div style="display: flex; align-items: center; gap: 10px"><span style="width: 38px; height: 38px; border-radius: 12px; background: #FFE9C2; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">A</span><div><strong>Aarav, 4</strong><div style="font-size: 14px; color: #6B5A53">Speech · pack 7/15 · Room 1</div></div></div><a class="btn sun" href="A-Update.dc.html" style="font-size: 13px; padding: 5px 12px">Write note</a></div>
+<div class="row" style="background: #FFF8EC; border-radius: 12px; padding-left: 8px; padding-right: 8px"><strong>12:00</strong><div style="display: flex; align-items: center; gap: 10px"><span style="width: 38px; height: 38px; border-radius: 12px; background: #E2F0DA; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">K</span><div><strong>Kabir, 7</strong><div style="font-size: 14px; color: #6B5A53">Sensory integration · pack 3/15 · Sensory room</div></div></div><span class="tag" style="background: #FBA826">Next</span></div>
+<div class="row"><strong>14:00</strong><div style="display: flex; align-items: center; gap: 10px"><span style="width: 38px; height: 38px; border-radius: 12px; background: #FFE9C2; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">S</span><div><strong>Saanvi, 3</strong><div style="font-size: 14px; color: #6B5A53">Early intervention · first visit</div></div></div><span class="tag" style="background: #F2F8EE">First visit</span></div>
+<div class="row"><strong>16:00</strong><div style="display: flex; align-items: center; gap: 10px"><span style="width: 38px; height: 38px; border-radius: 12px; background: #E2F0DA; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">M</span><div><strong>Meera, 9</strong><div style="font-size: 14px; color: #6B5A53">OT · single</div></div></div><span class="tag" style="background: #F2F8EE">Upcoming</span></div>
+<div class="row" style="border-bottom: 0"><strong>17:00</strong><div style="display: flex; align-items: center; gap: 10px"><span style="width: 38px; height: 38px; border-radius: 12px; background: #FFE9C2; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">V</span><div><strong>Vihaan, 11</strong><div style="font-size: 14px; color: #6B5A53">Handwriting · pack 12/15</div></div></div><span class="tag" style="background: #F2F8EE">Upcoming</span></div>
+</section>
+
+<section id="queue" class="card in i2" aria-labelledby="queue-h" style="padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap"><h2 id="queue-h" class="disp" style="font-size: 26px">HopCheck review queue</h2><span style="font-size: 14px; color: #6B5A53">Target: within 2 working days</span></div>
+<div style="border: 2px solid #B83232; background: #FBE4E0; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Ishaan, 3 years</strong><span class="tag" style="background: #B83232; color: #FFFFFF">Urgent · red flag</span></div>
+<span style="font-size: 15px">Parent reported loss of words he used to say. Urgent advice already shown to parent.</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn white" style="font-size: 13px; padding: 5px 12px">Call parent now</button><button type="button" class="btn sun" style="font-size: 13px; padding: 5px 12px">Review answers</button><span style="font-size: 13px; color: #8E2626; font-weight: 800; align-self: center">Submitted 40 min ago</span></div>
+</div>
+<div style="border: 1px solid #E5DDD2; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Anaya, 8 years</strong><span class="tag" style="background: #FFE9C2; color: #8A3412; border: 1.5px solid #B4471C">Look closer</span></div>
+<span style="font-size: 15px">SDQ hyperactivity in referral range; teacher concerns about focus.</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn sun" style="font-size: 13px; padding: 5px 12px">Review answers</button><span style="font-size: 13px; color: #6B5A53; align-self: center">Due tomorrow 6 pm · needs 2nd reviewer</span></div>
+</div>
+<div style="border: 1px solid #E5DDD2; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Dev, 5 years</strong><span class="tag" style="background: #FBA826">Keep an eye</span></div>
+<span style="font-size: 15px">Fine motor in monitoring zone; parent worried about pencil grip.</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn sun" style="font-size: 13px; padding: 5px 12px">Review answers</button><span style="font-size: 13px; color: #6B5A53; align-self: center">Due Fri 6 Nov</span></div>
+</div>
+</section>
+
+<section class="card in i3" aria-labelledby="case-h" style="padding: 22px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px"><h2 id="case-h" class="disp" style="font-size: 26px">My children</h2><label for="find" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Find a child</label><input id="find" type="search" placeholder="Find a child" style="font: inherit; padding: 8px 14px; border-radius: 999px; border: 2px solid #E5DDD2; background: #EDF1EA; color: #352724"></div>
+<a href="A-Update.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 140px auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #EFEAE4; text-decoration: none; color: #352724"><span><strong>Aarav, 4</strong><br><span style="font-size: 13px; color: #6B5A53">Speech · 3 goals</span></span><span aria-label="2 of 3 goals improving" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px"><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i></span><span style="font-weight: 800; font-size: 14px">Update →</span></a>
+<a href="A-Update.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 140px auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #EFEAE4; text-decoration: none; color: #352724"><span><strong>Kabir, 7</strong><br><span style="font-size: 13px; color: #6B5A53">Sensory · 2 goals</span></span><span aria-label="Making progress" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px"><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i></span><span style="font-weight: 800; font-size: 14px">Update →</span></a>
+<a href="A-Update.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 140px auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #EFEAE4; text-decoration: none; color: #352724"><span><strong>Vihaan, 11</strong><br><span style="font-size: 13px; color: #6B5A53">Handwriting · 2 goals</span></span><span aria-label="Beyond goal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px"><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i></span><span style="font-weight: 800; font-size: 14px">Update →</span></a>
+<a href="A-Update.dc.html" style="display: grid; grid-template-columns: minmax(0, 1fr) 140px auto; gap: 12px; align-items: center; padding: 10px 0; text-decoration: none; color: #352724"><span><strong>Riya, 6</strong><br><span style="font-size: 13px; color: #6B5A53">OT · 3 goals</span></span><span aria-label="Starting" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px"><i class="cell" style="height: 10px; background: #B4471C"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i><i class="cell" style="height: 10px; background: #E5DDD2"></i></span><span style="font-weight: 800; font-size: 14px">Update →</span></a>
+</section>
+
+<section id="avail" class="card in i4" aria-labelledby="av-h" style="padding: 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap"><h2 id="av-h" class="disp" style="font-size: 26px">My week</h2><div style="display: flex; gap: 12px; font-size: 13px; font-weight: 700"><span><i style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #B4471C; vertical-align: middle"></i> Booked</span><span><i style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #E2F0DA; border: 1px solid #2E7D4F; vertical-align: middle"></i> Free</span><span><i style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #EFEAE4; vertical-align: middle"></i> Leave</span></div></div>
+<div style="overflow-x: auto">
+<div style="display: grid; grid-template-columns: 52px repeat(7, minmax(42px, 1fr)); gap: 5px; min-width: 420px; font-size: 13px; font-weight: 700">
+<span></span><span style="text-align: center">Wed</span><span style="text-align: center">Thu</span><span style="text-align: center">Fri</span><span style="text-align: center">Sat</span><span style="text-align: center">Sun</span><span style="text-align: center">Mon</span><span style="text-align: center">Tue</span>
+<span>10–1</span><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #E2F0DA"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #EFEAE4"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #E2F0DA"></i>
+<span>1–4</span><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #E2F0DA"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #EFEAE4"></i><i class="cell" style="background: #E2F0DA"></i><i class="cell" style="background: #B4471C"></i>
+<span>4–7</span><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #E2F0DA"></i><i class="cell" style="background: #EFEAE4"></i><i class="cell" style="background: #B4471C"></i><i class="cell" style="background: #E2F0DA"></i>
+</div>
+</div>
+<span style="font-size: 14px; color: #6B5A53">Free hours appear to parents as bookable slots. Leave on Sunday hides that day.</span>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

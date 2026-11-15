@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My portal · Hop to Heal</title>
+<meta name="description" content="Parent portal: sessions, plans, care tips and payments.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBA826">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1240px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lb{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#A8421A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:16px;text-decoration:none;border-radius:999px;border:0;padding:11px 20px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.k{background:#1E5C46;color:#FFFFFF;box-shadow:0 4px 0 #123D2E}
+.card{background:#FFFFFF;border-radius:28px;box-shadow:0 1px 0 #E3DCD2,0 14px 34px rgba(43,33,30,.07)}
+.dot{aspect-ratio:1/1;border-radius:50%}
+.lift{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}.lift:hover{transform:translateY(-6px)}
+.in{animation:in .5s cubic-bezier(.34,1.4,.64,1) both}.i2{animation-delay:.08s}.i3{animation-delay:.16s}.i4{animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(24px)}}
+.pulse{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 4px 0 #123D2E,0 0 0 10px rgba(30,92,70,.18)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/app.js"></script>
+</head>
+<body style="background: #F6FAF3">
+<div class="preview-bar" role="note">Preview site: example data only. Sign-in, saved accounts and payments are not live yet.</div>
+<div id="app"></div>
+<noscript><p style="padding: 24px; font-family: sans-serif">Please turn on JavaScript to use this site, or call Hop to Heal on +91 95994 33591.</p></noscript>
+
+<!-- What the page shows. {{name}} values come from renderVals() in the script below. -->
+<template id="view">
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 17px; line-height: 1.55">
+<header style="background: #FFFFFF; box-shadow: 0 1px 0 #E3DCD2"><div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<div style="display: flex; align-items: center; gap: 14px"><a href="index.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="assets/img/logo.png" alt="Hop to Heal" style="height: 54px; width: auto"></a><span style="font-weight: 800; font-size: 13px; background: #FFEDC9; padding: 4px 12px; border-radius: 999px">My portal</span></div>
+<nav aria-label="Portal" style="display: flex; flex-wrap: wrap; gap: 6px 24px; font-weight: 700"><a href="portal.html" aria-current="page" style="text-decoration: none">Dashboard</a><a href="book.html" style="color: #2B211E; text-decoration: none">Book</a><a href="pay.html" style="color: #2B211E; text-decoration: none">Payments</a><a href="hopcheck.html" style="color: #2B211E; text-decoration: none">HopCheck</a></nav>
+<span style="display: flex; align-items: center; gap: 10px; font-weight: 800"><span style="width: 40px; height: 40px; border-radius: 50%; background: #FFEDC9; display: inline-flex; align-items: center; justify-content: center; font-size: 14px">PS</span>Priya<a href="sign-in.html" style="font-size: 14px">Sign out</a></span>
+</div></header>
+
+<main class="w" style="padding-top: 32px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px"><div><p class="lb" style="margin: 0">Example account</p><h1 class="d" style="font-size: 54px">Good evening, Priya</h1><p style="margin: 4px 0 0; color: #645650">Your counselling session is at 6:30 pm today. Meera's HopCheck report is signed and ready.</p></div><div style="display: flex; flex-wrap: wrap; gap: 10px"><a class="btn p" href="book.html">Book a session</a><a class="btn s" href="hopcheck.html">Take HopCheck</a></div></div>
+
+<div role="tablist" aria-label="Sections" style="display: inline-flex; align-self: flex-start; background: #FFFFFF; border-radius: 999px; padding: 5px; gap: 4px; box-shadow: inset 0 0 0 2px #E3DCD2">
+<button type="button" role="tab" aria-selected="{{parentSel}}" onClick="{{showParent}}" style="font: inherit; font-weight: 800; font-size: 17px; border: 0; border-radius: 999px; padding: 10px 28px; cursor: pointer; background: {{parentBg}}; color: {{parentFg}}">Parent</button>
+<button type="button" role="tab" aria-selected="{{kidsSel}}" onClick="{{showKids}}" style="font: inherit; font-weight: 800; font-size: 17px; border: 0; border-radius: 999px; padding: 10px 28px; cursor: pointer; background: {{kidsBg}}; color: {{kidsFg}}">Children (2)</button>
+</div>
+
+<sc-if value="{{isParent}}">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); gap: 22px; align-items: start">
+
+<section class="in" aria-labelledby="meet" style="grid-column: 1 / -1; background: #1E5C46; color: #FFFFFF; border-radius: 32px; padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 380px"><p class="lb" style="margin: 0; color: #FBA826">Today · online counselling · session 4 of 21</p><h2 id="meet" class="d" style="font-size: 36px">6:30 pm with [Counsellor name]</h2><p style="margin: 6px 0 0; color: #DDEEDD">{{meetLine}}</p></div>
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; min-width: 260px">
+<sc-if value="{{locked}}"><span class="btn" style="background: rgba(255,255,255,.16); color: #FFFFFF; cursor: default"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Link unlocks at 6:25 pm</span></sc-if>
+<sc-if value="{{unlocked}}"><a class="btn p pulse" href="https://meet.google.com/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"></rect><path d="M16 10l5-3v10l-5-3z"></path></svg>Join on Google Meet</a></sc-if>
+<button type="button" onClick="{{toggleTime}}" style="font: inherit; font-size: 14px; font-weight: 700; background: transparent; color: #DDEEDD; border: 1px dashed rgba(255,255,255,.5); border-radius: 999px; padding: 8px 14px; cursor: pointer; min-height: 44px">{{timeLabel}}</button>
+</div>
+</section>
+
+<section class="card in i2" aria-labelledby="me" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="me" class="d" style="font-size: 26px">My profile</h2>
+<div style="display: flex; align-items: center; gap: 18px"><div style="position: relative; flex: none"><div role="img" aria-label="Profile photo placeholder" style="width: 100px; height: 100px; border-radius: 50%; background: #FFEDC9; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 34px">PS</div><button type="button" aria-label="Change photo" style="position: absolute; right: -4px; bottom: -4px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #2B211E; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></button></div><div style="line-height: 1.45"><strong class="d" style="font-size: 24px">Priya Sharma</strong><div style="font-size: 15px; color: #645650">priya.sharma@gmail.com · Google</div><div style="font-size: 15px; color: #645650">WhatsApp +91 98XXX XXX21 · English</div></div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="btn s" style="font-size: 14px; padding: 9px 16px">Edit profile</button><button type="button" class="btn s" style="font-size: 14px; padding: 9px 16px">Add second parent</button></div>
+</section>
+
+<section class="card in i2" aria-labelledby="plans" style="padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="plans" class="d" style="font-size: 26px">My plans</h2>
+<div><div style="display: flex; justify-content: space-between; font-weight: 800"><span>21-day counselling plan</span><span>3 of 21 done</span></div><div role="img" aria-label="3 of 21 counselling sessions done" style="display: grid; grid-template-columns: repeat(21, minmax(0, 1fr)); gap: 4px; margin-top: 8px"><sc-for list="{{cDots}}" as="c"><span class="dot" style="background: {{c.c}}"></span></sc-for></div><div style="font-size: 14px; color: #645650; margin-top: 4px">Daily 6:30 pm, online · saved ₹2,100</div></div>
+<div><div style="display: flex; justify-content: space-between; font-weight: 800"><span>15-day therapy pack · Meera</span><span>6 of 15 done</span></div><div role="img" aria-label="6 of 15 therapy sessions done" style="display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 5px; margin-top: 8px"><sc-for list="{{tDots}}" as="t"><span style="height: 14px; border-radius: 5px; background: {{t.c}}"></span></sc-for></div><div style="font-size: 14px; color: #645650; margin-top: 4px">Daily 11:00 am, at the centre · saved ₹2,400</div></div>
+<a href="book.html" style="font-weight: 800">Manage days →</a>
+</section>
+
+<section class="card in i3" aria-labelledby="hc" style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="hc" class="d" style="font-size: 26px">HopCheck</h2>
+<a href="hopcheck-result.html" style="display: flex; justify-content: space-between; gap: 10px; align-items: center; background: #FFEDC9; border-radius: 18px; padding: 12px 16px; text-decoration: none; color: #2B211E"><span><strong>Meera · report signed</strong><br><span style="font-size: 14px">Grown-up check + My turn · 13 Nov</span></span><strong>Open</strong></a>
+<div style="display: flex; justify-content: space-between; gap: 10px; align-items: center; background: #F6FAF3; border-radius: 18px; padding: 12px 16px"><span><strong>Aarav · with the therapist</strong><br><span style="font-size: 14px; color: #645650">Grown-up check sent 14 Nov · due by 17 Nov</span></span><span style="font-size: 13px; font-weight: 800; color: #645650">In review</span></div>
+<span style="font-size: 14px; color: #645650">Results appear only after a therapist signs them.</span>
+</section>
+
+<section class="in i3" aria-labelledby="tips" style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px"><h2 id="tips" class="d" style="font-size: 30px">How to care for your children this week</h2><span style="font-size: 14px; color: #645650">Written by their therapists and your counsellor</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 18px">
+<article class="lift" style="background: #FFEDC9; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span class="lb">For Meera · writing</span><strong class="d" style="font-size: 21px">Play-dough before homework</strong><span style="font-size: 15px">Five minutes of squeezing and rolling warms up her hand muscles.</span><span style="font-size: 13px; color: #645650">Dr. Heena Gupta</span></article>
+<article class="lift" style="background: #DDEEDD; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span class="lb" style="color: #1E5C46">For Aarav · talking</span><strong class="d" style="font-size: 21px">Wait five seconds</strong><span style="font-size: 15px">Name what he points at, then pause so he can try the word.</span><span style="font-size: 13px; color: #645650">Jiya Gupta</span></article>
+<article class="lift card" style="padding: 20px; display: flex; flex-direction: column; gap: 6px; box-shadow: inset 0 0 0 2px #E3DCD2"><span class="lb">Both children</span><strong class="d" style="font-size: 21px">A picture timetable</strong><span style="font-size: 15px">Pictures for wake-up, bath, breakfast and school show what comes next.</span><span style="font-size: 13px; color: #645650">Dr. Heena Gupta</span></article>
+<article class="lift" style="background: #2B211E; color: #FFFFFF; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span class="lb" style="color: #FBA826">For you</span><strong class="d" style="font-size: 21px">Ten quiet minutes</strong><span style="font-size: 15px">From your counsellor: after drop-off, sit with tea before anything else.</span><span style="font-size: 13px; color: #E3DCD2">[Counsellor name]</span></article>
+</div>
+</section>
+
+<section class="card in i4" aria-labelledby="pay" style="padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="pay" class="d" style="font-size: 26px">Payments</h2>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #E3DCD2"><span><strong>21-day counselling plan</strong><br><span style="font-size: 14px; color: #645650">12 Nov · UPI</span></span><span style="text-align: right"><strong>₹8,400</strong><br><a href="pay.html" style="font-size: 14px">Invoice</a></span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #E3DCD2"><span><strong>15-day therapy pack · Meera</strong><br><span style="font-size: 14px; color: #645650">9 Nov · UPI</span></span><span style="text-align: right"><strong>₹9,600</strong><br><a href="pay.html" style="font-size: 14px">Invoice</a></span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0"><span><strong>Session · Aarav</strong><br><span style="font-size: 14px; color: #645650">7 Nov · Card</span></span><span style="text-align: right"><strong>₹800</strong><br><a href="pay.html" style="font-size: 14px">Invoice</a></span></div>
+</section>
+
+<section class="card in i4" aria-labelledby="priv" style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="priv" class="d" style="font-size: 26px">Privacy and settings</h2>
+<div style="display: flex; justify-content: space-between"><span>Consent for my children's records</span><strong style="color: #1E5C46">Given · 7 Nov</strong></div>
+<div style="display: flex; justify-content: space-between"><span>WhatsApp reminders</span><strong style="color: #1E5C46">On</strong></div>
+<div style="display: flex; justify-content: space-between"><span>Language</span><strong>English</strong></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px"><button type="button" class="btn s" style="font-size: 14px; padding: 9px 16px">Download my data</button><button type="button" class="btn s" style="font-size: 14px; padding: 9px 16px">Withdraw consent</button><button type="button" class="btn s" style="font-size: 14px; padding: 9px 16px">Delete account</button></div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isKids}}">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 22px; align-items: start">
+<article class="card in lift" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 16px"><div role="img" aria-label="Meera's photo placeholder" style="width: 96px; height: 96px; border-radius: 50%; background: #DDEEDD; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka'; font-weight: 600; font-size: 38px; flex: none">M</div><div><h2 class="d" style="font-size: 32px">Meera</h2><div style="font-size: 15px; color: #645650">9 years · OT + learning support · 15-day pack</div><div style="font-size: 15px; color: #645650">Dr. Heena Gupta</div></div></div>
+<div style="background: #F6FAF3; border-radius: 18px; padding: 14px"><div style="display: flex; justify-content: space-between; font-weight: 800"><span>Overall</span><span style="color: #A8421A">Making progress</span></div><div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: 8px" aria-hidden="true"><span style="height: 12px; border-radius: 4px; background: #FBA826"></span><span style="height: 12px; border-radius: 4px; background: #FBA826"></span><span style="height: 12px; border-radius: 4px; background: #E3DCD2"></span><span style="height: 12px; border-radius: 4px; background: #E3DCD2"></span><span style="height: 12px; border-radius: 4px; background: #E3DCD2"></span></div><div style="font-size: 14px; color: #645650; margin-top: 4px">Next: tomorrow 11:00 am · new note today</div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><a class="btn p" href="child.html">View progress</a><a class="btn s" href="hopcheck-result.html">HopCheck report</a></div>
+</article>
+<article class="card in i2 lift" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 16px"><div role="img" aria-label="Aarav's photo placeholder" style="width: 96px; height: 96px; border-radius: 50%; background: #FFEDC9; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka'; font-weight: 600; font-size: 38px; flex: none">A</div><div><h2 class="d" style="font-size: 32px">Aarav</h2><div style="font-size: 15px; color: #645650">4 years · first session done</div><div style="font-size: 15px; color: #645650">Jiya Gupta</div></div></div>
+<div style="background: #F6FAF3; border-radius: 18px; padding: 14px"><strong>HopCheck with the therapist</strong><div style="font-size: 14px; color: #645650">Report due by 17 Nov. Aarav is under 7, so only the grown-up check applies.</div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><a class="btn p" href="child.html">View profile</a><a class="btn s" href="book.html">Book</a></div>
+</article>
+<section class="in i3" aria-labelledby="add" style="padding: 26px; display: flex; flex-direction: column; gap: 12px; border: 2px dashed #A8421A; border-radius: 28px">
+<h2 id="add" class="d" style="font-size: 26px">Add a child</h2>
+<div style="display: flex; gap: 14px; align-items: center"><div role="img" aria-label="Photo upload" style="width: 84px; height: 84px; border-radius: 50%; border: 2px dashed #A8421A; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #A8421A; flex: none; text-align: center">Add photo</div><span style="font-size: 14px; color: #645650">JPG or PNG up to 5 MB. Only you and their therapist can see it.</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px"><div style="display: flex; flex-direction: column; gap: 4px"><label for="kn" style="font-weight: 800; font-size: 14px">First name</label><input id="kn" type="text" style="font: inherit; padding: 11px 12px; border-radius: 14px; border: 2px solid #E3DCD2; background: #FFFFFF; color: #2B211E; min-width: 0"></div><div style="display: flex; flex-direction: column; gap: 4px"><label for="kd" style="font-weight: 800; font-size: 14px">Date of birth (age 2–16)</label><input id="kd" type="date" style="font: inherit; padding: 11px 12px; border-radius: 14px; border: 2px solid #E3DCD2; background: #FFFFFF; color: #2B211E; min-width: 0"></div></div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; accent-color: #1E5C46; flex: none">I am this child's parent or guardian and consent to Hop to Heal keeping their records.</label>
+<button type="button" class="btn p" style="align-self: flex-start">Save child</button>
+</section>
+</div>
+</sc-if>
+</main>
+</div>
+</template>
+
+<!-- What the page does. -->
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: null, unlocked: null };
+  }
+  renderVals() {
+    const p = (this.state.tab ?? (this.props.section ?? 'Parent')) === 'Parent';
+    const un = this.state.unlocked ?? (this.props.meetUnlocked ?? false);
+    return {
+      isParent: p, isKids: !p,
+      parentSel: p ? 'true' : 'false', kidsSel: p ? 'false' : 'true',
+      parentBg: p ? '#2B211E' : 'transparent', parentFg: p ? '#FFFFFF' : '#2B211E', kidsBg: p ? 'transparent' : '#2B211E', kidsFg: p ? '#2B211E' : '#FFFFFF',
+      showParent: () => this.setState({ tab: 'Parent' }), showKids: () => this.setState({ tab: 'Children' }),
+      locked: !un, unlocked: un,
+      meetLine: un ? 'It is 6:26 pm. Your link is ready, and we have sent it on WhatsApp too.' : 'Your Google Meet link appears here and on WhatsApp 5 minutes before the session.',
+      toggleTime: () => this.setState({ unlocked: !un }),
+      timeLabel: un ? 'Preview: back to earlier in the day' : 'Preview: jump to 5 minutes before',
+      cDots: Array.from({ length: 21 }, (_, i) => ({ c: i < 3 ? '#1E5C46' : i === 3 ? '#FBA826' : '#E3DCD2' })),
+      tDots: Array.from({ length: 15 }, (_, i) => ({ c: i < 6 ? '#1E5C46' : '#E3DCD2' }))
+    };
+  }
+}
+HopApp.mount(Component, {"section": "Parent", "meetUnlocked": false});
+</script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+/* ==========================================================================
+   Mascot chatbot widget: styles and animation
+   Read SPEC.md first. Every motion is driven by the tokens below and by the
+   data-state attribute on .mb-root (closed | open | thinking).
+   ========================================================================== */
+
+.mb-root {
+  /* ---- Colour tokens ---- */
+  --mb-mango: #F9A726;        /* mascot body, rays, user bubbles */
+  --mb-mango-deep: #E58E00;   /* typing dots, input focus */
+  --mb-blush: #F4743B;        /* cheeks */
+  --mb-ink: #3B2314;          /* face lines, text, send button */
+  --mb-mint: #EEF6EA;         /* panel header, bot bubbles */
+  --mb-white: #FFFFFF;
+
+  /* ---- Size tokens ---- */
+  --mb-mascot-size: 92px;
+  --mb-mascot-size-mobile: 76px;
+  --mb-panel-width: 340px;
+  --mb-panel-height: 460px;
+  --mb-edge-gap: 20px;
+
+  /* ---- Motion tokens: IDLE (closed) ---- */
+  --mb-sway-angle: 5deg;          /* swings from -angle to +angle */
+  --mb-sway-duration: 3.4s;       /* one full left-right-left cycle */
+  --mb-bob-height: 3px;           /* how far it floats up */
+  --mb-bob-duration: 1.7s;        /* half the sway, so it bobs twice per swing */
+  --mb-ray-duration: 2.4s;        /* ray pulse cycle */
+  --mb-ray-stagger: .25s;         /* delay between left, middle, right ray */
+  --mb-ray-min-scale: .55;        /* ray shrinks to this at the dip */
+
+  /* ---- Motion tokens: HOVER ---- */
+  --mb-hover-tilt: -9deg;
+  --mb-hover-lift: 4px;
+  --mb-hover-scale: 1.05;
+  --mb-press-scale: .94;
+  --mb-spring: cubic-bezier(.34, 1.56, .64, 1);   /* slight overshoot */
+
+  /* ---- Motion tokens: OPEN ---- */
+  --mb-open-sway-duration: 5s;    /* calmer sway while chatting */
+  --mb-blink-duration: 4.5s;      /* one blink per cycle */
+
+  /* ---- Motion tokens: THINKING ---- */
+  --mb-think-ray-duration: .6s;
+  --mb-think-bob-duration: .5s;
+
+  position: fixed;
+  right: var(--mb-edge-gap);
+  bottom: var(--mb-edge-gap);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  font-family: "Baloo 2", "Nunito", "Trebuchet MS", system-ui, sans-serif;
+  color: var(--mb-ink);
+}
+.mb-root *, .mb-root *::before, .mb-root *::after { box-sizing: border-box; }
+
+/* ==========================================================================
+   1. MASCOT (launcher button)
+   Motion is split across three nested wrappers so the effects stack:
+     .mb-tilt  -> hover / press reaction (transition)
+     .mb-sway  -> continuous left-right rotation (animation)
+     .mb-bob   -> continuous float up-down + squash (animation)
+   All three pivot at the bottom-centre of the body (50% 92%), so the
+   mascot rocks like it is standing on the spot.
+   ========================================================================== */
+
+.mb-launcher {
+  position: relative;
+  width: var(--mb-mascot-size);
+  height: var(--mb-mascot-size);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mb-launcher:focus-visible { outline: 3px solid var(--mb-ink); outline-offset: 4px; border-radius: 50%; }
+.mb-launcher svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 6px 8px rgba(59, 35, 20, .18));
+}
+
+.mb-tilt, .mb-sway, .mb-bob {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 92%;
+}
+.mb-tilt { transition: transform .35s var(--mb-spring); }
+.mb-sway { animation: mb-sway var(--mb-sway-duration) ease-in-out infinite; }
+.mb-bob  { animation: mb-bob var(--mb-bob-duration) ease-in-out infinite; }
+
+.mb-launcher:hover .mb-tilt,
+.mb-launcher:focus-visible .mb-tilt {
+  transform: rotate(var(--mb-hover-tilt)) translateY(calc(var(--mb-hover-lift) * -1)) scale(var(--mb-hover-scale));
+}
+.mb-launcher:active .mb-tilt { transform: scale(var(--mb-press-scale)); }
+
+@keyframes mb-sway {
+  0%, 100% { transform: rotate(calc(var(--mb-sway-angle) * -1)); }
+  50%      { transform: rotate(var(--mb-sway-angle)); }
+}
+@keyframes mb-bob {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  50%      { transform: translateY(calc(var(--mb-bob-height) * -1)) scale(.985, 1.02); }
+}
+
+/* Rays: each one shrinks toward its base and comes back, in sequence */
+.mb-ray {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: mb-ray var(--mb-ray-duration) ease-in-out infinite;
+}
+.mb-ray--left   { animation-delay: 0s; }
+.mb-ray--middle { animation-delay: var(--mb-ray-stagger); }
+.mb-ray--right  { animation-delay: calc(var(--mb-ray-stagger) * 2); }
+@keyframes mb-ray {
+  0%, 60%, 100% { transform: scaleY(1); opacity: 1; }
+  30%           { transform: scaleY(var(--mb-ray-min-scale)); opacity: .7; }
+}
+
+/* Eyes: closed arcs when idle, open dots when the chat is open */
+.mb-eyes-closed, .mb-eyes-open { transition: opacity .2s; }
+.mb-eyes-open { opacity: 0; }
+.mb-eye { transform-box: fill-box; transform-origin: 50% 50%; }
+@keyframes mb-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96%           { transform: scaleY(.1); }
+}
+
+/* ==========================================================================
+   2. STATES (set by mascot.js on .mb-root[data-state])
+   ========================================================================== */
+
+/* open + thinking share: eyes open, blinking, calmer sway, panel visible */
+.mb-root:is([data-state="open"], [data-state="thinking"]) .mb-eyes-open   { opacity: 1; }
+.mb-root:is([data-state="open"], [data-state="thinking"]) .mb-eyes-closed { opacity: 0; }
+.mb-root:is([data-state="open"], [data-state="thinking"]) .mb-eye  { animation: mb-blink var(--mb-blink-duration) infinite; }
+.mb-root:is([data-state="open"], [data-state="thinking"]) .mb-sway { animation-duration: var(--mb-open-sway-duration); }
+
+/* thinking only: fast rays and a quick hop */
+.mb-root[data-state="thinking"] .mb-ray { animation-duration: var(--mb-think-ray-duration); }
+.mb-root[data-state="thinking"] .mb-bob { animation-duration: var(--mb-think-bob-duration); }
+
+/* ==========================================================================
+   3. TEASER BUBBLE ("Hi! Need a hand?") beside the mascot
+   Shown when .mb-root[data-teaser="on"] and the chat is closed.
+   ========================================================================== */
+
+.mb-teaser {
+  position: absolute;
+  right: calc(var(--mb-mascot-size) + 6px);
+  bottom: 30px;
+  padding: 9px 14px;
+  white-space: nowrap;
+  background: var(--mb-white);
+  color: var(--mb-ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 4px 14px rgba(59, 35, 20, .14);
+  opacity: 0;
+  transform: translateX(8px) scale(.9);
+  transform-origin: 100% 100%;
+  transition: opacity .3s, transform .3s var(--mb-spring);
+  pointer-events: none;
+}
+.mb-root[data-state="closed"][data-teaser="on"] .mb-teaser { opacity: 1; transform: none; }
+
+/* ==========================================================================
+   4. CHAT PANEL
+   Grows out of the bottom-right corner (toward the mascot) with a springy
+   scale; hidden with visibility so it is not focusable when closed.
+   ========================================================================== */
+
+.mb-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: var(--mb-panel-width);
+  max-width: calc(100vw - 24px);
+  height: var(--mb-panel-height);
+  max-height: calc(100vh - 150px);
+  background: var(--mb-white);
+  border-radius: 26px 26px 8px 26px;
+  box-shadow: 0 18px 40px rgba(59, 35, 20, .22);
+  transform-origin: 100% 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(.94);
+  transition: opacity .22s, transform .28s cubic-bezier(.34, 1.4, .64, 1), visibility 0s .28s;
+}
+.mb-root:is([data-state="open"], [data-state="thinking"]) .mb-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+/* Header */
+.mb-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--mb-mint); }
+.mb-head svg { flex: none; width: 38px; height: 38px; }
+.mb-head-text { flex: 1; min-width: 0; }
+.mb-name { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.1; }
+.mb-sub  { margin: 2px 0 0; font-size: 13.5px; line-height: 1.2; opacity: .75; }
+.mb-close {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--mb-ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.mb-close:hover { background: rgba(59, 35, 20, .08); }
+
+/* Message log */
+.mb-log { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto; }
+.mb-msg {
+  max-width: 84%;
+  padding: 9px 13px;
+  font-size: 15.5px;
+  line-height: 1.4;
+  white-space: pre-line;          /* \n in answers becomes a line break */
+  overflow-wrap: anywhere;
+  animation: mb-pop .25s cubic-bezier(.34, 1.4, .64, 1);
+}
+.mb-msg--bot  { align-self: flex-start; background: var(--mb-mint);  border-radius: 18px 18px 18px 5px; }
+.mb-msg--user { align-self: flex-end;   background: var(--mb-mango); border-radius: 18px 18px 5px 18px; }
+@keyframes mb-pop { from { opacity: 0; transform: translateY(6px) scale(.96); } }
+
+/* Typing indicator (three bouncing dots) */
+.mb-typing { display: inline-flex; gap: 4px; padding: 13px 14px; }
+.mb-typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mb-mango-deep);
+  animation: mb-dot 1s ease-in-out infinite;
+}
+.mb-typing i:nth-child(2) { animation-delay: .15s; }
+.mb-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes mb-dot { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-5px); } }
+
+/* Quick-topic chips */
+.mb-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
+.mb-chip {
+  padding: 8px 12px;
+  border: 1.5px solid var(--mb-mango);
+  border-radius: 999px;
+  background: var(--mb-white);
+  color: var(--mb-ink);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s;
+}
+.mb-chip:hover { background: #FFF1D6; }
+
+/* Input row */
+.mb-form { display: flex; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid rgba(59, 35, 20, .1); }
+.mb-input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 14px;
+  border: 1.5px solid rgba(59, 35, 20, .2);
+  border-radius: 999px;
+  background: var(--mb-white);
+  color: var(--mb-ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+}
+.mb-input:focus { outline: none; border-color: var(--mb-mango-deep); box-shadow: 0 0 0 3px rgba(249, 167, 38, .3); }
+.mb-send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--mb-ink);
+  color: var(--mb-mango);
+  cursor: pointer;
+}
+.mb-send svg { width: 18px; height: 18px; }
+
+.mb-close:focus-visible, .mb-chip:focus-visible, .mb-send:focus-visible {
+  outline: 2px solid var(--mb-ink);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE + ACCESSIBILITY
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .mb-root { --mb-mascot-size: var(--mb-mascot-size-mobile); --mb-edge-gap: 12px; }
+  .mb-teaser { bottom: 24px; }
+}
+
+/* Users who ask for less motion get a still mascot and instant panel */
+@media (prefers-reduced-motion: reduce) {
+  .mb-root *, .mb-root *::before, .mb-root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

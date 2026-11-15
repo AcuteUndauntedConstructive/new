@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Update a child (Site B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EDF1EA}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.06;margin:0;text-wrap:balance}
+.lbl{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.b3{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:16px;text-decoration:none;border-radius:16px;border:2.5px solid #352724;padding:10px 20px;cursor:pointer;box-shadow:0 5px 0 #352724;transition:transform .12s,box-shadow .12s;box-sizing:border-box}
+.b3:hover{transform:translateY(-2px);box-shadow:0 7px 0 #352724}.b3:active{transform:translateY(5px);box-shadow:0 0 0 #352724}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.clay{background:#FFFFFF;border:2.5px solid #352724;border-radius:22px;box-shadow:0 7px 0 #352724}
+.field{font:inherit;font-size:16px;padding:12px 14px;border-radius:14px;border:2.5px solid #352724;background:#FFFFFF;color:#352724;width:100%;box-sizing:border-box}
+.stair{font:inherit;font-weight:800;font-size:12px;color:#352724;cursor:pointer;border:2.5px solid #352724;border-radius:8px;box-shadow:3px 3px 0 #352724;display:flex;align-items:flex-end;justify-content:center;padding:4px 2px;box-sizing:border-box;transition:transform .12s,background .2s}
+.stair:hover{transform:translateY(-3px)}
+.flash{animation:flash .6s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes flash{from{opacity:0;transform:perspective(900px) rotateX(-50deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #EDF1EA; font-size: 16px; line-height: 1.5; min-height: 2300px">
+<header style="background: #2A1F1C; color: #F2F8EE; border-bottom: 2.5px solid #000000">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 12px; padding-bottom: 12px">
+<div style="display: flex; align-items: center; gap: 14px"><span class="disp" style="font-size: 26px; color: #FBA826">Hop to Heal</span><span style="font-weight: 800; font-size: 13px; background: #FBA826; color: #352724; border: 2px solid #000000; padding: 3px 12px; border-radius: 10px">Therapist portal</span></div>
+<nav aria-label="Therapist" style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 800"><a href="B-Therapist.dc.html" style="color: #F2F8EE; text-decoration: none">Today</a><a href="B-Update.dc.html" aria-current="page" style="color: #FBA826; text-decoration: none">Children</a><a href="B-Therapist.dc.html#queue" style="color: #F2F8EE; text-decoration: none">Reviews</a></nav>
+<span style="display: flex; align-items: center; gap: 10px; font-weight: 800"><img src="/_blob/7df67db79ecb8aa714a2b17ae1ea6600" alt="" style="width: 40px; height: 40px; border-radius: 12px; object-fit: cover; border: 2.5px solid #FBA826">Jiya Gupta</span>
+</div>
+</header>
+
+<main class="wrap" style="padding-top: 24px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 24px">
+<sc-if value="{{published}}" hint-placeholder-val="{{ false }}"><div class="flash" role="status" style="background: #E2F0DA; border: 2.5px solid #2E7D4F; box-shadow: 0 5px 0 #2E7D4F; border-radius: 18px; padding: 14px 18px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px"><strong>Published! Priya gets a WhatsApp that Aarav's note is ready.</strong><a href="B-Child.dc.html" style="font-weight: 800">See the parent view →</a></div></sc-if>
+
+<section class="clay" style="padding: 20px 22px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center">
+<div role="img" aria-label="Aarav's photo placeholder" style="width: 80px; height: 80px; border-radius: 22px; background: #FFE9C2; border: 2.5px solid #352724; box-shadow: 5px 5px 0 #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2'; font-weight: 800; font-size: 32px; flex: none">A</div>
+<div style="flex: 1 1 300px"><p class="lbl" style="margin: 0; color: #B4471C">Example · session today</p><h1 class="disp" style="font-size: 40px">Aarav Sharma, 4</h1><div style="font-size: 15px">Speech · Wed 4 Nov, 11:00 am · pack 7 of 15 · Parent: Priya Sharma</div></div>
+<div role="group" aria-label="Attendance" style="display: flex; gap: 10px; flex-wrap: wrap"><sc-for list="{{attend}}" as="a" hint-placeholder-count="3"><button type="button" class="b3" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="padding: 7px 14px; font-size: 14px; background: {{a.bg}}">{{a.label}}</button></sc-for></div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<div style="flex: 999 1 620px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<section class="clay" aria-labelledby="g-h" style="padding: 22px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px"><h2 id="g-h" class="disp" style="font-size: 26px">Goal levels: tap a step</h2><button type="button" class="b3 white" style="font-size: 14px; padding: 6px 14px">+ Add goal</button></div>
+<sc-for list="{{goals}}" as="g" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>{{g.text}}</strong><span style="font-size: 14px; font-weight: 800; color: {{g.changeColor}}">{{g.change}}</span></div>
+<div role="group" aria-label="{{g.text}}" style="display: flex; align-items: flex-end; gap: 8px; height: 96px">
+<sc-for list="{{g.levels}}" as="l" hint-placeholder-count="5"><button type="button" class="stair" onClick="{{l.pick}}" aria-pressed="{{l.pressed}}" aria-label="{{l.label}}" style="flex: 1; height: {{l.h}}%; background: {{l.bg}}; color: {{l.fg}}">{{l.short}}</button></sc-for>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section class="clay" aria-labelledby="n-h" style="padding: 22px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="n-h" class="disp" style="font-size: 26px">Session notes</h2>
+<label for="np" style="font-weight: 800">Note for Priya (parents see this)</label>
+<textarea id="np" rows="4" class="field" onInput="{{onParentNote}}" value="{{parentNote}}"></textarea>
+<label for="nc" style="font-weight: 800">Private clinical note (therapists only)</label>
+<textarea id="nc" rows="3" class="field" placeholder="Observations and strategies"></textarea>
+</section>
+
+<section class="clay" aria-labelledby="t-h" style="padding: 22px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="t-h" class="disp" style="font-size: 26px">Care tip for the parent</h2>
+<label for="tt" style="font-weight: 800">Title</label>
+<input id="tt" type="text" class="field" value="{{tipTitle}}" onInput="{{onTipTitle}}">
+<label for="tb" style="font-weight: 800">Tip</label>
+<textarea id="tb" rows="3" class="field" value="{{tipBody}}" onInput="{{onTipBody}}"></textarea>
+<div role="button" tabindex="0" aria-label="Upload a report" style="border: 2.5px dashed #B4471C; border-radius: 16px; padding: 18px; text-align: center; font-weight: 800; color: #B4471C">Drop a report PDF here (shared after Dr. Heena countersigns)</div>
+</section>
+</div>
+
+<aside style="flex: 1 1 340px; min-width: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 16px">
+<div class="clay" style="padding: 20px; display: flex; flex-direction: column; gap: 12px; background: #FFE9C2">
+<p class="lbl" style="margin: 0; color: #B4471C">What Priya will see</p>
+<strong class="disp" style="font-size: 22px">Aarav · today</strong>
+<sc-for list="{{preview}}" as="p" hint-placeholder-count="3"><div style="display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; gap: 8px; font-size: 14px"><span style="font-weight: 700">{{p.text}}</span><span style="font-weight: 800">{{p.name}}</span></div><div style="display: flex; align-items: flex-end; gap: 3px; height: 22px"><sc-for list="{{p.segs}}" as="s" hint-placeholder-count="5"><i style="flex: 1; height: {{s.h}}%; background: {{s.c}}; border: 2px solid #352724; border-radius: 3px"></i></sc-for></div></div></sc-for>
+<div style="background: #FFFFFF; border: 2px solid #352724; border-radius: 14px; padding: 12px; font-size: 15px; white-space: pre-line">{{parentNote}}</div>
+<div style="background: #FBA826; border: 2px solid #352724; border-radius: 14px; padding: 12px; font-size: 15px"><strong>{{tipTitle}}</strong><br>{{tipBody}}</div>
+</div>
+<button type="button" class="b3 sun" onClick="{{publish}}" style="width: 100%; font-size: 18px; padding: 14px">Publish to parent</button>
+<button type="button" class="b3 white" style="width: 100%">Save draft</button>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      attend: 0, levels: [0, -1, -1], published: false,
+      parentNote: 'Lovely session! Aarav asked for 4 items in the shop game using 2 words each, without help. Try it at the vegetable stall this week.',
+      tipTitle: 'Wait five seconds',
+      tipBody: 'When Aarav points, name the thing, then pause 5 seconds so he can try the word himself.'
+    };
+  }
+  renderVals() {
+    const st = this.state;
+    const names = ['Starting', 'Making progress', 'Goal reached', 'Beyond goal', 'Far beyond'];
+    const shorts = ['−2', '−1', '0', '+1', '+2'];
+    const goals = [['Uses 2-word phrases to ask for things', -1], ['Follows 2-step instructions', -1], ['Takes turns in a short game', -2]];
+    const attendList = ['Attended', 'Late', 'Missed'];
+    return {
+      published: st.published,
+      attend: attendList.map((label, i) => ({ label, pressed: st.attend === i ? 'true' : 'false', bg: st.attend === i ? '#FBA826' : '#FFFFFF', pick: () => this.setState({ attend: i }) })),
+      goals: goals.map(([text, before], gi) => {
+        const cur = st.levels[gi]; const diff = cur - before;
+        return {
+          text,
+          change: diff > 0 ? 'Up ' + diff + (diff === 1 ? ' level' : ' levels') : diff < 0 ? 'Down ' + (-diff) : 'No change',
+          changeColor: diff > 0 ? '#2E7D4F' : diff < 0 ? '#B83232' : '#6B5A53',
+          levels: names.map((label, li) => { const v = li - 2; const on = li <= cur + 2; return { label: label + (cur === v ? ' (selected)' : ''), short: shorts[li], h: 28 + li * 18, pressed: cur === v ? 'true' : 'false', bg: on ? '#B4471C' : '#FFFFFF', fg: on ? '#FFFFFF' : '#352724', pick: () => { const lv = st.levels.slice(); lv[gi] = v; this.setState({ levels: lv, published: false }); } }; })
+        };
+      }),
+      preview: goals.map(([text], gi) => ({ text, name: names[st.levels[gi] + 2], segs: names.map((_, li) => ({ h: 20 + li * 20, c: li <= st.levels[gi] + 2 ? '#B4471C' : '#FFFFFF' })) })),
+      parentNote: st.parentNote, onParentNote: (e) => this.setState({ parentNote: e.target.value, published: false }),
+      tipTitle: st.tipTitle, onTipTitle: (e) => this.setState({ tipTitle: e.target.value, published: false }),
+      tipBody: st.tipBody, onTipBody: (e) => this.setState({ tipBody: e.target.value, published: false }),
+      publish: () => this.setState({ published: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

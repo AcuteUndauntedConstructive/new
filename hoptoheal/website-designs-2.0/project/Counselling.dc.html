@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal 2.0: Counselling</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.eb{margin:0;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#A8421A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:0;padding:14px 26px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.card{background:#FFFFFF;border-radius:28px;box-shadow:0 1px 0 #E3DCD2,0 14px 34px rgba(43,33,30,.07)}
+.nav a{color:#2B211E;text-decoration:none;font-weight:700;font-size:16px}.nav a:hover{color:#A8421A}
+.dot{width:22px;height:22px;border-radius:50%;background:#FBA826}
+.breathe{animation:breathe 6s ease-in-out infinite;transform-origin:50% 50%}
+@keyframes breathe{50%{transform:scale(1.12)}}
+@supports (animation-timeline: view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 80%}.fill{transform-origin:0 50%;animation:fill linear both;animation-timeline:view();animation-range:entry 0% cover 40%}}
+@keyframes rise{from{opacity:0;transform:translateY(50px)}}
+@keyframes fill{from{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(246,250,243,.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 #E3DCD2">
+<div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="Main.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/b35ebc36e430a1ea4cd8d1dc63b7911d" alt="Hop to Heal" style="height: 60px; width: auto"></a>
+<nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 26px"><a href="Main.dc.html">Home</a><a href="Services.dc.html">Services</a><a href="HopCheck.dc.html">HopCheck</a><a href="Counselling.dc.html" aria-current="page" style="color: #A8421A">Counselling</a></nav>
+<div style="display: flex; gap: 10px"><a class="btn s" href="SignIn.dc.html" style="padding: 9px 18px; font-size: 15px">Sign in</a><a class="btn p" href="Book.dc.html" style="padding: 9px 18px; font-size: 15px">Book</a></div>
+</div>
+</header>
+
+<main>
+<section style="background: #1E5C46; color: #FFFFFF; position: relative; overflow: hidden">
+<svg aria-hidden="true" viewBox="0 0 600 600" style="position: absolute; right: -120px; top: -160px; width: 640px"><circle class="breathe" cx="300" cy="300" r="220" fill="#27705699"></circle><circle class="breathe" cx="300" cy="300" r="140" fill="#FBA826" style="animation-delay: -3s"></circle></svg>
+<div class="w" style="position: relative; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 18px; max-width: 1200px">
+<p class="eb" style="color: #FBA826">Psychological counselling · online or at the centre</p>
+<h1 class="d" style="font-size: 78px; max-width: 760px">Thirty calm minutes, just for you</h1>
+<p style="margin: 0; font-size: 21px; max-width: 620px">For parents, teenagers and adults. Talk to a counsellor from home on Google Meet, or come to the centre. ₹500 per session, per person.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px"><a class="btn p" href="Book.dc.html">Book a ₹500 session</a><a class="btn s" href="#plan">21-day plan · save 20%</a></div>
+</div>
+</section>
+
+<section aria-labelledby="who" class="w" style="padding-top: 80px; padding-bottom: 64px; display: flex; flex-direction: column; gap: 24px">
+<h2 id="who" class="d rv" style="font-size: 52px">Who it helps</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<div class="card rv" style="padding: 26px"><h3 class="d" style="font-size: 26px">Parents and carers</h3><p style="margin: 8px 0 0; font-size: 16px; color: #645650">Tiredness, worry about the future, guilt, disagreements at home about how to handle your child.</p></div>
+<div class="card rv" style="padding: 26px"><h3 class="d" style="font-size: 26px">Teenagers, 13–16</h3><p style="margin: 8px 0 0; font-size: 16px; color: #645650">Exam stress, friendships, anger, low mood. Private and respectful, with a parent's consent.</p></div>
+<div class="card rv" style="padding: 26px"><h3 class="d" style="font-size: 26px">Adults</h3><p style="margin: 8px 0 0; font-size: 16px; color: #645650">Stress, anxiety, life changes, and support alongside rehab or recovery.</p></div>
+<div class="card rv" style="padding: 26px"><h3 class="d" style="font-size: 26px">Families</h3><p style="margin: 8px 0 0; font-size: 16px; color: #645650">Siblings and grandparents who want to understand and help. ₹500 per person.</p></div>
+</div>
+</section>
+
+<section aria-labelledby="onl" style="background: #FFFFFF; padding: 80px 0">
+<div class="w" style="display: flex; flex-direction: column; gap: 28px">
+<div><p class="eb rv">How online sessions work</p><h2 id="onl" class="d rv" style="font-size: 52px">Your Meet link arrives 5 minutes before</h2></div>
+<div style="position: relative; padding: 0 0 8px">
+<div aria-hidden="true" style="position: absolute; left: 11px; right: 11px; top: 10px; height: 4px; background: #E3DCD2; border-radius: 2px"><div class="fill" style="height: 100%; background: #FBA826; border-radius: 2px"></div></div>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px">
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span class="dot"></span><strong class="d" style="font-size: 22px">Book a slot</strong><span style="font-size: 16px; color: #645650">Choose Online or At the centre, pick a 30-minute slot, pay ₹500 by UPI.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span class="dot"></span><strong class="d" style="font-size: 22px">Reminder</strong><span style="font-size: 16px; color: #645650">WhatsApp reminders the day before and 1 hour before.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span class="dot" style="background: #1E5C46"></span><strong class="d" style="font-size: 22px">5 minutes before</strong><span style="font-size: 16px; color: #645650">The Google Meet link unlocks in your portal and arrives on WhatsApp.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span class="dot"></span><strong class="d" style="font-size: 22px">Your session</strong><span style="font-size: 16px; color: #645650">30 minutes, private, from wherever you are comfortable.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span class="dot"></span><strong class="d" style="font-size: 22px">After</strong><span style="font-size: 16px; color: #645650">A short note and one thing to try, saved in your portal.</span></li>
+</ol>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<div style="background: #F6FAF3; border-radius: 24px; padding: 22px"><strong class="d" style="font-size: 22px">Online</strong><ul style="margin: 8px 0 0; padding-left: 20px; font-size: 16px; color: #645650"><li>Google Meet on your phone or laptop</li><li>Find a quiet spot and use earphones</li><li>If the call drops, your counsellor calls you back</li></ul></div>
+<div style="background: #F6FAF3; border-radius: 24px; padding: 22px"><strong class="d" style="font-size: 22px">At the centre</strong><ul style="margin: 8px 0 0; padding-left: 20px; font-size: 16px; color: #645650"><li>403 B, Pocket 2, Mayur Vihar Phase 1</li><li>A private room, any day, 10 am – 7 pm</li><li>Handy while your child is in therapy</li></ul></div>
+</div>
+</div>
+</section>
+
+<section id="plan" aria-labelledby="pl" class="w" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<p class="eb rv">21-day plan · 20% off</p>
+<h2 id="pl" class="d rv" style="font-size: 52px">A session a day for 21 days</h2>
+<p class="rv" style="margin: 0; color: #645650">Small daily steps build steadier habits than one long talk. Take all 21 sessions with us and pay ₹8,400 instead of ₹10,500.</p>
+<div class="rv" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; max-width: 420px" role="img" aria-label="21 days shown as three weeks of seven dots">
+<span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #1E5C46"></span>
+<span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FBA826"></span>
+<span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span><span style="aspect-ratio: 1 / 1; border-radius: 50%; background: #FFEDC9"></span>
+</div>
+<p class="rv" style="margin: 0; font-size: 15px; color: #645650">Week 1: settle and understand · Week 2: build new habits · Week 3: make them stick</p>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<div class="card rv" style="padding: 28px; display: flex; flex-direction: column; gap: 6px"><p class="eb" style="color: #645650">Single session</p><div class="d" style="font-size: 60px">₹500</div><strong>30 minutes · per person</strong><span style="font-size: 15px; color: #645650">Online or at the centre</span><a class="btn s" href="Book.dc.html" style="margin-top: 12px">Book one</a></div>
+<div class="rv" style="padding: 28px; display: flex; flex-direction: column; gap: 6px; background: #1E5C46; color: #FFFFFF; border-radius: 28px"><p class="eb" style="color: #FBA826">21-day plan</p><div class="d" style="font-size: 60px">₹8,400</div><strong>21 sessions · ₹400 each</strong><span style="font-size: 15px">You save ₹2,100 (20%)</span><a class="btn p" href="Book.dc.html" style="margin-top: 12px">Start the plan</a></div>
+</div>
+</section>
+
+<section aria-labelledby="cn" style="background: #FFEDC9; padding: 72px 0">
+<div class="w" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px">
+<div class="rv"><h2 id="cn" class="d" style="font-size: 40px">Your counsellor</h2><div style="display: flex; gap: 16px; align-items: center; margin-top: 14px"><div role="img" aria-label="Counsellor photo placeholder" style="width: 96px; height: 96px; border-radius: 50%; background: #FFFFFF; border: 2px dashed #A8421A; flex: none"></div><div><strong>[Counsellor's name]</strong><div style="font-size: 16px">[Qualification, e.g. M.A. Psychology / M.Phil Clinical Psychology]</div><div style="font-size: 16px">[Registration no. · years of experience]</div></div></div></div>
+<div class="rv"><h2 class="d" style="font-size: 40px">Private and safe</h2><ul style="margin: 14px 0 0; padding-left: 20px; font-size: 17px"><li>What you say stays between you and your counsellor.</li><li>Sessions are never recorded.</li><li>Counselling is not emergency care. In a crisis call Tele-MANAS on 14416 or 112.</li></ul></div>
+</div>
+</section>
+
+<section style="padding: 80px 24px 88px"><div class="rv" style="max-width: 1152px; margin: 0 auto; background: #2B211E; color: #FFFFFF; border-radius: 44px; padding: 56px 44px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between"><h2 class="d" style="font-size: 48px; flex: 1 1 400px">Not sure if you need it? The grown-up HopCheck asks how you are doing, too.</h2><div style="display: flex; flex-wrap: wrap; gap: 14px"><a class="btn p" href="ParentCheck.dc.html">Take the grown-up check</a><a class="btn s" href="Book.dc.html">Book a session</a></div></div></section>
+</main>
+<footer style="background: #2B211E; color: #E9E1DA; border-top: 1px solid rgba(233,225,218,.2)"><div class="w" style="padding-top: 28px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 15px"><span>© 2026 Hop to Heal</span><span>+91 95994 33591 · hoptoheal@gmail.com</span></div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Book a first visit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.hop{transform-box:fill-box;transform-origin:50% 100%;animation:bhop 1.6s ease-in-out infinite}
+.pop{transform-box:fill-box;transform-origin:center;animation:bpop 1.8s ease-in-out infinite}
+.fall{animation:bfall 2.4s ease-in infinite}
+.f2{animation-delay:.5s}.f3{animation-delay:1s}.f4{animation-delay:1.5s}
+@keyframes bhop{0%,100%{transform:translateY(0) scale(1,1)}15%{transform:translateY(0) scale(1.08,.92)}40%{transform:translateY(-22%) scale(.96,1.05)}65%{transform:translateY(0) scale(1.06,.94)}80%{transform:translateY(0) scale(1,1)}}
+@keyframes bpop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes bfall{0%{transform:translateY(-20px);opacity:0}15%{opacity:1}100%{transform:translateY(60px);opacity:0}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #F2F8EE; color: #352724; font-family: 'Nunito', system-ui, sans-serif; font-size: 16px; line-height: 1.5">
+
+<div style="padding: 18px 18px 10px; display: flex; flex-direction: column; gap: 12px; background: #F2F8EE">
+<div style="display: flex; align-items: center; gap: 10px; min-height: 44px">
+<sc-if value="{{showBack}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{back}}" aria-label="Back" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #E5DDD2; background: #FFFFFF; color: #352724; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+</sc-if>
+<div style="flex: 1; min-width: 0">
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">Book a first visit</div>
+<div style="font-size: 13px; color: #6B5A53">{{stepLabel}}</div>
+</div>
+<a href="Main.dc.html" aria-label="Close and go home" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #E5DDD2; background: #FFFFFF; color: #352724; display: flex; align-items: center; justify-content: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+</div>
+<div aria-hidden="true" style="position: relative; height: 40px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 6px">
+<div style="position: absolute; left: 16px; right: 16px; bottom: 9px; border-top: 3px dotted #D9CFC2"></div>
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="6">
+<div style="position: relative; width: 22px; height: 40px; display: flex; align-items: flex-end; justify-content: center">
+<sc-if value="{{d.current}}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="34" viewBox="0 0 270 300" style="overflow: visible; margin-bottom: 2px"><g class="hop"><g fill="none" stroke="#FBA826" stroke-width="22" stroke-linecap="round"><line x1="12" y1="68" x2="32" y2="86"></line><line x1="123" y1="12" x2="123" y2="45"></line><line x1="257" y1="56" x2="240" y2="77"></line></g><path d="M132 86 C177 86 215 118 215 163 C215 215 178 297 132 297 C86 297 49 215 49 163 C49 118 87 86 132 86 Z" fill="#FBA826" stroke="#352724" stroke-width="8"></path><ellipse cx="101" cy="172" rx="9" ry="11" fill="#352724"></ellipse><ellipse cx="161" cy="171" rx="9" ry="11" fill="#352724"></ellipse><path d="M116 196 Q132 212 148 196" fill="none" stroke="#352724" stroke-width="8" stroke-linecap="round"></path></g></svg>
+</sc-if>
+<sc-if value="{{d.notCurrent}}" hint-placeholder-val="{{ true }}">
+<div style="width: 18px; height: 18px; border-radius: 50%; box-sizing: border-box; border: 3px solid {{d.ring}}; background: {{d.fill}}"></div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 8px 18px 18px; display: flex; flex-direction: column; gap: 16px">
+
+<sc-if value="{{s0}}" hint-placeholder-val="{{ true }}">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">Who are we helping today?</h1>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="child-name" style="font-weight: 800; font-size: 15px">Your child's first name</label>
+<input id="child-name" type="text" value="{{child}}" onInput="{{onChild}}" placeholder="e.g. Aarav" autocomplete="off" style="font: inherit; font-size: 18px; padding: 14px 16px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div id="age-label" style="font-weight: 800; font-size: 15px">How old? (years)</div>
+<div role="group" aria-labelledby="age-label" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ages}}" as="a" hint-placeholder-count="12">
+<button type="button" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="font: inherit; font-weight: 800; font-size: 18px; height: 52px; border-radius: 16px; cursor: pointer; border: 2px solid {{a.border}}; background: {{a.bg}}; color: #352724">{{a.label}}</button>
+</sc-for>
+</div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">Booking for more than one child? You can add another at the end.</p>
+</sc-if>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">What have you noticed about {{childName}}?</h1>
+<p style="margin: 0; color: #6B5A53">Tap all that apply. There are no wrong answers.</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{signs}}" as="s" hint-placeholder-count="9">
+<button type="button" onClick="{{s.toggle}}" aria-pressed="{{s.pressed}}" style="font: inherit; font-weight: 700; font-size: 16px; text-align: left; min-height: 52px; padding: 10px 14px; border-radius: 16px; cursor: pointer; border: 2px solid {{s.border}}; background: {{s.bg}}; color: #352724; display: flex; align-items: center; justify-content: space-between; gap: 10px">{{s.label}}<sc-if value="{{s.on}}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></sc-if></button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">Here's what we suggest</h1>
+<div style="background: #FFFFFF; border: 2px solid #352724; border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 800; background: #FFE9C2; color: #8A3412; padding: 3px 10px; border-radius: 999px">Recommended for {{childName}}</span>
+<div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.2">{{service}}</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 15px">
+<li style="display: flex; gap: 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>1 hour, play-based and relaxed</li>
+<li style="display: flex; gap: 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>You stay with your child the whole time</li>
+<li style="display: flex; gap: 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D4F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>You leave with clear next steps</li>
+</ul>
+</div>
+<div style="background: #E2F0DA; border-radius: 18px; padding: 14px 16px; font-size: 15px">Not ready for a visit? <a href="Main.dc.html" style="font-weight: 800">Try the free 10-minute HopCheck</a> from home first.</div>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">Pick a time that suits you</h1>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-weight: 800; font-size: 15px">Centre</div>
+<div style="background: #FFFFFF; border: 2px solid #352724; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4471C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><div style="flex: 1"><div style="font-weight: 800">Mayur Vihar Phase 1</div><div style="font-size: 13px; color: #6B5A53">Near Mother Dairy &amp; Safal outlet</div></div></div>
+<div style="border: 2px dashed #D9CFC2; border-radius: 16px; padding: 10px 14px; font-size: 14px; color: #6B5A53">Second centre (Mayur Vihar Ph-3 · Kondli) opens April 2027</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-weight: 800; font-size: 15px">Day <span style="font-weight: 600; color: #6B5A53">· we're open weekends too</span></div>
+<div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+<button type="button" onClick="{{d.pick}}" aria-pressed="{{d.pressed}}" style="font: inherit; flex: none; width: 58px; height: 68px; border-radius: 16px; cursor: pointer; border: 2px solid {{d.border}}; background: {{d.bg}}; color: #352724; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1"><span style="font-size: 13px; font-weight: 700">{{d.dow}}</span><span style="font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800">{{d.num}}</span></button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-weight: 800; font-size: 15px">Time</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{times}}" as="t" hint-placeholder-count="9">
+<button type="button" onClick="{{t.pick}}" disabled="{{t.taken}}" aria-pressed="{{t.pressed}}" style="font: inherit; font-weight: 700; font-size: 15px; height: 46px; border-radius: 14px; cursor: pointer; border: 2px solid {{t.border}}; background: {{t.bg}}; color: {{t.fg}}; text-decoration: {{t.strike}}">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{s4}}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">Where should we send the details?</h1>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="parent-name" style="font-weight: 800; font-size: 15px">Your name</label>
+<input id="parent-name" type="text" value="{{parent}}" onInput="{{onParent}}" autocomplete="name" style="font: inherit; font-size: 18px; padding: 14px 16px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="phone" style="font-weight: 800; font-size: 15px">WhatsApp number</label>
+<div style="display: flex; gap: 8px">
+<div style="display: flex; align-items: center; padding: 0 12px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; font-weight: 700">+91</div>
+<input id="phone" type="tel" inputmode="numeric" value="{{phone}}" onInput="{{onPhone}}" autocomplete="tel-national" placeholder="10-digit number" style="flex: 1; min-width: 0; font: inherit; font-size: 18px; padding: 14px 16px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724">
+</div>
+<span style="font-size: 13px; color: #6B5A53">We'll send a one-time code to confirm it's you.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div id="lang-label" style="font-weight: 800; font-size: 15px">Messages in</div>
+<div role="group" aria-labelledby="lang-label" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{setEN}}" aria-pressed="{{enPressed}}" style="font: inherit; font-weight: 800; height: 48px; border-radius: 14px; cursor: pointer; border: 2px solid {{enBorder}}; background: {{enBg}}; color: #352724">English</button>
+<button type="button" onClick="{{setHI}}" aria-pressed="{{hiPressed}}" style="font: inherit; font-weight: 800; height: 48px; border-radius: 14px; cursor: pointer; border: 2px solid {{hiBorder}}; background: {{hiBg}}; color: #352724">हिंदी</button>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<label style="display: flex; gap: 10px; align-items: flex-start; cursor: pointer"><input type="checkbox" checked="{{c1}}" onChange="{{toggleC1}}" style="width: 22px; height: 22px; margin: 0; accent-color: #352724; flex: none">I'm {{childName}}'s parent or guardian and agree that Hop to Heal can use these details to arrange therapy. <a href="Main.dc.html">Privacy policy</a></label>
+<label style="display: flex; gap: 10px; align-items: flex-start; cursor: pointer"><input type="checkbox" checked="{{c2}}" onChange="{{toggleC2}}" style="width: 22px; height: 22px; margin: 0; accent-color: #352724; flex: none">Send me reminders and updates on WhatsApp.</label>
+</div>
+</sc-if>
+
+<sc-if value="{{s5}}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">All looks good?</h1>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 22px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Child</span><span style="font-weight: 800; text-align: right">{{childName}}, {{ageText}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Visit</span><span style="font-weight: 800; text-align: right">{{service}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">When</span><span style="font-weight: 800; text-align: right">{{whenText}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #6B5A53">Where</span><span style="font-weight: 800; text-align: right">Mayur Vihar Phase 1</span></div>
+<div style="border-top: 1px dashed #D9CFC2; padding-top: 10px; display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 800">First session (1 hour)</span><span style="font-weight: 800">₹800</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-weight: 800; font-size: 15px">How would you like to pay?</div>
+<button type="button" onClick="{{payUPI}}" aria-pressed="{{upiPressed}}" style="font: inherit; text-align: left; padding: 12px 14px; border-radius: 16px; cursor: pointer; border: 2px solid {{upiBorder}}; background: {{upiBg}}; color: #352724; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 800">Pay now with UPI</span><span style="font-size: 13px; color: #6B5A53">Google Pay, PhonePe, Paytm or any UPI app</span></button>
+<button type="button" onClick="{{payCentre}}" aria-pressed="{{centrePressed}}" style="font: inherit; text-align: left; padding: 12px 14px; border-radius: 16px; cursor: pointer; border: 2px solid {{centreBorder}}; background: {{centreBg}}; color: #352724; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 800">Pay at the centre</span><span style="font-size: 13px; color: #6B5A53">Cash, card or UPI on the day</span></button>
+</div>
+<p style="margin: 0; font-size: 13px; color: #6B5A53">Free to reschedule up to [24] hours before. <a href="Main.dc.html">Cancellation policy</a></p>
+</sc-if>
+
+<sc-if value="{{s6}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding-top: 4px">
+<svg width="150" height="150" viewBox="-40 -30 350 360" role="img" aria-label="Hoppy celebrating" style="overflow: visible">
+<g class="fall"><rect x="-20" y="20" width="12" height="12" rx="3" fill="#F46A39"></rect></g>
+<g class="fall f2"><circle cx="290" cy="40" r="7" fill="#2E7D4F"></circle></g>
+<g class="fall f3"><rect x="40" y="-10" width="10" height="10" rx="2" fill="#FBA826"></rect></g>
+<g class="fall f4"><circle cx="230" cy="-6" r="6" fill="#F46A39"></circle></g>
+<g class="pop">
+<g fill="none" stroke="#FBA826" stroke-width="20" stroke-linecap="round"><line x1="2" y1="58" x2="30" y2="84"></line><line x1="123" y1="0" x2="123" y2="44"></line><line x1="266" y1="46" x2="242" y2="76"></line></g>
+<path d="M132 86 C177 86 215 118 215 163 C215 215 178 297 132 297 C86 297 49 215 49 163 C49 118 87 86 132 86 Z" fill="#FBA826"></path>
+<ellipse cx="84" cy="196" rx="13" ry="8" fill="#F46A39"></ellipse><ellipse cx="179" cy="195" rx="13" ry="8" fill="#F46A39"></ellipse>
+<g fill="none" stroke="#352724" stroke-width="5" stroke-linecap="round"><path d="M89 176 Q101 162 113 176"></path><path d="M149 175 Q161 161 173 175"></path></g>
+<path d="M110 196 Q132 238 154 196 Z" fill="#352724" stroke="#352724" stroke-width="4" stroke-linejoin="round"></path>
+<path d="M121 214 Q132 222 143 214 Q138 228 132 228 Q126 228 121 214 Z" fill="#F46A39"></path>
+</g>
+</svg>
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.1">You're booked!</h1>
+<p style="margin: 0; color: #6B5A53">See you {{whenText}}. We've sent the details to your WhatsApp.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 800">Show {{childName}} what to expect</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="aspect-ratio: 1 / 1; border-radius: 14px; background: #FFE9C2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 12px; font-weight: 800; padding: 6px; box-sizing: border-box"><span style="font-family: 'Baloo 2', sans-serif; font-size: 22px">1</span>Our door</div>
+<div style="aspect-ratio: 1 / 1; border-radius: 14px; background: #E2F0DA; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 12px; font-weight: 800; padding: 6px; box-sizing: border-box"><span style="font-family: 'Baloo 2', sans-serif; font-size: 22px">2</span>The play room</div>
+<div style="aspect-ratio: 1 / 1; border-radius: 14px; background: #FFE9C2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 12px; font-weight: 800; padding: 6px; box-sizing: border-box"><span style="font-family: 'Baloo 2', sans-serif; font-size: 22px">3</span>Your therapist</div>
+</div>
+<a href="Main.dc.html" style="font-weight: 800; font-size: 15px">Open the picture story</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="Main.dc.html" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 2px solid #352724; border-radius: 16px; padding: 12px; font-weight: 800; font-size: 15px; text-align: center">Get directions</a>
+<a href="Main.dc.html" style="text-decoration: none; color: #352724; background: #FFFFFF; border: 2px solid #352724; border-radius: 16px; padding: 12px; font-weight: 800; font-size: 15px; text-align: center">Add to calendar</a>
+</div>
+<sc-if value="{{payingNow}}" hint-placeholder-val="{{ false }}">
+<a href="Pay.dc.html" style="text-decoration: none; color: #352724; background: #FBA826; border: 2px solid #352724; border-radius: 16px; padding: 12px; font-weight: 800; font-size: 15px; text-align: center">Pay now with UPI</a>
+</sc-if>
+</div>
+</sc-if>
+
+</div>
+
+<div style="padding: 12px 18px 22px; background: #F2F8EE; border-top: 1px solid #E5DDD2">
+<sc-if value="{{notDone}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{next}}" disabled="{{blocked}}" style="font: inherit; width: 100%; height: 56px; border-radius: 999px; font-weight: 800; font-size: 18px; cursor: pointer; border: 2px solid {{nextBorder}}; background: {{nextBg}}; color: {{nextFg}}">{{nextLabel}}</button>
+</sc-if>
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<a href="Main.dc.html" style="display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: 56px; border-radius: 999px; font-weight: 800; font-size: 18px; text-decoration: none; border: 2px solid #352724; background: #FFFFFF; color: #352724">Back to home</a>
+</sc-if>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startStep":{"editor":"enum","options":["1 Child","2 Noticed","3 Suggestion","4 Time","5 Details","6 Confirm","7 Done"],"default":"1 Child","section":"Preview"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: null, child: '', age: null, noticed: [], day: null, time: null, parent: '', phone: '', lang: 'EN', c1: false, c2: true, pay: 'centre' };
+  }
+  renderVals() {
+    const st = this.state;
+    const startIdx = Math.max(0, parseInt(String(this.props.startStep ?? '1'), 10) - 1);
+    const step = st.step ?? startIdx;
+    const go = (n) => this.setState({ step: n });
+    const on = { border: '#352724', bg: '#FBA826' };
+    const off = { border: '#E5DDD2', bg: '#FFFFFF' };
+    const childName = st.child.trim() || 'your child';
+    const ages = Array.from({ length: 15 }, (_, i) => {
+      const n = i + 2; const sel = st.age === n; const s = sel ? on : off;
+      return { label: String(n), pressed: sel ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ age: n }) };
+    });
+    const signList = [
+      ['talk', 'Not talking much yet'], ['name', 'Doesn’t respond to name'], ['clumsy', 'Clumsy or falls often'],
+      ['senses', 'Upset by noise or touch'], ['still', 'Finds it hard to sit still'], ['tantrum', 'Big tantrums'],
+      ['school', 'Handwriting or school trouble'], ['eating', 'Very picky eating'], ['unsure', 'Not sure, just a check-up']
+    ];
+    const signs = signList.map(([id, label]) => {
+      const sel = st.noticed.includes(id); const s = sel ? on : off;
+      return { label, on: sel, pressed: sel ? 'true' : 'false', border: s.border, bg: s.bg,
+        toggle: () => this.setState({ noticed: sel ? st.noticed.filter((x) => x !== id) : st.noticed.concat(id) }) };
+    });
+    const has = (id) => st.noticed.includes(id);
+    const service = (has('talk') || has('name')) ? 'Speech & language assessment'
+      : (has('still') || has('tantrum')) ? 'Behaviour & development assessment'
+      : 'Occupational therapy assessment';
+    const dayList = [['Sat', '31'], ['Sun', '1'], ['Mon', '2'], ['Tue', '3'], ['Wed', '4'], ['Thu', '5'], ['Fri', '6']];
+    const days = dayList.map(([dow, num], i) => {
+      const sel = st.day === i; const s = sel ? on : off;
+      return { dow, num, pressed: sel ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ day: i }) };
+    });
+    const timeList = ['10:00 am', '10:45 am', '11:30 am', '12:15 pm', '2:00 pm', '2:45 pm', '3:30 pm', '4:15 pm', '5:45 pm'];
+    const takenSet = ['10:45 am', '2:00 pm', '4:15 pm'];
+    const times = timeList.map((label) => {
+      const taken = takenSet.includes(label); const sel = st.time === label;
+      return { label, taken, pressed: sel ? 'true' : 'false',
+        border: sel ? '#352724' : '#E5DDD2', bg: sel ? '#FBA826' : (taken ? '#EFEAE4' : '#FFFFFF'),
+        fg: taken ? '#8C7D76' : '#352724', strike: taken ? 'line-through' : 'none',
+        pick: () => { if (!taken) this.setState({ time: label }); } };
+    });
+    const digits = st.phone.replace(/\D/g, '');
+    const valid = [
+      st.child.trim().length > 0 && st.age !== null,
+      st.noticed.length > 0,
+      true,
+      st.day !== null && st.time !== null,
+      digits.length >= 10 && st.c1,
+      true,
+      true
+    ];
+    const blocked = !valid[step];
+    const labels = ['Continue', 'Continue', 'Choose a time', 'Continue', 'Continue', 'Confirm booking', ''];
+    const whenText = st.day !== null && st.time !== null ? dayList[st.day][0] + ' ' + dayList[st.day][1] + ', ' + st.time : '[day, time]';
+    const en = st.lang === 'EN';
+    const upi = st.pay === 'upi';
+    return {
+      s0: step === 0, s1: step === 1, s2: step === 2, s3: step === 3, s4: step === 4, s5: step === 5, s6: step === 6,
+      done: step === 6, notDone: step !== 6,
+      showBack: step > 0 && step < 6,
+      back: () => go(Math.max(0, step - 1)),
+      next: () => { if (!blocked) go(Math.min(6, step + 1)); },
+      stepLabel: step < 6 ? 'Step ' + (step + 1) + ' of 6 · about 2 minutes' : 'All done',
+      dots: Array.from({ length: 6 }, (_, i) => ({
+        current: i === Math.min(step, 5) && step < 6, notCurrent: !(i === Math.min(step, 5) && step < 6),
+        ring: i < step ? '#352724' : '#D9CFC2', fill: i < step ? '#FBA826' : '#FFFFFF'
+      })),
+      child: st.child, childName,
+      onChild: (e) => this.setState({ child: e.target.value }),
+      ages, ageText: st.age ? st.age + ' years' : '',
+      signs, service, days, times, whenText,
+      parent: st.parent, onParent: (e) => this.setState({ parent: e.target.value }),
+      phone: st.phone, onPhone: (e) => this.setState({ phone: e.target.value }),
+      setEN: () => this.setState({ lang: 'EN' }), setHI: () => this.setState({ lang: 'HI' }),
+      enPressed: en ? 'true' : 'false', hiPressed: en ? 'false' : 'true',
+      enBorder: en ? '#352724' : '#E5DDD2', enBg: en ? '#FBA826' : '#FFFFFF',
+      hiBorder: en ? '#E5DDD2' : '#352724', hiBg: en ? '#FFFFFF' : '#FBA826',
+      c1: st.c1, c2: st.c2,
+      toggleC1: () => this.setState({ c1: !st.c1 }), toggleC2: () => this.setState({ c2: !st.c2 }),
+      payUPI: () => this.setState({ pay: 'upi' }), payCentre: () => this.setState({ pay: 'centre' }),
+      upiPressed: upi ? 'true' : 'false', centrePressed: upi ? 'false' : 'true',
+      upiBorder: upi ? '#352724' : '#E5DDD2', upiBg: upi ? '#FFE9C2' : '#FFFFFF',
+      centreBorder: upi ? '#E5DDD2' : '#352724', centreBg: upi ? '#FFFFFF' : '#FFE9C2',
+      payingNow: upi,
+      blocked, nextLabel: labels[step],
+      nextBorder: blocked ? '#D9CFC2' : '#352724', nextBg: blocked ? '#EFEAE4' : '#FBA826', nextFg: blocked ? '#8C7D76' : '#352724'
+    };
+  }
+}
+</script>
+</body>
+</html>

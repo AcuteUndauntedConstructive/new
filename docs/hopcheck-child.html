@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HopCheck: My turn! · Hop to Heal</title>
+<meta name="description" content="The child part of HopCheck, for ages 7 to 16.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBA826">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;family=Baloo+2:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1E5C46}
+a{color:#FFEDC9}a:hover{color:#FFFFFF}
+.d{font-family:'Fredoka','Baloo 2',sans-serif;font-weight:600;line-height:1.1;margin:0;text-wrap:balance}
+.big{font:inherit;font-family:'Fredoka',sans-serif;font-weight:600;font-size:21px;width:100%;min-height:74px;border:0;border-radius:24px;padding:10px 18px;cursor:pointer;color:#2B211E;display:flex;align-items:center;gap:14px;text-align:left;transition:transform .12s;box-sizing:border-box}
+.big:active{transform:scale(.97)}
+.pick{font:inherit;font-weight:800;font-size:16px;border:0;border-radius:999px;padding:11px 16px;cursor:pointer;color:#2B211E}
+.go{font:inherit;font-family:'Fredoka',sans-serif;font-weight:600;font-size:21px;width:100%;height:60px;border:0;border-radius:999px;cursor:pointer;background:#FBA826;color:#2B211E;box-shadow:0 5px 0 #C97F0C;text-decoration:none;display:flex;align-items:center;justify-content:center}
+.go:disabled{opacity:.45;cursor:not-allowed}
+.hopA{transform-box:fill-box;transform-origin:50% 100%;animation:hopA .7s cubic-bezier(.34,1.56,.64,1)}
+.hopB{transform-box:fill-box;transform-origin:50% 100%;animation:hopB .7s cubic-bezier(.34,1.56,.64,1)}
+@keyframes hopA{0%{transform:translateY(0) scale(1.08,.92)}45%{transform:translateY(-22%) scale(.96,1.05)}100%{transform:translateY(0)}}
+@keyframes hopB{0%{transform:translateY(0) scale(1.08,.92)}45%{transform:translateY(-22%) scale(.96,1.05)}100%{transform:translateY(0)}}
+.bub{animation:bub .35s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes bub{from{opacity:0;transform:scale(.9) translateY(10px)}}
+.star{animation:star 1.6s ease-in-out infinite;transform-origin:50% 50%;transform-box:fill-box}.s2{animation-delay:.3s}.s3{animation-delay:.6s}
+@keyframes star{50%{transform:scale(1.25) rotate(12deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/app.js"></script>
+</head>
+<body style="background: #123D2E">
+<div class="preview-bar" role="note">Preview site: example data only. Sign-in, saved accounts and payments are not live yet.</div>
+<div id="app"></div>
+<noscript><p style="padding: 24px; font-family: sans-serif">Please turn on JavaScript to use this site, or call Hop to Heal on +91 95994 33591.</p></noscript>
+
+<!-- What the page shows. {{name}} values come from renderVals() in the script below. -->
+<template id="view">
+<div style="width: 100%; max-width: 480px; min-height: 100dvh; margin: 0 auto; box-sizing: border-box; overflow: hidden; background: #1E5C46; color: #FFFFFF; font-family: 'Figtree', system-ui, sans-serif; font-size: 17px; line-height: 1.45; display: flex; flex-direction: column">
+
+<div style="padding: 16px 18px 6px; display: flex; align-items: center; gap: 10px">
+<sc-if value="{{canBack}}"><button type="button" onClick="{{back}}" aria-label="Back" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.16); color: #FFFFFF; cursor: pointer; font-size: 20px; flex: none">‹</button></sc-if>
+<div role="img" aria-label="{{progressLabel}}" style="flex: 1; display: flex; gap: 5px; justify-content: center"><sc-for list="{{dots}}" as="d"><span style="width: 100%; max-width: 22px; height: 10px; border-radius: 5px; background: {{d.c}}"></span></sc-for></div>
+<button type="button" onClick="{{toggleLang}}" aria-label="Change language" style="height: 44px; padding: 0 12px; border-radius: 999px; border: 0; background: rgba(255,255,255,.16); color: #FFFFFF; cursor: pointer; font: inherit; font-weight: 800; font-size: 14px; flex: none">{{langLabel}}</button>
+</div>
+
+<div style="flex: 1; min-height: 0; overflow-y: auto; padding: 6px 18px 18px; display: flex; flex-direction: column; gap: 14px">
+
+<sc-if value="{{isGate}}">
+<div class="bub" style="background: #FFFFFF; color: #2B211E; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 14px; margin-top: 8px">
+<span style="align-self: flex-start; background: #FFEDC9; font-weight: 800; font-size: 13px; padding: 3px 12px; border-radius: 999px">Grown-up, this part is for you</span>
+<h1 class="d" style="font-size: 28px">Before your child starts</h1>
+<label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 16px"><input type="checkbox" checked="{{consent}}" onChange="{{toggleConsent}}" style="width: 24px; height: 24px; margin-top: 2px; accent-color: #1E5C46; flex: none">I am the parent or guardian and I agree that my child may answer these questions. A therapist will read the answers.</label>
+<div id="band-l" style="font-weight: 800">My child is…</div>
+<div role="group" aria-labelledby="band-l" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px"><button type="button" class="pick" onClick="{{setYoung}}" aria-pressed="{{youngPressed}}" style="background: {{youngBg}}">7 to 11</button><button type="button" class="pick" onClick="{{setTeen}}" aria-pressed="{{teenPressed}}" style="background: {{teenBg}}">12 to 16</button></div>
+<p style="margin: 0; font-size: 14px; color: #645650">Let your child answer on their own if they can. There are no right or wrong answers.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{isHello}}">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-top: 18px">
+<svg width="190" height="190" viewBox="0 0 200 200" role="img" aria-label="Hoppy waving" style="overflow: visible"><g class="hopA"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="121" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="128" cy="121" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="82" cy="106" rx="5" ry="6.5" fill="#2B211E"></ellipse><ellipse cx="118" cy="106" rx="5" ry="6.5" fill="#2B211E"></ellipse><path d="M86 122 Q100 138 114 122" fill="none" stroke="#2B211E" stroke-width="4" stroke-linecap="round"></path></g></svg>
+<h1 class="d" style="font-size: 38px">{{helloTitle}}</h1>
+<p style="margin: 0; font-size: 19px; color: #DDEEDD">{{helloBody}}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{isQ}}">
+<div style="display: flex; align-items: flex-end; gap: 6px; margin-top: 4px">
+<svg width="98" height="98" viewBox="0 0 200 200" aria-hidden="true" style="overflow: visible; flex: none"><g class="{{hopClass}}"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="121" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="128" cy="121" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="82" cy="106" rx="5" ry="6.5" fill="#2B211E"></ellipse><ellipse cx="118" cy="106" rx="5" ry="6.5" fill="#2B211E"></ellipse><path d="M90 124 Q100 132 110 124" fill="none" stroke="#2B211E" stroke-width="4" stroke-linecap="round"></path></g></svg>
+<div style="font-size: 14px; font-weight: 800; color: #DDEEDD; padding-bottom: 12px">{{qCount}}</div>
+</div>
+<div class="bub" style="background: #FFFFFF; color: #2B211E; border-radius: 8px 28px 28px 28px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 14px; font-weight: 800; color: #A8421A">{{stem}}</div>
+<h1 class="d" style="font-size: 27px">{{qText}}</h1>
+<button type="button" onClick="{{speak}}" style="align-self: flex-start; font: inherit; font-weight: 800; font-size: 14px; border: 0; background: #F6FAF3; color: #2B211E; border-radius: 999px; padding: 9px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"></path></svg>{{speakLabel}}</button>
+</div>
+<div role="group" aria-label="Your answer" style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" class="big" onClick="{{ans0}}" aria-pressed="{{p0}}" style="background: {{b0}}; box-shadow: {{s0}}"><svg width="46" height="46" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#DDEEDD" stroke="#2B211E" stroke-width="2.5"></circle><circle cx="17" cy="20" r="2.6" fill="#2B211E"></circle><circle cx="31" cy="20" r="2.6" fill="#2B211E"></circle><path d="M15 28 Q24 37 33 28" fill="none" stroke="#2B211E" stroke-width="2.8" stroke-linecap="round"></path></svg>{{l0}}</button>
+<button type="button" class="big" onClick="{{ans1}}" aria-pressed="{{p1}}" style="background: {{b1}}; box-shadow: {{s1}}"><svg width="46" height="46" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#FFEDC9" stroke="#2B211E" stroke-width="2.5"></circle><circle cx="17" cy="20" r="2.6" fill="#2B211E"></circle><circle cx="31" cy="20" r="2.6" fill="#2B211E"></circle><path d="M16 31 H32" fill="none" stroke="#2B211E" stroke-width="2.8" stroke-linecap="round"></path></svg>{{l1}}</button>
+<button type="button" class="big" onClick="{{ans2}}" aria-pressed="{{p2}}" style="background: {{b2}}; box-shadow: {{s2}}"><svg width="46" height="46" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#FBA826" stroke="#2B211E" stroke-width="2.5"></circle><circle cx="17" cy="21" r="2.6" fill="#2B211E"></circle><circle cx="31" cy="21" r="2.6" fill="#2B211E"></circle><path d="M16 33 Q24 26 32 33" fill="none" stroke="#2B211E" stroke-width="2.8" stroke-linecap="round"></path></svg>{{l2}}</button>
+</div>
+<sc-if value="{{showCare}}"><div role="status" class="bub" style="background: #FFEDC9; color: #2B211E; border-radius: 20px; padding: 14px 16px; font-size: 16px"><strong>Thank you for telling us. You are brave.</strong> Please tell a grown-up you trust today. A kind helper from Hop to Heal will talk with you too. You can also call Childline on 1098.</div></sc-if>
+</sc-if>
+
+<sc-if value="{{isChips}}">
+<div class="bub" style="background: #FFFFFF; color: #2B211E; border-radius: 28px; padding: 20px; display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
+<div style="font-size: 14px; font-weight: 800; color: #A8421A">{{chipCount}}</div>
+<h1 class="d" style="font-size: 28px">{{chipTitle}}</h1>
+<p style="margin: 0; font-size: 15px; color: #645650">Tap as many as you like.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{chips}}" as="c"><button type="button" class="pick" onClick="{{c.toggle}}" aria-pressed="{{c.pressed}}" style="background: {{c.bg}}; box-shadow: {{c.sh}}">{{c.label}}</button></sc-for></div>
+</div>
+</sc-if>
+
+<sc-if value="{{isDone}}">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-top: 10px">
+<svg width="210" height="170" viewBox="0 0 260 200" role="img" aria-label="Hoppy cheering with stars" style="overflow: visible"><path class="star" d="M30 40 l6 14 15 2 -11 10 3 15 -13 -8 -13 8 3 -15 -11 -10 15 -2z" fill="#FFEDC9"></path><path class="star s2" d="M226 30 l6 14 15 2 -11 10 3 15 -13 -8 -13 8 3 -15 -11 -10 15 -2z" fill="#FBA826"></path><path class="star s3" d="M214 140 l4 10 11 1 -8 7 2 11 -9 -6 -9 6 2 -11 -8 -7 11 -1z" fill="#FFFFFF"></path><g transform="translate(30 0)"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-18" width="12" height="34" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 22)"><rect x="-6" y="-20" width="12" height="38" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-18" width="12" height="34" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><g fill="none" stroke="#2B211E" stroke-width="4" stroke-linecap="round"><path d="M74 108 Q82 98 90 108"></path><path d="M110 108 Q118 98 126 108"></path></g><path d="M86 122 Q100 146 114 122 Z" fill="#2B211E"></path></g></svg>
+<h1 class="d" style="font-size: 38px">{{doneTitle}}</h1>
+<p style="margin: 0; font-size: 18px; color: #DDEEDD">{{doneBody}}</p>
+<div style="background: rgba(255,255,255,.12); border-radius: 22px; padding: 14px 16px; font-size: 15px; text-align: left; width: 100%; box-sizing: border-box"><strong>Grown-up:</strong> a therapist reads these answers together with yours. Your signed report arrives within 2 working days.</div>
+</div>
+</sc-if>
+</div>
+
+<div style="padding: 10px 18px 22px">
+<sc-if value="{{notDone}}"><button type="button" class="go" onClick="{{next}}" disabled="{{blocked}}">{{nextLabel}}</button></sc-if>
+<sc-if value="{{isDone}}"><a class="go" href="hopcheck.html">Give the phone back</a></sc-if>
+</div>
+</div>
+</template>
+
+<!-- What the page does. -->
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: null, band: null, hi: false, consent: true, ans: {}, good: [], help: [], spoke: false };
+  }
+  bank() {
+    return {
+      young: ['Reading or writing is hard for me', 'My hand gets tired when I write', 'It is hard for me to sit still in class', 'My mind wanders when the teacher is talking', 'Loud noises or scratchy clothes really bother me', 'It is hard for me to make friends', 'I get angry or upset very quickly', 'I feel worried or sad a lot', 'People do not understand what I say', 'Someone hurts me or makes me feel unsafe'],
+      teen: ['Reading, spelling or maths takes me much longer than my classmates', 'Writing by hand is tiring or messy for me', 'I find it hard to stay seated or still', 'I lose focus easily, even when I try', 'Noise, crowds or certain textures overwhelm me', 'I find it hard to fit in or keep friends', 'I lose my temper more than I want to', 'I feel anxious or low most days', 'I struggle to say what I mean', 'Someone hurts me or makes me feel unsafe'],
+      hindi: ['पढ़ना या लिखना मेरे लिए मुश्किल है', 'लिखते समय मेरा हाथ थक जाता है', 'कक्षा में एक जगह बैठना मुश्किल लगता है', 'टीचर बोलते हैं तो मेरा ध्यान भटक जाता है', 'तेज़ आवाज़ या चुभने वाले कपड़े मुझे बहुत परेशान करते हैं', 'दोस्त बनाना मेरे लिए मुश्किल है', 'मुझे बहुत जल्दी गुस्सा आ जाता है', 'मुझे अक्सर डर या उदासी लगती है', 'लोग मेरी बात समझ नहीं पाते', 'कोई मुझे चोट पहुँचाता है या मुझे डर लगता है'],
+      good: ['Drawing', 'Sports', 'Music', 'Building things', 'Helping others', 'Maths', 'Stories', 'Animals', 'Computers', 'Dancing'],
+      help: ['School work', 'Making friends', 'Feeling calm', 'Talking', 'Writing', 'Sports', 'Sleeping', 'Nothing right now']
+    };
+  }
+  renderVals() {
+    const st = this.state, B = this.bank();
+    const startMap = { 'Grown-up gate': 0, 'Hello': 1, 'Question 1': 2, 'Question 10': 11, 'Good at': 12, 'Done': 14 };
+    const step = st.step ?? (startMap[this.props.startAt ?? 'Question 1'] ?? 2);
+    const band = st.band ?? ((this.props.ageBand ?? '7 to 11') === '12 to 16' ? 'teen' : 'young');
+    const hi = st.hi;
+    const qi = step - 2;
+    const isQ = step >= 2 && step <= 11;
+    const list = hi ? B.hindi : B[band];
+    const qText = isQ ? list[qi] : '';
+    const a = st.ans[qi];
+    const labels = hi ? ['नहीं, ऐसा नहीं', 'कभी-कभी', 'हाँ, ऐसा ही है'] : ['Not me', 'Sometimes', 'That’s me'];
+    const tint = ['#DDEEDD', '#FFEDC9', '#FBA826'];
+    const btn = (j) => ({ bg: a === j ? tint[j] : '#FFFFFF', sh: a === j ? 'inset 0 0 0 4px #2B211E' : 'none' });
+    const set = (j) => () => this.setState({ ans: { ...st.ans, [qi]: j } });
+    const chipsOf = (key, src) => src.map((label) => { const on = st[key].includes(label); return { label, pressed: on ? 'true' : 'false', bg: on ? '#FBA826' : '#F6FAF3', sh: on ? 'inset 0 0 0 2.5px #2B211E' : 'inset 0 0 0 2px #E3DCD2', toggle: () => this.setState({ [key]: on ? st[key].filter((x) => x !== label) : st[key].concat(label) }) }; });
+    const valid = step === 0 ? st.consent : isQ ? a !== undefined : true;
+    const go = (n) => this.setState({ step: n, spoke: false });
+    return {
+      canBack: step > 0 && step < 14, back: () => go(step - 1),
+      progressLabel: isQ ? 'Question ' + (qi + 1) + ' of 10' : 'Progress',
+      dots: Array.from({ length: 10 }, (_, i) => ({ c: i < qi || step > 11 ? '#FBA826' : i === qi && isQ ? '#FFFFFF' : 'rgba(255,255,255,.25)' })),
+      toggleLang: () => this.setState({ hi: !hi }), langLabel: hi ? 'English' : 'हिंदी',
+      isGate: step === 0, isHello: step === 1, isQ, isChips: step === 12 || step === 13, isDone: step === 14, notDone: step !== 14,
+      consent: st.consent, toggleConsent: () => this.setState({ consent: !st.consent }),
+      setYoung: () => this.setState({ band: 'young' }), setTeen: () => this.setState({ band: 'teen' }),
+      youngPressed: band === 'young' ? 'true' : 'false', teenPressed: band === 'teen' ? 'true' : 'false',
+      youngBg: band === 'young' ? '#FBA826' : '#F6FAF3', teenBg: band === 'teen' ? '#FBA826' : '#F6FAF3',
+      helloTitle: hi ? 'नमस्ते! मैं हॉपी हूँ' : band === 'teen' ? 'Hi, I’m Hoppy' : 'Hi! I’m Hoppy!',
+      helloBody: hi ? 'मैं 10 छोटे सवाल पूछूँगा। कोई सही या गलत जवाब नहीं है।' : band === 'teen' ? '10 quick questions about how things are going for you. No right or wrong answers, and only your therapist reads them in full.' : 'I will ask you 10 little questions. There are no right or wrong answers. Just tap the face that fits you.',
+      hopClass: qi % 2 === 0 ? 'hopA' : 'hopB',
+      qCount: isQ ? (qi + 1) + ' / 10' : '',
+      stem: hi ? 'क्या यह तुम्हारे जैसा है?' : 'Is this like you?',
+      qText,
+      speak: () => { try { const u = new SpeechSynthesisUtterance(qText); u.lang = hi ? 'hi-IN' : 'en-IN'; u.rate = 0.9; window.speechSynthesis.cancel(); window.speechSynthesis.speak(u); } catch (e) {} this.setState({ spoke: true }); },
+      speakLabel: st.spoke ? (hi ? 'फिर से सुनो' : 'Hear it again') : (hi ? 'सुनो' : 'Read it to me'),
+      ans0: set(0), ans1: set(1), ans2: set(2),
+      l0: labels[0], l1: labels[1], l2: labels[2],
+      p0: a === 0 ? 'true' : 'false', p1: a === 1 ? 'true' : 'false', p2: a === 2 ? 'true' : 'false',
+      b0: btn(0).bg, b1: btn(1).bg, b2: btn(2).bg, s0: btn(0).sh, s1: btn(1).sh, s2: btn(2).sh,
+      showCare: qi === 9 && (a === 1 || a === 2),
+      chipCount: step === 12 ? 'Almost done · 1 of 2' : 'Last one · 2 of 2',
+      chipTitle: step === 12 ? 'What are you good at?' : 'What would you like help with?',
+      chips: step === 12 ? chipsOf('good', B.good) : chipsOf('help', B.help),
+      doneTitle: hi ? 'शाबाश!' : band === 'teen' ? 'Done. Thank you.' : 'You did it!',
+      doneBody: hi ? 'तुम्हारे जवाब एक थेरेपिस्ट पढ़ेंगे जो मदद करना जानते हैं।' : 'A kind therapist will read your answers and think about how to help.',
+      next: () => { if (valid) go(step + 1); },
+      blocked: !valid,
+      nextLabel: step === 0 ? 'Hand the phone to your child' : step === 1 ? (hi ? 'चलो शुरू करें' : 'Let’s go!') : step === 13 ? (hi ? 'पूरा हुआ' : 'Finish') : (hi ? 'आगे' : 'Next')
+    };
+  }
+}
+HopApp.mount(Component, {"startAt": "Question 1", "ageBand": "7 to 11"});
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Sign in (Site B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.04;margin:0;text-wrap:balance}
+.b3{display:inline-flex;align-items:center;justify-content:center;gap:12px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:18px;border:2.5px solid #352724;padding:13px 22px;cursor:pointer;box-shadow:0 6px 0 #352724;transition:transform .12s,box-shadow .12s;box-sizing:border-box}
+.b3:hover{transform:translateY(-2px);box-shadow:0 8px 0 #352724}.b3:active{transform:translateY(6px);box-shadow:0 0 0 #352724}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}.ink{background:#352724;color:#FFFFFF}
+.world{perspective:1000px}
+.cube{position:absolute;width:70px;height:70px;transform-style:preserve-3d;animation:turn 10s linear infinite}
+.cube i{position:absolute;inset:0;border:2.5px solid #2A1F1C;box-sizing:border-box}
+.cube i:nth-child(1){transform:translateZ(35px)}.cube i:nth-child(2){transform:rotateY(90deg) translateZ(35px)}.cube i:nth-child(3){transform:rotateX(90deg) translateZ(35px)}.cube i:nth-child(4){transform:rotateY(180deg) translateZ(35px)}.cube i:nth-child(5){transform:rotateY(-90deg) translateZ(35px)}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(35px)}
+@keyframes turn{from{transform:rotateX(-20deg) rotateY(0deg)}to{transform:rotateX(-20deg) rotateY(360deg)}}
+.c2{animation-duration:14s;animation-direction:reverse}.c3{animation-duration:12s}
+.bob{animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-14px) rotate(3deg)}}
+.enter{animation:enter .5s cubic-bezier(.34,1.3,.64,1) both}
+@keyframes enter{from{opacity:0;transform:perspective(1000px) rotateX(-40deg) translateY(30px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; min-height: 960px; display: flex; flex-wrap: wrap">
+<aside class="world" style="flex: 1 1 520px; min-width: 0; background: #2A1F1C; color: #F2F8EE; position: relative; overflow: hidden; padding: 48px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; border-right: 2.5px solid #352724">
+<div aria-hidden="true" class="cube" style="left: 70%; top: 14%"><i style="background: #FBA826"></i><i style="background: #C9790A"></i><i style="background: #FFE9C2"></i><i style="background: #FBA826"></i><i style="background: #C9790A"></i><i style="background: #FFE9C2"></i></div>
+<div aria-hidden="true" class="cube c2" style="left: 12%; top: 60%"><i style="background: #E2F0DA"></i><i style="background: #9FC48E"></i><i style="background: #F2F8EE"></i><i style="background: #E2F0DA"></i><i style="background: #9FC48E"></i><i style="background: #F2F8EE"></i></div>
+<div aria-hidden="true" class="cube c3" style="left: 74%; top: 72%"><i style="background: #F46A39"></i><i style="background: #B84A22"></i><i style="background: #FBC2AA"></i><i style="background: #F46A39"></i><i style="background: #B84A22"></i><i style="background: #FBC2AA"></i></div>
+<a href="B-Home.dc.html" style="color: #F2F8EE; font-weight: 800; text-decoration: none; position: relative">← Back to Hop to Heal</a>
+<div style="position: relative; display: flex; flex-direction: column; gap: 18px; max-width: 500px">
+<svg class="bob" width="150" height="150" viewBox="0 0 200 200" role="img" aria-label="Hoppy saying hello" style="overflow: visible"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" stroke="#000000" stroke-width="4"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826" stroke="#000000" stroke-width="4"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" stroke="#000000" stroke-width="4"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826" stroke="#000000" stroke-width="5"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="82" cy="106" rx="5" ry="6" fill="#352724"></ellipse><ellipse cx="118" cy="106" rx="5" ry="6" fill="#352724"></ellipse><path d="M88 122 Q100 136 112 122" fill="none" stroke="#352724" stroke-width="4" stroke-linecap="round"></path></svg>
+<h1 class="disp" style="font-size: 62px; color: #FBA826">Welcome back</h1>
+<p style="margin: 0; font-size: 20px">Progress, bookings, payments and therapist notes, block by block, all in one place.</p>
+</div>
+<p style="margin: 0; font-size: 15px; color: #D9CFC6; position: relative">Your child's information is private, stored in India and seen only by you and their therapist.</p>
+</aside>
+
+<main style="flex: 1 1 480px; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 48px 24px; box-sizing: border-box">
+<div style="width: 100%; max-width: 450px; background: #FFFFFF; border: 2.5px solid #352724; border-radius: 28px; box-shadow: 0 10px 0 #352724; padding: 30px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<div role="group" aria-label="I am a" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button type="button" class="b3" onClick="{{asParent}}" aria-pressed="{{parentPressed}}" style="background: {{parentBg}}; padding: 10px">Parent</button>
+<button type="button" class="b3" onClick="{{asTherapist}}" aria-pressed="{{therapistPressed}}" style="background: {{therapistBg}}; padding: 10px">Therapist</button>
+</div>
+<sc-if value="{{notSigned}}" hint-placeholder-val="{{ true }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="disp" style="font-size: 38px">{{title}}</h2>
+<p style="margin: 0; color: #6B5A53">{{sub}}</p>
+<button type="button" class="b3 white" onClick="{{google}}" style="width: 100%; font-size: 18px"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 8px; border: 2.5px solid #352724; display: inline-flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-weight: 700; font-size: 15px">G</span>Continue with Google</button>
+<sc-if value="{{isTherapist}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 6px"><label for="inv" style="font-weight: 800; font-size: 15px">Invite code (first time only)</label><input id="inv" type="text" placeholder="e.g. HTH-7KQ2" style="font: inherit; padding: 12px 16px; border-radius: 14px; border: 2.5px solid #352724; background: #F2F8EE; color: #352724"></div></sc-if>
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{showPhone}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 8px"><label for="ph" style="font-weight: 800; font-size: 15px">Mobile number</label><div style="display: flex; gap: 8px"><span style="display: flex; align-items: center; padding: 0 12px; border-radius: 14px; border: 2.5px solid #352724; font-weight: 800">+91</span><input id="ph" type="tel" inputmode="numeric" placeholder="10-digit number" style="flex: 1; min-width: 0; font: inherit; padding: 12px 16px; border-radius: 14px; border: 2.5px solid #352724; background: #F2F8EE; color: #352724"></div><button type="button" class="b3 ink" onClick="{{google}}" style="width: 100%">Send code on WhatsApp</button></div></sc-if>
+<sc-if value="{{hidePhone}}" hint-placeholder-val="{{ true }}"><button type="button" class="b3 white" onClick="{{phone}}" style="width: 100%; font-size: 15px">Use my mobile number instead</button></sc-if>
+</sc-if>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">By continuing you agree to our Terms and Privacy policy.</p>
+</div>
+</sc-if>
+<sc-if value="{{signed}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 14px; border: 2.5px solid #352724; border-radius: 18px; padding: 12px 14px; box-shadow: 0 5px 0 #352724"><span style="width: 52px; height: 52px; border-radius: 14px; background: #FFE9C2; border: 2.5px solid #352724; display: flex; align-items: center; justify-content: center; font-weight: 800">{{initials}}</span><div style="line-height: 1.3"><strong>{{who}}</strong><div style="font-size: 14px; color: #6B5A53">Signed in with Google · example</div></div></div>
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}"><h2 class="disp" style="font-size: 32px">First time? Add your WhatsApp number and your child.</h2><a class="b3 sun" href="B-Parent.dc.html" style="width: 100%">Go to my dashboard</a></sc-if>
+<sc-if value="{{isTherapist}}" hint-placeholder-val="{{ false }}"><h2 class="disp" style="font-size: 32px">3 HopChecks are waiting for review</h2><a class="b3 sun" href="B-Therapist.dc.html" style="width: 100%">Open therapist dashboard</a></sc-if>
+<button type="button" class="b3 white" onClick="{{signOut}}" style="width: 100%; font-size: 15px">Use a different account</button>
+</div>
+</sc-if>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"role":{"editor":"enum","options":["Parent","Therapist"],"default":"Parent","section":"Preview"},"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { role: null, signed: false, phone: false };
+  }
+  renderVals() {
+    const role = this.state.role ?? (this.props.role ?? 'Parent');
+    const parent = role === 'Parent';
+    return {
+      asParent: () => this.setState({ role: 'Parent', signed: false }),
+      asTherapist: () => this.setState({ role: 'Therapist', signed: false }),
+      parentPressed: parent ? 'true' : 'false', therapistPressed: parent ? 'false' : 'true',
+      parentBg: parent ? '#FBA826' : '#FFFFFF', therapistBg: parent ? '#FFFFFF' : '#FBA826',
+      isParent: parent, isTherapist: !parent,
+      title: parent ? 'Sign in to your family account' : 'Therapist sign-in',
+      sub: parent ? 'New here? Continuing with Google creates your account in one step.' : 'Use the Google account the centre invited. You only see children assigned to you.',
+      notSigned: !this.state.signed, signed: this.state.signed,
+      google: () => this.setState({ signed: true }), signOut: () => this.setState({ signed: false }),
+      showPhone: this.state.phone, hidePhone: !this.state.phone, phone: () => this.setState({ phone: true }),
+      initials: parent ? 'PS' : 'JG', who: parent ? 'Priya Sharma' : 'Jiya Gupta, Occupational therapist'
+    };
+  }
+}
+</script>
+</body>
+</html>

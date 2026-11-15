@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: HopCheck (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.05;margin:0;text-wrap:balance}
+.eyebrow{margin:0;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#B4471C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:13px 24px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}.ink{background:#352724;color:#FFFFFF}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.navlink{color:#352724;text-decoration:none;font-weight:700;font-size:16px}.navlink:hover{color:#B4471C}
+.opt{font:inherit;font-weight:700;font-size:16px;border-radius:16px;cursor:pointer;color:#352724;padding:10px 14px;transition:transform .15s}
+.opt:hover{transform:translateY(-2px)}
+.enter{animation:enter .45s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes enter{from{opacity:0;transform:translateX(40px)}}
+.hop{transform-box:fill-box;transform-origin:50% 100%;animation:hop 1.4s ease-in-out infinite}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-22%)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; min-height: 1500px">
+
+<header style="background: rgba(242,248,238,.94); border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 62px; width: auto"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 24px">
+<a class="navlink" href="A-Home.dc.html">Home</a>
+<a class="navlink" href="A-Services.dc.html">Services &amp; pricing</a>
+<a class="navlink" href="A-HopCheck.dc.html" aria-current="page" style="color: #B4471C">HopCheck</a>
+<a class="navlink" href="A-About.dc.html">About us</a>
+</nav>
+<div role="group" aria-label="Language" style="display: flex; border: 2px solid #352724; border-radius: 999px; overflow: hidden">
+<button type="button" onClick="{{setEN}}" aria-pressed="{{enPressed}}" style="font: inherit; font-weight: 800; font-size: 14px; border: 0; padding: 6px 14px; cursor: pointer; background: {{enBg}}; color: #352724">English</button>
+<button type="button" onClick="{{setHI}}" aria-pressed="{{hiPressed}}" style="font: inherit; font-weight: 800; font-size: 14px; border: 0; padding: 6px 14px; cursor: pointer; background: {{hiBg}}; color: #352724">हिंदी</button>
+</div>
+</div>
+</header>
+
+<main class="wrap" style="padding-top: 40px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; gap: 26px">
+<div aria-label="{{progressLabel}}" style="width: 100%; max-width: 760px; position: relative; height: 54px; display: flex; align-items: flex-end; justify-content: space-between">
+<div aria-hidden="true" style="position: absolute; left: 14px; right: 14px; bottom: 11px; border-top: 4px dotted #D9CFC2"></div>
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="7">
+<div style="position: relative; width: 28px; height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end">
+<sc-if value="{{d.current}}" hint-placeholder-val="{{ false }}"><svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true" style="overflow: visible"><g class="hop"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826" stroke="#352724" stroke-width="5"></path><ellipse cx="82" cy="108" rx="6" ry="7" fill="#352724"></ellipse><ellipse cx="118" cy="108" rx="6" ry="7" fill="#352724"></ellipse><path d="M88 124 Q100 136 112 124" fill="none" stroke="#352724" stroke-width="5" stroke-linecap="round"></path></g></svg></sc-if>
+<sc-if value="{{d.other}}" hint-placeholder-val="{{ true }}"><div style="width: 22px; height: 22px; border-radius: 50%; box-sizing: border-box; border: 3px solid {{d.ring}}; background: {{d.fill}}"></div></sc-if>
+</div>
+</sc-for>
+</div>
+
+<div class="card" style="width: 100%; max-width: 760px; padding: 36px; box-sizing: border-box; box-shadow: 0 24px 50px rgba(53,39,36,.08)">
+
+<sc-if value="{{s0}}" hint-placeholder-val="{{ true }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<p class="eyebrow">Free HopCheck · about 10 minutes</p>
+<h1 class="disp" style="font-size: 48px">{{introTitle}}</h1>
+<p style="margin: 0; color: #6B5A53">{{introBody}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<li style="display: flex; gap: 10px"><strong style="color: #2E7D4F">✓</strong>Questions change with your child's age (2 to 16)</li>
+<li style="display: flex; gap: 10px"><strong style="color: #2E7D4F">✓</strong>A master's-qualified therapist reviews every answer within 2 working days</li>
+<li style="display: flex; gap: 10px"><strong style="color: #2E7D4F">✓</strong>Private: nothing is shared without your consent</li>
+</ul>
+<div style="background: #FFE9C2; border-radius: 16px; padding: 14px 16px; font-size: 16px"><strong>This is a screening, not a diagnosis.</strong> It tells us whether a closer look would help. Only a qualified professional can diagnose a condition.</div>
+</div>
+</sc-if>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="disp" style="font-size: 38px">Before we start</h2>
+<p style="margin: 0; color: #6B5A53">We need your permission to collect information about your child. You can withdraw it at any time.</p>
+<label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 17px"><input type="checkbox" checked="{{c1}}" onChange="{{toggleC1}}" style="width: 24px; height: 24px; margin: 2px 0 0; accent-color: #352724; flex: none">I am this child's parent or legal guardian, and I agree that Hop to Heal can use my answers to screen my child and advise me. <a href="A-Home.dc.html">Privacy policy</a></label>
+<label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 17px"><input type="checkbox" checked="{{c2}}" onChange="{{toggleC2}}" style="width: 24px; height: 24px; margin: 2px 0 0; accent-color: #352724; flex: none">Send me the result and reminders on WhatsApp. (Optional)</label>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 18px">
+<h2 class="disp" style="font-size: 38px">About your child</h2>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="hc-name" style="font-weight: 800; font-size: 16px">Child's first name</label><input id="hc-name" type="text" value="{{child}}" onInput="{{onChild}}" autocomplete="off" style="font: inherit; font-size: 18px; padding: 13px 16px; border-radius: 16px; border: 2px solid #E5DDD2; background: #F2F8EE; color: #352724"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div id="hc-age" style="font-weight: 800; font-size: 16px">Age in years</div>
+<div role="group" aria-labelledby="hc-age" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 8px">
+<sc-for list="{{ages}}" as="a" hint-placeholder-count="15"><button type="button" class="opt" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="border: 2px solid {{a.border}}; background: {{a.bg}}; font-size: 18px">{{a.label}}</button></sc-for>
+</div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="disp" style="font-size: 38px">What have you noticed about {{childName}}?</h2>
+<p style="margin: 0; color: #6B5A53">Tap everything that sounds familiar. There are no wrong answers.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{concerns}}" as="c" hint-placeholder-count="10"><button type="button" class="opt" onClick="{{c.toggle}}" aria-pressed="{{c.pressed}}" style="border: 2px solid {{c.border}}; background: {{c.bg}}">{{c.label}}</button></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{s4}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="disp" style="font-size: 38px">A few important questions</h2>
+<p style="margin: 0; color: #6B5A53">These help us know if {{childName}} needs help quickly.</p>
+<sc-for list="{{flags}}" as="f" hint-placeholder-count="4">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid #E5DDD2">
+<span style="flex: 1 1 340px; font-weight: 700">{{f.q}}</span>
+<div style="display: flex; gap: 8px"><button type="button" class="opt" onClick="{{f.yes}}" aria-pressed="{{f.yesPressed}}" style="border: 2px solid {{f.yesBorder}}; background: {{f.yesBg}}">Yes</button><button type="button" class="opt" onClick="{{f.no}}" aria-pressed="{{f.noPressed}}" style="border: 2px solid {{f.noBorder}}; background: {{f.noBg}}">No</button></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{s5}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 14px">
+<p class="eyebrow">{{bandLabel}}</p>
+<h2 class="disp" style="font-size: 38px">How often does {{childName}}…</h2>
+<sc-for list="{{questions}}" as="q" hint-placeholder-count="6">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #E5DDD2">
+<span style="flex: 1 1 320px; font-weight: 700">{{q.text}}</span>
+<div style="display: flex; gap: 6px; flex-wrap: wrap">
+<sc-for list="{{q.opts}}" as="o" hint-placeholder-count="3"><button type="button" class="opt" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="border: 2px solid {{o.border}}; background: {{o.bg}}; font-size: 15px; padding: 8px 12px">{{o.label}}</button></sc-for>
+</div>
+</div>
+</sc-for>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">Design sample: these are Hop to Heal's own triage questions. The live HopCheck uses a licensed, validated questionnaire for this age group, exactly as published.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{s6}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<sc-if value="{{urgent}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FBE4E0; border: 2px solid #B83232; border-radius: 20px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+<strong class="disp" style="font-size: 26px; color: #8E2626">Please see a doctor today</strong>
+<span>You told us about something that needs a doctor's attention soon. Please visit your paediatrician or nearest hospital today. In an emergency, call 112. For mental-health support, call Tele-MANAS on 14416.</span>
+<span style="font-weight: 800">A Hop to Heal therapist will also call you today.</span>
+</div>
+</sc-if>
+<h2 class="disp" style="font-size: 44px">Thank you. HopCheck is done.</h2>
+<p style="margin: 0; color: #6B5A53">Here's what happens next for {{childName}}:</p>
+<ol style="margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 8px">
+<li><strong>A therapist reviews your answers</strong> within 2 working days, and may call you with a question.</li>
+<li><strong>You get a simple report</strong> on WhatsApp and in your parent portal: on track, keep an eye, or let's look closer.</li>
+<li><strong>If a closer look will help</strong>, you can book a 1-hour session (₹800) straight from the report.</li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn sun" href="A-Login.dc.html">Save to my account with Google</a><a class="btn white" href="A-Book.dc.html">Book a session now</a></div>
+</div>
+</sc-if>
+
+<div style="display: flex; justify-content: space-between; gap: 12px; margin-top: 28px">
+<sc-if value="{{showBack}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn white" onClick="{{back}}">Back</button></sc-if>
+<span></span>
+<sc-if value="{{showNext}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn sun" onClick="{{next}}" disabled="{{blocked}}">{{nextLabel}}</button></sc-if>
+</div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startStep":{"editor":"enum","options":["Intro","Consent","Child","Concerns","Red flags","Questions","Done"],"default":"Intro","section":"Preview"},"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: null, lang: 'EN', c1: false, c2: true, child: '', age: null, concerns: [], flags: {}, answers: {} };
+  }
+  renderVals() {
+    const st = this.state;
+    const names = ['Intro', 'Consent', 'Child', 'Concerns', 'Red flags', 'Questions', 'Done'];
+    const step = st.step ?? Math.max(0, names.indexOf(this.props.startStep ?? 'Intro'));
+    const on = { border: '#352724', bg: '#FBA826' };
+    const off = { border: '#E5DDD2', bg: '#FFFFFF' };
+    const hi = st.lang === 'HI';
+    const childName = st.child.trim() || 'your child';
+    const young = st.age !== null ? st.age < 5 : true;
+    const concernList = ['Not talking much yet', 'Hard to understand', 'Doesn’t respond to name', 'Clumsy or falls often', 'Upset by noise or touch', 'Hard to sit still', 'Big tantrums', 'Handwriting or school trouble', 'Struggles with friends', 'Not sure, just a check-up'];
+    const flagList = [
+      ['lost', 'Has ' + childName + ' lost words or skills they used to have?'],
+      ['sound', 'Does ' + childName + ' often not react to loud sounds?'],
+      ['seizure', 'Has ' + childName + ' had fits or seizures?'],
+      ['harm', 'Has ' + childName + ' talked about hurting themselves, or are you worried about their safety?']
+    ];
+    const youngQs = ['Puts two or more words together', 'Points to show you something interesting', 'Climbs stairs holding a rail', 'Scribbles or draws lines with a crayon', 'Plays pretend, like feeding a doll', 'Lets you know when they are hungry or need the toilet'];
+    const olderQs = ['Follows a 3-step instruction', 'Writes neatly enough for others to read', 'Joins in games with other children', 'Stays focused on homework for 15 minutes', 'Calms down within a few minutes after being upset', 'Gets dressed and ready mostly alone'];
+    const qs = (young ? youngQs : olderQs);
+    const optLabels = ['Usually', 'Sometimes', 'Not yet'];
+    const flagsDone = flagList.every(([k]) => st.flags[k] !== undefined);
+    const qsDone = qs.every((_, i) => st.answers[i] !== undefined);
+    const valid = [true, st.c1, st.child.trim().length > 0 && st.age !== null, st.concerns.length > 0, flagsDone, qsDone, true];
+    const urgent = flagList.some(([k]) => st.flags[k] === true);
+    const go = (n) => this.setState({ step: n });
+    return {
+      s0: step === 0, s1: step === 1, s2: step === 2, s3: step === 3, s4: step === 4, s5: step === 5, s6: step === 6,
+      progressLabel: 'Step ' + (step + 1) + ' of 7',
+      dots: names.map((_, i) => ({ current: i === step, other: i !== step, ring: i < step ? '#352724' : '#D9CFC2', fill: i < step ? '#FBA826' : '#FFFFFF' })),
+      setEN: () => this.setState({ lang: 'EN' }), setHI: () => this.setState({ lang: 'HI' }),
+      enPressed: hi ? 'false' : 'true', hiPressed: hi ? 'true' : 'false',
+      enBg: hi ? '#FFFFFF' : '#FBA826', hiBg: hi ? '#FBA826' : '#FFFFFF',
+      introTitle: hi ? 'क्या मेरे बच्चे को थोड़ी मदद की ज़रूरत है?' : 'Is my child doing okay?',
+      introBody: hi ? 'कुछ आसान सवालों के जवाब दें। एक थेरेपिस्ट हर जवाब देखेगा और आपको अगला कदम बताएगा।' : 'Answer a few simple questions about how your child talks, moves, plays and copes. A therapist looks at every answer and tells you the next step.',
+      c1: st.c1, c2: st.c2,
+      toggleC1: () => this.setState({ c1: !st.c1 }), toggleC2: () => this.setState({ c2: !st.c2 }),
+      child: st.child, childName, onChild: (e) => this.setState({ child: e.target.value }),
+      ages: Array.from({ length: 15 }, (_, i) => { const n = i + 2; const s = st.age === n ? on : off; return { label: String(n), pressed: st.age === n ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ age: n, answers: {} }) }; }),
+      concerns: concernList.map((label) => { const sel = st.concerns.includes(label); const s = sel ? on : off; return { label, pressed: sel ? 'true' : 'false', border: s.border, bg: s.bg, toggle: () => this.setState({ concerns: sel ? st.concerns.filter((x) => x !== label) : st.concerns.concat(label) }) }; }),
+      flags: flagList.map(([k, q]) => { const v = st.flags[k]; return { q, yesPressed: v === true ? 'true' : 'false', noPressed: v === false ? 'true' : 'false', yesBorder: v === true ? '#B83232' : '#E5DDD2', yesBg: v === true ? '#FBE4E0' : '#FFFFFF', noBorder: v === false ? '#352724' : '#E5DDD2', noBg: v === false ? '#E2F0DA' : '#FFFFFF', yes: () => this.setState({ flags: { ...st.flags, [k]: true } }), no: () => this.setState({ flags: { ...st.flags, [k]: false } }) }; }),
+      bandLabel: young ? 'Questions for ages 2 to 5' : 'Questions for ages 5 to 16',
+      questions: qs.map((text, i) => ({ text, opts: optLabels.map((label, j) => { const sel = st.answers[i] === j; const s = sel ? on : off; return { label, pressed: sel ? 'true' : 'false', border: s.border, bg: s.bg, pick: () => this.setState({ answers: { ...st.answers, [i]: j } }) }; }) })),
+      urgent,
+      showBack: step > 0 && step < 6, showNext: step < 6,
+      back: () => go(step - 1),
+      next: () => { if (valid[step]) go(step + 1); },
+      blocked: !valid[step],
+      nextLabel: step === 0 ? 'Start HopCheck' : step === 5 ? 'Send to a therapist' : 'Continue'
+    };
+  }
+}
+</script>
+</body>
+</html>

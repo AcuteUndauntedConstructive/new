@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tester checklist · Hop to Heal</title>
+<meta name="description" content="Team page: what to test before launch.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBA826">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1280px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lb{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#645650}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:14px;text-decoration:none;border-radius:999px;border:0;padding:7px 14px;cursor:pointer;box-sizing:border-box}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.card{background:#FFFFFF;border-radius:26px;box-shadow:0 1px 0 #E3DCD2,0 12px 30px rgba(43,33,30,.06)}
+.ch{font:inherit;font-weight:800;font-size:15px;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #E3DCD2}
+.ch.on{background:#FFEDC9;box-shadow:inset 0 0 0 2.5px #2B211E}
+.cols{columns:2;column-gap:22px}
+.sec{break-inside:avoid;margin:0 0 22px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.num{width:42px;height:42px;border-radius:50%;background:#FBA826;display:inline-flex;align-items:center;justify-content:center;flex:none;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:9px 10px;border-radius:14px;list-style:none}
+.it + .it{margin-top:2px}
+.it.pass{background:#EEF6EC}
+.it.bug{background:#FBE4E0;box-shadow:inset 0 0 0 2px #B83232}
+.it label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:15px;line-height:1.4}
+.it input{width:22px;height:22px;margin:0;accent-color:#1E5C46;flex:none}
+.tg{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;white-space:nowrap;vertical-align:middle}
+.bg{font:inherit;font-size:12px;font-weight:800;border:0;border-radius:999px;padding:5px 10px;cursor:pointer;background:#FFFFFF;color:#8E2626;box-shadow:inset 0 0 0 1.5px #B83232;white-space:nowrap}
+.bg.on{background:#B83232;color:#FFFFFF}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #2B211E;outline-offset:2px}
+.bar{height:10px;border-radius:999px;background:#EEE8E0;overflow:hidden}
+.bar > i{display:block;height:100%;border-radius:999px;background:#1E5C46;transition:width .35s}
+@media (max-width:900px){.cols{columns:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/app.js"></script>
+</head>
+<body style="background: #F6FAF3">
+<div class="preview-bar" role="note">Preview site: example data only. Sign-in, saved accounts and payments are not live yet.</div>
+<div id="app"></div>
+<noscript><p style="padding: 24px; font-family: sans-serif">Please turn on JavaScript to use this site, or call Hop to Heal on +91 95994 33591.</p></noscript>
+
+<!-- What the page shows. {{name}} values come from renderVals() in the script below. -->
+<template id="view">
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 16px; line-height: 1.5">
+<header style="background: #2B211E; color: #FFFFFF"><div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 12px; padding-bottom: 12px">
+<div style="display: flex; align-items: center; gap: 14px"><span class="d" style="font-size: 26px; color: #FBA826">Hop to Heal</span><span style="font-weight: 800; font-size: 13px; background: rgba(255,255,255,.16); padding: 4px 12px; border-radius: 999px">Tester checklist · internal</span></div>
+<nav aria-label="Pages under test" style="display: flex; flex-wrap: wrap; gap: 6px 20px; font-weight: 700; font-size: 15px"><a href="index.html" style="color: #FFFFFF">Home</a><a href="hopcheck.html" style="color: #FFFFFF">HopCheck</a><a href="book.html" style="color: #FFFFFF">Book</a><a href="pay.html" style="color: #FFFFFF">Pay</a><a href="portal.html" style="color: #FFFFFF">Parent portal</a><a href="therapist.html" style="color: #FFFFFF">Therapist portal</a></nav>
+</div></header>
+
+<main class="w" style="padding-top: 30px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(min(300px, 100%), 1fr); gap: 22px; align-items: end">
+<div><p class="lb" style="margin: 0; color: #A8421A">Before launch</p><h1 class="d" style="font-size: 52px">What the tester checks</h1><p style="margin: 10px 0 0; font-size: 18px; max-width: 720px">Check these areas, most important first. Do them on a budget Android phone (Chrome), an iPhone (Safari) and a laptop, in both English and Hindi. That makes six runs. Tick a line when it passes, or mark it as a bug.</p></div>
+<div class="card" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><div class="lb">This run · {{runName}}</div><div style="display: flex; align-items: baseline; gap: 10px"><span class="d" style="font-size: 46px">{{runDone}}</span><span style="font-weight: 700">of {{runTotal}} passed · bugs open: {{runBugs}}</span></div><div class="bar" aria-hidden="true"><i style="width: {{runPct}}"></i></div></div>
+</div>
+
+<section class="card" aria-label="Choose the run" style="padding: 20px 22px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 14px 34px">
+<div><div class="lb" style="margin-bottom: 6px">Device</div><div role="radiogroup" aria-label="Device" style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{devices}}" as="o"><button type="button" role="radio" aria-checked="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div></div>
+<div><div class="lb" style="margin-bottom: 6px">Language</div><div role="radiogroup" aria-label="Language" style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{langs}}" as="o"><button type="button" role="radio" aria-checked="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 10px">
+<sc-for list="{{runs}}" as="r"><button type="button" onClick="{{r.pick}}" aria-label="{{r.aria}}" style="font: inherit; text-align: left; border: 0; cursor: pointer; border-radius: 16px; padding: 10px 12px; background: {{r.bg}}; box-shadow: {{r.ring}}; color: #2B211E"><span style="display: block; font-weight: 800; font-size: 14px">{{r.name}}</span><span style="display: block; font-size: 13px">{{r.line}}</span><span class="bar" aria-hidden="true" style="display: block; margin-top: 6px; height: 6px"><i style="width: {{r.pct}}"></i></span></button></sc-for>
+</div>
+</section>
+
+<section role="status" class="card" aria-label="Launch gate" style="padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; background: {{gateBg}}; color: {{gateInk}}">
+<div style="flex: 1 1 520px"><div class="lb" style="color: inherit">Launch gate</div><strong class="d" style="font-size: 28px">{{gateTitle}}</strong><div style="font-size: 15px; margin-top: 4px">Before launch, sections 1, 2, 4 and the red flags in section 5 must have zero open bugs. {{gateLine}}</div></div>
+<div style="text-align: right"><div class="d" style="font-size: 40px">{{gateRuns}}</div><div style="font-weight: 700; font-size: 14px">runs with the gate clear</div></div>
+</section>
+
+<div class="cols">
+<sc-for list="{{sections}}" as="s">
+<section class="card sec" aria-label="{{s.title}}">
+<div style="display: flex; gap: 12px; align-items: center"><span class="num">{{s.n}}</span><div style="flex: 1 1 auto; min-width: 0"><h2 class="d" style="font-size: 23px">{{s.title}}</h2><sc-if value="{{s.hasNote}}"><span style="font-size: 13px; font-weight: 800; color: #8E2626">{{s.note}}</span></sc-if></div><button type="button" class="btn s" onClick="{{s.all}}">{{s.allLabel}}</button></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center"><div class="bar" aria-hidden="true"><i style="width: {{s.pct}}"></i></div><span style="font-size: 13px; font-weight: 800">{{s.count}}</span></div>
+<ul style="margin: 0; padding: 0">
+<sc-for list="{{s.items}}" as="it">
+<li class="{{it.cls}}"><label><input type="checkbox" checked="{{it.pass}}" onChange="{{it.toggle}}"><span>{{it.text}}<sc-if value="{{it.gate}}"><span class="tg" style="background: #2B211E; color: #FFFFFF">Gate</span></sc-if><sc-if value="{{it.fresh}}"><span class="tg" style="background: #FFEDC9; box-shadow: inset 0 0 0 1.5px #C97F0C">New in 2.0</span></sc-if></span></label><button type="button" class="{{it.bugCls}}" aria-pressed="{{it.bugSel}}" onClick="{{it.bug}}">{{it.bugLabel}}</button></li>
+</sc-for>
+</ul>
+</section>
+</sc-for>
+</div>
+
+<section class="card" aria-labelledby="how" style="padding: 26px; background: #1E5C46; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px">
+<div><h2 id="how" class="d" style="font-size: 30px; color: #FBA826">How to run it</h2><ul style="margin: 10px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px"><li>Use the payment gateway's test mode and test WhatsApp numbers; use fake children, never real patient data.</li><li>Log every bug with: the page, the device, the steps to reproduce it, what was expected, what happened, and a screenshot.</li><li>Before launch, sections 1, 2, 4 and the red flags in section 5 must have zero open bugs.</li></ul></div>
+<div style="background: #FFFFFF; color: #2B211E; border-radius: 20px; padding: 18px"><div class="lb">Bug report · copy this for every bug</div><dl style="margin: 8px 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; font-size: 15px"><dt style="font-weight: 800">Page</dt><dd style="margin: 0">Book a slot</dd><dt style="font-weight: 800">Device</dt><dd style="margin: 0">Budget Android · Chrome · Hindi</dd><dt style="font-weight: 800">Steps</dt><dd style="margin: 0">1. Pick counselling, online. 2. Pick 6:30 pm. 3. Tap Pay.</dd><dt style="font-weight: 800">Expected</dt><dd style="margin: 0">Total shows ₹500.</dd><dt style="font-weight: 800">Happened</dt><dd style="margin: 0">Total shows ₹800.</dd><dt style="font-weight: 800">Screenshot</dt><dd style="margin: 0">Attached</dd></dl><div style="font-size: 13px; color: #645650; margin-top: 8px">Example only, not a real bug.</div></div>
+</section>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center"><button type="button" class="btn s" onClick="{{clearRun}}">Clear this run</button><span style="font-size: 14px; color: #645650">Ticks are kept on this device only. In the real build they save to the team's test log.</span></div>
+</main>
+</div>
+</template>
+
+<!-- What the page does. -->
+<script>
+const SECTIONS = [
+  { title: 'Booking and live slots', note: 'Most important', gate: true, items: [
+    'The places left for each time slot match what the clinic has set.',
+    'A full slot can’t be clicked; the last place shows “Last place”.',
+    'Two parents booking the same last place at once: only one gets it, and the other sees “now full”.',
+    'The 10-minute hold ends correctly: an unpaid place frees up again.',
+    '15-day pack: all 15 days are booked; a full day is flagged and can be moved to another time.',
+    'Reschedule and cancel: the time limit (e.g. 24 hours) is enforced, and the freed place reappears.',
+    'Weekends and the 10 am–7 pm hours are correct, and therapist leave hides those slots.',
+    'Booking a child younger than 2 or older than 16 is blocked.',
+    ['Therapy slots are 1 hour and counselling slots are 30 minutes; one person can’t hold two that overlap.', 1],
+    ['21-day counselling plan: all 21 days are booked; a day that clashes is flagged and can be moved.', 1]
+  ] },
+  { title: 'Payment', gate: true, items: [
+    'Single session charges exactly ₹800, and the 15-day pack exactly ₹9,600.',
+    ['Counselling charges exactly ₹500 per person for 30 minutes, online and at the centre; the 21-day plan charges exactly ₹8,400.', 1],
+    'UPI (Google Pay, PhonePe, Paytm), card and net banking all work, using the gateway’s test mode.',
+    'Payment fails or is cancelled: the booking isn’t confirmed, nobody is charged twice, and a retry works.',
+    'Parent closes the app mid-payment: the booking still settles correctly once the gateway confirms.',
+    'Receipt arrives on WhatsApp and email, and the invoice PDF is correct.',
+    'Coupon and sponsored-slot codes: a valid code works; invalid or expired codes are refused.',
+    'A refund from the admin side reaches the parent.'
+  ] },
+  { title: 'Sign-in and accounts', items: [
+    'Google sign-in works for a new parent and a returning parent; the phone-OTP backup also works.',
+    'A therapist can’t sign in without an invite code.',
+    'Logging out ends the session, and a shared phone doesn’t stay logged in.',
+    'Profile photo and child photo upload works; large and wrong file types are rejected.',
+    'Adding a second child, and a second parent linked to the same child, both work.',
+    ['An adult client or elder booking for themselves can sign in without adding a child.', 1]
+  ] },
+  { title: 'Privacy and security', note: 'Critical, because this is children’s data', gate: true, items: [
+    'Parent A can never see Parent B’s child. Test by changing IDs in the page address.',
+    'A therapist sees only the children assigned to them.',
+    'The private clinical note never appears in the parent view.',
+    'Photos and reports can’t be opened from a copied link after it expires, or without logging in.',
+    'Consent must be given before HopCheck or adding a child, and withdrawing consent works.',
+    '“Download my data” and “delete account” both work.',
+    'No ad trackers run on portal or HopCheck pages.',
+    ['A parent’s counselling notes and “About you” answers are seen only by the counsellor and reviewing therapist, never by the other parent.', 1],
+    ['The child’s “My turn!” answers are shown to the parent only inside the signed result, in the therapist’s words.', 1]
+  ] },
+  { title: 'HopCheck questionnaire', items: [
+    'The questions shown match the child’s age band.',
+    ['Answering “yes” to any red-flag question shows the “see a doctor today” message immediately and alerts the therapist.', 0, 1],
+    ['Child check: “That’s me” on the safety question shows the grown-up the help message at once and puts the case first in the review queue.', 1, 1],
+    'No result is shown to the parent until a therapist signs it.',
+    'Scoring matches hand-scored test cases. Prepare 10–15 answer sets with known results.',
+    'No page ever names a diagnosis.',
+    'The questionnaire can’t be submitted with blank answers.',
+    ['There are two checks: the grown-up check for every child, and “My turn!” for ages 7–16 only. A child under 7 is never asked.', 1],
+    ['The child check reads each question aloud, works in Hindi, and can be finished with face buttons alone.', 1],
+    ['Suggested services match the question bank map for every area, and the therapist can change them before signing.', 1],
+    ['“About you” score of 4 or more suggests parent counselling, with no label and no score shown to the parent.', 1]
+  ] },
+  { title: 'Therapist to parent flow', items: [
+    'The therapist updates goal levels, a note and a care tip; the parent dashboard and progress chart update, and a WhatsApp message arrives.',
+    'A report reaches the parent only after Dr. Heena countersigns it.',
+    'The review queue is sorted by urgency, and the 2-working-day timer is correct.',
+    ['The queue shows the grown-up check and the child’s check side by side for the same child.', 1]
+  ] },
+  { title: 'Hoppy chatbot', items: [
+    'Each topic gives the right answer (fees, timings, address, WhatsApp number).',
+    'Unknown questions get the fallback answer; “Talk to a person” works.',
+    'Typed text isn’t lost while Hoppy is still answering.',
+    'Hoppy never gives medical advice. Try asking “does my child have autism?”',
+    ['The online counselling topic gives ₹500, 30 minutes and “Meet link 5 minutes before”.', 1]
+  ] },
+  { title: 'Design, animation and 3D', items: [
+    'Pages load in under 3 seconds on 4G.',
+    'The 3D Hoppy scene doesn’t freeze or overheat a budget phone, and the page still shows Hoppy if 3D can’t load.',
+    'Calm mode and the phone’s “reduce motion” setting stop all animation.',
+    'No sideways scrolling and nothing cut off at phone width; buttons are big enough to tap.'
+  ] },
+  { title: 'Accessibility', items: [
+    'Every flow can be completed using only the keyboard.',
+    'A screen reader (TalkBack or VoiceOver) reads buttons and chat replies.',
+    'Text is readable at 200% zoom, and colour is never the only signal (traffic-light results have words too).'
+  ] },
+  { title: 'Content check', items: [
+    'Prices, hours, address, phone number and team names are correct everywhere.',
+    'No [bracket] placeholders are left on any page.',
+    'The Hindi translations have been checked by a native speaker.',
+    'Legal pages are present: Privacy, Terms, Refund and Child safety.',
+    ['The counsellor’s name, qualification and registration number are shown on the counselling page.', 1]
+  ] },
+  { title: 'Online counselling', note: 'New in 2.0', items: [
+    ['The Google Meet button stays locked until 5 minutes before the session, then opens.', 1],
+    ['The Meet link also arrives on WhatsApp and email 5 minutes before, and only to the person who booked.', 1],
+    ['Another account that copies the link can’t join; the link stops working after the session.', 1],
+    ['A session at the centre shows the address and room, never a Meet link.', 1],
+    ['21-day plan: the day counter moves up after each session, and a missed day follows the reschedule rule.', 1],
+    ['If the counsellor is late or the call drops, the parent sees what to do and who to call.', 1]
+  ] }
+];
+const DEVICES = ['Budget Android · Chrome', 'iPhone · Safari', 'Laptop'];
+const LANGS = ['English', 'Hindi'];
+const KEY = 'h2h-testplan-v2';
+
+class Component extends DCLogic {
+  state = { dev: 0, lang: 0, marks: {} };
+  componentDidMount() {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      if (raw) { const m = JSON.parse(raw); if (m && typeof m === 'object') this.setState({ marks: m }); }
+    } catch (e) {}
+  }
+  save(marks) {
+    this.setState({ marks });
+    try { window.localStorage.setItem(KEY, JSON.stringify(marks)); } catch (e) {}
+  }
+  renderVals() {
+    const s = this.state;
+    const norm = (it, sec) => {
+      const a = Array.isArray(it) ? it : [it, 0, 0];
+      return { text: a[0], fresh: !!a[1], gate: !!sec.gate || !!a[2] };
+    };
+    const secs = SECTIONS.map((sec) => ({ ...sec, list: sec.items.map((it) => norm(it, sec)) }));
+    const k = (run, si, ii) => run + '|' + si + '|' + ii;
+    const stats = (run) => {
+      let total = 0, pass = 0, bugs = 0, gTotal = 0, gPass = 0, gBugs = 0;
+      secs.forEach((sec, si) => sec.list.forEach((it, ii) => {
+        const m = s.marks[k(run, si, ii)];
+        total++; if (m === 'p') pass++; if (m === 'b') bugs++;
+        if (it.gate) { gTotal++; if (m === 'p') gPass++; if (m === 'b') gBugs++; }
+      }));
+      return { total, pass, bugs, gTotal, gPass, gBugs, clear: gPass === gTotal };
+    };
+    const run = s.dev + '-' + s.lang;
+    const cur = stats(run);
+    const allRuns = [];
+    DEVICES.forEach((d, di) => LANGS.forEach((l, li) => allRuns.push({ id: di + '-' + li, di, li, name: d.split(' · ')[0] + ' · ' + l })));
+    const runStats = allRuns.map((r) => ({ ...r, st: stats(r.id) }));
+    const clearCount = runStats.filter((r) => r.st.clear).length;
+    const ready = clearCount === runStats.length;
+    const set = (key, val) => { const m = { ...s.marks }; if (m[key] === val) delete m[key]; else m[key] = val; this.save(m); };
+    const sections = secs.map((sec, si) => {
+      const done = sec.list.filter((it, ii) => s.marks[k(run, si, ii)] === 'p').length;
+      const full = done === sec.list.length;
+      return {
+        n: String(si + 1),
+        title: sec.title,
+        hasNote: !!sec.note,
+        note: sec.note || '',
+        count: done + ' of ' + sec.list.length,
+        pct: (done / sec.list.length * 100) + '%',
+        allLabel: full ? 'Untick all' : 'Tick all',
+        all: () => {
+          const m = { ...s.marks };
+          sec.list.forEach((it, ii) => { if (full) delete m[k(run, si, ii)]; else m[k(run, si, ii)] = 'p'; });
+          this.save(m);
+        },
+        items: sec.list.map((it, ii) => {
+          const key = k(run, si, ii);
+          const m = s.marks[key];
+          return {
+            text: it.text,
+            gate: it.gate,
+            fresh: it.fresh,
+            pass: m === 'p',
+            cls: 'it' + (m === 'p' ? ' pass' : m === 'b' ? ' bug' : ''),
+            toggle: () => set(key, 'p'),
+            bug: () => set(key, 'b'),
+            bugSel: m === 'b' ? 'true' : 'false',
+            bugCls: 'bg' + (m === 'b' ? ' on' : ''),
+            bugLabel: m === 'b' ? 'Bug open' : 'Bug'
+          };
+        })
+      };
+    });
+    const left = cur.gTotal - cur.gPass;
+    return {
+      runName: DEVICES[s.dev] + ' · ' + LANGS[s.lang],
+      runDone: String(cur.pass),
+      runTotal: String(cur.total),
+      runBugs: String(cur.bugs),
+      runPct: (cur.pass / cur.total * 100) + '%',
+      devices: DEVICES.map((label, i) => ({ label, sel: s.dev === i ? 'true' : 'false', cls: 'ch' + (s.dev === i ? ' on' : ''), pick: () => this.setState({ dev: i }) })),
+      langs: LANGS.map((label, i) => ({ label, sel: s.lang === i ? 'true' : 'false', cls: 'ch' + (s.lang === i ? ' on' : ''), pick: () => this.setState({ lang: i }) })),
+      runs: runStats.map((r) => ({
+        name: r.name,
+        line: r.st.pass + ' of ' + r.st.total + ' · ' + (r.st.clear ? 'gate clear' : r.st.gBugs ? r.st.gBugs + (r.st.gBugs === 1 ? ' gate bug' : ' gate bugs') : 'gate not clear'),
+        aria: 'Open run: ' + r.name,
+        pct: (r.st.pass / r.st.total * 100) + '%',
+        bg: r.st.clear ? '#DDEEDD' : r.st.gBugs ? '#FBE4E0' : '#F6FAF3',
+        ring: r.id === run ? 'inset 0 0 0 2.5px #2B211E' : 'inset 0 0 0 1.5px #E3DCD2',
+        pick: () => this.setState({ dev: r.di, lang: r.li })
+      })),
+      gateTitle: ready ? 'Ready to launch' : 'Not ready to launch yet',
+      gateLine: cur.clear ? 'This run: all ' + cur.gTotal + ' gate checks passed.' : 'This run: ' + left + (left === 1 ? ' gate check left, ' : ' gate checks left, ') + cur.gBugs + (cur.gBugs === 1 ? ' gate bug open.' : ' gate bugs open.'),
+      gateRuns: clearCount + ' of ' + runStats.length,
+      gateBg: ready ? '#DDEEDD' : '#2B211E',
+      gateInk: ready ? '#123D2E' : '#FFFFFF',
+      sections,
+      clearRun: () => {
+        const m = {};
+        Object.keys(s.marks).forEach((key) => { if (key.indexOf(run + '|') !== 0) m[key] = s.marks[key]; });
+        this.save(m);
+      }
+    };
+  }
+}
+HopApp.mount(Component, {});
+</script>
+</body>
+</html>

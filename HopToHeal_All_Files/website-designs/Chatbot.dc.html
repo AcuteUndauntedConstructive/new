@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hoppy chat widget</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.mb-root{--mb-mango:#FBA826;--mb-mango-deep:#E58E00;--mb-blush:#F46A39;--mb-ink:#352724;--mb-mint:#F2F8EE;--mb-white:#FFFFFF;--mb-mascot-size:92px;--mb-sway-angle:5deg;--mb-sway-duration:3.4s;--mb-bob-height:3px;--mb-bob-duration:1.7s;--mb-ray-duration:2.4s;--mb-ray-stagger:.25s;--mb-ray-min-scale:.55;--mb-hover-tilt:-9deg;--mb-hover-lift:4px;--mb-hover-scale:1.05;--mb-press-scale:.94;--mb-spring:cubic-bezier(.34,1.56,.64,1);--mb-open-sway-duration:5s;--mb-blink-duration:4.5s;--mb-think-ray-duration:.6s;--mb-think-bob-duration:.5s;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:"Baloo 2","Nunito",system-ui,sans-serif;color:var(--mb-ink)}
+.mb-root *{box-sizing:border-box}
+.mb-launcher{position:relative;width:var(--mb-mascot-size);height:var(--mb-mascot-size);padding:0;border:0;background:none;cursor:pointer}
+.mb-launcher svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 8px rgba(53,39,36,.18))}
+.mb-tilt,.mb-sway,.mb-bob{display:block;width:100%;height:100%;transform-origin:50% 92%}
+.mb-tilt{transition:transform .35s var(--mb-spring)}
+.mb-sway{animation:mb-sway var(--mb-sway-duration) ease-in-out infinite}
+.mb-bob{animation:mb-bob var(--mb-bob-duration) ease-in-out infinite}
+.mb-launcher:hover .mb-tilt{transform:rotate(var(--mb-hover-tilt)) translateY(calc(var(--mb-hover-lift) * -1)) scale(var(--mb-hover-scale))}
+.mb-launcher:active .mb-tilt{transform:scale(var(--mb-press-scale))}
+@keyframes mb-sway{0%,100%{transform:rotate(calc(var(--mb-sway-angle) * -1))}50%{transform:rotate(var(--mb-sway-angle))}}
+@keyframes mb-bob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(calc(var(--mb-bob-height) * -1)) scale(.985,1.02)}}
+.mb-ray{transform-box:fill-box;transform-origin:50% 100%;animation:mb-ray var(--mb-ray-duration) ease-in-out infinite}
+.mb-ray--middle{animation-delay:var(--mb-ray-stagger)}
+.mb-ray--right{animation-delay:calc(var(--mb-ray-stagger) * 2)}
+@keyframes mb-ray{0%,60%,100%{transform:scaleY(1);opacity:1}30%{transform:scaleY(var(--mb-ray-min-scale));opacity:.7}}
+.mb-eyes-open{opacity:0}
+.mb-eye{transform-box:fill-box;transform-origin:50% 50%}
+@keyframes mb-blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-eyes-open{opacity:1}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-eyes-closed{opacity:0}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-eye{animation:mb-blink var(--mb-blink-duration) infinite}
+.mb-root:is([data-state="open"],[data-state="thinking"]) .mb-sway{animation-duration:var(--mb-open-sway-duration)}
+.mb-root[data-state="thinking"] .mb-ray{animation-duration:var(--mb-think-ray-duration)}
+.mb-root[data-state="thinking"] .mb-bob{animation-duration:var(--mb-think-bob-duration)}
+.mb-teaser{position:absolute;right:calc(var(--mb-mascot-size) + 6px);bottom:30px;padding:9px 14px;white-space:nowrap;background:#FFFFFF;font-size:15px;font-weight:500;line-height:1.2;border-radius:18px 18px 4px 18px;box-shadow:0 4px 14px rgba(53,39,36,.14);pointer-events:none}
+.mb-panel{display:flex;flex-direction:column;overflow:hidden;width:340px;height:460px;background:#FFFFFF;border-radius:26px 26px 8px 26px;box-shadow:0 18px 40px rgba(53,39,36,.22)}
+.mb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--mb-mint)}
+.mb-head svg{flex:none;width:38px;height:38px}
+.mb-name{margin:0;font-size:18px;font-weight:700;line-height:1.1}
+.mb-sub{margin:2px 0 0;font-size:13.5px;line-height:1.2;color:#5A4A44}
+.mb-close{flex:none;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:var(--mb-ink);font-size:22px;line-height:1;cursor:pointer;font-family:inherit}
+.mb-log{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px;overflow:hidden}
+.mb-msg{max-width:84%;padding:9px 13px;font-size:15.5px;line-height:1.4;white-space:pre-line}
+.mb-msg--bot{align-self:flex-start;background:var(--mb-mint);border-radius:18px 18px 18px 5px}
+.mb-msg--user{align-self:flex-end;background:var(--mb-mango);border-radius:18px 18px 5px 18px}
+.mb-typing{display:inline-flex;gap:4px;padding:13px 14px}
+.mb-typing i{width:7px;height:7px;border-radius:50%;background:var(--mb-mango-deep);animation:mb-dot 1s ease-in-out infinite}
+.mb-typing i:nth-child(2){animation-delay:.15s}
+.mb-typing i:nth-child(3){animation-delay:.3s}
+@keyframes mb-dot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.mb-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+.mb-chip{padding:8px 12px;border:1.5px solid var(--mb-mango);border-radius:999px;background:#FFFFFF;color:var(--mb-ink);font-family:inherit;font-size:14px;font-weight:500;line-height:1}
+.mb-form{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid rgba(53,39,36,.1)}
+.mb-input{flex:1;min-width:0;padding:9px 14px;border:1.5px solid rgba(53,39,36,.2);border-radius:999px;color:#7A6A63;font-size:15px;font-weight:500}
+.mb-send{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--mb-ink);color:var(--mb-mango)}
+.mb-send svg{width:18px;height:18px}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="width: 1280px; height: 2200px; box-sizing: border-box; padding: 56px; display: flex; flex-direction: column; gap: 44px; background: #F2F8EE; color: #352724; font-family: 'Nunito', system-ui, sans-serif; font-size: 17px; line-height: 1.55">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 56px; line-height: 1.05">Hoppy chat widget</h1>
+<p style="margin: 0; font-size: 20px; color: #6B5A53; max-width: 900px">The floating chatbot from the mascot-chatbot spec, dressed for Hop to Heal. Plain HTML, CSS and JavaScript with no build step: two files drop into any page. It's live on the home page; hover Hoppy, then click.</p>
+</div>
+
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.2">Three states</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative; height: 620px; border-radius: 26px; background: #FFFFFF; border: 1px solid #E5DDD2; overflow: hidden">
+<div aria-hidden="true" style="padding: 26px; display: flex; flex-direction: column; gap: 12px"><div style="height: 18px; width: 55%; border-radius: 9px; background: #E2F0DA"></div><div style="height: 10px; width: 85%; border-radius: 5px; background: #EFEAE4"></div><div style="height: 10px; width: 70%; border-radius: 5px; background: #EFEAE4"></div><div style="height: 120px; border-radius: 16px; background: #F2F8EE; margin-top: 8px"></div><div style="height: 10px; width: 80%; border-radius: 5px; background: #EFEAE4"></div><div style="height: 10px; width: 60%; border-radius: 5px; background: #EFEAE4"></div></div>
+<div class="mb-root" data-state="closed" style="position: absolute; right: 16px; bottom: 16px">
+<button class="mb-launcher" type="button" aria-label="Open chat (preview)">
+<span class="mb-teaser" aria-hidden="true">Hi! Need a hand?</span>
+<span class="mb-tilt"><span class="mb-sway"><span class="mb-bob">
+<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(41 50) rotate(-52)"><rect class="mb-ray mb-ray--left" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="mb-ray mb-ray--middle" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray--right" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="mb-eyes-closed" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span></span></span>
+</button>
+</div>
+</div>
+<figcaption style="font-size: 16px"><strong>Closed.</strong> Hoppy sways and bobs in the corner with eyes closed. "Hi! Need a hand?" pops up after 2.2 s and hides at 9 s.</figcaption>
+</figure>
+
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative; height: 620px; border-radius: 26px; background: #FFFFFF; border: 1px solid #E5DDD2; overflow: hidden">
+<div aria-hidden="true" style="padding: 26px; display: flex; flex-direction: column; gap: 12px"><div style="height: 18px; width: 55%; border-radius: 9px; background: #E2F0DA"></div><div style="height: 10px; width: 85%; border-radius: 5px; background: #EFEAE4"></div></div>
+<div class="mb-root" data-state="open" style="position: absolute; right: 16px; bottom: 16px">
+<section class="mb-panel" aria-label="Chat panel, open (preview)">
+<header class="mb-head">
+<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><rect x="94" y="8" width="12" height="32" rx="6" fill="#FBA826"></rect><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" transform="translate(41 50) rotate(-52)"></rect><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" transform="translate(159 50) rotate(52)"></rect><g fill="none" stroke="#352724" stroke-width="3" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path><path d="M93 120q3.5 6 7 0q3.5 6 7 0"></path></g></svg>
+<div style="flex: 1; min-width: 0"><p class="mb-name">Hoppy</p><p class="mb-sub">Ask about therapy, fees and booking</p></div>
+<button class="mb-close" type="button" aria-label="Close chat (preview)">×</button>
+</header>
+<div class="mb-log">
+<div class="mb-msg mb-msg--bot">Hi, I'm Hoppy! Ask me about therapy, fees or booking, or tap a topic below.</div>
+<div class="mb-msg mb-msg--user">Are you open on Sunday?</div>
+<div class="mb-msg mb-msg--bot">We're open every day, weekends too, from 10 am to 7 pm.</div>
+</div>
+<div class="mb-chips"><span class="mb-chip">Our services</span><span class="mb-chip">Fees &amp; timings</span><span class="mb-chip">Book a visit</span><span class="mb-chip">Talk to a person</span></div>
+<div class="mb-form"><div class="mb-input">Type your question</div><div class="mb-send" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+</section>
+<button class="mb-launcher" type="button" aria-label="Close chat (preview)">
+<span class="mb-tilt"><span class="mb-sway"><span class="mb-bob">
+<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(41 50) rotate(-52)"><rect class="mb-ray mb-ray--left" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="mb-ray mb-ray--middle" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray--right" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="mb-eyes-open"><g class="mb-eye"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="83.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g><g class="mb-eye"><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="119.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span></span></span>
+</button>
+</div>
+</div>
+<figcaption style="font-size: 16px"><strong>Open.</strong> The panel grows out of the corner toward Hoppy. Eyes open and blink every 4.5 s; the sway calms to 5 s.</figcaption>
+</figure>
+
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative; height: 620px; border-radius: 26px; background: #FFFFFF; border: 1px solid #E5DDD2; overflow: hidden">
+<div aria-hidden="true" style="padding: 26px; display: flex; flex-direction: column; gap: 12px"><div style="height: 18px; width: 55%; border-radius: 9px; background: #E2F0DA"></div><div style="height: 10px; width: 85%; border-radius: 5px; background: #EFEAE4"></div></div>
+<div class="mb-root" data-state="thinking" style="position: absolute; right: 16px; bottom: 16px">
+<section class="mb-panel" aria-label="Chat panel, thinking (preview)">
+<header class="mb-head">
+<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><rect x="94" y="8" width="12" height="32" rx="6" fill="#FBA826"></rect><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" transform="translate(41 50) rotate(-52)"></rect><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826" transform="translate(159 50) rotate(52)"></rect><g fill="none" stroke="#352724" stroke-width="3" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path><path d="M93 120q3.5 6 7 0q3.5 6 7 0"></path></g></svg>
+<div style="flex: 1; min-width: 0"><p class="mb-name">Hoppy</p><p class="mb-sub">Ask about therapy, fees and booking</p></div>
+<button class="mb-close" type="button" aria-label="Close chat (preview)">×</button>
+</header>
+<div class="mb-log">
+<div class="mb-msg mb-msg--bot">Hi, I'm Hoppy! Ask me about therapy, fees or booking, or tap a topic below.</div>
+<div class="mb-msg mb-msg--user">How much is a session?</div>
+<div class="mb-msg mb-msg--bot mb-typing" aria-label="Hoppy is typing"><i></i><i></i><i></i></div>
+</div>
+<div class="mb-chips"><span class="mb-chip">Our services</span><span class="mb-chip">Fees &amp; timings</span><span class="mb-chip">Book a visit</span><span class="mb-chip">Talk to a person</span></div>
+<div class="mb-form"><div class="mb-input">Type your question</div><div class="mb-send" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div>
+</section>
+<button class="mb-launcher" type="button" aria-label="Close chat (preview)">
+<span class="mb-tilt"><span class="mb-sway"><span class="mb-bob">
+<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(41 50) rotate(-52)"><rect class="mb-ray mb-ray--left" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="mb-ray mb-ray--middle" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray--right" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="mb-eyes-open"><g class="mb-eye"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="83.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g><g class="mb-eye"><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="119.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span></span></span>
+</button>
+</div>
+</div>
+<figcaption style="font-size: 16px"><strong>Thinking.</strong> While an answer is on its way, the rays flicker every 0.6 s, Hoppy hops every 0.5 s and three dots bounce.</figcaption>
+</figure>
+
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.2">How Hoppy moves</h2>
+<p style="margin: 0; font-size: 16px; color: #6B5A53">Three nested layers, each owning one kind of motion. All pivot at the bottom of the body, so Hoppy rocks like it's standing on the spot.</p>
+<div style="border: 2px solid #352724; border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 15px"><strong>Button</strong> · 92 × 92 px (76 on phones)</div>
+<div style="border: 2px dashed #B4471C; border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #FFF8EC">
+<div style="font-size: 15px"><strong>Tilt</strong> · hover: leans −9°, lifts 4 px, grows to 105% · press: 94%</div>
+<div style="border: 2px dashed #E58E00; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #FFF1D6">
+<div style="font-size: 15px"><strong>Sway</strong> · rocks −5° to +5° every 3.4 s (5 s while chatting)</div>
+<div style="border: 2px dashed #2E7D4F; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #E2F0DA">
+<div style="font-size: 15px"><strong>Bob</strong> · floats up 3 px with a little squash, every 1.7 s</div>
+<div style="border-radius: 10px; padding: 10px 12px; background: #FFFFFF; font-size: 15px"><strong>Artwork</strong> · rays pulse in turn (2.4 s, 0.25 s apart) · eyes blink every 4.5 s when open</div>
+</div>
+</div>
+</div>
+</div>
+<div style="font-size: 13px; font-weight: 800; color: #6B5A53; letter-spacing: .06em; text-transform: uppercase; margin-top: 4px">Easy tweaks</div>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<li>Swing more: raise <code>--mb-sway-angle</code> to 8deg</li>
+<li>Calmer: <code>--mb-sway-duration</code> 5s, <code>--mb-bob-height</code> 2px</li>
+<li>Calm mode and "reduce motion" turn every animation off</li>
+</ul>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.2">States</h2>
+<div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) minmax(0, 1fr); gap: 8px 14px; font-size: 15px">
+<div style="font-size: 13px; font-weight: 800; color: #6B5A53; text-transform: uppercase; letter-spacing: .06em">State</div><div style="font-size: 13px; font-weight: 800; color: #6B5A53; text-transform: uppercase; letter-spacing: .06em">When</div><div style="font-size: 13px; font-weight: 800; color: #6B5A53; text-transform: uppercase; letter-spacing: .06em">Hoppy</div>
+<div style="font-weight: 800">Closed</div><div>Page load, after closing</div><div>Idle sway, eyes closed</div>
+<div style="font-weight: 800">Open</div><div>Hoppy tapped</div><div>Eyes open and blink, slower sway</div>
+<div style="font-weight: 800">Thinking</div><div>Question sent, answer pending</div><div>Rays flicker, quick hops, typing dots</div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">Esc or × closes the panel and returns focus to Hoppy. Replies are read out by screen readers.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.2">Colours</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 40px; height: 40px; border-radius: 12px; background: #FBA826; flex: none"></div><div style="font-size: 14px; line-height: 1.3"><strong>Mango</strong><br>#FBA826</div></div>
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 40px; height: 40px; border-radius: 12px; background: #E58E00; flex: none"></div><div style="font-size: 14px; line-height: 1.3"><strong>Mango deep</strong><br>#E58E00</div></div>
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 40px; height: 40px; border-radius: 12px; background: #F46A39; flex: none"></div><div style="font-size: 14px; line-height: 1.3"><strong>Blush</strong><br>#F46A39</div></div>
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 40px; height: 40px; border-radius: 12px; background: #352724; flex: none"></div><div style="font-size: 14px; line-height: 1.3"><strong>Ink</strong><br>#352724</div></div>
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 40px; height: 40px; border-radius: 12px; background: #F2F8EE; border: 1px solid #D3E4C9; flex: none"></div><div style="font-size: 14px; line-height: 1.3"><strong>Mint</strong><br>#F2F8EE</div></div>
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 40px; height: 40px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E5DDD2; flex: none"></div><div style="font-size: 14px; line-height: 1.3"><strong>White</strong><br>#FFFFFF</div></div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">Adjusted from the original widget to match the logo exactly (it used #F9A726, #F4743B, #3B2314, #EEF6EA).</p>
+</div>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.2">What Hoppy says</h2>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 16px; font-size: 15px">
+<div style="font-weight: 800">Teaser</div><div>"Hi! Need a hand?"</div>
+<div style="font-weight: 800">Greeting</div><div>"Hi, I'm Hoppy! Ask me about therapy, fees or booking, or tap a topic below. I'm a helper, not a doctor: a therapist reviews anything about your child's health."</div>
+<div style="font-weight: 800">No match</div><div>"I don't have that answer yet. Try a topic below, or WhatsApp us on +91 95994 33591 and a real person will reply."</div>
+</div>
+<div style="border-top: 1px solid #E5DDD2; padding-top: 14px; display: grid; grid-template-columns: 150px minmax(0, 1fr) minmax(0, 1.4fr); gap: 10px 16px; font-size: 15px">
+<div style="font-size: 13px; font-weight: 800; color: #6B5A53; text-transform: uppercase; letter-spacing: .06em">Topic</div><div style="font-size: 13px; font-weight: 800; color: #6B5A53; text-transform: uppercase; letter-spacing: .06em">Also matches</div><div style="font-size: 13px; font-weight: 800; color: #6B5A53; text-transform: uppercase; letter-spacing: .06em">Answer</div>
+<div style="font-weight: 800">Our services <span style="font-size: 12px; color: #B4471C">chip</span></div><div style="color: #6B5A53">therapy, speech, autism, ADHD, sensory</div><div>The 7 services, one per line</div>
+<div style="font-weight: 800">Fees &amp; timings <span style="font-size: 12px; color: #B4471C">chip</span></div><div style="color: #6B5A53">price, fee, cost, open, weekend</div><div>Open every day 10 am – 7 pm; ₹800 per 1-hour session; 15-day pack ₹9,600</div>
+<div style="font-weight: 800">Book a visit <span style="font-size: 12px; color: #B4471C">chip</span></div><div style="color: #6B5A53">book, appointment, slot</div><div>2-minute booking, or WhatsApp us</div>
+<div style="font-weight: 800">Talk to a person <span style="font-size: 12px; color: #B4471C">chip</span></div><div style="color: #6B5A53">call, phone, WhatsApp, email</div><div>+91 95994 33591 · hoptoheal@gmail.com</div>
+<div style="font-weight: 800">Where are you?</div><div style="color: #6B5A53">address, location, directions</div><div>403 B, Pocket 2, Mayur Vihar Ph-1</div>
+<div style="font-weight: 800">Is my child okay?</div><div style="color: #6B5A53">worried, delay, not talking</div><div>Reassurance + free HopCheck, "screening, not diagnosis"</div>
+</div>
+</div>
+
+<div style="background: #FFE9C2; border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.2">Changes from the original</h2>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<li>Named Hoppy, with Hop to Heal's real services, hours, fee and contacts</li>
+<li>Colours matched to the logo</li>
+<li>"Helper, not a doctor" line in the greeting</li>
+<li>Typed text is kept if Hoppy is still answering (it used to vanish)</li>
+<li>Calm mode switch stops all motion, not just the phone setting</li>
+<li>Panel height uses the visible screen, so the phone keyboard never hides the input</li>
+<li>For the live site: a time limit on AI replies, and no automatic keyboard pop-up on phones</li>
+</ul>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

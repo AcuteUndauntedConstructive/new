@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mascot chatbot demo</title>
+
+<!-- Widget font (optional; falls back to Nunito / Trebuchet / system) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- 1. Widget styles -->
+<link rel="stylesheet" href="mascot.css">
+
+<style>
+  /* Demo page only, not part of the widget */
+  body { margin: 0; min-height: 100vh; background: #EEF6EA; color: #3B2314;
+         font-family: "Baloo 2", "Trebuchet MS", system-ui, sans-serif; }
+  .demo { max-width: 34rem; margin: 0 auto; padding: 12vh 1.5rem 0; }
+  .demo h1 { margin: 0 0 .75rem; font-size: 2rem; line-height: 1.15; }
+  .demo p { margin: 0 0 .75rem; font-size: 1.05rem; line-height: 1.55; }
+  .demo button { font: inherit; padding: .5rem 1rem; border-radius: 999px; border: 1.5px solid #3B2314;
+                 background: #fff; color: #3B2314; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="demo">
+  <h1>Your page goes here</h1>
+  <p>The mascot sits in the bottom-right corner and sways. Hover to see it lean in, click it to open the chat.</p>
+  <p><button type="button" onclick="MascotChat.open()">Chat with us</button></p>
+</div>
+
+<!-- 2. Widget script -->
+<script src="mascot.js"></script>
+
+<!-- 3. Start it with your own content -->
+<script>
+  MascotChat.init({
+    name: "Sunny",
+    subtitle: "Ask about what we offer",
+    greeting: "Hi, I'm Sunny! Pick a topic below or type your question.",
+    topics: [
+      { label: "What we offer", keywords: ["offer", "service", "provide"],
+        answer: "Here is what we provide:\n• Service one\n• Service two\n• Service three" },
+      { label: "Pricing", keywords: ["price", "cost", "fee"],
+        answer: "Our prices start at ₹___. Tell us what you need and we'll share an exact quote." },
+      { label: "Timings", keywords: ["time", "open", "hour"],
+        answer: "We're open Monday to Saturday, 10 am to 7 pm." },
+      { label: "Contact us", keywords: ["contact", "call", "phone", "email", "book"],
+        answer: "Call or WhatsApp us on +91 _____ _____, or email hello@yoursite.com." }
+    ]
+  });
+</script>
+</body>
+</html>

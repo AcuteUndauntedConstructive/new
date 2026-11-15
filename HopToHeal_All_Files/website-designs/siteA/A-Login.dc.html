@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Sign in (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.05;margin:0;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:13px 24px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s;box-sizing:border-box}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(53,39,36,.14)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}.ink{background:#352724;color:#FFFFFF}
+.float{animation:float 6s ease-in-out infinite}.f2{animation-delay:-2s}.f3{animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-16px) rotate(6deg)}}
+.sway{transform-origin:50% 92%;animation:sway 3.4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.enter{animation:enter .45s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes enter{from{opacity:0;transform:translateY(20px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; min-height: 960px; display: flex; flex-wrap: wrap">
+
+<aside style="flex: 1 1 520px; min-width: 0; background: #352724; color: #F2F8EE; position: relative; overflow: hidden; padding: 48px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+<div aria-hidden="true" class="float" style="position: absolute; right: 12%; top: 18%; width: 60px; height: 60px; border-radius: 18px; background: #FBA826; opacity: .9"></div>
+<div aria-hidden="true" class="float f2" style="position: absolute; left: 10%; bottom: 22%; width: 34px; height: 34px; border-radius: 50%; background: #F46A39"></div>
+<div aria-hidden="true" class="float f3" style="position: absolute; right: 30%; bottom: 12%; width: 22px; height: 22px; border-radius: 6px; background: #E2F0DA"></div>
+<a href="A-Home.dc.html" style="color: #F2F8EE; font-weight: 800; text-decoration: none; position: relative">← Back to Hop to Heal</a>
+<div style="position: relative; display: flex; flex-direction: column; gap: 18px; max-width: 520px">
+<svg width="150" height="150" viewBox="0 0 200 200" role="img" aria-label="Hoppy waving hello" style="overflow: visible"><g class="sway"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39"></ellipse><ellipse cx="82" cy="106" rx="5" ry="6" fill="#352724"></ellipse><ellipse cx="118" cy="106" rx="5" ry="6" fill="#352724"></ellipse><path d="M88 122 Q100 136 112 122" fill="none" stroke="#352724" stroke-width="4" stroke-linecap="round"></path></g></svg>
+<h1 class="disp" style="font-size: 60px; color: #FBA826">Welcome back to Hop to Heal</h1>
+<p style="margin: 0; font-size: 20px">See your child's progress, book slots, pay and read notes from your therapist, all in one place.</p>
+</div>
+<p style="margin: 0; font-size: 15px; color: #D9CFC6; position: relative">Your child's information is private, stored in India and only visible to you and their therapist.</p>
+</aside>
+
+<main style="flex: 1 1 480px; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 48px 24px; box-sizing: border-box">
+<div style="width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 22px">
+<div role="group" aria-label="I am a" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #FFFFFF; border: 2px solid #352724; border-radius: 999px; padding: 4px">
+<button type="button" onClick="{{asParent}}" aria-pressed="{{parentPressed}}" style="font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 10px; cursor: pointer; background: {{parentBg}}; color: #352724">I'm a parent</button>
+<button type="button" onClick="{{asTherapist}}" aria-pressed="{{therapistPressed}}" style="font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 10px; cursor: pointer; background: {{therapistBg}}; color: #352724">I'm a therapist</button>
+</div>
+
+<sc-if value="{{notSigned}}" hint-placeholder-val="{{ true }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="disp" style="font-size: 40px">{{title}}</h2>
+<p style="margin: 0; color: #6B5A53">{{sub}}</p>
+<button type="button" class="btn white" onClick="{{google}}" style="width: 100%; font-size: 18px; padding: 15px 20px"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #352724; display: inline-flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-weight: 700; font-size: 16px">G</span>Continue with Google</button>
+<sc-if value="{{isTherapist}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="invite" style="font-weight: 800; font-size: 15px">Invite code from the centre</label><input id="invite" type="text" placeholder="e.g. HTH-7KQ2" style="font: inherit; font-size: 17px; padding: 12px 16px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724"><span style="font-size: 14px; color: #6B5A53">Only needed the first time. Ask Dr. Heena or the coordinator.</span></div>
+</sc-if>
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 12px; color: #6B5A53; font-size: 14px"><span style="flex: 1; height: 1px; background: #E5DDD2"></span>or<span style="flex: 1; height: 1px; background: #E5DDD2"></span></div>
+<sc-if value="{{showPhone}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="ph" style="font-weight: 800; font-size: 15px">Mobile number</label><div style="display: flex; gap: 8px"><span style="display: flex; align-items: center; padding: 0 12px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; font-weight: 800">+91</span><input id="ph" type="tel" inputmode="numeric" placeholder="10-digit number" style="flex: 1; min-width: 0; font: inherit; font-size: 17px; padding: 12px 16px; border-radius: 16px; border: 2px solid #E5DDD2; background: #FFFFFF; color: #352724"></div><button type="button" class="btn ink" onClick="{{google}}" style="width: 100%">Send code on WhatsApp</button></div>
+</sc-if>
+<sc-if value="{{hidePhone}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn white" onClick="{{phone}}" style="width: 100%; border-color: #E5DDD2">Use my mobile number instead</button></sc-if>
+</sc-if>
+<p style="margin: 0; font-size: 14px; color: #6B5A53">By continuing you agree to our <a href="A-Home.dc.html">Terms</a> and <a href="A-Home.dc.html">Privacy policy</a>. We never post to your Google account.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{signed}}" hint-placeholder-val="{{ false }}">
+<div class="enter" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border: 1px solid #E5DDD2; border-radius: 20px; padding: 14px 16px">
+<div style="width: 56px; height: 56px; border-radius: 50%; background: #FFE9C2; border: 3px solid #FBA826; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px">{{initials}}</div>
+<div style="line-height: 1.3"><div style="font-weight: 800">{{who}}</div><div style="font-size: 14px; color: #6B5A53">Signed in with Google · example account</div></div>
+</div>
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}">
+<h2 class="disp" style="font-size: 34px">Two quick things, first time only</h2>
+<ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px"><li>Add your WhatsApp number for reminders</li><li>Add your child: name, date of birth and a photo</li></ol>
+<a class="btn sun" href="A-Parent.dc.html" style="width: 100%">Go to my dashboard</a>
+</sc-if>
+<sc-if value="{{isTherapist}}" hint-placeholder-val="{{ false }}">
+<h2 class="disp" style="font-size: 34px">You have 3 HopChecks to review</h2>
+<a class="btn sun" href="A-Therapist.dc.html" style="width: 100%">Open therapist dashboard</a>
+</sc-if>
+<button type="button" class="btn white" onClick="{{signOut}}" style="width: 100%; border-color: #E5DDD2">Use a different account</button>
+</div>
+</sc-if>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"role":{"editor":"enum","options":["Parent","Therapist"],"default":"Parent","section":"Preview"},"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { role: null, signed: false, phone: false };
+  }
+  renderVals() {
+    const role = this.state.role ?? (this.props.role ?? 'Parent');
+    const parent = role === 'Parent';
+    return {
+      asParent: () => this.setState({ role: 'Parent', signed: false }),
+      asTherapist: () => this.setState({ role: 'Therapist', signed: false }),
+      parentPressed: parent ? 'true' : 'false', therapistPressed: parent ? 'false' : 'true',
+      parentBg: parent ? '#FBA826' : 'transparent', therapistBg: parent ? 'transparent' : '#FBA826',
+      isParent: parent, isTherapist: !parent,
+      title: parent ? 'Sign in to your family account' : 'Therapist sign-in',
+      sub: parent ? 'New here? Continuing with Google creates your account in one step.' : 'Use the Google account the centre invited. You will only see children assigned to you.',
+      notSigned: !this.state.signed, signed: this.state.signed,
+      google: () => this.setState({ signed: true }),
+      signOut: () => this.setState({ signed: false }),
+      showPhone: this.state.phone, hidePhone: !this.state.phone,
+      phone: () => this.setState({ phone: true }),
+      initials: parent ? 'PS' : 'JG',
+      who: parent ? 'Priya Sharma' : 'Jiya Gupta, Occupational therapist'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: About us (Site B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.04;margin:0;text-wrap:balance}
+.eyebrow{margin:0;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#B4471C}
+.b3{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:18px;border:2.5px solid #352724;padding:12px 22px;cursor:pointer;box-shadow:0 6px 0 #352724;transition:transform .12s,box-shadow .12s;box-sizing:border-box}
+.b3:hover{transform:translateY(-2px);box-shadow:0 8px 0 #352724}.b3:active{transform:translateY(6px);box-shadow:0 0 0 #352724}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.clay{background:#FFFFFF;border:2.5px solid #352724;border-radius:26px;box-shadow:0 8px 0 #352724}
+.nav a{color:#352724;text-decoration:none;font-weight:800;font-size:16px}.nav a:hover{color:#B4471C}
+.scene{perspective:1100px}
+.tilt{transition:transform .4s cubic-bezier(.34,1.56,.64,1);transform-style:preserve-3d}.tilt:hover{transform:rotateX(7deg) rotateY(-9deg) translateY(-6px)}
+.iso{position:relative;border:2.5px solid #352724;border-radius:6px;box-sizing:border-box}
+.iso::before{content:"";position:absolute;left:-2.5px;right:-2.5px;top:-22px;height:20px;background:#FFE9C2;border:2.5px solid #352724;transform:skewX(-45deg);transform-origin:bottom left;box-sizing:border-box}
+.iso::after{content:"";position:absolute;top:-22px;right:-24.5px;width:22px;bottom:-2.5px;background:#C9790A;border:2.5px solid #352724;transform:skewY(-45deg);transform-origin:top left;box-sizing:border-box}
+.frame{border:2.5px solid #352724;border-radius:22px;box-shadow:12px 12px 0 #352724;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.frame:hover{transform:perspective(900px) rotateY(0deg) rotateX(0deg) translateY(-6px)}
+@supports (animation-timeline: view()){
+.flipin{animation:flipin linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+.rise3d{transform-origin:50% 100%;animation:rise3d linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+}
+@keyframes flipin{from{opacity:0;transform:perspective(900px) rotateX(-70deg) translateY(40px)}}
+@keyframes rise3d{from{transform:scaleY(.15);opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<header style="position: sticky; top: 0; z-index: 40; background: #FFFFFF; border-bottom: 2.5px solid #352724">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="B-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 60px; width: auto"></a>
+<nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 24px"><a href="B-Home.dc.html">Home</a><a href="B-Services.dc.html">Services &amp; pricing</a><a href="B-HopCheck.dc.html">HopCheck</a><a href="B-About.dc.html" aria-current="page" style="color: #B4471C">About us</a></nav>
+<div style="display: flex; gap: 12px"><a class="b3 white" href="B-Login.dc.html" style="padding: 8px 16px; font-size: 15px">Sign in</a><a class="b3 sun" href="B-Book.dc.html" style="padding: 8px 16px; font-size: 15px">Book a session</a></div>
+</div>
+</header>
+
+<main>
+<section class="wrap" style="padding-top: 64px; padding-bottom: 64px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p class="eyebrow">About us</p>
+<h1 class="disp" style="font-size: 76px">Built block by block, for every child</h1>
+<p style="margin: 0; font-size: 21px; color: #6B5A53">Hop to Heal helps children grow in independence and confidence, with plans built around each child's own challenges and strengths.</p>
+</div>
+<img class="frame" src="/_blob/bb6eff6ec703003f8e81e01641c10f3b" alt="Dr. Heena Gupta at the Mayur Vihar centre" style="flex: 1 1 380px; min-width: 0; max-width: 500px; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transform: perspective(900px) rotateY(-10deg) rotateX(4deg)">
+</section>
+
+<section aria-labelledby="story-h" style="background: #FFE9C2; border-top: 2.5px solid #352724; border-bottom: 2.5px solid #352724">
+<div class="wrap" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 40px">
+<h2 id="story-h" class="disp flipin" style="font-size: 52px">Our story, one block at a time</h2>
+<ol style="list-style: none; margin: 0; padding: 0 26px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px 36px; align-items: end">
+<li style="display: flex; flex-direction: column; gap: 34px"><div><div class="disp" style="font-size: 32px; color: #B4471C">2024</div><strong>We open in Mayur Vihar Phase 1</strong><div style="font-size: 15px; color: #6B5A53">Founded by Dr. Heena Gupta, open every day.</div></div><div class="iso rise3d" style="height: 80px; background: #FBA826"></div></li>
+<li style="display: flex; flex-direction: column; gap: 34px"><div><div class="disp" style="font-size: 32px; color: #B4471C">400+</div><strong>children helped</strong><div style="font-size: 15px; color: #6B5A53">5.0 ★ from 38 parents on Google.</div></div><div class="iso rise3d" style="height: 130px; background: #FBA826"></div></li>
+<li style="display: flex; flex-direction: column; gap: 34px"><div><div class="disp" style="font-size: 32px; color: #B4471C">2026</div><strong>HopCheck &amp; parent portal</strong><div style="font-size: 15px; color: #6B5A53">Free screening; progress online.</div></div><div class="iso rise3d" style="height: 180px; background: #FBA826"></div></li>
+<li style="display: flex; flex-direction: column; gap: 34px"><div><div class="disp" style="font-size: 32px; color: #B4471C">2027</div><strong>Our second centre</strong><div style="font-size: 15px; color: #6B5A53">Mayur Vihar Ph-3, Kondli, Vasundhara Enclave.</div></div><div class="iso rise3d" style="height: 230px; background: #2E7D4F"></div></li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="val-h" class="wrap scene" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 28px">
+<h2 id="val-h" class="disp flipin" style="font-size: 52px">What we believe</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px">
+<div class="clay tilt flipin" style="padding: 24px; background: #FBA826"><strong class="disp" style="font-size: 24px">Early beats late</strong><p style="margin: 6px 0 0; font-size: 16px">The sooner help starts, the more it helps. HopCheck is free.</p></div>
+<div class="clay tilt flipin" style="padding: 24px"><strong class="disp" style="font-size: 24px">Play is the method</strong><p style="margin: 6px 0 0; font-size: 16px">Therapy should feel like a favourite game.</p></div>
+<div class="clay tilt flipin" style="padding: 24px; background: #E2F0DA"><strong class="disp" style="font-size: 24px">Parents are partners</strong><p style="margin: 6px 0 0; font-size: 16px">Every goal and note, shared with you.</p></div>
+<div class="clay tilt flipin" style="padding: 24px"><strong class="disp" style="font-size: 24px">Screening, not labels</strong><p style="margin: 6px 0 0; font-size: 16px">A qualified therapist reviews everything.</p></div>
+</div>
+</section>
+
+<section aria-labelledby="team-h" style="background: #E2F0DA; border-top: 2.5px solid #352724; border-bottom: 2.5px solid #352724">
+<div class="wrap scene" style="padding-top: 72px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 28px">
+<h2 id="team-h" class="disp flipin" style="font-size: 52px">The team</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px">
+<div class="clay tilt" style="padding: 20px; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center"><img src="/_blob/659265c8376d6a453eefb51f94c2f26a" alt="Dr. Heena Gupta" style="width: 140px; height: 140px; border-radius: 26px; object-fit: cover; border: 2.5px solid #352724; transform: translateZ(30px)"><strong class="disp" style="font-size: 22px">Dr. Heena Gupta</strong><span style="font-size: 15px; font-weight: 800; color: #B4471C">Founder · clinical lead</span><span style="font-size: 15px; color: #6B5A53">BOT, MOT (Neuroscience)</span></div>
+<div class="clay tilt" style="padding: 20px; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center"><img src="/_blob/7df67db79ecb8aa714a2b17ae1ea6600" alt="Jiya Gupta" style="width: 140px; height: 140px; border-radius: 26px; object-fit: cover; border: 2.5px solid #352724; transform: translateZ(30px)"><strong class="disp" style="font-size: 22px">Jiya Gupta</strong><span style="font-size: 15px; font-weight: 800; color: #B4471C">Occupational therapist</span><span style="font-size: 15px; color: #6B5A53">BOT</span></div>
+<div class="clay tilt" style="padding: 20px; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center"><img src="/_blob/79eb1497b6e0bcb2b8eb497a135014c0" alt="Vishal Gupta" style="width: 140px; height: 140px; border-radius: 26px; object-fit: cover; border: 2.5px solid #352724; transform: translateZ(30px)"><strong class="disp" style="font-size: 22px">Vishal Gupta</strong><span style="font-size: 15px; font-weight: 800; color: #B4471C">Managing director</span></div>
+<div class="clay tilt" style="padding: 20px; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center"><img src="/_blob/62930d4253ea9ccbbdc871987a8bcc19" alt="Subodh K. Gupta" style="width: 140px; height: 140px; border-radius: 26px; object-fit: cover; border: 2.5px solid #352724; transform: translateZ(30px)"><strong class="disp" style="font-size: 22px">Subodh K. Gupta</strong><span style="font-size: 15px; font-weight: 800; color: #B4471C">Manager &amp; tech lead</span></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="space-h" class="wrap" style="padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px">
+<h2 id="space-h" class="disp flipin" style="font-size: 52px">A happy place to grow</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 36px">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px"><img class="frame" src="/_blob/ccf0ffd97f2fe48063253969f9c45e4d" alt="A child's hand on a felt apple-tree board" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transform: perspective(900px) rotateY(8deg)"><figcaption style="font-size: 15px; color: #6B5A53">Fine-motor play with our felt apple tree</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px"><img class="frame" src="/_blob/8cc7b9ea1f287843e8c1b629cb4b7c49" alt="Festive crafts and lights at the centre" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transform: perspective(900px) rotateY(-8deg)"><figcaption style="font-size: 15px; color: #6B5A53">Festivals and crafts together</figcaption></figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px"><div class="frame" role="img" aria-label="Photo placeholder" style="aspect-ratio: 4 / 3; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #6B5A53; transform: perspective(900px) rotateY(8deg)">[Photo: sensory room]</div><figcaption style="font-size: 15px; color: #6B5A53">Our therapy rooms</figcaption></figure>
+</div>
+</section>
+
+<section aria-labelledby="visit-h" style="background: #2A1F1C; color: #F2F8EE">
+<div class="wrap" style="padding-top: 64px; padding-bottom: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 12px"><h2 id="visit-h" class="disp" style="font-size: 52px; color: #FBA826">Visit us</h2><p style="margin: 0; font-size: 19px">403 B, Pocket 2, Mayur Vihar Phase 1, near Mother Dairy &amp; Safal outlet, Delhi 110091</p><p style="margin: 0; font-weight: 800">Every day, 10 am – 7 pm · +91 95994 33591</p><div><a class="b3 sun" href="B-Book.dc.html" style="box-shadow: 0 6px 0 #000000">Book a session</a></div></div>
+<div role="img" aria-label="Map placeholder" style="min-height: 260px; border-radius: 24px; border: 2.5px dashed #FBA826; display: flex; align-items: center; justify-content: center; font-weight: 800">[Map of the Mayur Vihar centre]</div>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

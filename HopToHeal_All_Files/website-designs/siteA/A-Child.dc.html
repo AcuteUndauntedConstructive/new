@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal: Aarav's progress (Site A)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F8EE}
+a{color:#B4471C}a:hover{color:#8A3412}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.disp{font-family:'Baloo 2','Nunito',sans-serif;font-weight:800;line-height:1.08;margin:0;text-wrap:balance}
+.lbl{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B4471C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:16px;text-decoration:none;border-radius:999px;border:2px solid #352724;padding:10px 18px;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1);box-sizing:border-box}
+.btn:hover{transform:translateY(-3px)}
+.sun{background:#FBA826;color:#352724}.white{background:#FFFFFF;color:#352724}
+.card{background:#FFFFFF;border:1px solid #E5DDD2;border-radius:24px}
+.seg{height:14px;border-radius:5px;background:#E5DDD2}
+.seg.on{background:#B4471C}
+.pt .tip{opacity:0;transition:opacity .15s}.pt:hover .tip,.pt:focus .tip{opacity:1}
+.line{stroke-dasharray:1;stroke-dashoffset:0}
+@supports (animation-timeline: view()){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 85%}
+.line{animation:draw linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+.grow{transform-origin:0 50%;animation:grow linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}}
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes grow{from{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Nunito', system-ui, sans-serif; color: #352724; background: #F2F8EE; font-size: 17px; line-height: 1.55; min-height: 2900px">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E5DDD2">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<div style="display: flex; align-items: center; gap: 16px"><a href="A-Home.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/8522b8ddbad83dff5e2a495fb2f9665a" alt="Hop to Heal" style="height: 54px; width: auto"></a><span style="font-weight: 800; font-size: 14px; background: #FFE9C2; padding: 4px 12px; border-radius: 999px">Parent portal</span></div>
+<nav aria-label="Portal" style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 700"><a href="A-Parent.dc.html" style="color: #352724; text-decoration: none">Dashboard</a><a href="A-Book.dc.html" style="color: #352724; text-decoration: none">Book</a><a href="A-Pay.dc.html" style="color: #352724; text-decoration: none">Payments</a></nav>
+<div style="display: flex; align-items: center; gap: 8px; font-weight: 800"><span style="width: 40px; height: 40px; border-radius: 50%; background: #FFE9C2; border: 2px solid #FBA826; display: inline-flex; align-items: center; justify-content: center; font-size: 14px">PS</span>Priya</div>
+</div>
+</header>
+
+<main class="wrap" style="padding-top: 28px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 22px">
+<a href="A-Parent.dc.html" style="font-weight: 800; align-self: flex-start">← All children</a>
+
+<section class="card" style="padding: 24px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
+<div role="img" aria-label="Aarav's photo placeholder" style="width: 132px; height: 132px; border-radius: 36px; background: #FFE9C2; border: 6px solid #FBA826; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 54px; flex: none">A</div>
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 4px">
+<p class="lbl" style="margin: 0">Example child profile</p>
+<h1 class="disp" style="font-size: 48px">Aarav Sharma</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; color: #6B5A53"><span>4 years · born 12 Mar 2022</span><span>Little Steps Pre-school</span><span>Hindi, English</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px"><span><strong>Therapy:</strong> Speech therapy</span><span><strong>Therapist:</strong> Jiya Gupta</span><span><strong>Pack:</strong> 9 of 15 sessions left</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button type="button" class="btn white">Edit details</button><a class="btn sun" href="A-Book.dc.html">Book</a></div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 22px; align-items: start">
+
+<section class="card rv" aria-labelledby="goals-h" style="padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap"><h2 id="goals-h" class="disp" style="font-size: 28px">Goals and improvement level</h2><span style="font-size: 14px; color: #6B5A53">Updated after each session</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Uses 2-word phrases to ask for things</strong><span style="font-weight: 800; color: #2E7D4F">Goal reached</span></div>
+<div class="grow" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px" role="img" aria-label="Level 3 of 5: goal reached"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div>
+<span style="font-size: 14px; color: #6B5A53">Up 2 levels since June · "Said 'more juice' and 'big car' today!"</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Follows 2-step instructions</strong><span style="font-weight: 800; color: #B4471C">Making progress</span></div>
+<div class="grow" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px" role="img" aria-label="Level 2 of 5: making progress"><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+<span style="font-size: 14px; color: #6B5A53">Up 1 level since August</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Takes turns in a short game</strong><span style="font-weight: 800; color: #B4471C">Making progress</span></div>
+<div class="grow" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px" role="img" aria-label="Level 2 of 5: making progress"><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+<span style="font-size: 14px; color: #6B5A53">Started September</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; font-size: 12px; font-weight: 700; color: #6B5A53; text-align: center"><span>Starting</span><span>Making progress</span><span>Goal reached</span><span>Beyond goal</span><span>Far beyond</span></div>
+</section>
+
+<section class="card rv" aria-labelledby="chart-h" style="padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap"><h2 id="chart-h" class="disp" style="font-size: 28px">Overall progress score</h2><span style="font-size: 14px; color: #6B5A53">Monthly reviews · 50 = expected</span></div>
+<svg viewBox="0 0 660 270" role="img" aria-label="Overall progress score rose from 36 in June to 52 in October" style="width: 100%; height: auto; overflow: visible; font-family: Nunito, sans-serif">
+<g stroke="#E5DDD2" stroke-width="1"><line x1="56" y1="220" x2="640" y2="220"></line><line x1="56" y1="153.3" x2="640" y2="153.3"></line><line x1="56" y1="20" x2="640" y2="20"></line></g>
+<line x1="56" y1="86.7" x2="640" y2="86.7" stroke="#2E7D4F" stroke-width="1.5" stroke-dasharray="6 6"></line>
+<text x="640" y="80" text-anchor="end" font-size="13" font-weight="700" fill="#2E7D4F">Expected (50)</text>
+<g font-size="13" fill="#6B5A53" text-anchor="end"><text x="46" y="224">30</text><text x="46" y="157">40</text><text x="46" y="91">50</text><text x="46" y="24">60</text></g>
+<g font-size="13" fill="#6B5A53" text-anchor="middle"><text x="70" y="248">Jun</text><text x="205" y="248">Jul</text><text x="340" y="248">Aug</text><text x="475" y="248">Sep</text><text x="610" y="248">Oct</text></g>
+<path d="M70 180 L205 146.7 L340 126.7 L475 100 L610 73.3 L610 220 L70 220 Z" fill="#B4471C" fill-opacity=".1"></path>
+<path class="line" pathLength="1" d="M70 180 L205 146.7 L340 126.7 L475 100 L610 73.3" fill="none" stroke="#B4471C" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></path>
+<g class="pt" tabindex="0"><circle cx="70" cy="180" r="14" fill="transparent"></circle><circle cx="70" cy="180" r="5" fill="#B4471C" stroke="#FFFFFF" stroke-width="2"></circle><g class="tip"><rect x="40" y="144" width="60" height="26" rx="8" fill="#352724"></rect><text x="70" y="162" text-anchor="middle" font-size="13" font-weight="800" fill="#FFFFFF">Jun 36</text></g></g>
+<g class="pt" tabindex="0"><circle cx="205" cy="146.7" r="14" fill="transparent"></circle><circle cx="205" cy="146.7" r="5" fill="#B4471C" stroke="#FFFFFF" stroke-width="2"></circle><g class="tip"><rect x="175" y="111" width="60" height="26" rx="8" fill="#352724"></rect><text x="205" y="129" text-anchor="middle" font-size="13" font-weight="800" fill="#FFFFFF">Jul 41</text></g></g>
+<g class="pt" tabindex="0"><circle cx="340" cy="126.7" r="14" fill="transparent"></circle><circle cx="340" cy="126.7" r="5" fill="#B4471C" stroke="#FFFFFF" stroke-width="2"></circle><g class="tip"><rect x="310" y="91" width="60" height="26" rx="8" fill="#352724"></rect><text x="340" y="109" text-anchor="middle" font-size="13" font-weight="800" fill="#FFFFFF">Aug 44</text></g></g>
+<g class="pt" tabindex="0"><circle cx="475" cy="100" r="14" fill="transparent"></circle><circle cx="475" cy="100" r="5" fill="#B4471C" stroke="#FFFFFF" stroke-width="2"></circle><g class="tip"><rect x="445" y="64" width="60" height="26" rx="8" fill="#352724"></rect><text x="475" y="82" text-anchor="middle" font-size="13" font-weight="800" fill="#FFFFFF">Sep 48</text></g></g>
+<g class="pt" tabindex="0"><circle cx="610" cy="73.3" r="14" fill="transparent"></circle><circle cx="610" cy="73.3" r="7" fill="#B4471C" stroke="#FFFFFF" stroke-width="2.5"></circle><text x="610" y="56" text-anchor="middle" font-size="15" font-weight="800" fill="#352724">52</text></g>
+</svg>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px">
+<div style="background: #F2F8EE; border-radius: 16px; padding: 12px 14px"><div class="lbl">Your rating</div><div style="font-weight: 800">Talking at home: 3 → 7 out of 10</div></div>
+<div style="background: #F2F8EE; border-radius: 16px; padding: 12px 14px"><div class="lbl">Attendance</div><div style="font-weight: 800">23 of 24 sessions</div></div>
+</div>
+</section>
+
+<section class="card rv" aria-labelledby="notes-h" style="padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="notes-h" class="disp" style="font-size: 28px">Session notes for you</h2>
+<article style="border-left: 0; padding: 12px 0; border-bottom: 1px solid #E5DDD2; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Tue 3 Nov · Pack session 6</strong><span style="font-size: 14px; color: #6B5A53">Jiya Gupta</span></div><span>Played "shop" with toy fruit. Aarav asked for 4 items with 2-word phrases without prompting. Try the same at the vegetable stall this week.</span></article>
+<article style="padding: 12px 0; border-bottom: 1px solid #E5DDD2; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Mon 2 Nov · Pack session 5</strong><span style="font-size: 14px; color: #6B5A53">Jiya Gupta</span></div><span>Worked on "first… then…" instructions with blocks. Needed one reminder on the second step.</span></article>
+<article style="padding: 12px 0; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><strong>Sun 1 Nov · Pack session 4</strong><span style="font-size: 14px; color: #6B5A53">Jiya Gupta</span></div><span>Turn-taking with a rolling ball game: 3 turns before losing interest, up from 1.</span></article>
+</section>
+
+<section class="card rv" aria-labelledby="home-h" style="padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="home-h" class="disp" style="font-size: 28px">Home activities this week</h2>
+<label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; margin-top: 3px; accent-color: #352724; flex: none"><span><strong>Shop game at home</strong><br><span style="font-size: 15px; color: #6B5A53">5 minutes a day. Let Aarav "buy" 3 things using 2 words each.</span></span></label>
+<label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; margin-top: 3px; accent-color: #352724; flex: none"><span><strong>First, then</strong><br><span style="font-size: 15px; color: #6B5A53">"First shoes, then park." Use the picture cards from your kit.</span></span></label>
+<label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; margin-top: 3px; accent-color: #352724; flex: none"><span><strong>Rolling ball turns</strong><br><span style="font-size: 15px; color: #6B5A53">Say "my turn, your turn" each time the ball rolls.</span></span></label>
+</section>
+
+<section class="card rv" aria-labelledby="rep-h" style="padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="rep-h" class="disp" style="font-size: 28px">Reports</h2>
+<a href="A-Report.dc.html" style="display: flex; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 16px; background: #FFE9C2; text-decoration: none; color: #352724"><span><strong>Progress report · October</strong><br><span style="font-size: 14px">Signed by Jiya Gupta and Dr. Heena Gupta</span></span><span style="font-weight: 800">Open</span></a>
+<a href="A-Report.dc.html" style="display: flex; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 16px; background: #F2F8EE; text-decoration: none; color: #352724"><span><strong>First assessment · June</strong><br><span style="font-size: 14px">Speech &amp; language, 1 hour</span></span><span style="font-weight: 800">Open</span></a>
+<a href="A-Report.dc.html" style="display: flex; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 16px; background: #F2F8EE; text-decoration: none; color: #352724"><span><strong>HopCheck · June</strong><br><span style="font-size: 14px">Talking: keep an eye · others on track</span></span><span style="font-weight: 800">Open</span></a>
+<div style="font-size: 14px; color: #6B5A53">Next HopCheck re-screen: December (every 3 months)</div>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
