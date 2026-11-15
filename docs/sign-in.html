@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · Hop to Heal</title>
+<meta name="description" content="Sign in to your Hop to Heal portal.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBA826">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:0;padding:15px 24px;cursor:pointer;box-sizing:border-box;width:100%;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.k{background:#1E5C46;color:#FFFFFF;box-shadow:0 4px 0 #123D2E}
+.field{font:inherit;padding:13px 16px;border-radius:16px;border:2px solid #E3DCD2;background:#FFFFFF;color:#2B211E;min-width:0}
+.spin{animation:spin 50s linear infinite;transform-origin:50% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bob{animation:bob 3.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.in{animation:in .45s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes in{from{opacity:0;transform:translateY(20px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/app.js"></script>
+</head>
+<body style="background: #F6FAF3">
+<div class="preview-bar" role="note">Preview site: example data only. Sign-in, saved accounts and payments are not live yet.</div>
+<div id="app"></div>
+<noscript><p style="padding: 24px; font-family: sans-serif">Please turn on JavaScript to use this site, or call Hop to Heal on +91 95994 33591.</p></noscript>
+
+<!-- What the page shows. {{name}} values come from renderVals() in the script below. -->
+<template id="view">
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 18px; line-height: 1.55; display: flex; flex-wrap: wrap">
+<aside style="flex: 1 1 520px; min-width: 0; background: #FFEDC9; position: relative; overflow: hidden; padding: 44px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 28px">
+<a href="index.html" style="font-weight: 800; position: relative">← Back to Hop to Heal</a>
+<div style="position: relative; align-self: center; width: 100%; max-width: 440px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" viewBox="0 0 440 440" style="position: absolute; inset: 0; width: 100%; height: 100%"><circle cx="220" cy="220" r="190" fill="#FFFFFF"></circle><g class="spin"><circle cx="220" cy="220" r="212" fill="none" stroke="#FBA826" stroke-width="3" stroke-dasharray="4 18" stroke-linecap="round"></circle></g></svg>
+<img class="bob" src="assets/img/logo.png" alt="Hop to Heal" style="position: relative; width: 66%; height: auto">
+</div>
+<div style="position: relative"><h1 class="d" style="font-size: 48px">Everything about your child's progress, in one place</h1><p style="margin: 10px 0 0; color: #645650">Reports, bookings, payments, counselling links and notes from your therapist. Private, and stored in India.</p></div>
+</aside>
+
+<main style="flex: 1 1 480px; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 48px 24px; box-sizing: border-box">
+<div style="width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 20px">
+<div role="group" aria-label="I am a" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #FFFFFF; border-radius: 999px; padding: 5px; box-shadow: inset 0 0 0 2px #E3DCD2">
+<button type="button" onClick="{{asParent}}" aria-pressed="{{parentPressed}}" style="font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 11px; cursor: pointer; background: {{parentBg}}; color: {{parentFg}}">Parent or client</button>
+<button type="button" onClick="{{asTherapist}}" aria-pressed="{{therapistPressed}}" style="font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 11px; cursor: pointer; background: {{therapistBg}}; color: {{therapistFg}}">Therapist</button>
+</div>
+
+<sc-if value="{{notSigned}}"><div class="in" style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="d" style="font-size: 40px">{{title}}</h2>
+<p style="margin: 0; color: #645650">{{sub}}</p>
+<button type="button" class="btn s" onClick="{{google}}"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 2px #2B211E; display: inline-flex; align-items: center; justify-content: center; font-family: Arial, sans-serif; font-weight: 700; font-size: 15px">G</span>Continue with Google</button>
+<sc-if value="{{isTherapist}}"><div style="display: flex; flex-direction: column; gap: 6px"><label for="inv" style="font-weight: 800; font-size: 15px">Invite code from the centre</label><input id="inv" class="field" type="text" placeholder="e.g. HTH-7KQ2"><span style="font-size: 14px; color: #645650">First time only. Without a code, therapist sign-in is refused.</span></div></sc-if>
+<sc-if value="{{isParent}}">
+<div style="display: flex; align-items: center; gap: 12px; color: #645650; font-size: 14px"><span style="flex: 1; height: 1px; background: #E3DCD2"></span>or<span style="flex: 1; height: 1px; background: #E3DCD2"></span></div>
+<sc-if value="{{showPhone}}"><div style="display: flex; flex-direction: column; gap: 10px"><label for="ph" style="font-weight: 800; font-size: 15px">Mobile number</label><div style="display: flex; gap: 8px"><span class="field" style="font-weight: 800">+91</span><input id="ph" class="field" type="tel" inputmode="numeric" placeholder="10-digit number" style="flex: 1"></div><button type="button" class="btn k" onClick="{{google}}">Send code on WhatsApp</button></div></sc-if>
+<sc-if value="{{hidePhone}}"><button type="button" class="btn s" onClick="{{phone}}" style="box-shadow: inset 0 0 0 2px #E3DCD2">Use my mobile number instead</button></sc-if>
+</sc-if>
+<p style="margin: 0; font-size: 14px; color: #645650">By continuing you agree to our Terms and Privacy policy. On a shared phone, sign out when you finish.</p>
+</div></sc-if>
+
+<sc-if value="{{signed}}"><div class="in" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border-radius: 22px; padding: 14px 16px; box-shadow: inset 0 0 0 2px #E3DCD2"><span style="width: 56px; height: 56px; border-radius: 50%; background: #FFEDC9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px">{{initials}}</span><div style="line-height: 1.3"><strong>{{who}}</strong><div style="font-size: 14px; color: #645650">Signed in with Google · example account</div></div></div>
+<sc-if value="{{isParent}}"><h2 class="d" style="font-size: 34px">Welcome! Three quick steps, first time only</h2><ol style="margin: 0; padding-left: 22px"><li>Add your WhatsApp number and a photo</li><li>Add your child, with their photo</li><li>Take HopCheck, or book straight away</li></ol><a class="btn p" href="portal.html">Go to my portal</a></sc-if>
+<sc-if value="{{isTherapist}}"><h2 class="d" style="font-size: 34px">3 HopChecks are waiting for your review</h2><a class="btn p" href="therapist.html">Open therapist portal</a></sc-if>
+<button type="button" class="btn s" onClick="{{signOut}}" style="box-shadow: inset 0 0 0 2px #E3DCD2">Use a different account</button>
+</div></sc-if>
+</div>
+</main>
+</div>
+</template>
+
+<!-- What the page does. -->
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { role: null, signed: false, phone: false };
+  }
+  renderVals() {
+    const parent = (this.state.role ?? (this.props.role ?? 'Parent')) === 'Parent';
+    return {
+      asParent: () => this.setState({ role: 'Parent', signed: false }), asTherapist: () => this.setState({ role: 'Therapist', signed: false }),
+      parentPressed: parent ? 'true' : 'false', therapistPressed: parent ? 'false' : 'true',
+      parentBg: parent ? '#2B211E' : 'transparent', parentFg: parent ? '#FFFFFF' : '#2B211E',
+      therapistBg: parent ? 'transparent' : '#2B211E', therapistFg: parent ? '#2B211E' : '#FFFFFF',
+      isParent: parent, isTherapist: !parent,
+      title: parent ? 'Sign in to your account' : 'Therapist sign-in',
+      sub: parent ? 'New here? Continuing with Google creates your account in one step.' : 'Use the Google account the centre invited. You only see the children and clients assigned to you.',
+      notSigned: !this.state.signed, signed: this.state.signed,
+      google: () => this.setState({ signed: true }), signOut: () => this.setState({ signed: false }),
+      showPhone: this.state.phone, hidePhone: !this.state.phone, phone: () => this.setState({ phone: true }),
+      initials: parent ? 'PS' : 'JG', who: parent ? 'Priya Sharma' : 'Jiya Gupta, Occupational therapist'
+    };
+  }
+}
+HopApp.mount(Component, {"role": "Parent"});
+</script>
+</body>
+</html>

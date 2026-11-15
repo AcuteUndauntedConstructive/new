@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Therapist portal · Hop to Heal</title>
+<meta name="description" content="Team page: therapist portal.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBA826">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EEF3EA}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1280px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lb{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#645650}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:15px;text-decoration:none;border-radius:999px;border:0;padding:9px 18px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-2px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 3px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.k{background:#1E5C46;color:#FFFFFF;box-shadow:0 3px 0 #123D2E}
+.card{background:#FFFFFF;border-radius:26px;box-shadow:0 1px 0 #E3DCD2,0 12px 30px rgba(43,33,30,.06)}
+.row{display:grid;grid-template-columns:74px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #EEE8E0}
+.av{width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+.tag{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.cell{height:26px;border-radius:8px}
+.in{animation:in .5s cubic-bezier(.34,1.4,.64,1) both}.i2{animation-delay:.08s}.i3{animation-delay:.16s}.i4{animation-delay:.24s}
+@keyframes in{from{opacity:0;transform:translateY(20px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/app.js"></script>
+</head>
+<body style="background: #EEF3EA">
+<div class="preview-bar" role="note">Preview site: example data only. Sign-in, saved accounts and payments are not live yet.</div>
+<div id="app"></div>
+<noscript><p style="padding: 24px; font-family: sans-serif">Please turn on JavaScript to use this site, or call Hop to Heal on +91 95994 33591.</p></noscript>
+
+<!-- What the page shows. {{name}} values come from renderVals() in the script below. -->
+<template id="view">
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #EEF3EA; font-size: 16px; line-height: 1.5">
+<header style="background: #1E5C46; color: #FFFFFF"><div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 12px; padding-bottom: 12px">
+<div style="display: flex; align-items: center; gap: 14px"><span class="d" style="font-size: 26px; color: #FBA826">Hop to Heal</span><span style="font-weight: 800; font-size: 13px; background: rgba(255,255,255,.16); padding: 4px 12px; border-radius: 999px">Therapist portal</span></div>
+<nav aria-label="Therapist" style="display: flex; flex-wrap: wrap; gap: 6px 24px; font-weight: 700"><a href="therapist.html" aria-current="page" style="color: #FBA826; text-decoration: none">Today</a><a href="therapist-update.html" style="color: #FFFFFF; text-decoration: none">Children</a><a href="#queue" style="color: #FFFFFF; text-decoration: none">HopCheck reviews</a><a href="#week" style="color: #FFFFFF; text-decoration: none">Availability</a></nav>
+<span style="display: flex; align-items: center; gap: 10px; font-weight: 800"><img src="assets/img/team-heena-gupta.jpg" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #FBA826">Dr. Heena Gupta</span>
+</div></header>
+
+<main class="w" style="padding-top: 28px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px"><div><p class="lb" style="margin: 0; color: #A8421A">Monday 16 November · example data</p><h1 class="d" style="font-size: 48px">Good morning, Dr. Heena</h1></div><div style="display: flex; gap: 8px; flex-wrap: wrap"><a class="btn p" href="therapist-update.html">Write a session note</a><button type="button" class="btn s">Add leave</button></div></div>
+
+<section aria-label="At a glance" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 16px">
+<div class="card in" style="padding: 18px 20px"><div class="lb">Sessions today</div><div class="d" style="font-size: 46px">7</div><div style="font-size: 14px; color: #645650">5 therapy · 2 online counselling</div></div>
+<div class="card in i2" style="padding: 18px 20px; box-shadow: inset 0 0 0 2.5px #B83232"><div class="lb" style="color: #8E2626">HopChecks to review</div><div class="d" style="font-size: 46px">3</div><div style="font-size: 14px; font-weight: 800; color: #8E2626">1 urgent: call today</div></div>
+<div class="card in i3" style="padding: 18px 20px"><div class="lb">Reports to countersign</div><div class="d" style="font-size: 46px">2</div><div style="font-size: 14px; color: #645650">Parents see them after you sign</div></div>
+<div class="card in i4" style="padding: 18px 20px; background: #1E5C46; color: #FFFFFF"><div class="lb" style="color: #FBA826">Caseload</div><div class="d" style="font-size: 46px">18</div><div style="font-size: 14px">14 children · 4 adults</div></div>
+</section>
+
+<section id="queue" class="card in" aria-labelledby="q" style="padding: 26px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px"><h2 id="q" class="d" style="font-size: 30px">HopCheck review queue</h2><span style="font-size: 14px; color: #645650">Sorted by urgency · target: signed within 2 working days</span></div>
+
+<div style="border-radius: 22px; background: #FBE4E0; box-shadow: inset 0 0 0 2.5px #B83232; padding: 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 420px"><div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap"><strong class="d" style="font-size: 22px">Ishaan, 3 years</strong><span class="tag" style="background: #B83232; color: #FFFFFF">Urgent · safety answer</span><span style="font-size: 13px; font-weight: 800; color: #8E2626">Sent 40 min ago</span></div><div style="font-size: 15px; margin-top: 4px">Grown-up check (father): "lost words he used to have": Yes. Urgent advice was shown to the parent at once.</div></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn s">Call parent now</button><button type="button" class="btn k">Open answers</button></div>
+</div>
+
+<div style="border-radius: 22px; box-shadow: inset 0 0 0 2px #E3DCD2; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center"><div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap"><strong class="d" style="font-size: 22px">Kabir, 11 years</strong><span class="tag" style="background: #2B211E; color: #FFFFFF">2 areas to look closer</span><span style="font-size: 13px; color: #645650">Due tomorrow 6 pm · needs a second reviewer</span></div><div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn s">Call parent</button><button type="button" class="btn p">Review and sign</button></div></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px">
+<div style="background: #FFEDC9; border-radius: 18px; padding: 14px"><div class="lb" style="color: #2B211E">Grown-up check · mother</div><ul style="margin: 6px 0 0; padding-left: 18px; font-size: 15px"><li><strong>Attention:</strong> 5 of 6 (can't focus on homework: a lot)</li><li><strong>Feelings:</strong> 4 of 6 (angry outbursts: a lot)</li><li><strong>Learning:</strong> 3 of 6</li><li>About you: 6 of 8, "nobody to talk to": often</li></ul></div>
+<div style="background: #DDEEDD; border-radius: 18px; padding: 14px"><div class="lb" style="color: #1E5C46">My turn! · Kabir</div><ul style="margin: 6px 0 0; padding-left: 18px; font-size: 15px"><li>"I lose focus easily": that's me</li><li>"I lose my temper more than I want to": that's me</li><li>Good at: sports, computers</li><li>Wants help with: feeling calm</li></ul></div>
+<div style="background: #F6FAF3; border-radius: 18px; padding: 14px"><div class="lb">Suggested by the rules (you can change)</div><ul style="margin: 6px 0 0; padding-left: 18px; font-size: 15px"><li>Behaviour modification therapy</li><li>Attention-focused assessment</li><li>Child counselling</li><li>Parent counselling for the mother</li></ul></div>
+</div>
+</div>
+
+<div style="border-radius: 22px; box-shadow: inset 0 0 0 2px #E3DCD2; padding: 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 420px"><div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap"><strong class="d" style="font-size: 22px">Aarav, 4 years</strong><span class="tag" style="background: #FFEDC9; box-shadow: inset 0 0 0 1.5px #C97F0C">Keep an eye</span><span style="font-size: 13px; color: #645650">Due Tue 17 Nov</span></div><div style="font-size: 15px; margin-top: 4px">Grown-up check only (under 7). Talking: 3 of 6. Suggested: speech therapy, early intervention.</div></div>
+<button type="button" class="btn p">Review and sign</button>
+</div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 22px; align-items: start">
+<section class="card in i2" aria-labelledby="t" style="padding: 24px">
+<h2 id="t" class="d" style="font-size: 28px; margin-bottom: 4px">Today's sessions</h2>
+<div class="row"><strong>10:00</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #FFEDC9">R</span><div><strong>Riya, 6</strong><div style="font-size: 13px; color: #645650">Occupational therapy · Room 2</div></div></div><span class="tag" style="background: #DDEEDD; color: #1E5C46">Note published</span></div>
+<div class="row"><strong>11:00</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #DDEEDD">M</span><div><strong>Meera, 9</strong><div style="font-size: 13px; color: #645650">OT + learning support · pack 7 of 15</div></div></div><a class="btn p" href="therapist-update.html" style="font-size: 13px; padding: 6px 14px">Write note</a></div>
+<div class="row" style="background: #FFF7E6; border-radius: 14px; padding-left: 10px; padding-right: 10px"><strong>12:00</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #FFEDC9">K</span><div><strong>Kabir, 11</strong><div style="font-size: 13px; color: #645650">First assessment · Sensory room</div></div></div><span class="tag" style="background: #FBA826">Next</span></div>
+<div class="row"><strong>2:00</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #E3DCD2">S</span><div><strong>Mr. Sharma, 62</strong><div style="font-size: 13px; color: #645650">Stroke recovery · hand function</div></div></div><span class="tag" style="background: #F6FAF3">Adult rehab</span></div>
+<div class="row"><strong>4:00</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #FFEDC9">A</span><div><strong>Aarav, 4</strong><div style="font-size: 13px; color: #645650">Early intervention</div></div></div><span class="tag" style="background: #F6FAF3">Upcoming</span></div>
+<div class="row"><strong>6:00</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #1E5C46; color: #FFFFFF">N</span><div><strong>Neha (parent)</strong><div style="font-size: 13px; color: #645650">Counselling · online · 30 min · [Counsellor]</div></div></div><span class="tag" style="background: #DDEEDD; color: #1E5C46">Meet link at 5:55</span></div>
+<div class="row" style="border-bottom: 0"><strong>6:30</strong><div style="display: flex; gap: 10px; align-items: center"><span class="av" style="background: #1E5C46; color: #FFFFFF">P</span><div><strong>Priya (parent)</strong><div style="font-size: 13px; color: #645650">Counselling · online · plan 4 of 21 · [Counsellor]</div></div></div><span class="tag" style="background: #DDEEDD; color: #1E5C46">Meet link at 6:25</span></div>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 22px">
+<section class="card in i3" aria-labelledby="cs" style="padding: 24px; display: flex; flex-direction: column; gap: 4px">
+<h2 id="cs" class="d" style="font-size: 28px; margin-bottom: 6px">Reports waiting for your signature</h2>
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #EEE8E0"><span><strong>Meera · first assessment</strong><br><span style="font-size: 13px; color: #645650">Written by Jiya Gupta · 14 Nov</span></span><button type="button" class="btn k">Read and countersign</button></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 10px 0"><span><strong>Riya · progress report</strong><br><span style="font-size: 13px; color: #645650">Written by Jiya Gupta · 15 Nov</span></span><button type="button" class="btn k">Read and countersign</button></div>
+</section>
+
+<section id="week" class="card in i4" aria-labelledby="wk" style="padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px"><h2 id="wk" class="d" style="font-size: 28px">My week</h2><span style="font-size: 13px; font-weight: 700">Dark: booked · Light: free · Grey: leave</span></div>
+<div style="overflow-x: auto"><div style="display: grid; grid-template-columns: 52px repeat(7, minmax(min(42px, 100%), 1fr)); gap: 5px; min-width: 420px; font-size: 13px; font-weight: 700">
+<span></span><span style="text-align: center">Mon</span><span style="text-align: center">Tue</span><span style="text-align: center">Wed</span><span style="text-align: center">Thu</span><span style="text-align: center">Fri</span><span style="text-align: center">Sat</span><span style="text-align: center">Sun</span>
+<span>10–1</span><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #DDEEDD"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #E3DCD2"></i>
+<span>1–4</span><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #DDEEDD"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #DDEEDD"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #E3DCD2"></i>
+<span>4–7</span><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #DDEEDD"></i><i class="cell" style="background: #DDEEDD"></i><i class="cell" style="background: #1E5C46"></i><i class="cell" style="background: #E3DCD2"></i>
+</div></div>
+<span style="font-size: 14px; color: #645650">Free hours show to parents as bookable slots. Leave hides them.</span>
+</section>
+</div>
+</div>
+</main>
+</div>
+</template>
+
+<!-- What the page does. -->
+<script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+HopApp.mount(Component, {});
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* Shared by every page. Page-specific styles live in each page's own <style>. */
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0}
+img{max-width:100%}
+.preview-bar{background:#2B211E;color:#FFEDC9;font:700 13px/1.4 'Figtree',system-ui,sans-serif;text-align:center;padding:6px 14px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---- Phones and small tablets ---- */
+@media (max-width:820px){
+  [style*="grid-template-columns: minmax(0, 1.5fr)"],[style*="grid-template-columns: minmax(0, 1.35fr)"]{grid-template-columns:minmax(0,1fr) !important}
+}
+@media (max-width:640px){
+  [style*="font-size: 6"],[style*="font-size: 7"],[style*="font-size: 8"]{font-size:clamp(34px,10.5vw,44px) !important;line-height:1.06 !important}
+  [style*="font-size: 5"]{font-size:36px !important}
+  [style*="font-size: 4"]{font-size:30px !important}
+  [style*="grid-template-columns: repeat(3, minmax(0, 1fr))"],[style*="grid-template-columns: repeat(4, minmax(0, 1fr))"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  [style*="position: sticky"][style*="top: 16px"]{position:static !important}
+}
+@media (max-width:640px){
+  [style*="grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px"]{grid-template-columns:minmax(0,1fr) !important}
+  svg[aria-hidden="true"][style*="right: -120px; top: -160px"]{width:300px !important;right:-110px !important;top:-120px !important}
+}
