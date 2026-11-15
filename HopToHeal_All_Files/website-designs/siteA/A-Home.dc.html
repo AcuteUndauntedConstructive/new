@@ -78,7 +78,16 @@ a{color:#B4471C}a:hover{color:#8A3412}
 @keyframes mbbob{50%{transform:translateY(-3px) scale(.985,1.02)}}
 .mb-ray{transform-box:fill-box;transform-origin:50% 100%;animation:mbray 2.4s ease-in-out infinite}.mb-ray2{animation-delay:.25s}.mb-ray3{animation-delay:.5s}
 @keyframes mbray{0%,60%,100%{transform:scaleY(1)}30%{transform:scaleY(.55);opacity:.7}}
-.mb-open-eyes{opacity:0}.mb-root[data-state="open"] .mb-open-eyes{opacity:1}.mb-root[data-state="open"] .mb-closed-eyes{opacity:0}
+/* Hoppy's eyes: naps, wakes, blinks, naps again (7 s loop). Open chat or hover: stays awake and blinks every 4.5 s. */
+.mb-open-eyes{opacity:0;animation:mbopen 7s infinite}.mb-closed-eyes{animation:mbclosed 7s infinite}
+.mb-eye{transform-box:fill-box;transform-origin:50% 50%;animation:mbeye 7s infinite}
+@keyframes mbopen{0%,30%{opacity:0}31%,89%{opacity:1}90%,100%{opacity:0}}
+@keyframes mbclosed{0%,30%{opacity:1}31%,89%{opacity:0}90%,100%{opacity:1}}
+@keyframes mbeye{0%,31%{transform:scaleY(.1)}35%,57%{transform:scaleY(1)}60%{transform:scaleY(.1)}63%,85%{transform:scaleY(1)}89%,100%{transform:scaleY(.1)}}
+@keyframes mbblink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.mb-root[data-state="open"] .mb-open-eyes,.mb-launcher:hover .mb-open-eyes,.mb-launcher:focus-visible .mb-open-eyes{opacity:1;animation:none}
+.mb-root[data-state="open"] .mb-closed-eyes,.mb-launcher:hover .mb-closed-eyes,.mb-launcher:focus-visible .mb-closed-eyes{opacity:0;animation:none}
+.mb-root[data-state="open"] .mb-eye,.mb-launcher:hover .mb-eye,.mb-launcher:focus-visible .mb-eye{animation:mbblink 4.5s infinite}
 .mb-teaser{position:absolute;right:98px;bottom:30px;padding:9px 14px;white-space:nowrap;background:#FFFFFF;font-size:15px;font-weight:500;border-radius:18px 18px 4px 18px;box-shadow:0 4px 14px rgba(53,39,36,.14)}
 .mb-panel{display:flex;flex-direction:column;overflow:hidden;width:340px;max-width:calc(100vw - 24px);height:440px;max-height:calc(100dvh - 150px);background:#FFFFFF;border-radius:26px 26px 8px 26px;box-shadow:0 18px 40px rgba(53,39,36,.22)}
 .mb-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--mb-mint)}
@@ -352,7 +361,7 @@ a{color:#B4471C}a:hover{color:#8A3412}
 <button class="mb-launcher" type="button" onClick="{{toggleChat}}" aria-label="{{launcherLabel}}" aria-expanded="{{chatExpanded}}">
 <sc-if value="{{teaser}}" hint-placeholder-val="{{ true }}"><span class="mb-teaser" aria-hidden="true">Hi! Need a hand?</span></sc-if>
 <span class="mb-tilt"><span class="mb-sway"><span class="mb-bob">
-<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(41 50) rotate(-52)"><rect class="mb-ray" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="mb-ray mb-ray2" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray3" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="mb-closed-eyes" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g><g class="mb-open-eyes"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(41 50) rotate(-52)"><rect class="mb-ray" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="mb-ray mb-ray2" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="mb-ray mb-ray3" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="mb-closed-eyes" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g><g class="mb-open-eyes"><g class="mb-eye"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="83.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g><g class="mb-eye"><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#352724"></ellipse><circle cx="119.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#352724" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </span></span></span>
 </button>
 </div>
