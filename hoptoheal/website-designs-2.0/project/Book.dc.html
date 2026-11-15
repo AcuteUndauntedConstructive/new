@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal 2.0: Book</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1240px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:0;padding:14px 26px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.card{background:#FFFFFF;border-radius:28px;box-shadow:0 1px 0 #E3DCD2,0 14px 34px rgba(43,33,30,.07)}
+.pk{font:inherit;color:#2B211E;cursor:pointer;border:0;border-radius:18px;transition:transform .14s cubic-bezier(.34,1.56,.64,1)}
+.pk:hover{transform:translateY(-3px)}
+.pk:disabled{cursor:not-allowed;transform:none}
+.n{width:38px;height:38px;border-radius:50%;background:#FBA826;display:inline-flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;flex:none}
+.sw{animation:sw .35s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes sw{from{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 17px; line-height: 1.55; min-height: 2100px">
+<header style="background: #FFFFFF; box-shadow: 0 1px 0 #E3DCD2">
+<div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<div style="display: flex; align-items: center; gap: 14px"><a href="Main.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/b35ebc36e430a1ea4cd8d1dc63b7911d" alt="Hop to Heal" style="height: 54px; width: auto"></a><span style="font-weight: 800; font-size: 13px; background: #FFEDC9; padding: 4px 12px; border-radius: 999px">My portal</span></div>
+<nav aria-label="Portal" style="display: flex; flex-wrap: wrap; gap: 6px 24px; font-weight: 700"><a href="Parent.dc.html" style="color: #2B211E; text-decoration: none">Dashboard</a><a href="Book.dc.html" aria-current="page" style="text-decoration: none">Book</a><a href="Pay.dc.html" style="color: #2B211E; text-decoration: none">Payments</a></nav>
+<span style="display: flex; align-items: center; gap: 8px; font-weight: 800"><span style="width: 40px; height: 40px; border-radius: 50%; background: #FFEDC9; display: inline-flex; align-items: center; justify-content: center; font-size: 14px">PS</span>Priya</span>
+</div>
+</header>
+
+<main class="w" style="padding-top: 36px; padding-bottom: 80px; display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div><h1 class="d" style="font-size: 56px">Book a session</h1><p style="margin: 6px 0 0; color: #645650">Places left update live. Example data.</p></div>
+
+<div role="tablist" aria-label="What to book" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<button type="button" role="tab" class="pk" aria-selected="{{therapySel}}" onClick="{{pickTherapy}}" style="text-align: left; padding: 22px; background: {{therapyBg}}; box-shadow: {{therapySh}}; border-radius: 28px"><span class="d" style="font-size: 28px; display: block">Therapy for a child</span><span style="font-size: 16px">1 hour · at the centre · ₹800</span></button>
+<button type="button" role="tab" class="pk" aria-selected="{{counselSel}}" onClick="{{pickCounsel}}" style="text-align: left; padding: 22px; background: {{counselBg}}; color: {{counselFg}}; box-shadow: {{counselSh}}; border-radius: 28px"><span class="d" style="font-size: 28px; display: block">Counselling</span><span style="font-size: 16px">30 minutes · online or at the centre · ₹500 per person</span></button>
+</div>
+
+<section class="card" aria-labelledby="b1" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="b1" class="d" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="n">1</span>{{whoTitle}}</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px"><sc-for list="{{people}}" as="k" hint-placeholder-count="2"><button type="button" class="pk" onClick="{{k.pick}}" aria-pressed="{{k.pressed}}" style="display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; background: {{k.bg}}; box-shadow: {{k.sh}}; text-align: left"><span style="width: 50px; height: 50px; border-radius: 50%; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px">{{k.initial}}</span><span style="line-height: 1.3"><strong style="display: block">{{k.name}}</strong><span style="font-size: 14px; color: #645650">{{k.meta}}</span></span></button></sc-for></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{services}}" as="s" hint-placeholder-count="6"><button type="button" class="pk" onClick="{{s.pick}}" aria-pressed="{{s.pressed}}" style="padding: 9px 16px; background: {{s.bg}}; box-shadow: {{s.sh}}; font-weight: 700; font-size: 15px; border-radius: 999px">{{s.label}}</button></sc-for></div>
+<sc-if value="{{isCounsel}}" hint-placeholder-val="{{ false }}"><div class="sw" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<button type="button" class="pk" onClick="{{modeOnline}}" aria-pressed="{{onlinePressed}}" style="text-align: left; padding: 16px; background: {{onlineBg}}; box-shadow: {{onlineSh}}"><strong style="display: flex; align-items: center; gap: 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"></rect><path d="M16 10l5-3v10l-5-3z"></path></svg>Online · Google Meet</strong><span style="font-size: 14.5px; color: #645650">Your link unlocks 5 minutes before the session.</span></button>
+<button type="button" class="pk" onClick="{{modeCentre}}" aria-pressed="{{centrePressed}}" style="text-align: left; padding: 16px; background: {{centreBg}}; box-shadow: {{centreSh}}"><strong style="display: flex; align-items: center; gap: 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>At the centre</strong><span style="font-size: 14.5px; color: #645650">Private room, Mayur Vihar Phase 1.</span></button>
+</div></sc-if>
+</section>
+
+<section class="card" aria-labelledby="b2" style="padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="b2" class="d" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="n">2</span>One session, or the {{planDays}}-day {{planWord}}?</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<button type="button" class="pk" onClick="{{chooseSingle}}" aria-pressed="{{singlePressed}}" style="text-align: left; padding: 18px; background: {{singleBg}}; box-shadow: {{singleSh}}"><span class="d" style="font-size: 36px; display: block">{{singlePrice}}</span><strong>Single session</strong><br><span style="font-size: 15px; color: #645650">{{singleNote}}</span></button>
+<button type="button" class="pk" onClick="{{choosePlan}}" aria-pressed="{{planPressed}}" style="text-align: left; padding: 18px; background: {{planBg}}; box-shadow: {{planSh}}; position: relative"><span style="position: absolute; right: 14px; top: 14px; background: #1E5C46; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 2px 10px; border-radius: 999px">{{planSave}}</span><span class="d" style="font-size: 36px; display: block">{{planPrice}}</span><strong>{{planName}} · 20% off</strong><br><span style="font-size: 15px; color: #645650">{{planNote}}</span></button>
+</div>
+</section>
+
+<section class="card" aria-labelledby="b3" style="padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="b3" class="d" style="font-size: 26px; display: flex; align-items: center; gap: 12px"><span class="n">3</span>{{whenTitle}}</h2>
+<div style="display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 8px"><sc-for list="{{days}}" as="dd" hint-placeholder-count="7"><button type="button" class="pk" onClick="{{dd.pick}}" aria-pressed="{{dd.pressed}}" style="flex: none; width: 94px; padding: 10px 6px; background: {{dd.bg}}; box-shadow: {{dd.sh}}; display: flex; flex-direction: column; align-items: center; gap: 2px"><span style="font-size: 13px; font-weight: 700">{{dd.dow}}</span><span class="d" style="font-size: 26px">{{dd.num}}</span><span style="font-size: 12px; font-weight: 800; color: {{dd.color}}">{{dd.left}}</span></button></sc-for></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px">
+<sc-for list="{{times}}" as="t" hint-placeholder-count="9"><button type="button" class="pk" onClick="{{t.pick}}" disabled="{{t.full}}" aria-pressed="{{t.pressed}}" aria-label="{{t.aria}}" style="padding: 10px 6px; background: {{t.bg}}; box-shadow: {{t.sh}}; opacity: {{t.opacity}}; display: flex; flex-direction: column; align-items: center; gap: 2px"><span style="font-weight: 800; font-size: 16px">{{t.label}}</span><span style="font-size: 13px; font-weight: 800; color: {{t.color}}">{{t.left}}</span></button></sc-for>
+</div>
+<sc-if value="{{isPlan}}" hint-placeholder-val="{{ false }}"><div class="sw" style="border-top: 1px dashed #E3DCD2; padding-top: 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px"><h3 class="d" style="font-size: 22px">Your {{planDays}} days</h3><strong style="color: {{conflictColor}}">{{conflictText}}</strong></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px"><sc-for list="{{planList}}" as="pd" hint-placeholder-count="15"><div style="border-radius: 14px; padding: 8px 10px; background: {{pd.bg}}; box-shadow: {{pd.sh}}; font-size: 14px; line-height: 1.35"><strong style="display: block">{{pd.date}}</strong><span>{{pd.status}}</span><sc-if value="{{pd.needsSwap}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{pd.swap}}" style="font: inherit; font-size: 13px; font-weight: 800; margin-top: 4px; border: 0; background: #2B211E; color: #FFFFFF; border-radius: 999px; padding: 4px 10px; cursor: pointer; min-height: 30px">Take {{pd.alt}}</button></sc-if></div></sc-for></div>
+</div></sc-if>
+</section>
+</div>
+
+<aside style="flex: 1 1 320px; min-width: 0; position: sticky; top: 20px">
+<div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="d" style="font-size: 28px">Summary</h2>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span style="color: #645650">For</span><strong>{{sumWho}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span style="color: #645650">Service</span><strong style="text-align: right">{{sumService}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span style="color: #645650">Where</span><strong style="text-align: right">{{sumWhere}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 10px"><span style="color: #645650">When</span><strong style="text-align: right">{{sumWhen}}</strong></div>
+<div style="border-top: 2px dashed #E3DCD2; padding-top: 12px; display: flex; justify-content: space-between; align-items: baseline"><strong>{{sumPlan}}</strong><span class="d" style="font-size: 38px">{{sumPrice}}</span></div>
+<sc-if value="{{isPlan}}" hint-placeholder-val="{{ false }}"><div style="font-size: 14px; font-weight: 800; color: #1E5C46">{{sumSave}}</div></sc-if>
+<a class="btn p" href="{{payHref}}" aria-disabled="{{notReady}}" style="width: 100%; opacity: {{ctaOpacity}}">Continue to payment</a>
+<p style="margin: 0; font-size: 14px; color: #645650">{{sumNote}}</p>
+</div>
+</aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"kind":{"editor":"enum","options":["Therapy","Counselling"],"default":"Therapy","section":"Preview"},"plan":{"editor":"enum","options":["Single","Plan"],"default":"Single","section":"Preview"},"$preview":{"width":1440,"height":2100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { kind: null, person: 0, service: 0, mode: 'online', plan: null, day: 0, slot: 1, swaps: {} };
+  }
+  renderVals() {
+    const st = this.state;
+    const counsel = (st.kind ?? (this.props.kind ?? 'Therapy')) === 'Counselling';
+    const plan = (st.plan ?? (this.props.plan ?? 'Single')) === 'Plan';
+    const on = { bg: '#FFEDC9', sh: 'inset 0 0 0 2.5px #2B211E' };
+    const off = { bg: '#F6FAF3', sh: 'inset 0 0 0 2px #E3DCD2' };
+    const pick = (c) => (c ? on : off);
+    const N = counsel ? 21 : 15;
+    const base = new Date(2026, 10, 16);
+    const dayDate = (i) => { const d = new Date(base); d.setDate(d.getDate() + i); return d; };
+    const dow = (d) => d.toLocaleDateString('en-IN', { weekday: 'short' });
+    const fmt = (m) => { const h = Math.floor(m / 60), mm = m % 60; return (h > 12 ? h - 12 : h) + ':' + String(mm).padStart(2, '0') + ' ' + (h >= 12 ? 'pm' : 'am'); };
+    const slots = counsel ? Array.from({ length: 18 }, (_, i) => 600 + i * 30) : Array.from({ length: 9 }, (_, i) => 600 + i * 60);
+    const left = (d, i) => counsel ? [1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1][(d * 7 + i * 5 + 2) % 12] : [3, 2, 0, 1, 2, 3, 1, 0, 2, 3, 2, 1][(d * 5 + i * 3 + 1) % 12];
+    const slot = Math.min(st.slot, slots.length - 1);
+    const people = counsel ? [{ name: 'Me (Priya)', meta: 'Parent', initial: 'P' }, { name: 'My partner', meta: 'Parent', initial: 'R' }, { name: 'Meera', meta: 'Teen and child counselling, 7+', initial: 'M' }] : [{ name: 'Aarav', meta: 'Age 4', initial: 'A' }, { name: 'Meera', meta: 'Age 9', initial: 'M' }];
+    const services = counsel ? ['Parent counselling', 'Stress and sleep', 'Family session', 'Child or teen counselling'] : ['Occupational therapy', 'Speech therapy', 'Special education', 'Behaviour therapy', 'ABA therapy', 'Early intervention', 'Group therapy', 'Assessment'];
+    const person = Math.min(st.person, people.length - 1), service = Math.min(st.service, services.length - 1);
+    let conflicts = 0;
+    const planList = Array.from({ length: N }, (_, k) => {
+      const d = st.day + k, date = dayDate(d), label = dow(date) + ' ' + date.getDate() + ' ' + date.toLocaleDateString('en-IN', { month: 'short' });
+      if (left(d, slot) > 0) return { date: label, status: fmt(slots[slot]) + ' ✓', bg: '#F6FAF3', sh: 'none', needsSwap: false };
+      if (st.swaps[k] !== undefined) return { date: label, status: fmt(slots[st.swaps[k]]) + ' ✓ changed', bg: '#DDEEDD', sh: 'none', needsSwap: false };
+      conflicts += 1;
+      let alt = -1, best = 99;
+      slots.forEach((_, i) => { if (left(d, i) > 0 && Math.abs(i - slot) < best) { best = Math.abs(i - slot); alt = i; } });
+      return { date: label, status: fmt(slots[slot]) + ' is full', bg: '#FFF1E8', sh: 'inset 0 0 0 2px #A8421A', needsSwap: alt >= 0, alt: alt >= 0 ? fmt(slots[alt]) : '', swap: () => this.setState({ swaps: { ...st.swaps, [k]: alt } }) };
+    });
+    const ready = plan ? conflicts === 0 : left(st.day, slot) > 0;
+    const sd = dayDate(st.day);
+    const whenTxt = dow(sd) + ' ' + sd.getDate() + ' Nov, ' + fmt(slots[slot]);
+    const reset = { swaps: {} };
+    return {
+      therapySel: counsel ? 'false' : 'true', counselSel: counsel ? 'true' : 'false',
+      pickTherapy: () => this.setState({ kind: 'Therapy', person: 0, service: 0, slot: 1, ...reset }), pickCounsel: () => this.setState({ kind: 'Counselling', person: 0, service: 0, slot: 2, ...reset }),
+      therapyBg: counsel ? '#FFFFFF' : '#FFEDC9', therapySh: counsel ? 'inset 0 0 0 2px #E3DCD2' : 'inset 0 0 0 3px #2B211E',
+      counselBg: counsel ? '#1E5C46' : '#FFFFFF', counselFg: counsel ? '#FFFFFF' : '#2B211E', counselSh: counsel ? 'none' : 'inset 0 0 0 2px #E3DCD2',
+      isCounsel: counsel,
+      whoTitle: counsel ? 'Who is the counselling for?' : 'Which child, and which therapy?',
+      people: people.map((p, i) => ({ ...p, pressed: person === i ? 'true' : 'false', ...pick(person === i), pick: () => this.setState({ person: i }) })),
+      services: services.map((label, i) => ({ label, pressed: service === i ? 'true' : 'false', ...pick(service === i), pick: () => this.setState({ service: i }) })),
+      modeOnline: () => this.setState({ mode: 'online' }), modeCentre: () => this.setState({ mode: 'centre' }),
+      onlinePressed: st.mode === 'online' ? 'true' : 'false', centrePressed: st.mode === 'centre' ? 'true' : 'false',
+      onlineBg: pick(st.mode === 'online').bg, onlineSh: pick(st.mode === 'online').sh, centreBg: pick(st.mode === 'centre').bg, centreSh: pick(st.mode === 'centre').sh,
+      planDays: N, planWord: counsel ? 'plan' : 'pack',
+      chooseSingle: () => this.setState({ plan: 'Single', ...reset }), choosePlan: () => this.setState({ plan: 'Plan', ...reset }),
+      singlePressed: plan ? 'false' : 'true', planPressed: plan ? 'true' : 'false',
+      singleBg: pick(!plan).bg, singleSh: pick(!plan).sh, planBg: pick(plan).bg, planSh: pick(plan).sh,
+      singlePrice: counsel ? '₹500' : '₹800', singleNote: counsel ? '30 minutes, per person' : 'One hour on the day you choose',
+      planPrice: counsel ? '₹8,400' : '₹9,600', planName: counsel ? '21-day counselling plan' : '15-day therapy pack', planSave: counsel ? 'Save ₹2,100' : 'Save ₹2,400',
+      planNote: counsel ? '21 daily sessions · ₹400 each' : '15 daily sessions · ₹640 each',
+      isPlan: plan,
+      whenTitle: plan ? 'Start day and daily time' : 'Day and time',
+      days: Array.from({ length: 7 }, (_, i) => { const total = slots.reduce((s, _, k) => s + left(i, k), 0); return { dow: dow(dayDate(i)), num: String(dayDate(i).getDate()), pressed: st.day === i ? 'true' : 'false', ...pick(st.day === i), left: total + (counsel ? ' free' : ' places'), color: total < (counsel ? 9 : 8) ? '#A8421A' : '#1E5C46', pick: () => this.setState({ day: i, ...reset }) }; }),
+      times: slots.map((m, i) => { const l = left(st.day, i), full = l === 0, sel = slot === i; return { label: fmt(m), full, pressed: sel ? 'true' : 'false', bg: full ? '#EFEAE4' : pick(sel).bg, sh: full ? 'none' : pick(sel).sh, opacity: full ? '0.55' : '1', left: full ? (counsel ? 'Booked' : 'Full') : counsel ? 'Free' : l === 1 ? 'Last place' : l + ' left', color: full ? '#645650' : l === 1 && !counsel ? '#A8421A' : '#1E5C46', aria: fmt(m) + ', ' + (full ? 'not available' : counsel ? 'free' : l + ' places left'), pick: () => { if (!full) this.setState({ slot: i, ...reset }); } }; }),
+      planList,
+      conflictText: conflicts === 0 ? 'All ' + N + ' days booked' : conflicts + (conflicts === 1 ? ' day needs' : ' days need') + ' another time',
+      conflictColor: conflicts === 0 ? '#1E5C46' : '#A8421A',
+      sumWho: people[person].name, sumService: services[service],
+      sumWhere: counsel ? (st.mode === 'online' ? 'Online · Google Meet' : 'At the centre') : 'At the centre',
+      sumWhen: plan ? 'From ' + whenTxt + ', daily' : whenTxt + (counsel ? ' · 30 min' : ' · 1 hour'),
+      sumPlan: plan ? (counsel ? '21-day plan' : '15-day pack') : 'Single session',
+      sumPrice: plan ? (counsel ? '₹8,400' : '₹9,600') : (counsel ? '₹500' : '₹800'),
+      sumSave: counsel ? 'You save ₹2,100 (₹400 a session)' : 'You save ₹2,400 (₹640 a session)',
+      sumNote: counsel && st.mode === 'online' ? 'Your Google Meet link appears here and on WhatsApp 5 minutes before each session.' : 'We hold your place for 10 minutes while you pay. Free to reschedule up to [24 hours] before.',
+      payHref: ready ? 'Pay.dc.html' : '#b3', notReady: ready ? 'false' : 'true', ctaOpacity: ready ? '1' : '0.5'
+    };
+  }
+}
+</script>
+</body>
+</html>

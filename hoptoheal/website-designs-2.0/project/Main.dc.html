@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal 2.0: Home</title>
+<script src="./support.js"></script>
+<script src="/_blob/45c9d734d71d20d3e98b6d674f51136d"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;family=Baloo+2:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka','Baloo 2',sans-serif;font-weight:600;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.eb{margin:0;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#A8421A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:0;padding:14px 26px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.k{background:#1E5C46;color:#FFFFFF;box-shadow:0 4px 0 #123D2E}
+.card{background:#FFFFFF;border-radius:28px;box-shadow:0 1px 0 #E3DCD2,0 14px 34px rgba(43,33,30,.07)}
+.nav a{color:#2B211E;text-decoration:none;font-weight:700;font-size:16px}.nav a:hover{color:#A8421A}
+.chip{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#2B211E;background:#FFFFFF;border-radius:999px;padding:10px 18px;font-weight:700;font-size:16px;box-shadow:inset 0 0 0 2px #E3DCD2;transition:transform .15s,box-shadow .15s}
+.chip:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px #FBA826;color:#2B211E}
+.lift{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}.lift:hover{transform:translateY(-8px)}
+.prog{position:fixed;left:0;top:0;height:5px;width:100%;background:#FBA826;transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.in{display:block;animation:in .9s cubic-bezier(.34,1.4,.64,1) both}.i2{animation-delay:.15s}.i3{animation-delay:.3s}
+@keyframes in{from{opacity:0;transform:translateY(36px)}}
+.spin{animation:spin 40s linear infinite;transform-origin:50% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bob{animation:bob 3.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.marq{display:flex;gap:40px;width:max-content;animation:marq 40s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+@supports (animation-timeline: view()){
+.prog{animation:grow linear both;animation-timeline:scroll(root)}
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+.pop{animation:pop linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+.arc{animation:arc linear both;animation-timeline:view();animation-range:entry 10% cover 45%}
+.tilt{animation:tilt linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+}
+@keyframes grow{to{transform:scaleX(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(50px)}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+@keyframes arc{from{stroke-dashoffset:1}}
+@keyframes tilt{from{transform:perspective(1200px) rotateX(28deg) translateY(70px) scale(.92);opacity:.2}}
+.arc{stroke-dasharray:1;stroke-dashoffset:0}
+.calm *{animation:none !important;transition:none !important}.calm .prog{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+.cb{position:fixed;right:20px;bottom:20px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:'Fredoka',sans-serif;color:#2B211E}
+.cb-btn{position:relative;width:88px;height:88px;padding:0;border:0;background:none;cursor:pointer}
+.cb-sway{display:block;transform-origin:50% 92%;animation:sway 3.4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.cb-msg{max-width:84%;padding:9px 13px;font-size:15.5px;line-height:1.4;white-space:pre-line;font-family:'Figtree',sans-serif}
+.cb-bot{align-self:flex-start;background:#F6FAF3;border-radius:18px 18px 18px 5px}
+.cb-user{align-self:flex-end;background:#FBA826;border-radius:18px 18px 5px 18px}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 18px; line-height: 1.6; overflow-x: hidden">
+<div class="prog" aria-hidden="true"></div>
+
+<div style="background: #1E5C46; color: #FFFFFF; font-size: 14px">
+<div class="w" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 20px; padding-top: 7px; padding-bottom: 7px">
+<span>Open all 7 days · 10 am – 7 pm · Mayur Vihar Phase 1, Delhi · +91 95994 33591</span>
+<span style="display: flex; gap: 14px; align-items: center"><a href="#top" style="color: #FFFFFF; font-weight: 700">हिंदी</a><button type="button" onClick="{{toggleCalm}}" aria-pressed="{{calmPressed}}" style="font: inherit; font-size: 13px; font-weight: 700; border: 1px solid rgba(255,255,255,.5); background: transparent; color: #FFFFFF; border-radius: 999px; padding: 3px 12px; cursor: pointer">{{calmLabel}}</button></span>
+</div>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(246,250,243,.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 #E3DCD2">
+<div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px">
+<a href="Main.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/b35ebc36e430a1ea4cd8d1dc63b7911d" alt="Hop to Heal" style="height: 60px; width: auto"></a>
+<nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 6px 26px"><a href="Main.dc.html" aria-current="page" style="color: #A8421A">Home</a><a href="Services.dc.html">Services</a><a href="HopCheck.dc.html">HopCheck</a><a href="Counselling.dc.html">Counselling</a></nav>
+<div style="display: flex; gap: 10px; align-items: center"><a class="btn s" href="SignIn.dc.html" style="padding: 9px 18px; font-size: 15px">Sign in</a><a class="btn p" href="Book.dc.html" style="padding: 9px 18px; font-size: 15px">Book</a></div>
+</div>
+</header>
+
+<main id="top">
+<section aria-labelledby="h1" style="position: relative">
+<div class="w" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding-top: 56px; padding-bottom: 40px">
+<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p class="eb in">Therapy and counselling for children, parents and adults</p>
+<h1 id="h1" class="d" style="font-size: 80px; line-height: .98"><span class="in">Spot early.</span><span class="in i2" style="color: #1E5C46">Heal early.</span><span class="in i3">One hop at a time.</span></h1>
+<p style="margin: 0; font-size: 21px; color: #645650; max-width: 540px">Answer a few questions, and a senior occupational therapist tells you exactly what will help: therapy for your child, counselling for you, or both.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px"><a class="btn p" href="HopCheck.dc.html">Start free HopCheck</a><a class="btn s" href="Book.dc.html">Book a session</a></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 15px; font-weight: 700; color: #645650"><span>5.0 ★ on Google (38 reviews)</span><span>400+ children helped</span><span>Ages 2–16 and adults</span></div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0; position: relative; aspect-ratio: 1 / 1; max-width: 600px">
+<svg aria-hidden="true" viewBox="0 0 600 600" style="position: absolute; inset: 0; width: 100%; height: 100%"><circle cx="300" cy="310" r="230" fill="#FFEDC9"></circle><g class="spin"><circle cx="300" cy="310" r="268" fill="none" stroke="#FBA826" stroke-width="3" stroke-dasharray="4 18" stroke-linecap="round"></circle></g><path d="M70 330 A230 230 0 0 0 530 330" fill="none" stroke="#2B211E" stroke-width="5" stroke-linecap="round"></path></svg>
+<canvas ref="{{canvasRef}}" id="hero3d" role="img" aria-label="Hoppy, the Hop to Heal sun, floating among toy blocks" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+<sc-if value="{{noWebgl}}" hint-placeholder-val="{{ false }}"><div style="position: absolute; inset: 14%"><img class="bob" src="/_blob/b35ebc36e430a1ea4cd8d1dc63b7911d" alt="" style="width: 100%"></div></sc-if>
+<span class="bob" style="position: absolute; left: 0; top: 16%; background: #FFFFFF; border-radius: 16px; padding: 8px 14px; font-weight: 800; font-size: 14px; box-shadow: 0 8px 20px rgba(43,33,30,.12)">Reviewed by a therapist</span>
+<span class="bob" style="position: absolute; right: 0; bottom: 14%; background: #1E5C46; color: #FFFFFF; border-radius: 16px; padding: 8px 14px; font-weight: 800; font-size: 14px; animation-delay: -1.6s">Online or at the centre</span>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="background: #2B211E; color: #FBA826; overflow: hidden; padding: 14px 0"><div class="marq d" style="font-size: 24px; white-space: nowrap"><span>Early intervention ● Occupational therapy ● Speech therapy ● Special education ● Behaviour modification ● ABA therapy ● Counselling ● Group therapy ● School readiness ● Learning disability support ●</span><span>Early intervention ● Occupational therapy ● Speech therapy ● Special education ● Behaviour modification ● ABA therapy ● Counselling ● Group therapy ● School readiness ● Learning disability support ●</span></div></div>
+
+<section aria-labelledby="hc" class="w" style="padding-top: 88px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px"><div style="max-width: 720px"><p class="eb rv">HopCheck · free · about 10 minutes</p><h2 id="hc" class="d rv" style="font-size: 54px">Two questionnaires. One clear answer.</h2><p class="rv" style="margin: 10px 0 0; color: #645650">Grown-ups tell us what they see. Children tell us how it feels. A therapist reads both and matches your family to the right help.</p></div><a class="btn s rv" href="HopCheck.dc.html">How HopCheck works</a></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+<a href="ParentCheck.dc.html" class="card lift pop" style="text-decoration: none; color: #2B211E; padding: 32px; display: flex; flex-direction: column; gap: 12px; background: #FFEDC9; box-shadow: none">
+<span style="align-self: flex-start; background: #2B211E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 999px">For parents and elders</span>
+<span class="d" style="font-size: 38px">The grown-up check</span>
+<span>8 areas of your child's day: talking, moving, senses, attention, feelings, friends, learning and daily skills. Plus a few questions about how you are coping.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px"><span style="background: #FFFFFF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">Ages 2–16</span><span style="background: #FFFFFF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">Hindi or English</span><span style="background: #FFFFFF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">8 minutes</span></span>
+<span class="btn p" style="align-self: flex-start; margin-top: 8px">Start as a grown-up</span>
+</a>
+<a href="KidCheck.dc.html" class="card lift pop" style="text-decoration: none; color: #FFFFFF; padding: 32px; display: flex; flex-direction: column; gap: 12px; background: #1E5C46; box-shadow: none">
+<span style="align-self: flex-start; background: #FBA826; color: #2B211E; font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 999px">For children, 7 and up</span>
+<span class="d" style="font-size: 38px">My turn!</span>
+<span>Hoppy asks 10 friendly questions, one at a time, with big face buttons and read-aloud. Children share what is hard, and what they are good at.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px"><span style="background: rgba(255,255,255,.16); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">Ages 7–16</span><span style="background: rgba(255,255,255,.16); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">No typing</span><span style="background: rgba(255,255,255,.16); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 700">3 minutes</span></span>
+<span class="btn p" style="align-self: flex-start; margin-top: 8px">Start the child's turn</span>
+</a>
+</div>
+<p class="rv" style="margin: 0; font-size: 15px; color: #645650">HopCheck is a screening, not a diagnosis. Nothing is shown as a result until a qualified therapist has reviewed and signed it.</p>
+</section>
+
+<section aria-labelledby="sv" style="background: #FFFFFF; padding: 80px 0">
+<div class="w" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px"><div><p class="eb rv">What we do</p><h2 id="sv" class="d rv" style="font-size: 54px">Every kind of help, under one roof</h2></div><a class="btn s rv" href="Services.dc.html">All services</a></div>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 10px">
+<a class="chip" href="Services.dc.html">Early intervention</a><a class="chip" href="Services.dc.html">Occupational therapy</a><a class="chip" href="Services.dc.html">Speech therapy</a><a class="chip" href="Services.dc.html">Special education</a><a class="chip" href="Services.dc.html">Behaviour modification therapy</a><a class="chip" href="Services.dc.html">ABA therapy</a><a class="chip" href="Services.dc.html">Learning disability support</a><a class="chip" href="Services.dc.html">Speech and hearing support</a><a class="chip" href="Services.dc.html">Counselling</a><a class="chip" href="Services.dc.html">Group therapy</a><a class="chip" href="Services.dc.html">School readiness</a><a class="chip" href="Services.dc.html">Developmental and behavioural assessment</a><a class="chip" href="Services.dc.html">Autism (ASD) and ADHD support</a><a class="chip" href="Services.dc.html">Down syndrome support</a><a class="chip" href="Services.dc.html">Intellectual and developmental disabilities</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<a href="Services.dc.html" class="lift pop" style="text-decoration: none; color: #2B211E; background: #F6FAF3; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="d" style="font-size: 26px">Children, 2–16</span><span style="font-size: 16px; color: #645650">Early intervention, sensory integration, speech, learning and behaviour support.</span></a>
+<a href="Services.dc.html" class="lift pop" style="text-decoration: none; color: #2B211E; background: #F6FAF3; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="d" style="font-size: 26px">Parents and families</span><span style="font-size: 16px; color: #645650">Counselling, parent training and home plans, online or at the centre.</span></a>
+<a href="Services.dc.html" class="lift pop" style="text-decoration: none; color: #2B211E; background: #F6FAF3; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="d" style="font-size: 26px">Adults and rehab</span><span style="font-size: 16px; color: #645650">Stroke and injury recovery, hand therapy, splints, pain and joint care.</span></a>
+<a href="Services.dc.html" class="lift pop" style="text-decoration: none; color: #2B211E; background: #F6FAF3; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="d" style="font-size: 26px">Elders and workplaces</span><span style="font-size: 16px; color: #645650">Fall prevention, home changes, assistive devices and ergonomics.</span></a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="how" class="w" style="padding-top: 88px; padding-bottom: 88px; display: flex; flex-direction: column; gap: 20px">
+<div style="text-align: center"><p class="eb rv">How it works</p><h2 id="how" class="d rv" style="font-size: 54px">Five hops from worry to progress</h2></div>
+<div style="position: relative; padding-top: 30px">
+<svg aria-hidden="true" viewBox="0 0 1200 220" preserveAspectRatio="none" style="position: absolute; left: 0; top: 0; width: 100%; height: 220px; overflow: visible"><path class="arc" pathLength="1" d="M40 60 A 900 900 0 0 0 1160 60" fill="none" stroke="#FBA826" stroke-width="6" stroke-linecap="round"></path></svg>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px">
+<li class="card rv" style="padding: 22px; margin-top: 30px"><span class="d" style="font-size: 40px; color: #FBA826">1</span><div class="d" style="font-size: 22px">Take HopCheck</div><div style="font-size: 16px; color: #645650">Grown-up check, and the child's turn if they are 7 or older.</div></li>
+<li class="card rv" style="padding: 22px; margin-top: 90px"><span class="d" style="font-size: 40px; color: #FBA826">2</span><div class="d" style="font-size: 22px">Therapist review</div><div style="font-size: 16px; color: #645650">Signed within 2 working days. Urgent answers get a same-day call.</div></li>
+<li class="card rv" style="padding: 22px; margin-top: 120px"><span class="d" style="font-size: 40px; color: #FBA826">3</span><div class="d" style="font-size: 22px">Your matched plan</div><div style="font-size: 16px; color: #645650">A clear report: which services fit, and why.</div></li>
+<li class="card rv" style="padding: 22px; margin-top: 90px"><span class="d" style="font-size: 40px; color: #FBA826">4</span><div class="d" style="font-size: 22px">Book and pay</div><div style="font-size: 16px; color: #645650">See places left, pay by UPI, at the centre or online.</div></li>
+<li class="card rv" style="padding: 22px; margin-top: 30px; background: #1E5C46; color: #FFFFFF"><span class="d" style="font-size: 40px; color: #FBA826">5</span><div class="d" style="font-size: 22px">Watch the progress</div><div style="font-size: 16px">Goals, notes and tips in your parent portal.</div></li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="pr" style="background: #FFEDC9; padding: 80px 0">
+<div class="w" style="display: flex; flex-direction: column; gap: 28px">
+<div style="text-align: center"><p class="eb rv">Simple pricing</p><h2 id="pr" class="d rv" style="font-size: 54px">Clear prices. No surprises.</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<div class="card pop" style="padding: 28px; display: flex; flex-direction: column; gap: 6px"><p class="eb" style="color: #645650">Therapy session</p><div class="d" style="font-size: 56px">₹800</div><strong>1 hour · per child</strong><span style="font-size: 15px; color: #645650">Any therapy, any day.</span><a class="btn s" href="Book.dc.html" style="margin-top: 12px">Book</a></div>
+<div class="card pop" style="padding: 28px; display: flex; flex-direction: column; gap: 6px; background: #2B211E; color: #FFFFFF"><p class="eb" style="color: #FBA826">15-day therapy pack · 20% off</p><div class="d" style="font-size: 56px">₹9,600</div><strong>15 one-hour sessions</strong><span style="font-size: 15px; color: #E3DCD2">₹640 each. You save ₹2,400.</span><a class="btn p" href="Book.dc.html" style="margin-top: 12px">Book the pack</a></div>
+<div class="card pop" style="padding: 28px; display: flex; flex-direction: column; gap: 6px"><p class="eb" style="color: #645650">Counselling session</p><div class="d" style="font-size: 56px">₹500</div><strong>30 minutes · per person</strong><span style="font-size: 15px; color: #645650">Online on Google Meet, or at the centre.</span><a class="btn s" href="Book.dc.html" style="margin-top: 12px">Book</a></div>
+<div class="card pop" style="padding: 28px; display: flex; flex-direction: column; gap: 6px; background: #1E5C46; color: #FFFFFF"><p class="eb" style="color: #FBA826">21-day counselling plan · 20% off</p><div class="d" style="font-size: 56px">₹8,400</div><strong>21 thirty-minute sessions</strong><span style="font-size: 15px; color: #DDEEDD">₹400 each. You save ₹2,100.</span><a class="btn p" href="Counselling.dc.html" style="margin-top: 12px">See the plan</a></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="co" class="w" style="padding-top: 88px; padding-bottom: 88px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p class="eb rv">Counselling for parents</p>
+<h2 id="co" class="d rv" style="font-size: 54px">You matter in this too</h2>
+<p class="rv" style="margin: 0; color: #645650">Raising a child who needs extra help can be exhausting. Talk to a counsellor for 30 minutes from your own home. Your Google Meet link appears in your portal 5 minutes before the session.</p>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 14px"><a class="btn k" href="Counselling.dc.html">About counselling</a><a class="btn s" href="Book.dc.html">Book ₹500 session</a></div>
+</div>
+<div class="tilt" style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
+<div class="card" style="width: 100%; max-width: 420px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center"><strong class="d" style="font-size: 22px">Today's counselling</strong><span style="background: #DDEEDD; color: #1E5C46; font-weight: 800; font-size: 13px; padding: 3px 10px; border-radius: 999px">Online</span></div>
+<div style="background: #F6FAF3; border-radius: 18px; padding: 16px"><div style="font-weight: 800">6:30 pm – 7:00 pm</div><div style="font-size: 15px; color: #645650">with [Counsellor name] · session 4 of 21</div></div>
+<div style="display: flex; align-items: center; gap: 12px"><div aria-hidden="true" style="width: 46px; height: 46px; border-radius: 50%; background: #FFEDC9; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B211E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="3"></rect><path d="M16 10l5-3v10l-5-3z"></path></svg></div><div style="font-size: 15px"><strong>Meet link unlocks at 6:25 pm</strong><br><span style="color: #645650">We also send it on WhatsApp.</span></div></div>
+<span class="btn" style="background: #E3DCD2; color: #645650; cursor: default">Join opens in 42 min</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="tm" style="background: #FFFFFF; padding: 80px 0">
+<div class="w" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<img class="pop" src="/_blob/0f3429ec7928a645fbc6c3a7139e61c8" alt="Dr. Heena Gupta at the Mayur Vihar centre" style="flex: 1 1 340px; min-width: 0; max-width: 460px; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 36px">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p class="eb rv">Who looks after your family</p>
+<h2 id="tm" class="d rv" style="font-size: 48px">Led by Dr. Heena Gupta, BOT, MOT (Neuroscience)</h2>
+<p class="rv" style="margin: 0; color: #645650">A master's-level occupational therapist reviews every HopCheck and leads every plan, for children and adults alike.</p>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 18px">
+<div style="display: flex; align-items: center; gap: 10px"><img src="/_blob/f14847ef8e56cc58049ec7094badbf01" alt="" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover"><div style="line-height: 1.3"><strong>Dr. Heena Gupta</strong><div style="font-size: 14px; color: #645650">Founder, clinical lead</div></div></div>
+<div style="display: flex; align-items: center; gap: 10px"><img src="/_blob/828e482bd62f885b7a113dfe7dab9fac" alt="" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover"><div style="line-height: 1.3"><strong>Jiya Gupta</strong><div style="font-size: 14px; color: #645650">Occupational therapist, BOT</div></div></div>
+<div style="display: flex; align-items: center; gap: 10px"><img src="/_blob/741d715af7d217bb9708dbfa85b9b338" alt="" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover"><div style="line-height: 1.3"><strong>Vishal Gupta</strong><div style="font-size: 14px; color: #645650">Managing director</div></div></div>
+<div style="display: flex; align-items: center; gap: 10px"><img src="/_blob/7c0cf822c9768687f9c54c21aaf0d3a3" alt="" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover"><div style="line-height: 1.3"><strong>Subodh K. Gupta</strong><div style="font-size: 14px; color: #645650">Manager, tech lead</div></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="rv" class="w" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 24px">
+<h2 id="rv" class="d rv" style="font-size: 48px">What parents say</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<blockquote class="card rv" style="margin: 0; padding: 26px"><p style="margin: 0">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #645650">[Parent's first name] · Google review</footer></blockquote>
+<blockquote class="card rv" style="margin: 0; padding: 26px"><p style="margin: 0">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #645650">[Parent's first name] · Google review</footer></blockquote>
+<blockquote class="card rv" style="margin: 0; padding: 26px"><p style="margin: 0">"[Paste a real Google review here, with the parent's permission.]"</p><footer style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #645650">[Parent's first name] · Google review</footer></blockquote>
+</div>
+</section>
+
+<section style="padding: 0 24px 88px">
+<div class="pop" style="max-width: 1152px; margin: 0 auto; background: #1E5C46; color: #FFFFFF; border-radius: 44px; padding: 60px 44px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; position: relative; overflow: hidden">
+<svg aria-hidden="true" viewBox="0 0 400 200" style="position: absolute; right: -40px; bottom: -70px; width: 420px"><circle cx="200" cy="200" r="150" fill="#FBA826"></circle></svg>
+<div style="flex: 1 1 420px; min-width: 0; position: relative"><h2 class="d" style="font-size: 54px">Not sure where to start? Start with HopCheck.</h2><p style="margin: 8px 0 0; font-size: 19px">Free, private, and read by a real therapist.</p></div>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; position: relative"><a class="btn p" href="HopCheck.dc.html">Start free HopCheck</a><a class="btn s" href="Book.dc.html">Book a session</a></div>
+</div>
+</section>
+</main>
+
+<footer style="background: #2B211E; color: #E9E1DA">
+<div class="w" style="padding-top: 44px; padding-bottom: 28px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; gap: 28px 48px; justify-content: space-between">
+<div style="flex: 1 1 260px"><p class="d" style="font-size: 30px; color: #FBA826">Hop to Heal</p><p style="margin: 6px 0 0; font-size: 16px">Spot early. Heal early. One hop at a time.</p></div>
+<nav aria-label="Footer" style="display: flex; flex-direction: column; gap: 6px; font-size: 16px"><a href="Services.dc.html" style="color: #E9E1DA">Services</a><a href="HopCheck.dc.html" style="color: #E9E1DA">HopCheck</a><a href="Counselling.dc.html" style="color: #E9E1DA">Counselling</a><a href="SignIn.dc.html" style="color: #E9E1DA">Parent and therapist sign-in</a></nav>
+<div style="flex: 1 1 260px; font-size: 16px">403 B, Pocket 2, Mayur Vihar Phase 1, near Mother Dairy &amp; Safal outlet, Delhi 110091<br><strong>+91 95994 33591 · hoptoheal@gmail.com</strong></div>
+</div>
+<div style="border-top: 1px solid rgba(233,225,218,.25); padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 14px"><span>© 2026 Hop to Heal</span><span>Privacy · Terms · Refund &amp; cancellation · Child safety &amp; consent</span></div>
+</div>
+</footer>
+
+<div class="cb">
+<sc-if value="{{chatOpen}}" hint-placeholder-val="{{ false }}">
+<section role="dialog" aria-label="Chat with Hoppy" style="width: 340px; max-width: calc(100vw - 24px); height: 440px; max-height: calc(100dvh - 150px); background: #FFFFFF; border-radius: 26px 26px 8px 26px; box-shadow: 0 18px 40px rgba(43,33,30,.22); display: flex; flex-direction: column; overflow: hidden">
+<div style="display: flex; align-items: center; padding: 12px 14px; background: #FFEDC9"><div style="flex: 1"><strong style="font-size: 18px">Hoppy</strong><div style="font-size: 13px; font-family: 'Figtree', sans-serif">Ask about services, fees and booking</div></div><button type="button" onClick="{{toggleChat}}" aria-label="Close chat" style="width: 36px; height: 36px; border: 0; border-radius: 50%; background: #FFFFFF; font-size: 20px; cursor: pointer; color: #2B211E">×</button></div>
+<div aria-live="polite" style="flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto"><sc-for list="{{messages}}" as="m" hint-placeholder-count="1"><div class="{{m.cls}}">{{m.text}}</div></sc-for></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 14px"><sc-for list="{{chips}}" as="c" hint-placeholder-count="5"><button type="button" onClick="{{c.pick}}" style="font-family: 'Figtree', sans-serif; padding: 8px 12px; border: 1.5px solid #FBA826; border-radius: 999px; background: #FFFFFF; color: #2B211E; font-size: 14px; font-weight: 700; cursor: pointer">{{c.label}}</button></sc-for></div>
+</section>
+</sc-if>
+<button class="cb-btn" type="button" onClick="{{toggleChat}}" aria-label="{{launcherLabel}}" aria-expanded="{{chatExpanded}}">
+<span class="cb-sway"><svg viewBox="0 0 200 200" aria-hidden="true" style="display: block; width: 100%; overflow: visible; filter: drop-shadow(0 6px 8px rgba(43,33,30,.2))"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g fill="none" stroke="#2B211E" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path><path d="M93 120q3.5 6 7 0q3.5 6 7 0"></path></g></svg></span>
+</button>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"calm":{"editor":"boolean","default":false,"section":"Accessibility"},"chatOpen":{"editor":"boolean","default":false,"section":"Hoppy chat"},"$preview":{"width":1440,"height":7200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { calm: null, chat: null, msgs: [], webgl: true };
+    this.setCanvas = (el) => { this.canvasEl = el; };
+  }
+  componentDidMount() {
+    let tries = 0;
+    const start = () => {
+      const T = window.THREE;
+      const canvas = this.canvasEl || document.getElementById('hero3d');
+      if (!T || !canvas) { if (tries++ < 20) { this.retry = setTimeout(start, 150); } else { this.setState({ webgl: false }); } return; }
+      try { this.cleanup3D = this.mount3D(T, canvas); } catch (e) { this.setState({ webgl: false }); }
+    };
+    start();
+  }
+  componentWillUnmount() { clearTimeout(this.retry); if (this.cleanup3D) this.cleanup3D(); }
+  mount3D(T, canvas) {
+    const renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const scene = new T.Scene();
+    const camera = new T.PerspectiveCamera(32, 1, 0.1, 100);
+    camera.position.set(0, 0.5, 10);
+    scene.add(new T.HemisphereLight(0xfff4dc, 0x7aa38a, 1.1));
+    const sun = new T.DirectionalLight(0xffffff, 0.85);
+    sun.position.set(4, 6, 6);
+    scene.add(sun);
+    const col = (h) => new T.Color(h);
+    const mat = (h, rough) => new T.MeshStandardMaterial({ color: col(h), roughness: rough ?? 0.6, metalness: 0 });
+    const H = 2.3, R = 1.08, P = Math.log(0.5) / Math.log(0.62);
+    const rAt = (t) => R * Math.pow(Math.max(0, Math.sin(Math.PI * Math.pow(t, P))), 0.5);
+    const pts = [];
+    for (let i = 0; i <= 48; i++) { const t = i / 48; pts.push(new T.Vector2(Math.max(0.0001, rAt(t)), -H / 2 + H * t)); }
+    const hoppy = new T.Group();
+    const bodyMat = mat('#FBA826', 0.5);
+    hoppy.add(new T.Mesh(new T.LatheGeometry(pts, 64), bodyMat));
+    const surfZ = (y) => rAt((y + H / 2) / H);
+    const ink = mat('#2B211E', 0.4);
+    const arc = (r, tube) => new T.TorusGeometry(r, tube, 10, 28, Math.PI);
+    const onSurface = (mesh, x, y, inset) => { mesh.position.set(x, y, Math.sqrt(Math.max(0, surfZ(y) ** 2 - x * x)) - inset); mesh.lookAt(mesh.position.clone().multiplyScalar(2)); };
+    [-0.36, 0.36].forEach((x) => { const e = new T.Mesh(arc(0.13, 0.03), ink); onSurface(e, x, 0.22, 0.02); e.rotateZ(Math.PI); hoppy.add(e); });
+    [-0.075, 0.075].forEach((x) => { const m = new T.Mesh(arc(0.075, 0.024), ink); onSurface(m, x, 0.0, 0.01); m.rotateZ(Math.PI); hoppy.add(m); });
+    const blush = new T.MeshStandardMaterial({ color: col('#F46A39'), roughness: 0.7, transparent: true, opacity: 0.85 });
+    [-0.62, 0.62].forEach((x) => { const c = new T.Mesh(new T.SphereGeometry(0.15, 20, 14), blush); c.scale.set(1, 0.6, 0.25); onSurface(c, x, 0.02, 0.03); hoppy.add(c); });
+    const rays = [];
+    [[0, 1.78, 0], [-1.08, 1.32, 0.78], [1.08, 1.32, -0.78]].forEach(([x, y, rz]) => { const ray = new T.Mesh(new T.CapsuleGeometry(0.12, 0.42, 6, 14), bodyMat); ray.position.set(x, y, 0); ray.rotation.z = rz; hoppy.add(ray); rays.push(ray); });
+    scene.add(hoppy);
+    const toyColors = ['#1E5C46', '#F46A39', '#FFFFFF', '#2B211E', '#FBA826', '#DDEEDD'];
+    const geos = [new T.BoxGeometry(0.55, 0.55, 0.55), new T.SphereGeometry(0.3, 24, 18), new T.TorusGeometry(0.27, 0.11, 14, 30), new T.ConeGeometry(0.3, 0.56, 24)];
+    const toys = [];
+    [[-2.5, 1.3, -1], [2.5, 1.6, -1.4], [-2.3, -1.2, 0.4], [2.4, -1.0, 0.6], [-1.3, 2.4, -2], [1.4, -2.1, 0.8]].forEach(([x, y, z], i) => { const m = new T.Mesh(geos[i % geos.length], mat(toyColors[i], 0.55)); m.position.set(x, y, z); m.rotation.set(i * 0.7, i * 1.1, i * 0.4); scene.add(m); toys.push({ m, y, speed: 0.6 + (i % 3) * 0.25, phase: i * 1.3 }); });
+    let tx = 0, ty = 0, rx = 0, ry = 0, scroll = 0;
+    const onPointer = (e) => { const r = canvas.getBoundingClientRect(); tx = ((e.clientX - r.left) / r.width - 0.5) * 2; ty = ((e.clientY - r.top) / r.height - 0.5) * 2; };
+    const onScroll = () => { scroll = window.scrollY || 0; };
+    window.addEventListener('pointermove', onPointer);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const resize = () => { const w = canvas.clientWidth || 600, h = canvas.clientHeight || 600; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+    resize();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
+    if (ro) ro.observe(canvas);
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clock = new T.Clock();
+    let raf = 0;
+    const frame = () => {
+      const t = clock.getElapsedTime();
+      rx += (ty * 0.25 - rx) * 0.06; ry += (tx * 0.6 - ry) * 0.06;
+      const cyc = t % 4;
+      const hop = cyc < 0.6 ? Math.sin((cyc / 0.6) * Math.PI) : 0;
+      const sq = cyc > 0.55 && cyc < 0.8 ? Math.sin(((cyc - 0.55) / 0.25) * Math.PI) * 0.08 : 0;
+      hoppy.position.y = Math.sin(t * 1.6) * 0.08 + hop * 0.55;
+      hoppy.scale.set(1 + sq, 1 - sq, 1 + sq);
+      hoppy.rotation.set(rx, ry + Math.sin(t * 0.5) * 0.15 + scroll * 0.002, Math.sin(t * 0.9) * 0.04);
+      rays.forEach((r, i) => { r.scale.set(1, 1 + Math.sin(t * 3 + i) * 0.12, 1); });
+      toys.forEach((k) => { k.m.position.y = k.y + Math.sin(t * k.speed + k.phase) * 0.25; k.m.rotation.x += 0.004 * k.speed; k.m.rotation.y += 0.006 * k.speed; });
+      camera.lookAt(0, 0.2, 0);
+      renderer.render(scene, camera);
+      if (!still) raf = requestAnimationFrame(tick);
+    };
+    const tick = () => { if (this.calmNow) { raf = requestAnimationFrame(tick); } else { frame(); } };
+    frame();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('pointermove', onPointer); window.removeEventListener('scroll', onScroll); if (ro) ro.disconnect(); renderer.dispose(); };
+  }
+  renderVals() {
+    const st = this.state;
+    const calm = st.calm ?? (this.props.calm ?? false);
+    this.calmNow = calm;
+    const open = st.chat ?? (this.props.chatOpen ?? false);
+    const topics = [
+      ['Services', 'For children: early intervention, occupational therapy, speech therapy, special education, behaviour modification, ABA, group therapy and school readiness.\nFor adults: neuro rehab, hand therapy, pain care and elder care.\nFor everyone: counselling.'],
+      ['Fees', 'Therapy: ₹800 for 1 hour. 15-day pack: ₹9,600 (20% off).\nCounselling: ₹500 for 30 minutes per person. 21-day plan: ₹8,400 (20% off).'],
+      ['Online counselling', 'Book a 30-minute slot and choose Online. Your Google Meet link appears in your portal and on WhatsApp 5 minutes before the session.'],
+      ['Timings', 'Open every day, weekends too, 10 am to 7 pm.'],
+      ['Talk to a person', 'WhatsApp or call +91 95994 33591, or email hoptoheal@gmail.com.']
+    ];
+    return {
+      canvasRef: this.setCanvas, noWebgl: !st.webgl,
+      rootClass: calm ? 'calm' : '', calmLabel: calm ? 'Calm mode on' : 'Calm mode', calmPressed: calm ? 'true' : 'false',
+      toggleCalm: () => this.setState({ calm: !calm }),
+      chatOpen: open, chatExpanded: open ? 'true' : 'false', launcherLabel: open ? 'Close chat' : 'Open chat',
+      toggleChat: () => this.setState({ chat: !open }),
+      messages: [{ role: 'bot', text: 'Hi, I’m Hoppy! Tap a topic. I’m a helper, not a doctor: a therapist answers anything about health.' }].concat(st.msgs).map((m) => ({ text: m.text, cls: 'cb-msg cb-' + m.role })),
+      chips: topics.map(([label, answer]) => ({ label, pick: () => this.setState({ msgs: st.msgs.concat({ role: 'user', text: label }, { role: 'bot', text: answer }) }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

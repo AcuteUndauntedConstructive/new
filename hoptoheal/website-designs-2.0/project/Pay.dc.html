@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hop to Heal 2.0: Payment</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.w{max-width:1160px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:17px;text-decoration:none;border-radius:999px;border:0;padding:14px 26px;cursor:pointer;box-sizing:border-box;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover{transform:translateY(-3px)}
+.p{background:#FBA826;color:#2B211E;box-shadow:0 4px 0 #C97F0C}
+.s{background:#FFFFFF;color:#2B211E;box-shadow:inset 0 0 0 2px #2B211E}
+.card{background:#FFFFFF;border-radius:28px;box-shadow:0 1px 0 #E3DCD2,0 14px 34px rgba(43,33,30,.07)}
+.pk{font:inherit;color:#2B211E;cursor:pointer;border:0;border-radius:18px;transition:transform .14s}
+.pk:hover{transform:translateY(-2px)}
+.field{font:inherit;padding:12px 14px;border-radius:14px;border:2px solid #E3DCD2;background:#FFFFFF;color:#2B211E}
+.pop{animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.88)}}
+.ring{animation:ring 2.4s ease-out infinite;transform-origin:50% 50%;transform-box:fill-box}.r2{animation-delay:.8s}.r3{animation-delay:1.6s}
+@keyframes ring{from{transform:scale(.6);opacity:.9}to{transform:scale(1.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Figtree', system-ui, sans-serif; color: #2B211E; background: #F6FAF3; font-size: 17px; line-height: 1.55; min-height: 1400px">
+<header style="background: #FFFFFF; box-shadow: 0 1px 0 #E3DCD2"><div class="w" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 8px; padding-bottom: 8px"><div style="display: flex; align-items: center; gap: 14px"><a href="Main.dc.html" aria-label="Hop to Heal home" style="line-height: 0"><img src="/_blob/b35ebc36e430a1ea4cd8d1dc63b7911d" alt="Hop to Heal" style="height: 54px; width: auto"></a><strong style="font-size: 14px; display: inline-flex; align-items: center; gap: 6px; color: #1E5C46"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Secure payment</strong></div><a href="Book.dc.html" style="font-weight: 800">← Back to booking</a></div></header>
+
+<sc-if value="{{notPaid}}" hint-placeholder-val="{{ true }}">
+<main class="w" style="padding-top: 36px; padding-bottom: 80px; display: flex; flex-wrap: wrap-reverse; gap: 28px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<h1 class="d" style="font-size: 52px">Pay for your booking</h1>
+<div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; background: #FFEDC9; border-radius: 999px; padding: 8px 16px; font-weight: 800">Your place is held for <span style="font-variant-numeric: tabular-nums" aria-live="off">{{timer}}</span></div>
+<div role="radiogroup" aria-label="Payment method" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{m.checked}}" onClick="{{m.pick}}" class="pk" style="text-align: left; padding: 16px 18px; background: {{m.bg}}; box-shadow: {{m.sh}}; display: flex; align-items: center; gap: 14px"><span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 2px #2B211E; display: inline-flex; align-items: center; justify-content: center; flex: none; background: #FFFFFF"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{m.dot}}"></span></span><span style="flex: 1"><strong style="display: block; font-size: 18px">{{m.title}}</strong><span style="font-size: 14.5px; color: #645650">{{m.sub}}</span></span></button></sc-for>
+</div>
+<sc-if value="{{isUPI}}" hint-placeholder-val="{{ true }}"><div class="card pop" style="padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 10px"><strong>Open your UPI app</strong><div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px"><sc-for list="{{apps}}" as="a" hint-placeholder-count="4"><button type="button" class="pk" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="padding: 12px; background: {{a.bg}}; box-shadow: {{a.sh}}; font-weight: 800">{{a.label}}</button></sc-for></div><label for="upi" style="font-weight: 800; font-size: 15px">Or enter your UPI ID</label><input id="upi" class="field" type="text" placeholder="name@bank"></div>
+<div role="img" aria-label="UPI QR code placeholder" style="flex: 0 1 180px; height: 170px; border-radius: 18px; border: 2px dashed #A8421A; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #A8421A">[UPI QR]</div>
+</div></sc-if>
+<div style="display: flex; flex-direction: column; gap: 6px; max-width: 360px"><label for="code" style="font-weight: 800; font-size: 15px">Coupon or sponsored-slot code <span style="font-weight: 600; color: #645650">(optional)</span></label><input id="code" class="field" type="text" style="text-transform: uppercase"></div>
+<p style="margin: 0; font-size: 14.5px; color: #645650">If a payment fails you are not charged, and your place stays held while you retry. Receipt on WhatsApp and email. <a href="Main.dc.html">Refund and cancellation policy</a></p>
+</div>
+
+<aside style="flex: 1 1 340px; min-width: 0"><div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="d" style="font-size: 28px">Order summary</h2>
+<div role="group" aria-label="Example order" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px"><sc-for list="{{orders}}" as="o" hint-placeholder-count="4"><button type="button" class="pk" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="padding: 8px 6px; font-weight: 800; font-size: 13.5px; background: {{o.bg}}; box-shadow: {{o.sh}}; border-radius: 12px">{{o.label}}</button></sc-for></div>
+<div style="background: #F6FAF3; border-radius: 18px; padding: 14px"><strong>{{who}}</strong><div style="font-size: 15px; color: #645650">{{when}}</div><div style="font-size: 15px; color: #645650">{{where}}</div></div>
+<div style="display: flex; justify-content: space-between"><span>{{lineLabel}}</span><span>{{lineAmount}}</span></div>
+<sc-if value="{{hasDiscount}}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between; color: #1E5C46; font-weight: 800"><span>20% off</span><span>{{discount}}</span></div></sc-if>
+<div style="border-top: 2px dashed #E3DCD2; padding-top: 12px; display: flex; justify-content: space-between; align-items: baseline"><strong>Total</strong><span class="d" style="font-size: 42px">{{total}}</span></div>
+<button type="button" class="btn p" onClick="{{payNow}}" style="width: 100%; font-size: 19px">Pay {{total}}</button>
+<p style="margin: 0; font-size: 13px; color: #645650">GST: [confirm with your CA].</p>
+</div></aside>
+</main>
+</sc-if>
+
+<sc-if value="{{paid}}" hint-placeholder-val="{{ false }}">
+<main class="w" style="padding-top: 48px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
+<svg width="200" height="200" viewBox="0 0 200 200" role="img" aria-label="Payment successful" style="overflow: visible"><circle class="ring" cx="100" cy="100" r="70" fill="none" stroke="#FBA826" stroke-width="4"></circle><circle class="ring r2" cx="100" cy="100" r="70" fill="none" stroke="#1E5C46" stroke-width="4"></circle><circle class="ring r3" cx="100" cy="100" r="70" fill="none" stroke="#FBA826" stroke-width="4"></circle><circle cx="100" cy="100" r="62" fill="#1E5C46"></circle><path d="M72 102 l20 20 38 -42" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<h1 class="d pop" style="font-size: 58px">Payment received</h1>
+<p style="margin: 0; font-size: 19px; color: #645650; max-width: 560px">{{doneLine}}</p>
+<div class="card" style="padding: 22px; width: 100%; max-width: 500px; text-align: left; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #645650">Paid for</span><strong style="text-align: right">{{lineLabel}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #645650">When</span><strong style="text-align: right">{{when}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #645650">Amount</span><strong>{{total}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #645650">Method</span><strong>{{methodName}}</strong></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #645650">Receipt</span><strong>[HTH-2026-000123]</strong></div>
+</div>
+<sc-if value="{{isOnline}}" hint-placeholder-val="{{ false }}"><div style="background: #DDEEDD; border-radius: 20px; padding: 14px 18px; max-width: 500px; width: 100%; box-sizing: border-box; text-align: left"><strong>Your Google Meet link</strong> unlocks in your portal and arrives on WhatsApp 5 minutes before each session.</div></sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center"><a class="btn p" href="Parent.dc.html">Go to my portal</a><a class="btn s" href="Pay.dc.html">Download invoice (PDF)</a></div>
+</main>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"order":{"editor":"enum","options":["Therapy","15-day pack","Counselling","21-day plan"],"default":"Therapy","section":"Preview"},"showSuccess":{"editor":"boolean","default":false,"section":"Preview"},"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { order: null, method: 'upi', app: 0, paid: null, secs: 600 };
+  }
+  componentDidMount() { this.tick = setInterval(() => this.setState({ secs: Math.max(0, this.state.secs - 1) }), 1000); }
+  componentWillUnmount() { clearInterval(this.tick); }
+  renderVals() {
+    const st = this.state;
+    const names = ['Therapy', '15-day pack', 'Counselling', '21-day plan'];
+    const order = st.order ?? (this.props.order ?? 'Therapy');
+    const paid = st.paid ?? (this.props.showSuccess ?? false);
+    const data = {
+      'Therapy': { who: 'Meera · Occupational therapy', when: 'Mon 16 Nov, 11:00 am · 1 hour', where: 'At the centre', line: '1 therapy session', amount: '₹800', total: '₹800', discount: '' },
+      '15-day pack': { who: 'Meera · Occupational therapy', when: '15 days from Mon 16 Nov, daily 11:00 am', where: 'At the centre', line: '15 sessions × ₹800', amount: '₹12,000', total: '₹9,600', discount: '− ₹2,400' },
+      'Counselling': { who: 'Priya · Parent counselling', when: 'Mon 16 Nov, 6:30 pm · 30 minutes', where: 'Online · Google Meet', line: '1 counselling session', amount: '₹500', total: '₹500', discount: '' },
+      '21-day plan': { who: 'Priya · Parent counselling', when: '21 days from Mon 16 Nov, daily 6:30 pm', where: 'Online · Google Meet', line: '21 sessions × ₹500', amount: '₹10,500', total: '₹8,400', discount: '− ₹2,100' }
+    }[order];
+    const on = { bg: '#FFEDC9', sh: 'inset 0 0 0 2.5px #2B211E' }, off = { bg: '#F6FAF3', sh: 'inset 0 0 0 2px #E3DCD2' };
+    const methodList = [{ id: 'upi', title: 'UPI', sub: 'Fastest · Google Pay, PhonePe, Paytm or any UPI app' }, { id: 'card', title: 'Debit or credit card', sub: 'Visa, Mastercard, RuPay' }, { id: 'net', title: 'Net banking', sub: 'All major Indian banks' }];
+    const apps = ['Google Pay', 'PhonePe', 'Paytm', 'Other UPI app'];
+    const online = data.where.indexOf('Online') === 0;
+    return {
+      notPaid: !paid, paid,
+      timer: String(Math.floor(st.secs / 60)).padStart(2, '0') + ':' + String(st.secs % 60).padStart(2, '0'),
+      methods: methodList.map((m) => { const s = st.method === m.id ? on : off; return { ...m, checked: st.method === m.id ? 'true' : 'false', bg: s.bg, sh: s.sh, dot: st.method === m.id ? '#2B211E' : 'transparent', pick: () => this.setState({ method: m.id }) }; }),
+      isUPI: st.method === 'upi',
+      apps: apps.map((label, i) => { const s = st.app === i ? on : off; return { label, pressed: st.app === i ? 'true' : 'false', bg: s.bg, sh: s.sh, pick: () => this.setState({ app: i }) }; }),
+      orders: names.map((label) => { const s = order === label ? on : off; return { label, pressed: order === label ? 'true' : 'false', bg: s.bg, sh: s.sh, pick: () => this.setState({ order: label }) }; }),
+      who: data.who, when: data.when, where: data.where, lineLabel: data.line, lineAmount: data.amount, total: data.total,
+      hasDiscount: data.discount !== '', discount: data.discount,
+      isOnline: online,
+      doneLine: online ? 'You are booked. We have sent the receipt to your WhatsApp and email.' : 'Meera is booked. We have sent the receipt to your WhatsApp and email.',
+      methodName: st.method === 'upi' ? 'UPI · ' + apps[st.app] : methodList.find((m) => m.id === st.method).title,
+      payNow: () => this.setState({ paid: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

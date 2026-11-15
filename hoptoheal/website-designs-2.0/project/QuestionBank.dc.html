@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HopCheck question bank and service map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Figtree:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6FAF3}
+a{color:#A8421A}a:hover{color:#7C2F10}
+.d{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em}
+.eb{margin:0;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#A8421A}
+.box{background:#FFFFFF;border-radius:24px;padding:22px;box-shadow:inset 0 0 0 2px #E3DCD2}
+.row{display:grid;gap:18px;padding:14px 0;border-top:1px solid #E3DCD2;font-size:15px;line-height:1.45}
+.hd{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#645650}
+ul{margin:0;padding-left:18px}
+</style>
+</helmet>
+<div style="width: 1600px; height: 4000px; box-sizing: border-box; padding: 64px; background: #F6FAF3; color: #2B211E; font-family: 'Figtree', system-ui, sans-serif; font-size: 16px; line-height: 1.5; display: flex; flex-direction: column; gap: 36px; overflow: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div><p class="eb">HopCheck · for the clinical team</p><h1 class="d" style="font-size: 64px">Question bank and service map</h1><p style="margin: 8px 0 0; font-size: 19px; color: #645650; max-width: 900px">Every question in both questionnaires, the rule that turns answers into a suggestion, and the service each area points to. A therapist can change any suggestion before signing.</p></div>
+<div style="background: #FFEDC9; border-radius: 20px; padding: 16px 20px; max-width: 420px; font-size: 15px"><strong>Draft v1 for Dr. Heena's review.</strong> These are Hop to Heal's own triage questions, not a validated test. Run the pilot study before claiming accuracy.</div>
+</div>
+
+<section style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px">
+<div class="box"><h2 class="d" style="font-size: 22px">1 · Points</h2><p style="margin: 8px 0 0">Grown-up answers: No worry 0 · A little 1 · A lot 2.<br>Each area has 3 questions, so 0–6 points.<br>Child answers: Not me 0 · Sometimes 1 · That's me 2.</p></div>
+<div class="box"><h2 class="d" style="font-size: 22px">2 · Area status</h2><p style="margin: 8px 0 0"><strong>On track:</strong> 0–1 points.<br><strong>Keep an eye:</strong> 2–3 points.<br><strong>Let's look closer:</strong> 4–6 points, or two "A lot" answers.<br>A child's "That's me" in the same area raises the status one step. It never lowers it.</p></div>
+<div class="box"><h2 class="d" style="font-size: 22px">3 · Safety</h2><p style="margin: 8px 0 0">Any "Yes" on the 4 safety questions, or a child's "Sometimes / That's me" on question 10, shows urgent advice at once and puts the family at the top of the queue for a same-day call.</p></div>
+<div class="box"><h2 class="d" style="font-size: 22px">4 · Review</h2><p style="margin: 8px 0 0">Nothing is shown to the family until a master's-level therapist signs. Target: 2 working days. "Look closer" reports need a second reviewer. Re-screen every 3 months.</p></div>
+</section>
+
+<section class="box" style="padding: 28px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 class="d" style="font-size: 34px">Questionnaire 1 · The grown-up check</h2><span style="font-weight: 800; color: #645650">Safety 4 · Areas 8 × 3 · About you 4 · scale: No worry / A little / A lot</span></div>
+<div class="row hd" style="grid-template-columns: 190px 1fr 1fr 300px; border-top: 0; padding-bottom: 6px"><span>Area</span><span>Ages 2–5</span><span>Ages 6–16</span><span>Points to</span></div>
+<sc-for list="{{areas}}" as="a" hint-placeholder-count="8">
+<div class="row" style="grid-template-columns: 190px 1fr 1fr 300px"><strong class="d" style="font-size: 19px">{{a.name}}</strong><ul><li>{{a.l0}}</li><li>{{a.l1}}</li><li>{{a.l2}}</li></ul><ul><li>{{a.s0}}</li><li>{{a.s1}}</li><li>{{a.s2}}</li></ul><span style="font-weight: 700; color: #1E5C46">{{a.svc}}</span></div>
+</sc-for>
+<div class="row" style="grid-template-columns: 190px 1fr 300px; background: #FBE4E0; border-radius: 16px; padding: 14px 16px; border-top: 0; margin-top: 8px"><strong class="d" style="font-size: 19px">Safety (Yes / No)</strong><ul><li>Has the child lost words or skills they used to have?</li><li>Has the child stopped reacting to sounds or voices?</li><li>Has the child had fits, seizures or blank spells?</li><li>Has the child talked about hurting themselves, or do you fear for their safety?</li></ul><span style="font-weight: 700; color: #8E2626">See a doctor today · same-day call · hearing check via doctor</span></div>
+<div class="row" style="grid-template-columns: 190px 1fr 300px; background: #DDEEDD; border-radius: 16px; padding: 14px 16px; border-top: 0; margin-top: 10px"><strong class="d" style="font-size: 19px">About you (Rarely / Sometimes / Often)</strong><ul><li>I feel worn out most days</li><li>Worry about my child affects my sleep</li><li>We disagree at home about how to handle things</li><li>I have nobody to talk to about this</li></ul><span style="font-weight: 700; color: #1E5C46">4+ points of 8, or any "Often" → suggest parent counselling (₹500, 30 min, online or centre)</span></div>
+<p style="margin: 12px 0 0; font-size: 14.5px; color: #645650">Intake also asks: who is answering, the child's name and age, and (optional) whether a doctor has already given a diagnosis such as autism, ADHD, Down syndrome, hearing loss or a learning disability.</p>
+</section>
+
+<section class="box" style="padding: 28px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 class="d" style="font-size: 34px">Questionnaire 2 · My turn! (child, 7–16)</h2><span style="font-weight: 800; color: #645650">10 questions · faces: Not me / Sometimes / That's me · read-aloud · Hindi</span></div>
+<div class="row hd" style="grid-template-columns: 50px 1fr 1fr 260px; border-top: 0; padding-bottom: 6px"><span>No.</span><span>Ages 7–11</span><span>Ages 12–16</span><span>Informs</span></div>
+<sc-for list="{{kid}}" as="k" hint-placeholder-count="10">
+<div class="row" style="grid-template-columns: 50px 1fr 1fr 260px; padding: 10px 0"><strong class="d" style="font-size: 19px; color: #FBA826">{{k.no}}</strong><span>{{k.young}}</span><span>{{k.teen}}</span><span style="font-weight: 700; color: {{k.color}}">{{k.area}}</span></div>
+</sc-for>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 14px">
+<div style="background: #F6FAF3; border-radius: 16px; padding: 14px 16px"><strong>What are you good at?</strong> (tap any) Drawing · Sports · Music · Building things · Helping others · Maths · Stories · Animals · Computers · Dancing<br><span style="color: #645650; font-size: 14.5px">Used by the therapist to plan sessions around strengths.</span></div>
+<div style="background: #F6FAF3; border-radius: 16px; padding: 14px 16px"><strong>What would you like help with?</strong> (tap any) School work · Making friends · Feeling calm · Talking · Writing · Sports · Sleeping · Nothing right now<br><span style="color: #645650; font-size: 14.5px">Shown in the report "in the child's own words".</span></div>
+</div>
+</section>
+
+<section class="box" style="padding: 28px">
+<h2 class="d" style="font-size: 34px">Service map: when each service is suggested</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 28px; margin-top: 14px">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="15">
+<div style="display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid #E3DCD2"><span class="d" style="font-size: 20px; color: #FBA826; width: 30px; flex: none">{{s.no}}</span><div><strong>{{s.name}}</strong><div style="font-size: 14.5px; color: #645650">{{s.when}}</div></div></div>
+</sc-for>
+</div>
+<p style="margin: 16px 0 0; font-size: 14.5px; color: #645650">The words autism, ADHD and learning disability never appear in a family's report as a result. The report names areas and services only; diagnosis is made in person by a qualified professional.</p>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":4000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const areas = [
+      ['Talking & understanding', ['Uses fewer words than other children the same age', 'Family find it hard to understand what they say', 'Doesn’t follow simple instructions like “bring your shoes”'], ['Speech is unclear, or they stammer', 'Struggles to explain what happened in their day', 'Often misunderstands instructions or jokes'], 'Speech therapy · Speech and hearing support'],
+      ['Moving & hands', ['Falls, trips or bumps into things often', 'Struggles with crayons, spoons or building blocks', 'Avoids climbing, jumping or running'], ['Handwriting is slow, messy or painful', 'Clumsy at sports, or avoids PE and playground games', 'Tires quickly when sitting upright or writing'], 'Occupational therapy'],
+      ['Senses', ['Gets very upset by loud sounds, haircuts or certain clothes', 'Eats only a few foods, or gags on textures', 'Constantly spins, crashes into things or chews on objects'], ['Distressed by noise, crowds or bright lights', 'Very fussy about clothes, food or being touched', 'Always fidgeting, rocking or seeking movement'], 'Occupational therapy (sensory integration)'],
+      ['Attention & activity', ['Can’t stay with one toy or activity for a few minutes', 'Always on the go, even when it isn’t safe', 'Doesn’t seem to listen when spoken to'], ['Can’t focus on homework for 15 minutes', 'Loses things and forgets instructions', 'Acts before thinking; interrupts or can’t wait their turn'], 'Behaviour modification · attention-focused assessment'],
+      ['Feelings & behaviour', ['Long or frequent tantrums that are hard to calm', 'Hits, bites or throws things when upset', 'Very fearful or clingy compared with other children'], ['Worries a lot, or tries to avoid school', 'Angry outbursts, arguing or refusing', 'Seems sad, withdrawn or low in confidence'], 'Behaviour modification · ABA · Counselling (7+)'],
+      ['Play & friends', ['Doesn’t look at you or respond to their name', 'Doesn’t point or bring things to show you', 'Plays alone, or lines up toys instead of pretending'], ['Finds it hard to make or keep friends', 'Misses social cues, or says things that upset others', 'Strong fixed interests or routines; very upset by change'], 'Group therapy · ABA · social-communication assessment'],
+      ['Learning & school', ['Doesn’t know colours, shapes or body parts that others their age know', 'Loses interest quickly in picture books or rhymes', 'Not ready for pre-school routines like sitting in a circle'], ['Reading is slow, or letters and words get mixed up', 'Struggles with spelling or maths despite real effort', 'Marks have dropped, or teachers have raised concerns'], 'Special education · Learning disability support · School readiness (3–6)'],
+      ['Daily living', ['Hard to feed, or not feeding themselves yet', 'Not helping with dressing, or toilet training is very late', 'Sleep is a nightly struggle'], ['Needs more help than others with dressing, bathing or packing a bag', 'Poor sleep, or screens are very hard to switch off', 'Struggles to manage time, money or travel for their age'], 'Occupational therapy · Early intervention (2–6)']
+    ];
+    const kid = [
+      ['Reading or writing is hard for me', 'Reading, spelling or maths takes me much longer than my classmates', 'Learning & school'],
+      ['My hand gets tired when I write', 'Writing by hand is tiring or messy for me', 'Moving & hands'],
+      ['It is hard for me to sit still in class', 'I find it hard to stay seated or still', 'Attention & activity'],
+      ['My mind wanders when the teacher is talking', 'I lose focus easily, even when I try', 'Attention & activity'],
+      ['Loud noises or scratchy clothes really bother me', 'Noise, crowds or certain textures overwhelm me', 'Senses'],
+      ['It is hard for me to make friends', 'I find it hard to fit in or keep friends', 'Play & friends'],
+      ['I get angry or upset very quickly', 'I lose my temper more than I want to', 'Feelings & behaviour'],
+      ['I feel worried or sad a lot', 'I feel anxious or low most days', 'Feelings & behaviour → counselling'],
+      ['People do not understand what I say', 'I struggle to say what I mean', 'Talking & understanding'],
+      ['Someone hurts me or makes me feel unsafe', 'Someone hurts me or makes me feel unsafe', 'SAFETY: same-day call, child-protection steps']
+    ];
+    const services = [
+      ['Early intervention', 'Age 2–6 and any area at "keep an eye" or above.'],
+      ['Occupational therapy', 'Moving & hands, Senses or Daily living at "look closer".'],
+      ['Speech therapy', 'Talking & understanding at "keep an eye" or above.'],
+      ['Special education', 'Learning & school at "look closer", age 4+.'],
+      ['Behaviour modification therapy', 'Attention or Feelings & behaviour at "look closer".'],
+      ['Learning disability support', 'Age 6+, reading or spelling items answered "A lot".'],
+      ['Speech and hearing support', 'Talking flagged plus the "sounds" safety question, or a known hearing loss or intellectual disability.'],
+      ['Counselling', 'Child 7+: worries or sadness flagged. Parent: "About you" 4+ points.'],
+      ['Group therapy', 'Play & friends at "keep an eye" or above, age 3–12.'],
+      ['ABA therapy', 'Play & friends and Feelings & behaviour both flagged, mostly ages 2–8.'],
+      ['Developmental and behavioural assessment', 'Three or more areas at "look closer", or the family asks for clarity.'],
+      ['Autism, ADHD and developmental delay support', 'Patterns across Play, Talking and Senses, or across Attention: therapist suggests a focused in-person assessment.'],
+      ['Down syndrome support', 'Parent reports an existing diagnosis at intake.'],
+      ['Intellectual and developmental disabilities', 'Existing diagnosis, or Learning and Daily living both at "look closer".'],
+      ['School readiness', 'Age 3–6 with Learning or Attention flagged, or school starting within 6 months.']
+    ];
+    return {
+      areas: areas.map(([name, l, s, svc]) => ({ name, l0: l[0], l1: l[1], l2: l[2], s0: s[0], s1: s[1], s2: s[2], svc })),
+      kid: kid.map(([young, teen, area], i) => ({ no: String(i + 1), young, teen, area, color: i === 9 ? '#8E2626' : '#1E5C46' })),
+      services: services.map(([name, when], i) => ({ no: String(i + 1), name, when }))
+    };
+  }
+}
+</script>
+</body>
+</html>
