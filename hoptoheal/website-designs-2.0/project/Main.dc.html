@@ -53,9 +53,50 @@ a{color:#A8421A}a:hover{color:#7C2F10}
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 .cb{position:fixed;right:20px;bottom:20px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:'Fredoka',sans-serif;color:#2B211E}
 .cb-btn{position:relative;width:88px;height:88px;padding:0;border:0;background:none;cursor:pointer}
-.cb-sway{display:block;transform-origin:50% 92%;animation:sway 3.4s ease-in-out infinite}
+/* Hoppy: sway + bob + ray pulse all the time; naps, wakes and blinks when closed; hops and pops eyes open on click; looks around while thinking */
+.cb-tilt,.cb-sway,.cb-bob,.cb-hop{display:block;width:100%;height:100%;transform-origin:50% 92%}
+.cb-tilt{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.cb-btn:hover .cb-tilt{transform:rotate(-9deg) translateY(-4px) scale(1.05)}
+.cb-btn:active .cb-tilt{transform:scale(.9)}
+.cb-sway{animation:sway 3.4s ease-in-out infinite}
+.cb-bob{animation:cbbob 1.7s ease-in-out infinite}
 @keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-.cb-msg{max-width:84%;padding:9px 13px;font-size:15.5px;line-height:1.4;white-space:pre-line;font-family:'Figtree',sans-serif}
+@keyframes cbbob{50%{transform:translateY(-3px) scale(.985,1.02)}}
+.cb-hop-a{animation:cbhopa .62s cubic-bezier(.3,1.3,.6,1)}.cb-hop-b{animation:cbhopb .62s cubic-bezier(.3,1.3,.6,1)}
+@keyframes cbhopa{0%{transform:scale(1,1)}20%{transform:scale(1.16,.8)}50%{transform:translateY(-18px) scale(.9,1.12)}78%{transform:scale(1.09,.91)}100%{transform:scale(1,1)}}
+@keyframes cbhopb{0%{transform:scale(1,1)}20%{transform:scale(1.16,.8)}50%{transform:translateY(-18px) scale(.9,1.12)}78%{transform:scale(1.09,.91)}100%{transform:scale(1,1)}}
+.cb-ray{transform-box:fill-box;transform-origin:50% 100%;animation:cbray 2.4s ease-in-out infinite}.cb-ray2{animation-delay:.25s}.cb-ray3{animation-delay:.5s}
+@keyframes cbray{0%,60%,100%{transform:scaleY(1)}30%{transform:scaleY(.55);opacity:.7}}
+.cb-open{opacity:0;animation:cbopen 7s infinite}.cb-shut{animation:cbshut 7s infinite}
+.cb-eye{transform-box:fill-box;transform-origin:50% 50%;animation:cbeye 7s infinite}
+@keyframes cbopen{0%,30%{opacity:0}31%,89%{opacity:1}90%,100%{opacity:0}}
+@keyframes cbshut{0%,30%{opacity:1}31%,89%{opacity:0}90%,100%{opacity:1}}
+@keyframes cbeye{0%,31%{transform:scaleY(.1)}35%,57%{transform:scaleY(1)}60%{transform:scaleY(.1)}63%,85%{transform:scaleY(1)}89%,100%{transform:scaleY(.1)}}
+.cb-z{opacity:0;transform-box:fill-box;transform-origin:0 100%;animation:cbz 7s infinite}.cb-z2{animation-delay:.45s}
+@keyframes cbz{0%,3%{opacity:0;transform:translate(0,0) scale(.5)}10%{opacity:1}21%{opacity:0;transform:translate(12px,-24px) scale(1.15)}100%{opacity:0;transform:translate(12px,-24px) scale(1.15)}}
+.cb-btn:hover .cb-open{opacity:1;animation:none}.cb-btn:hover .cb-shut{opacity:0;animation:none}.cb-btn:hover .cb-z{animation:none}
+.cb-btn:hover .cb-eye{animation:cbblink 4.5s infinite}
+.cb:is([data-state="open"],[data-state="thinking"]) .cb-open{opacity:1;animation:none}
+.cb:is([data-state="open"],[data-state="thinking"]) .cb-shut{opacity:0;animation:none}
+.cb:is([data-state="open"],[data-state="thinking"]) .cb-z{animation:none}
+.cb:is([data-state="open"],[data-state="thinking"]) .cb-sway{animation-duration:5s}
+.cb[data-state="open"] .cb-eye{animation:cbwake .55s cubic-bezier(.34,1.56,.64,1) both,cbblink 4.5s .55s infinite}
+.cb[data-state="thinking"] .cb-eye{animation:cblook 1.1s ease-in-out infinite}
+.cb[data-state="thinking"] .cb-ray{animation-duration:.9s}.cb[data-state="thinking"] .cb-bob{animation-duration:.8s}
+@keyframes cbwake{0%{transform:scaleY(.1)}60%{transform:scale(1.25,1.32)}100%{transform:scale(1,1)}}
+@keyframes cbblink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+@keyframes cblook{0%,100%{transform:translate(-2px,-2.5px) scaleY(.82)}50%{transform:translate(2px,-2.5px) scaleY(.82)}}
+.cb-teaser{position:absolute;right:96px;bottom:28px;padding:9px 14px;white-space:nowrap;background:#FFFFFF;color:#2B211E;font-family:'Figtree',sans-serif;font-size:15px;font-weight:700;border-radius:18px 18px 4px 18px;box-shadow:0 4px 14px rgba(43,33,30,.14);opacity:0;transform-origin:100% 100%;pointer-events:none;animation:cbteaser 9s 1 both}
+@keyframes cbteaser{0%,24%{opacity:0;transform:scale(.6)}28%,94%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+.cb-panel{transform-origin:100% 100%;animation:cbpanel .42s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes cbpanel{from{opacity:0;transform:translateY(24px) scale(.6)}}
+.cb-chip{font-family:'Figtree',sans-serif;padding:8px 12px;border:1.5px solid #FBA826;border-radius:999px;background:#FFFFFF;color:#2B211E;font-size:14px;font-weight:700;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),background .18s;animation:pop .35s both}
+.cb-chip:nth-child(2){animation-delay:.05s}.cb-chip:nth-child(3){animation-delay:.1s}.cb-chip:nth-child(4){animation-delay:.15s}.cb-chip:nth-child(5){animation-delay:.2s}
+.cb-chip:hover{background:#FFEDC9;transform:translateY(-2px)}.cb-chip:active{transform:scale(.94)}
+.cb-dots i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#645650;margin-right:4px;animation:cbdot 1s infinite}.cb-dots i:nth-child(2){animation-delay:.15s}.cb-dots i:nth-child(3){animation-delay:.3s;margin-right:0}
+@keyframes cbdot{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-5px);opacity:1}}
+.cb-msg{max-width:84%;padding:9px 13px;font-size:15.5px;line-height:1.4;white-space:pre-line;font-family:'Figtree',sans-serif;animation:cbmsg .32s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes cbmsg{from{opacity:0;transform:translateY(10px) scale(.94)}}
 .cb-bot{align-self:flex-start;background:#F6FAF3;border-radius:18px 18px 18px 5px}
 .cb-user{align-self:flex-end;background:#FBA826;border-radius:18px 18px 5px 18px}
 </style>
@@ -225,16 +266,17 @@ a{color:#A8421A}a:hover{color:#7C2F10}
 </div>
 </footer>
 
-<div class="cb">
+<div class="cb" data-state="{{chatState}}">
 <sc-if value="{{chatOpen}}" hint-placeholder-val="{{ false }}">
-<section role="dialog" aria-label="Chat with Hoppy" style="width: 340px; max-width: calc(100vw - 24px); height: 440px; max-height: calc(100dvh - 150px); background: #FFFFFF; border-radius: 26px 26px 8px 26px; box-shadow: 0 18px 40px rgba(43,33,30,.22); display: flex; flex-direction: column; overflow: hidden">
-<div style="display: flex; align-items: center; padding: 12px 14px; background: #FFEDC9"><div style="flex: 1"><strong style="font-size: 18px">Hoppy</strong><div style="font-size: 13px; font-family: 'Figtree', sans-serif">Ask about services, fees and booking</div></div><button type="button" onClick="{{toggleChat}}" aria-label="Close chat" style="width: 36px; height: 36px; border: 0; border-radius: 50%; background: #FFFFFF; font-size: 20px; cursor: pointer; color: #2B211E">×</button></div>
-<div aria-live="polite" style="flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto"><sc-for list="{{messages}}" as="m" hint-placeholder-count="1"><div class="{{m.cls}}">{{m.text}}</div></sc-for></div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 14px"><sc-for list="{{chips}}" as="c" hint-placeholder-count="5"><button type="button" onClick="{{c.pick}}" style="font-family: 'Figtree', sans-serif; padding: 8px 12px; border: 1.5px solid #FBA826; border-radius: 999px; background: #FFFFFF; color: #2B211E; font-size: 14px; font-weight: 700; cursor: pointer">{{c.label}}</button></sc-for></div>
+<section class="cb-panel" role="dialog" aria-label="Chat with Hoppy" style="width: 340px; max-width: calc(100vw - 24px); height: 440px; max-height: calc(100dvh - 150px); background: #FFFFFF; border-radius: 26px 26px 8px 26px; box-shadow: 0 18px 40px rgba(43,33,30,.22); display: flex; flex-direction: column; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #FFEDC9"><span class="cb-bob" style="width: 46px; height: 46px; flex: none"><svg viewBox="0 0 200 200" aria-hidden="true" style="display: block; width: 100%; overflow: visible"><g transform="translate(41 50) rotate(-52)"><rect class="cb-ray" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="cb-ray cb-ray2" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="cb-ray cb-ray3" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="cb-shut" fill="none" stroke="#2B211E" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g><g class="cb-open"><g class="cb-eye"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#2B211E"></ellipse><circle cx="83.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g><g class="cb-eye"><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#2B211E"></ellipse><circle cx="119.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#2B211E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><div style="flex: 1"><strong style="font-size: 18px">Hoppy</strong><div style="font-size: 13px; font-family: 'Figtree', sans-serif">{{chatSub}}</div></div><button type="button" onClick="{{toggleChat}}" aria-label="Close chat" style="width: 36px; height: 36px; border: 0; border-radius: 50%; background: #FFFFFF; font-size: 20px; cursor: pointer; color: #2B211E">×</button></div>
+<div ref="{{logRef}}" aria-live="polite" style="flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 14px; overflow-y: auto"><sc-for list="{{messages}}" as="m" hint-placeholder-count="1"><div class="{{m.cls}}">{{m.text}}</div></sc-for><sc-if value="{{thinking}}" hint-placeholder-val="{{ false }}"><div class="cb-msg cb-bot cb-dots" role="status" aria-label="Hoppy is typing"><i></i><i></i><i></i></div></sc-if></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 14px"><sc-for list="{{chips}}" as="c" hint-placeholder-count="5"><button class="cb-chip" type="button" onClick="{{c.pick}}">{{c.label}}</button></sc-for></div>
 </section>
 </sc-if>
 <button class="cb-btn" type="button" onClick="{{toggleChat}}" aria-label="{{launcherLabel}}" aria-expanded="{{chatExpanded}}">
-<span class="cb-sway"><svg viewBox="0 0 200 200" aria-hidden="true" style="display: block; width: 100%; overflow: visible; filter: drop-shadow(0 6px 8px rgba(43,33,30,.2))"><g transform="translate(41 50) rotate(-52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g fill="none" stroke="#2B211E" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path><path d="M93 120q3.5 6 7 0q3.5 6 7 0"></path></g></svg></span>
+<sc-if value="{{teaser}}" hint-placeholder-val="{{ true }}"><span class="cb-teaser" aria-hidden="true">Hi! Need a hand?</span></sc-if>
+<span class="cb-tilt"><span class="cb-sway"><span class="cb-bob"><span class="{{hopCls}}"><svg viewBox="0 0 200 200" aria-hidden="true" style="display: block; width: 100%; overflow: visible; filter: drop-shadow(0 6px 8px rgba(43,33,30,.2))"><g transform="translate(41 50) rotate(-52)"><rect class="cb-ray" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><g transform="translate(100 24)"><rect class="cb-ray cb-ray2" x="-6" y="-16" width="12" height="32" rx="6" fill="#FBA826"></rect></g><g transform="translate(159 50) rotate(52)"><rect class="cb-ray cb-ray3" x="-6" y="-14" width="12" height="28" rx="6" fill="#FBA826"></rect></g><path d="M100 58C132 58 149 82 149 108C149 140 128 182 100 182C72 182 51 140 51 108C51 82 68 58 100 58Z" fill="#FBA826"></path><ellipse cx="72" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><ellipse cx="128" cy="119" rx="8.5" ry="5.2" fill="#F46A39" opacity=".85"></ellipse><g class="cb-shut" fill="none" stroke="#2B211E" stroke-width="2.6" stroke-linecap="round"><path d="M75 108q7 8 14 0"></path><path d="M111 108q7 8 14 0"></path></g><g class="cb-open"><g class="cb-eye"><ellipse cx="82" cy="108" rx="4.6" ry="5.6" fill="#2B211E"></ellipse><circle cx="83.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g><g class="cb-eye"><ellipse cx="118" cy="108" rx="4.6" ry="5.6" fill="#2B211E"></ellipse><circle cx="119.6" cy="105.8" r="1.5" fill="#FFFFFF"></circle></g></g><path d="M93 120q3.5 6 7 0q3.5 6 7 0" fill="none" stroke="#2B211E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><text class="cb-z" x="140" y="66" font-family="Fredoka, sans-serif" font-weight="700" font-size="30" fill="#1E5C46">z</text><text class="cb-z cb-z2" x="158" y="46" font-family="Fredoka, sans-serif" font-weight="700" font-size="22" fill="#1E5C46">z</text></svg></span></span></span></span>
 </button>
 </div>
 </div>
@@ -243,8 +285,11 @@ a{color:#A8421A}a:hover{color:#7C2F10}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { calm: null, chat: null, msgs: [], webgl: true };
+    this.state = { calm: null, chat: null, msgs: [], webgl: true, thinking: 0, hops: 0 };
     this.setCanvas = (el) => { this.canvasEl = el; };
+    this.setLog = (el) => { this.logEl = el; };
+    this.timers = [];
+    this.scrollLog = () => { const go = () => { if (this.logEl) this.logEl.scrollTop = this.logEl.scrollHeight; }; if (typeof requestAnimationFrame === 'function') requestAnimationFrame(() => requestAnimationFrame(go)); };
   }
   componentDidMount() {
     let tries = 0;
@@ -256,7 +301,7 @@ class Component extends DCLogic {
     };
     start();
   }
-  componentWillUnmount() { clearTimeout(this.retry); if (this.cleanup3D) this.cleanup3D(); }
+  componentWillUnmount() { clearTimeout(this.retry); this.timers.forEach(clearTimeout); if (this.cleanup3D) this.cleanup3D(); }
   mount3D(T, canvas) {
     const renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -339,9 +384,24 @@ class Component extends DCLogic {
       rootClass: calm ? 'calm' : '', calmLabel: calm ? 'Calm mode on' : 'Calm mode', calmPressed: calm ? 'true' : 'false',
       toggleCalm: () => this.setState({ calm: !calm }),
       chatOpen: open, chatExpanded: open ? 'true' : 'false', launcherLabel: open ? 'Close chat' : 'Open chat',
-      toggleChat: () => this.setState({ chat: !open }),
+      chatState: open ? (st.thinking > 0 ? 'thinking' : 'open') : 'closed',
+      chatSub: st.thinking > 0 ? 'Hoppy is thinking…' : 'Ask about services, fees and booking',
+      thinking: st.thinking > 0,
+      teaser: !open && st.chat === null,
+      hopCls: 'cb-hop' + (st.hops ? (st.hops % 2 ? ' cb-hop-a' : ' cb-hop-b') : ''),
+      logRef: this.setLog,
+      toggleChat: () => { this.setState({ chat: !open, hops: st.hops + 1 }); this.scrollLog(); },
       messages: [{ role: 'bot', text: 'Hi, I’m Hoppy! Tap a topic. I’m a helper, not a doctor: a therapist answers anything about health.' }].concat(st.msgs).map((m) => ({ text: m.text, cls: 'cb-msg cb-' + m.role })),
-      chips: topics.map(([label, answer]) => ({ label, pick: () => this.setState({ msgs: st.msgs.concat({ role: 'user', text: label }, { role: 'bot', text: answer }) }) }))
+      chips: topics.map(([label, answer]) => ({ label, pick: () => {
+        const now = this.state;
+        this.setState({ msgs: now.msgs.concat({ role: 'user', text: label }), thinking: now.thinking + 1 });
+        this.scrollLog();
+        this.timers.push(setTimeout(() => {
+          const later = this.state;
+          this.setState({ msgs: later.msgs.concat({ role: 'bot', text: answer }), thinking: Math.max(0, later.thinking - 1) });
+          this.scrollLog();
+        }, calm ? 0 : 900));
+      } }))
     };
   }
 }
